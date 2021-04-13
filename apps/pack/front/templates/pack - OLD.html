@@ -1,0 +1,58 @@
+<div style="height :50px; width : 100%;"> 
+</div>
+<div class="fleft">
+	<div class="box-left">
+		<h2><span>Votre choix</span></h2>
+		{block name="pack_choisi"}
+		<div class="item">
+		<p><figure class="okok">
+		<h3> {$pack_choisi.nom} </h3>
+		{if !empty({$pack_choisi.image})}<img src="/upload/pack/{$pack_choisi.image}" alt="{$pack_choisi.title}" class="img_pack"/>{/if} <br/>
+		
+		{$pack_choisi.prix} €</br>
+		<!--<a href="http://www.est-horizon.com">Télécharger la facture</a>-->
+		</figure>
+		</p>
+		</div>
+		{/block}
+		<!-- <form method="post" action="">
+			<input type="hidden" value="1" name="confirmation">
+			<div class="myButton"><input type="submit" value="Confirmer"></div>
+		</form> -->
+	</div>
+	
+	<div class="box-left">
+		<h3><span>Plus ?</span></h3>
+		<p>
+			Besoin d'une chaise ou d'un présentoir en plus ? N'hésitez pas contacter le Centre Prouvé!</br> <br/><a href ="mailto:nbi@grandnancy-congresetevenements.com"> nbi@grandnancy-congresetevenements.com</a>
+		</br></p>
+		</div>
+	</div>
+</div>
+
+<div class="box-center fleft">
+	
+	<h2><span>Nos différents packs</span></h2>
+	<div id="csstabs">
+		{block name="pack"}
+		<div id="tab_{$pack.id}" class="item">
+			{if !empty({$pack.image})}<img src="/upload/pack/{$pack.image}" alt="{$pack.title}" class="img_pack"/>{/if}
+			<div class="tabcontent">
+				<h3>{$pack.nom}</h3>
+				<p>
+					{$pack.contenu_base}<br/>
+					<span id="pub">{$pack.contenu_pub}</span><br/>
+					<i>{$pack.prix} €</i>
+				</p>
+				<form method="post" action="">
+					<input type="hidden" value="{$pack.id}" name="choix">
+					<div class="myButton"><input type="submit" value="Choisir ce pack"></div>
+				</form>
+				<!-- {$pack.content|html_entity_decode} -->
+				<!-- <div class="spacer"></div> -->
+			</div>
+		</div>
+		{/block}
+	</div>
+</div>
+<div class="spacer"></div>

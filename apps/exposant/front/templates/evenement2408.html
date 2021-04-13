@@ -1,0 +1,452 @@
+
+
+<!-- DESACTIVE LE 7 AOUT 2020 ET REMPLACE PAR LE CODE (ARTICLE EXPOSANT)
+<?php
+/* programme ---------------------------------------------------------- */
+	
+	@$fp = fopen ("upload/firms_logo/new/2019/links.txt",'rb');
+	
+    $links = array();            
+    $more_links = array();
+    
+
+    function compare($a,$b){
+        return($a["name"]<$b["name"]?-1:1);
+    }
+	if (!$fp) 
+	{
+		echo "<p>Erreur d'ouverture de fichier</p>";
+	}
+	else {
+		$type_partenaire_precedent = "";
+		echo '<div>';
+		
+		while (!feof($fp)) // voir si la lecture du fichier et terminée 
+		{
+			$partenaire = fgets($fp,999);
+			$vecteur = preg_split('/\*/',$partenaire);		
+			$links[$vecteur[0]] = $vecteur[1];
+            $more_links[$vecteur[0]] = array(
+                "id" => $vecteur[0],
+                "link" => $vecteur[1],
+                "name" => $vecteur[2]
+            );
+		} 
+	/* fermeture ---------------------------------------------------------- */
+	fclose($fp);
+	}
+
+usort($more_links,"compare");
+?>
+-->
+
+<!--
+<?php
+//print_r($this->tpl_vars["expo_block"]);
+?>
+-->
+            <!-- <div class="article art-typ4" id="visit-guide"> -->
+                <!-- <h2 class="featurette-heading">Cliquez sur le bouton ci-dessous pour télécharger le Guide du visiteur 2019.<span class="text-muted"> </span></h2> -->
+                <!-- <br> -->
+                <!-- <div style="text-align:center"> -->
+                <!-- <a style="display:inline-block" href="/upload/files/2019/Guide_2019.pdf" target="_blank"> -->
+                <!-- <button id="down" class="btn btn-lg btn-secondary btn-block" type="submit">Télécharger</button> -->
+                <!-- </a> -->
+                <!-- </div> -->
+            <!-- </div> 	Décommenter quand le guide exposant est prêt -->
+
+            <div class="article art-typ4" id="para_seekube">
+                <h2 class="featurette-heading" style="padding-top:40px;">Seekube<span class="text-muted"> </span></h2>
+                <br>
+                	<div style="text-align:center">
+                	<h><b>Pour découvrir en avant-première  les offres de nos entreprises partenaires et pour postuler à un entretien le jour du forum, inscrivez vous sur Seekube grâce à ce lien : </b></h>
+                	<a href="http://bit.ly/2kHMs0I">Seekube</a>
+                	</div>
+               	<div style="text-align:center">
+                <!--<a style="display:inline-block" href="/upload/files/2018/Guide_2018_v3_F.pdf" target="_blank">
+                <button id="down" class="btn btn-lg btn-secondary btn-block" type="submit">Télécharger</button>
+                </a>
+                 -->
+             	</div>
+			</div>
+
+<!-- DESACTIVE LE 7 AOUT 2020 ET REMPLACE PAR LE CODE SUIVANT (ARTICLE EXPOSANT)
+            </div>
+		<div id="exposants" class="article art-typ4">
+			<div class="container ">	
+				<div class="col-xs-12 col-sm-12 col-lg-12">
+				  <h2 class="featurette-heading">Exposants<span class="text-muted"> </span></h2>
+                    <div style="text-align:center">Veuillez trouver ci-dessous la liste des exposants de l'édition 2019. </div>
+				</div>
+				<div class="row">
+                    
+                    
+                    <?php
+                        foreach($more_links as $entreprise){
+                            ?>
+                    <div class="col-md-3 v-center">
+                    <a href="<?php print($entreprise["link"]);?>">
+                        <img src="/upload/firms_logo/new/2019/thumb_<?php print($entreprise["id"]); ?>.png"   height="110" class="img-responsive center-block margin-TB20 animation-element growing">
+                    </a>
+</div>
+                    
+                            <?php
+                        }
+                    ?>
+
+				</div>
+			</div>
+		</div>
+
+-->
+<!--  ---------------------------------------------------------------------	-->
+<!-- 		ARTICLE : Exposants											-->													 
+<!--  ---------------------------------------------------------------------	-->
+
+<style>
+    .col-md-3 img{
+        max-height: 150px;
+    }
+    #visit-guide{
+        background:rgb(247, 196, 6);
+    }
+    #down{
+        max-width: 200px !important;
+    }
+
+@media only screen and (max-width: 576px){
+
+	.field{
+		margin-top:150px !important;
+		margin-bottom:0px !important;
+	}
+	#exposant{
+	width:75%;
+	}
+
+
+	ul.menu-interne{
+	  display
+	  text-align:center;
+	  position: -webkit-sticky; /* Safari */
+	  position:sticky;
+	  list-style-type: none;
+	  top:50px;
+	  z-index: 1;
+	  background-color: #ffffff;		  
+
+	}
+
+	li.menu-elt{
+	display:inline-block;
+	padding:5px 12px;
+
+	}
+
+	li a.menu-lien{
+	display:block;
+	text-align:center;
+	color:rgba(213, 7, 28, 1);
+
+	}
+	
+	.cache-deroulant{
+	position: -webkit-sticky; 
+	position:sticky;
+	background-color:#ffffff;
+	top:0px;
+	padding:40px;
+	z-index:1;
+	}
+}
+
+@media only screen and (min-width:576px) and (max-width: 758px){
+
+	.field{
+		margin-top:120px !important;
+		margin-bottom:0px !important;
+	}
+	#exposant{
+	width:75%;
+	}
+
+
+	ul.menu-interne{
+	  text-align:center;
+	  position: -webkit-sticky; /* Safari */
+	  position:sticky;
+	  list-style-type: none;
+	  top:50px;
+	  z-index: 1;
+	  background-color: #ffffff;
+
+	}
+
+	li.menu-elt{
+	display:inline-block;
+	padding:8px;
+
+	}
+
+	li a.menu-lien{
+	display:block;
+	text-align:center;
+	color:rgba(213, 7, 28, 1);
+
+	}
+	.cache-deroulant{
+	position: -webkit-sticky; 
+	position:sticky;
+	background-color:#ffffff;
+	top:0px;
+	padding:40px;
+	z-index:1;
+	}
+}
+	
+@media only screen and (min-width:758px) and (max-width: 1080px){
+
+	.field{
+		margin-top:160px !important;
+		margin-bottom:0px !important;
+	}
+	#exposant{
+	width:75%;
+	}
+
+
+	ul.menu-interne{
+	  text-align:center;
+	  position: -webkit-sticky; /* Safari */
+	  position:sticky;
+	  list-style-type: none;
+	  top:100px;
+	  z-index: 1;
+	  background-color: #ffffff;
+
+	}
+
+	li.menu-elt{
+	display:inline-block;
+	padding:8px;
+
+	}
+
+	li a.menu-lien{
+	display:block;
+	text-align:center;
+	color:rgba(213, 7, 28, 1);
+
+	}
+	.cache-deroulant{
+	position: -webkit-sticky; 
+	position:sticky;
+	background-color:#ffffff;
+	top:0px;
+	padding:80px;
+	z-index:1;
+	}
+}
+
+
+@media only screen and (min-width: 1080px){
+	*{
+	
+	}
+	.field{
+		margin-top:140px !important;
+		margin-bottom:0px !important;
+	}
+	#exposant{
+	width:75%;
+	}
+
+
+	ul.menu-interne{
+	  text-align:center;
+	  position: -webkit-sticky; /* Safari */
+	  position:sticky;
+	  list-style-type: none;
+	  top:90px;
+	  z-index: 2;
+	  
+	  background-color: rgba(255,255,255,1);
+	}
+
+	li.menu-elt{
+	display:inline-block;
+	padding:12px;
+
+	}
+
+	li a.menu-lien{
+	display:block;
+	text-align:center;
+	color:rgba(213, 7, 28, 1);
+	
+	
+	}
+	
+	.cache-deroulant{
+	position: -webkit-sticky; 
+	position:sticky;
+	background-color:#ffffff;
+	top:0px;
+	padding:45px;
+	z-index:1;
+	}
+	
+}
+</style>
+				<div class="cache-deroulant">
+				
+				</div>
+            
+            			<div class="container">	
+				<div class="col-xs-12 col-sm-12 col-lg-12" style="z-index:2;">
+				  	<h2 class="featurette-heading exposant-menu">Exposants<span class="text-muted"> </span></h2>
+				  	<div style="text-align:center">Veuillez trouver ci-dessous la liste des exposants de l'édition 2019. </div>
+				  	<br>
+				  	
+				  </div>
+				  </div>	
+				  
+				  	<ul class="menu-interne">
+						<li class="menu-elt"><a class="menu-lien" href="#Aéronautique">Aéronautique</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Banques et Finance">Banques et Finance</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Conseil et Audit">Conseil et Audit</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Construction - BTP">Construction - BTP</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Défense">Défense</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Écoles">Écoles</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Énergie">Énergie</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Industrie">Industrie</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Informatique">Informatique</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Divers">Divers</a></li>
+					</ul>
+				  	
+                    			
+
+            
+		<div id ="exposants" class="article art-typ4">
+			<div class="container">	
+<!--				<div class="col-xs-12 col-sm-12 col-lg-12">
+				  	<h2 class="featurette-heading exposant-menu">Exposants<span class="text-muted"> </span></h2>
+				  	<ul class="menu-interne">
+						<li class="menu-elt"><a class="menu-lien" href="#Aéronautique">Aéronautique</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Banques et Finance">Banques et Finance</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Conseil et Audit">Conseil et Audit</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Construction - BTP">Construction - BTP</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Défense">Défense</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Écoles">Écoles</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Énergie">Énergie</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Industrie">Industrie</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Informatique">Informatique</a></li>
+						<li class="menu-elt"><a class="menu-lien" href="#Divers">Divers</a></li>
+					</ul>
+				  	
+                    			<div style="text-align:center">Veuillez trouver ci-dessous la liste des exposants de l'édition 2019. </div>
+				</div>
+-->				
+				
+				
+
+
+
+				
+				<div class="row">
+
+<?php
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+/* Essai lecture fichier txt */
+	//$document_root = $SERVER['document_root']; /* pour l'instant on est en local */
+	
+	/* fonctions ---------------------------------------------------------- */
+		
+	function serapateur($chaine,$separateur)
+	{
+		$vecteur = array ();
+		$m = strlen($chaine)-1;
+		$mot = "";
+		for ($i = 0 ; $i <= $m ;$i++) 
+		{
+			$caractere = $chaine[$i];
+			if ($caractere != $separateur)
+			{
+				$mot .= $caractere;
+			}
+			else 
+			{
+			$vecteur[] = $mot;
+			$mot = "";
+			}
+		}
+		return $vecteur;
+	}
+	
+	
+	/* programme ---------------------------------------------------------- */
+	
+	@$fp = fopen ("apps/exposant/front/images/exposants/2019/links.txt",'rb');
+	
+	if (!$fp) 
+	{
+		echo "<p>Erreur d'ouverture de fichier</p>";
+	}
+	else {
+		$type_exposant_precedent = "";
+		echo '<div>';
+		
+		while (!feof($fp)) // voir si la lecture du fichier et terminée 
+		{
+			$exposant = fgets($fp,999);
+			$vecteur = serapateur ($exposant,'*');		
+			$type_exposant_nouveau = $vecteur[3];
+			if ($type_exposant_nouveau != $type_exposant_precedent){
+				$type_exposant_precedent = $type_exposant_nouveau;
+				echo '</div>';
+				echo '<div class="col-xs-12">';
+				echo '<div id="'.$type_exposant_precedent.'"></div>';
+				echo '<div class="col-xs-12 field"><h3 style="text-transform : uppercase;" >'.$type_exposant_precedent.'</h3></div>';
+				}
+			echo '<div class="col-md-3 v-center">';
+			echo '<a href="'.$vecteur[1].'"><img src="/apps/exposant/front/images/exposants/2019/thumb_'.$vecteur[0].'.png" height="110" class="img-responsive center-block margin-TB20 animation-element growing" alt="'.$vecteur[2].'"></a>';
+			echo '</div>';
+		} 
+	/* fermeture ---------------------------------------------------------- */
+	fclose($fp);
+	}
+?>			  
+	
+				</div>
+			</div>
+		</div>
+
+<!--  =====================================================================	-->
+<!-- 		JAVASCRIPT 														-->													 
+<!--  =====================================================================	-->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="/bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="/bootstrap/js/bootstrap.js"></script>
+		<!-- IE10 viewport Windows 8 bug -->
+		<script src="/bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>	
+		<script src="/bootstrap/js/scroll_animate.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		
+		<script src="/apps/forum/front/js/exposants.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				<?php 
+                
+                
+	
+	
+	
+                
+                $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+				EXPOSANTS.liste.cat.cats[<?php echo $this->tpl_vars['cat']['id']; ?>] = new EXPOSANTS.liste.cat(<?php echo $this->tpl_vars['cat']['id']; ?>,'<?php echo $this->tpl_vars['cat']['name']; ?>');
+				<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+			});
+		</script>

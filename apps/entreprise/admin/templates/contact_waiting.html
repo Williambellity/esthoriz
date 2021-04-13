@@ -1,0 +1,40 @@
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<table class="liste" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col style="width: 25%;" />
+		<col style="width: 20%;" />
+		<col style="width: 20%;" />
+		<col style="width: 20%;" />
+		<col style="width: 10%;" />
+		<col style="width: 5%;" />
+	</colgroup>
+	<tr>
+		<th>Nom et prénom</th>
+		<th>Entreprise demandée</th>
+		<th>Poste</th>
+		<th>Date d'inscription</th>
+		<th>Email validé</th>
+		<th>Traiter</th>
+	</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['contact_block']) && is_array($this->tpl_vars['contact_block'])):
+	foreach ($this->tpl_vars['contact_block'] as $this->tpl_vars['contact']): ?>
+		<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+			<td><?php echo $this->tpl_vars['contact']['civilite']; ?> <?php echo $this->tpl_vars['contact']['nom']; ?> <?php echo $this->tpl_vars['contact']['prenom']; ?></td>
+			<td><?php echo $this->tpl_vars['contact']['firm_asked']; ?></td>
+			<td><?php echo $this->tpl_vars['contact']['poste']; ?></td>
+			<td><?php echo $this->tpl_vars['contact']['date']; ?></td>
+			<td>
+				<?php if ($this->tpl_vars['contact']['confirm'] == 1): ?><img src="/themes/system/images/icones/del.png" alt="Non" />
+				<?php else: ?><img src="/themes/system/images/icones/juste.png" alt="Oui" /><?php endif; ?>
+			</td>
+			<td>
+				<a href="/admin/entreprise/contact_treat/<?php echo $this->tpl_vars['contact']['id']; ?>" title="Traiter la demande"><img src="/themes/system/images/icones/edit.png" alt="Traiter la demande" /></a>
+			</td>
+		</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+	<?php if ($this->tpl_vars['count'] == 0): ?>
+		<tr>
+			<td colspan="5" class="tcenter">Aucun contact en attente de validation</td>
+		</tr>
+	<?php endif; ?>
+</table>

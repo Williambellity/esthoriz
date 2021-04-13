@@ -1,0 +1,125 @@
+<div id="blocks" style="width:40%" />
+	<div class="block" style="width:100%" id="add"/>
+		<div class="top"></div>
+		
+		<h2>{if !isset({$edit})}Ajouter un type de Lot{else}Editer un type de Lot{/if}</h2>
+		<form action="{if isset({$edit})}../{/if}" method="post" enctype="multipart/form-data"/>
+			{if isset({$edit})}<input name="idEdit" value="{$idEdit}" type="hidden" />{else}<input name="idEdit" value="false" type="hidden" />{/if}
+			<fieldset>
+				<legend>Informations générales</legend>
+				<table style="width: 100%;" />
+					<colgroup>
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 40%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 40%; text-align:left" />
+					</colgroup>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="{$nom}" style="width: 90%;" /></td>
+						<td><label for="prix" />Prix :</label></td>
+						<td><input id="prix" type="text" name="prix" value="{$prix}"  style="width: 90%;" /></td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top" /><label for="description">Description</label></td>
+						<td colspan="3" /><textarea id="description" type="text" name="description" style="width: 100%; height:70px"/>{$description}</textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Eléments</legend>
+				{block name="elements"}
+					<!---{$elements.type}-->
+					<legend>{$elements.type_nom}<img src="/themes/system/images/icones/add.png" onclick="ajouterligne('{$elements.type}');" id="addbutton"/> <img src="/themes/system/images/icones/del.png" onclick="suppligne('{$elements.type}');" /></legend>
+					{if $t = 0}{/if}
+					{foreach item={$elements.values} as={$element}}
+						{if {$t} = {$t}+1}{/if} 
+						<div id="{$elements.type}_{$t}" style="margin:5px;">Nom :				
+							<input id="nom" type="text" name="{$elements.type}_nom[]" value="{$element.value.nom}" style="width: 25%;" />
+							Nombre :
+							<select id="nombre" type="text" name="{$elements.type}_number[]"  style="width: 15%;" />
+								<option value="1" {if {$element.value.number}==1}selected{/if}>1</option>
+								<option value="2" {if {$element.value.number}==2}selected{/if}>2</option>
+								<option value="3" {if {$element.value.number}==3}selected{/if}>3</option>
+								<option value="4" {if {$element.value.number}==4}selected{/if}>4</option>
+								<option value="5" {if {$element.value.number}==5}selected{/if}>5</option>
+							</select>
+							Prix :
+							<input type="text" name="{$elements.type}_prix[]" value="{$element.value.prix}"  style="width: 15%;" />
+						</div>
+					{/foreach}
+				{/block}
+			</fieldset>
+			<fieldset>
+				<legend>Couleurs & Accessoires</legend>
+				<legend>Couleurs</legend>
+				<input id="nom" type="text" name="color" value="{$color}" style="width: 100%;" />
+				<br/><i>Séparer les couleurs par #</i><br/>
+				{if (isset({$def_all}) && {$def_all})}  
+				<legend>Accessoires</legend>
+					<select name="accessoire_spec[]" MULTIPLE SIZE=5 style="width:100%"/>
+						<option value="0" {if !{$accessoire_specific_lot}}selected{/if} />Aucun</option>
+						{block name="accessoire_specific"}
+							<option value="{$accessoire_specific.id}"{if {$accessoire_specific.select}} selected{/if} />{$accessoire_specific.nom}</option>
+						{/block}
+				{else}
+					<input type="hidden" value="0" name="accessoire_spec" />
+				{/if}
+				<legend>Images</legend>
+				<input name="image" type="file" />
+			</fieldset><br/>
+			<center><input type="submit" value="{if !isset({$edit})}Ajouter{else}Editer{/if}" /></center>
+		</form>
+	</div>
+</div>
+<div id="content" style="width:59%"> 
+{if !empty({$note})}{$note}{/if}
+{if (isset({$def}) && {$def})} 
+		<table class="liste" style = "width:100%">
+				<colgroup>
+						<col style="width: 8%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 5%; text-align:left" />
+				</colgroup>
+				<tr id="ligne">
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Description</th>
+					<th>Couleurs</th>
+					<th>Composition</th>
+					<th>Accessoires</th>
+					<th>Actions</th>
+				</tr>
+		{block name="lot"}
+		{if $t = {$count} +1}{/if}
+				<tr class="{if {$count} % 2 == 0}pair{else}impair{/if}" style="vertical-align: Text-top;">
+					<td>{$lot.nom}</td>
+					<td>{$lot.prix} €</td>
+					<td>{$lot.description}</td>
+					<td>{foreach item={$lot.color} as={$a}}<li style="margin-left:10px">{$a.value}</LI>{/foreach}</td>
+					<td>{foreach item={$lot.elements} as={$element}}
+						<legend>{$element.value.nom}</legend>
+							{foreach item={$element.value.values} as={$l}}
+								<li style="margin-left:10px;">{$l.value.1} {$l.value.0};Prix: {$l.value.2}€</li>							
+							{/foreach}
+					{/foreach}
+					</td>
+					<td>				
+					{foreach item={$lot.accessoires_specific} as={$acc}}
+						<li style="margin-left:10px;">{$acc.value.nom}; Prix: {$acc.value.prix} €</li>
+					{/foreach}					
+					</td>
+					<td>
+						<a href="/admin/logistic/type_lots/edit/{$lot.id}" title="Editer le lot"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+						<a href="/admin/logistic/del_lot/{$lot.id}" onclick="return confirm('Voulez-vous vraiment supprimer le lot {$lot.nom} ?');" title="Supprimer"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+					</td>
+				</tr>
+		{/block}
+		</table>
+{/if}
+</div>
+<div class="clear"></div>

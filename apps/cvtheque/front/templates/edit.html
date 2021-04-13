@@ -1,0 +1,111 @@
+<script type="text/javascript" src="/apps/cvtheque/front/js/register.js"></script>
+<form method="post" id="cv_form" class="box-center" action="/cvtheque/inscription/" enctype="multipart/form-data">
+	{if !empty({$note})}{$note}{/if}
+	<h1><span>Editer votre inscription</span></h1>
+	
+	<h3>Informations + CV</h3>
+	<p>Ces données ne seront communiquées qu'aux entreprises présentes lors du Forum et ne seront pas divulguées à des tiers.</p>
+	
+	<table>
+		<tr>
+			<td><label for="mail">E-mail*</label></td>
+			<td><input id="mail" name="mail" value="{$mail}" /></td>
+		</tr>
+		<tr>
+			<td id="error-mail" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td id="error-password" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="lastname">Nom*</label></td>
+			<td><input id="lastname" name="lastname" value="{$lastname}" /></td>
+		</tr>
+		<tr>
+			<td id="error-name" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="firstname">Prénom*</label></td>
+			<td><input id="firstname" name="firstname" value="{$firstname}" /></td>
+		</tr>
+		<tr>
+			<td id="error-firstname" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="ecole">Ecole*</label></td>
+			<td>
+				<select name="ecole" onchange="if (this.value == 'autre') $('#autre').show(); else $('#autre').hide();">
+					{foreach item={$ecoles} as={$e}}
+					<option value="{$e.value}"{if {$e.value} == {$ecole}} selected="selected"{/if}>{$e.value}</option>
+					{/foreach}
+					<option value="autre">Autre</option>
+				</select>
+				<br />
+				<input id="autre" class="hidden" type="text" name="autre" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td><label for="diplome">Dernier diplôme</label></td>
+			<td><input id="diplome" type="text" name="diplome" value="{$diplome}" /></td>
+		</tr>
+		<tr>
+			<td><label for="recherche">Vous recherchez</label></td>
+			<td><select id="recherche" name="recherche">
+				{foreach item={$stages} as={$s}}
+				<option value="{$s.value}"{if {$s.value} == {$stage}} selected="selected"{/if}>{$s.value}</option>
+				{/foreach}
+			</select></td>
+		</tr>
+		<tr>
+			<td><label for="secteur">Secteur d'intérêt*</label></td>
+			<td><input id="secteur" type="text" name="secteur" value="{$secteur}" /> <em>Ce champ sera utile pour les recruteurs afin de cibler les cv (ex: aéronautique, ...).</em></td>
+		</tr>
+		<tr>
+			<td><label for="cv">Réuploader CV*</label></td>
+			<td><input type="file" name="cv" />
+				<br /><em>(.pdf, .doc acceptés)</em></td>
+		</tr>
+		<tr>
+			<td><label for="lettre">Réuploader lettre de motivation</label></td>
+			<td><input type="file" name="lettre" />
+				<br /><em>(.pdf, .doc acceptés)</em></td>
+		</tr>
+	</table>
+    <br />
+    <h3>Changez votre inscription au pôle conseil<br />simulation d'entretien d'embauche et correction de CV</h3>
+	
+	<p>Le pôle conseil accueille des intervenants qui viennent tout particulièrement pour vous faire passer des simulations d'entretiens d'embauche et corriger votre CV pendant des créneaux d'environ 30 minutes. Vous pouvez d'ores et déjà réserver des simulations avec :
+	<ul>
+		{block name="intervenant"}
+		<li><strong>{$intervenant.name}</strong>, <em>{$intervenant.firm}</em> : {$intervenant.desc}</li>
+		{/block}
+	</ul>
+	</p>
+	
+	<table class="schedule" cellspacing="0" cellpadding="5" border="1">
+		{block name="intervenant"}
+		<tr>
+			<td><strong>{$intervenant.name}</strong><br />
+				<em>{$intervenant.firm}</em></td>
+			<td>
+				{foreach item={$intervenant.schedule} as={$s}}
+				<label>
+					<?php if (!isset($this->tpl_vars['booking'][$this->tpl_vars['intervenant']['id'].'-'.$this->tpl_vars['s']['value']])): ?>
+					<input class="radio" type="radio" name="timeslot" value="{$intervenant.id}-{$s.value}" />{$s.value}
+					{else}&nbsp;<strong>R.</strong>&nbsp;{$s.value}
+					{/if}
+				</label>
+				{/foreach}
+			</td>
+		</tr>
+		{/block}
+	</table>
+	<em><strong>R.</strong> = réservé</em><br />
+	
+	<p><label><input type="checkbox" name="noconseil" onclick="if (typeof $('.radio').attr('disabled') == 'undefined') $('.radio').attr('disabled', 'disabled'); else $('.radio').removeAttr('disabled');" /> 
+		Ne pas s'inscrire au pôle conseil</label></p>
+	
+	<input type="submit" value="Envoyer" />
+	<div class="spacer"></div>
+</form>
+<div class="spacer"></div>

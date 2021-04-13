@@ -1,0 +1,49 @@
+
+div.item.left {
+	width: 48%;
+	float: left;
+}
+
+div.item.right {
+	width: 48%;
+	float: right;
+}
+
+#contacts-accordion h3 {
+	background: #eaeae8;
+	padding: 5px 10px 5px 10px;
+}
+
+#contacts-accordion table {
+	border-collapse: collapse;
+	border: 1px solid gray;
+	width: 100%;
+}
+
+#contacts-accordion th {
+	width: 30%;
+	text-align: left;
+	padding: 5px;
+	border: 1px solid gray;
+}
+
+#contacts-accordion td {
+	padding: 5px;
+	border: 1px solid gray;
+}
+
+.loading {
+	background: url('../../../../themes/system/images/icones/loader.gif') no-repeat right center;
+}
+
+a.button-submit.refuser {
+	background: #ff0000;
+}
+
+a.button-submit.refuser:hover {
+	background: #e40000;
+}
+
+.hidden {
+	display: none;
+}

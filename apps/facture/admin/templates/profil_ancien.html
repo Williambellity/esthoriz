@@ -1,0 +1,123 @@
+<script type="text/javascript" src="/apps/profil/front/js/webforms2.js"></script>
+<div style="height :100px; width : 100%;"> 
+</div>
+{if !empty({$note})}{$note}{/if}
+<div class="article">
+	<div class="container marketing">
+		<div class="row featurette">
+			<div class="col-md-12">
+				<h2 class="featurette-heading">Edition d'un BDC/Facture pour pack<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+					
+					<form method="post" id="edit_form" > 
+							  <div class="form-group">
+								<label for="InputName">Nom de l'entreprise</label>
+								<input type="text" class="form-control" id="InputName" placeholder="Nom" name="name"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputNo">Identifiant</label>
+								<input type="text" class="form-control" id="InputNo" placeholder="No" name="no"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputAdress">Adresse du siège social</label>
+								<input type="text" class="form-control" id="InputAdress" placeholder="Adress" name="adress"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputAdress2">Adresse de facturation</label>
+								<input type="text" class="form-control" id="InputAdress2" placeholder="Adress2" name="adress2" >
+							  </div>
+							  <div class="form-group">
+								<label for="InputPoste">Responsable au forum</label>
+								<input type="text" class="form-control" id="InputPoste" placeholder="Poste" name="poste"   required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputEmail">Email</label>
+								<input type="text" class="form-control" id="InputEmail" placeholder="Email" name="email"   required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputTel">Téléphone</label>
+								<input type="text" class="form-control" id="InputTel" placeholder="Tel" name="tel"   required>
+							  </div>
+							  <div class="form-group" >
+								<label for="InputPack">Pack</label>
+								<input type="text" class="form-control" id="InputPack" placeholder="Pack" name="pack" required>
+							  </div>	
+							  <div class="form-group" >
+								<label for="InputPackno">Nombre de Pack</label>
+								<input type="text" class="form-control" id="InputPackno" placeholder="Packno" name="packno" value="1" required>
+							  </div>							  
+							  <div class="form-group">
+								<label for="InputPrix">Prix du pack</label>
+								<input type="text" class="form-control" id="InputPrix" placeholder="Prix" name="prix"  required>
+							  </div>
+							  <div class="form-group">
+							  </div>
+
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/BDC-pack.php">BDC</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/Facture-pack.php">Facture</button>
+						</form>						
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-12">
+				<h2 class="featurette-heading">Edition d'un BDC/Facture pour complement<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+
+					<form method="post" id="edit_form" > 
+							  <div class="form-group">
+								<label for="InputName">Nom de l'entreprise</label>
+								<input type="text" class="form-control" id="InputName" placeholder="Nom" name="name"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputNo">Identifiant</label>
+								<input type="text" class="form-control" id="InputNo" placeholder="No" name="no"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputAdress">Adresse du siège social</label>
+								<input type="text" class="form-control" id="InputAdress" placeholder="Adress" name="adress"  required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputAdress2">Adresse de facturation</label>
+								<input type="text" class="form-control" id="InputAdress2" placeholder="Adress2" name="adress2" >
+							  </div>
+							  <div class="form-group">
+								<label for="InputPoste">Responsable au forum</label>
+								<input type="text" class="form-control" id="InputPoste" placeholder="Poste" name="poste"   required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputEmail">Email</label>
+								<input type="text" class="form-control" id="InputEmail" placeholder="Email" name="email"   required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputTel">Téléphone</label>
+								<input type="text" class="form-control" id="InputTel" placeholder="Tel" name="tel"   required>
+							  </div>
+							  <div class="form-group" >
+								<label for="InputRepas">Repas</label>
+								<input type="text" class="form-control" id="InputRepas" placeholder="Repas" name="repas" required>
+							  </div>							  
+							  <div class="form-group">
+								<label for="InputParking">Parking</label>
+								<input type="text" class="form-control" id="InputParking" placeholder="Parking" name="parking"  required>
+							  </div>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/BDC-complement.php">BDC</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/Facture-complement.php">Facture</button>
+						</form>						
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>

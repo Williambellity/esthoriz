@@ -1,0 +1,140 @@
+<div id="content" class="large">
+	<div class="item">
+		{if !empty({$note})}{$note}{/if}
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var toggle = true;
+				$(".button div").click(function() {
+					$(this).toggleClass("checked", "unchecked");
+					if (toggle) {
+						$(this).text("Oui");
+						$('.toggle').show();
+						document.getElementById('create').checked = "checked";
+					} else {
+						$(this).text("Non");
+						$('.toggle').hide();
+						document.getElementById('create').checked = "";
+					}
+					toggle = !toggle;
+				});
+			});
+		</script>
+		<form action="" method="post" enctype="multipart/form-data">
+			<fieldset>
+				<legend>Informations sur l'entreprise</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="name">Nom de l'entreprise :</label></td>
+						<td><input id="name" type="text" name="name" value="{$name}" maxlength="80" size="40" /></td>
+					</tr>
+					<tr>
+						<td><label for="cat">Secteur d'activité :</label></td>
+						<td>
+							<select id="cat" name="cat">
+								<option value="0">Autre</option>
+								{foreach item={$activites} as={$a}}
+									<option value="{$a.value.id}">{$a.value.cat_name}</option>
+								{/foreach}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="adress">Coordonnées :</label></td>
+						<td><textarea id="adress" name="adress" rows="10" cols="50">{$adress}</textarea></td>
+					</tr>
+					<tr>
+						<td><label for="city">Ville :</label></td>
+						<td><input id="city" type="text" name="city" value="{$city}" /></td>
+					</tr>
+					<tr>
+						<td><label for="postal_code">Code postal :</label></td>
+						<td><input id="postal_code" type="text" name="postal_code" value="{$postal_code}" /></td>
+					</tr>
+					<tr>
+						<td><label for="country">Pays :</label></td>
+						<td>
+							<select name="country">
+							{foreach item={$pays} as={$p}}
+							<option value="{$p.value}"{if {$country} == {$p.value}} selected="selected"{/if}>{$p.value}</option>
+							{/foreach}
+							<option value="Autre">Autre</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Premier contact de l'entreprise</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="civilite">Civilité</label></td>
+						<td>
+							<select id="civilite" name="civilite">
+								<option value="Mme">Madame</option>
+								<option value="Mlle">Mademoiselle</option>
+								<option value="Mr">Monsieur</option>
+								<option value="">-</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="{$nom}" /></td>
+					</tr>
+					<tr>
+						<td><label for="prenom">Prénom :</label></td>
+						<td><input id="prenom" type="text" name="prenom" value="{$prenom}" /></td>
+					</tr>
+					<tr>
+						<td><label for="poste">Poste au sein de l'entreprise :</label></td>
+						<td><input id="poste" type="text" name="poste" value="{$poste}" /></td>
+					</tr>
+					<tr>
+						<td><label for="langue">Langue parlée :</label></td>
+						<td><input id="langue" type="text" name="langue" value="{$langue}" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="adresse_contact">Adresse :</label></td>
+						<td><textarea id="adresse_contact" name="adresse_contact" rows="10" cols="50">{$adresse_contact}</textarea></td>
+					</tr>
+					<tr>
+						<td><label for="fixe">Téléphone fixe :</label></td>
+						<td><input id="fixe" type="text" name="tel_fixe" value="{$tel_fixe}" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="portable">Téléphone portable :</label></td>
+						<td><input id="portable" type="text" name="tel_portable" value="{$tel_portable}" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="fax">Fax :</label></td>
+						<td><input id="fax" type="text" name="fax" value="{$fax}" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email :</label></td>
+						<td><input id="email" type="text" name="email" value="{$email}" size="25" /></td>
+					</tr>
+					<tr>
+						<td>Créer un compte utilisateur pour ce contact :</td>
+						<td>
+							<a href="javascript:void()" class="button"><div class="unchecked">Non</div></a>
+							<input id="create" type="checkbox" name="create" />
+							<span id="compteMessage"></span>
+						</td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="nickname">Identifiant :</label></td>
+						<td><input type="text" id="nickname" name="nickname" value="{$nickname}" /></td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="password">Mot de passe :</label></td>
+						<td>
+							<input type="text" id="password" name="pass1" value="" /><br />
+							<input type="text" id="password" name="pass2" value="" /> <em>(confirmation)</em>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<input type="submit" class="button-submit" value="Créer l'entreprise" />
+		</form>
+	</div>
+</div>

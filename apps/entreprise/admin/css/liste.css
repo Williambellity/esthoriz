@@ -1,0 +1,12 @@
+
+#filtres label {
+	display: block;
+	float: left;
+	width: 80px;
+	padding-top: 4px;
+}
+
+#filtres form {
+	clear: left;
+	margin-top: 0.5em;
+}

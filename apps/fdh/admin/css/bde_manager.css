@@ -1,0 +1,20 @@
+
+#edit {
+	display: none;
+}
+
+ul#access, ul#accessEdit {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#add label, #edit label {
+	display: block;
+	float: left;
+	width: 100px;
+}
+
+.hidden {
+	display: none;
+}

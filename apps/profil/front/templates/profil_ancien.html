@@ -1,0 +1,70 @@
+<script type="text/javascript" src="/apps/profil/front/js/webforms2.js"></script>
+<div style="height :100px; width : 100%;"> 
+</div>
+{if !empty({$note})}{$note}{/if}
+<div class="article">
+	<div class="container marketing">
+		<div class="row featurette">
+			<div class="col-md-12">
+				<h2 class="featurette-heading">Edition de votre profil<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+					
+					<form method="post" id="edit_form" action="/profil/"> 
+							<div class="form-group">
+								<label for="Civilite" >Civilité</label>
+								<select id="civilite" class="form-control" name="civilite">
+									<option {if ({$civilite}=='Mme')}selected{/if} value="Mme">Madame</option>
+									<option {if ({$civilite}=='Mlle')}selected{/if} value="Mlle">Mademoiselle</option>
+									<option {if ({$civilite}=='Mr')}selected{/if} value="Mr">Monsieur</option>
+								</select>
+							</div>
+							  <div class="form-group">
+								<label for="InputName">Nom</label>
+								<input type="text" class="form-control" id="InputName" placeholder="Nom" name="nom" value="{$nom}" required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputFName">Prénom</label>
+								<input type="text" class="form-control" id="InputFName" placeholder="Prénom" name="prenom" value="{$prenom}" required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputEmail1">Email/Login</label>
+								<input type="email" class="form-control" id="InputEmail1" placeholder="Email" name="email" disabled="disabled" value="{$email}" required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputPoste">Votre poste</label>
+								<input type="text" class="form-control" id="InputPoste" placeholder="Poste" name="poste"  value="{$poste}" required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputLanguage">Langue</label>
+								<input type="text" class="form-control" id="InputLanguage" placeholder="Langue" name="langue"  value="{$langue}"required>
+							  </div>
+							  <div class="form-group" >
+								<label for="Textarea">Adresse postale</label>
+								<textarea id="Textarea" name="adresse" rows="5" style="width : 100%;" placeholder="Adresse" required>{$adresse}</textarea>
+							  </div>							  
+							  <div class="form-group">
+								<label for="InputTel">Téléphone</label>
+								<input type="tel" class="form-control" id="InputTel" placeholder="Téléphone" name="tel_fixe" value="{$tel_fixe}" required>
+							  </div>
+							  <div class="form-group">
+								<label for="InputMobile">Mobile</label>
+								<input type="tel" class="form-control" id="InputMobile" placeholder="Mobile" name="tel_portable" value="{$tel_portable}">
+							  </div>
+							  <div class="form-group">
+								<label for="InputFax">Fax</label>
+								<input type="tel" class="form-control" id="InputFax" placeholder="Fax" name="fax" value="{$fax}">
+							  </div>
+							<button type="submit" class="btn btn-secondary center-block" value="Enregistrer" >Enregistrer</button>
+						</form>						
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

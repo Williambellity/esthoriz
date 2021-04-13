@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<title><?php echo $this->tpl_vars['pageTitle']; ?></title>
+		<meta name="Language" content="fr" />
+		<meta name="Robots" content="nofollow" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<link href="/themes/admin/styles/style.css" rel="stylesheet" title="admin style" type="text/css" media="screen" />
+		<?php if (isset($this->tpl_vars['css'])): ?><?php echo $this->tpl_vars['css']; ?><?php endif; ?>
+		<script type="text/javascript" src="/themes/admin/javascript/jquery-1.5.2.js"></script> 
+		<?php if (isset($this->tpl_vars['js'])): ?><?php echo $this->tpl_vars['js']; ?><?php endif; ?>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div id="header">
+				<div id="title">
+					<h1><a href="/"><?php echo $this->tpl_vars['siteName']; ?></a></h1>
+					<p>Wity <span>CMS</span><br />
+					<em>Bienvenue <?php echo $this->tpl_vars['userNickname']; ?></em></p>
+				</div>
+				<div id="logout">
+					<a href="/user/deconnexion/" title="déconnexion">déconnexion</a>
+					<img class="preload" src="/themes/admin/images/logout-on.jpg" alt="déconnexion" />
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div id="nav">
+				<div class="inner">
+					<ul id="modules">
+						<?php $this->tpl_vars['app']['count'] = -1;
+foreach($this->tpl_vars['appList'] as $this->tpl_vars['app']['key'] => $this->tpl_vars['app']['value']):
+$this->tpl_vars['app']['count']++; ?>
+							<li<?php if ($this->tpl_vars['app']['value'] == $this->tpl_vars['appSelected']): ?> class="hover"<?php endif; ?>>
+								<div><a href="/admin/<?php echo $this->tpl_vars['app']['value']; ?>/"><?php echo $this->tpl_vars['app']['value']; ?></a></div></li>
+						<?php endforeach; ?>
+					</ul>
+					<ul id="actions">
+						<?php $this->tpl_vars['act']['count'] = -1;
+foreach($this->tpl_vars['actionShownList'] as $this->tpl_vars['act']['key'] => $this->tpl_vars['act']['value']):
+$this->tpl_vars['act']['count']++; ?>
+							<li class="<?php if ($this->tpl_vars['act']['key'] == @$this->tpl_vars['actionForwarded']): ?>on<?php endif; ?> <?php if ($this->tpl_vars['act']['count'] == 0): ?>first<?php endif; ?>">
+								<a href="/admin/<?php echo $this->tpl_vars['appSelected']; ?>/<?php if ($this->tpl_vars['act']['key'] != 'index'): ?><?php echo $this->tpl_vars['act']['key']; ?>/<?php endif; ?>"><?php echo $this->tpl_vars['act']['value']; ?></a></li>
+						<?php endforeach; ?>
+					</ul>
+					<div class="sub">
+						<p>Votre position actuelle est : <span class="app"><?php echo $this->tpl_vars['appSelected']; ?></span>
+						<?php if (@isset($this->tpl_vars['actionList'][$this->tpl_vars['actionForwarded']])): ?> . <span class="action"><?php echo $this->tpl_vars['actionList'][$this->tpl_vars['actionForwarded']]; ?></span><?php endif; ?></p>
+						<!--<form id="search" action="" method="post"><div>
+							<input type="text" name="search" value="recherche" onclick="this.value = '';" size="15" />
+							<input class="img" type="image" src="/themes/admin/images/search.jpg" alt="Rechercher" />
+						</div></form>-->
+					</div>
+				</div>
+				<div class="bottom"></div>
+			</div>
+			<div id="body">
+				<?php $this->display("".$this->tpl_vars['include'].""); ?>
+			</div>
+			<div id="footer" class="tcenter">
+				<span>Wity&copy; Administration 2013</span> pour le Forum, par le Forum
+			</div>
+		</div>
+	</body>
+</html>

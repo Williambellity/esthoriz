@@ -1,0 +1,17 @@
+<div id="content" class="large">
+	<div class="item">
+		<h2>Suppression de l'entreprise "<strong><?php echo $this->tpl_vars['firmName']; ?></strong>"</h2>
+		<dl class="note error">
+			<dt>Attention</dt>
+			<dd>Cette suppression entraînera la destruction <strong>irréversible</strong> de TOUS les contacts liés à cette entreprise.</dd>
+		</dl>
+		<div class="tcenter">
+			Voulez-vous continuer ?<br /><br />
+			<form action="" method="post">
+				<input type="hidden" name="confirm" value="1" />
+				<input type="submit" value="Oui" />
+				<input type="button" value="Non" onclick="history.back();" />
+			</form>
+		</div>
+	</div>
+</div>

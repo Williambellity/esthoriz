@@ -1,0 +1,9 @@
+<br><a href="/admin/fdh/excel_printaller">print all</a><br>
+<a href="/admin/fdh/mn_printaller">print mines nancy</a><br>
+<form action="./printallerbus/" method="GET">
+    <label for="bus-id">choisir bus:</label>
+    <select name="bus-id" id="bus-id">
+        <?php echo $this->tpl_vars['bus_depart_select']; ?>
+    </select>
+    <input type="submit"/>
+</form>

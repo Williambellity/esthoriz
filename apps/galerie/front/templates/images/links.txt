@@ -1,0 +1,26 @@
+010*stand*stand.txt*Stands d'entreprises : recherche de stage / premier emploi*
+011*stand*
+013*stand*
+014*stand*
+015*stand*
+016*stand*
+017*stand*
+018*stand*
+019*stand*
+020*stand*
+021*stand*
+031*conference*stand.txt*conferences*
+032*conference*
+033*conference*
+034*conference*
+040*conference*
+050*concours*stand.txt*Concours de projets*
+051*concours*
+052*concours*
+053*concours*
+054*concours*
+060*correction cv*stand.txt*correction de cv*
+061*correction cv*
+070*temoignages*stand.txt*temoignages "elles bougent"*
+071*temoignages*
+090*a bientot*stand.txt*a bientot pour l'edition 2020 !*

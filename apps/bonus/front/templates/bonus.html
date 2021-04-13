@@ -1,0 +1,248 @@
+<div style="height : 100px;width : 100%;"></div>
+
+<!-- telechargement guide exposants -->
+
+<!-- DECOMMENT QUAND GUIDE EXPOSANT PRET -->
+
+	<!-- <div class="article art-typ1" style="top :-50px;"> -->
+		<!-- <div class="container marketing"> -->
+			<!-- <div class="row featurette"> -->
+				<!-- <div class="col-xs-12 col-sm-12 col-lg-12"> -->
+				  <!-- <h2 class="featurette-heading">Guide des exposants<span class="text-muted"> </span></h2> -->
+				<!-- </div> -->
+				<!-- <div class="col-xs-12 col-sm-6 col-lg-2"> -->
+				<!-- </div> -->
+				<!-- <div class="col-xs-12 col-sm-12 col-lg-6 animation-element right">   -->
+				  <!-- <p class="lead text-justify"> -->
+						<!-- Merci de télécharger et remplir le formulaire du Guide des Exposants, puis de le renvoyer au Centre Prouvé de Nancy. -->
+					<!-- </p> -->
+				<!-- </div> -->
+				<!-- <div class="col-xs-12 col-sm-12 col-lg-2 center-block left animation-element"> -->
+					<!-- <a class="btn btn-lg btn-secondary v-center" href ="/upload/files/2019/Guide%20de%20l'Exposant%20FEH%202019.pdf" role="button" style="text-align: center;">Télécharger</a> -->
+				<!-- </div> -->
+				<!-- <div class="col-xs-12 col-sm-6 col-lg-2"> -->
+				<!-- </div> -->
+			 <!-- </div>	 -->
+		<!-- </div> -->
+	<!-- </div> -->
+	
+	<!-- DECOMMENT QUAND GUIDE EXPOSANT PRET -->
+
+	<div class="article">
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-md-12">
+					<div class="col-md-12">
+					  <h2 class="featurette-heading">Récapitulatif de la commande<span class="text-muted"> </span></h2>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-8">
+						<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pack_block']) && is_array($this->tpl_vars['pack_block'])):
+	foreach ($this->tpl_vars['pack_block'] as $this->tpl_vars['pack']): ?>
+						<div class="col-md-12">
+							<h3><?php echo $this->tpl_vars['ent']['name']; ?></h3>
+						</div>
+						<div class="col-md-12">
+							<h4>Pack choisi</h4>
+							<p><?php echo $this->tpl_vars['pack']['nom']; ?></p>
+						</div>
+						<div class="col-md-12">
+							<h4>Contenu</h4>
+							<p><?php echo $this->tpl_vars['pack']['contenu_base']; ?></p>
+						</div>
+						<div class="col-md-12">
+							<p><?php echo $this->tpl_vars['pack']['contenu_pub']; ?></p>
+						</div>
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+					</div>
+					<div class="col-md-2">
+					</div>
+				</div>			
+				<div class="col-md-12">
+					<div class="col-md-12">
+					  <h2 class="featurette-heading">Choix de publicité supplémentaire<span class="text-muted"> </span></h2>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-8">
+						<form method="post" enctype="multipart/form-data" action="/apps/bonus/front/Réservation.php">
+						<div class="form-group">
+<script type="text/javascript">
+							var prix=0;
+							var repas=0;
+</script>	
+							<input type="hidden" id="verif" name="verif" value="1" >
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pack_block']) && is_array($this->tpl_vars['pack_block'])):
+	foreach ($this->tpl_vars['pack_block'] as $this->tpl_vars['pack']): ?>	
+							<input type="hidden" id="name" name="name" value="<?php echo $this->tpl_vars['ent']['name']; ?> ">
+							<input type="hidden" id="adress" name="adress" value="<?php echo $this->tpl_vars['ent']['adress']; ?> ">
+							<input type="hidden" id="pc" name="pc" value="<?php echo $this->tpl_vars['ent']['postal_code']; ?> ">
+							<input type="hidden" id="city" name="city" value="<?php echo $this->tpl_vars['ent']['city']; ?> ">
+							<input type="hidden" id="country" name="country" value="<?php echo $this->tpl_vars['ent']['country']; ?> ">
+							<input type="hidden" id="no" name="no" value="<?php echo $this->tpl_vars['ent']['id']; ?> ">
+
+							<input type="hidden" id="adress2" name="adress2" value="<?php echo $this->tpl_vars['factu']['adress']; ?> ">
+							<input type="hidden" id="pc2" name="pc2" value="<?php echo $this->tpl_vars['factu']['postal_code']; ?> ">
+							<input type="hidden" id="city2" name="city2" value="<?php echo $this->tpl_vars['factu']['city']; ?> ">
+							<input type="hidden" id="country2" name="country2" value="<?php echo $this->tpl_vars['factu']['country']; ?> ">
+
+							<input type="hidden" id="civ" name="civ" value="<?php echo $this->tpl_vars['contact']['civilite']; ?> ">
+							<input type="hidden" id="nomc" name="nomc" value="<?php echo $this->tpl_vars['contact']['nom']; ?> ">
+							<input type="hidden" id="prenomc" name="prenomc" value="<?php echo $this->tpl_vars['contact']['prenom']; ?> ">
+							<input type="hidden" id="tel" name="tel" value="<?php echo $this->tpl_vars['contact']['tel_fixe']; ?> ">
+							<input type="hidden" id="email" name="email" value="<?php echo $this->tpl_vars['contact']['email']; ?> ">
+
+							<input type="hidden" id="packName" name="packName" value="<?php echo $this->tpl_vars['pack']['nom']; ?> ">
+							<input type="hidden" id="packPrix" name="packPrix" value="<?php echo $this->tpl_vars['pack']['prix']; ?> ">
+						</div>
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pack_block']) && is_array($this->tpl_vars['pack_block'])):
+	foreach ($this->tpl_vars['pack_block'] as $this->tpl_vars['pack']): ?>
+						<?php if ($this->tpl_vars['pack']['id']<>2): ?>
+						<div class="form-group">
+							<label for="pub1" >Distribution de flyers publicitaires de votre entreprise aux visiteurs le jour du forum</label>
+							<input type="checkbox" class="form-control" id="pub1" name="pub1" value="1" onClick="p1();">
+							<p id="prix">300€</p>
+						</div>
+						<?php endif; ?>
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pack_block']) && is_array($this->tpl_vars['pack_block'])):
+	foreach ($this->tpl_vars['pack_block'] as $this->tpl_vars['pack']): ?>
+						<?php if ($this->tpl_vars['pack']['id']>=4): ?>
+						<div class="form-group">
+							<label for="pub2" >Publicité en regard de la page de présentation de votre entreprise dans la brochure visiteurs</label>
+							<input type="checkbox" class="form-control" id="pub2" name="pub2" value="1" onClick="p2();">
+							<p id="prix">500€</p>
+						</div>
+						<?php else: ?>
+						<div class="form-group">
+							<label for="pub2" ></label>
+							<input class="form-control" type="hidden" id="pub2" name="pub2" value="0">
+						</div>
+						<?php endif; ?>	
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						<div class="form-group">
+							<label for="pub3" >Présence d’une publicité sur la 2e ou 3e page de couverture de la brochure visiteurs</label>
+							<input class="form-control" type="checkbox" id="pub3" name="pub3" value="1" onClick="p3();document.getElementById('choix').style.display=(document.getElementById('choix').style.display=='none')?'block':'none';">
+							<p id="prix">900€</p>
+						</div>	
+						<div class="form-group" id="choix" style="display:none;">
+							<input class="form-control" type="radio" name="pub4" value ="1" checked="checked"/>2e page</input>
+							<input class="form-control" type="radio" name="pub4" value ="2"/>3e page</input>
+						</div>		
+<!-- 						<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pack_block']) && is_array($this->tpl_vars['pack_block'])):
+	foreach ($this->tpl_vars['pack_block'] as $this->tpl_vars['pack']): ?>
+						<?php if ($this->tpl_vars['pack']['id']>=3): ?>
+						<div class="form-group">
+							<label for="pub5" >Présence du logo de l’entreprise en  noir et blanc sur le sac distribué aux visiteurs</label>
+							<input type="checkbox" class="form-control" id="pub5" name="pub5" value="1" onClick="p5();">
+							<p id="prix">1300€</p>
+						</div>
+						<?php else: ?>
+						<div class="form-group">
+							<label for="pub5" ></label>
+							<input class="form-control" type="hidden" id="pub5" name="pub5" value="0">
+						</div>
+						<?php endif; ?>	
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?> -->			
+						<div class="form-group">
+							<label type="hidden" for="pub6" ></label>
+							<input type="hidden" class="form-control" id="pub6" name="pub6" value="0" style="width : 50px" min="0" onBlur="p6();" onClick="p6();">
+						</div>
+						<div class="form-group art-typ1">
+							<p><a style="font-size : 2em;text-decoration : none; color : black;">Total suppléments :</a>
+							<a style="font-size : 2em;text-decoration : none; color : black;"id="total"></a>
+							<a style="font-size : 2em;text-decoration : none; color : black;">€</a></p>
+						</div>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6">
+							
+							
+						</div>
+                        <div class="col-md-6" style="text-align:center">
+                            <button type="submit" style="display:inline-block" name="submit" class="btn btn-secondary center-block" value="Enregistrer ma réservation" formaction="/apps/bonus/front/Réservation.php">Enregistrer ma réservation</button>
+                        </div>
+						<!-- <div class="col-md-6">
+							<form method="post" enctype="multipart/form-data" class="frm" action="/brochure/"> 
+								<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise">Mettre à jour mon entreprise</button>
+							</form>
+						</div> -->
+					</div>   
+				</div>
+            </form>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+	function cool(){
+	if(prix+repas<750)
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok3.jpg";
+	else if(prix+repas<1500)
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok2.jpg";
+	else
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok1.jpg";
+			//if(prix>500){
+			/*var smiley =new Image();
+			smiley.src="/apps/forum/front/photos/2015/ok1.jpg"*/
+			
+			//document.getElementById("cool").innerHTML=myImg;}
+		}
+	function p1(){
+	
+	 if (document.getElementById('pub1').checked === true) {
+             prix+=300;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=300;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}
+	
+	function p2(){
+	 if (document.getElementById('pub2').checked === true) {
+             prix+=500;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=500;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}	
+		
+	function p3(){
+	 if (document.getElementById('pub3').checked === true) {
+             prix+=900;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=900;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}
+	
+	function p5(){
+	 if (document.getElementById('pub5').checked === true) {
+             prix+=1300;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=1300;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}
+		/*cool();*/}
+		
+	function p6(){
+			repas=document.getElementById("pub6").value;
+			repas*=26;
+			 document.getElementById("total").innerHTML= prix+repas;
+			// cool();
+		}
+		
+		document.getElementById("total").innerHTML= prix+repas;
+</script>

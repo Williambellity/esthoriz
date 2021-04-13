@@ -1,0 +1,215 @@
+<script type="text/javascript">
+	$(function() {
+		function accordion() {
+			$('#contacts-accordion').accordion({
+				collapsible: true, 
+				active: false,
+				autoHeight: false,
+				change: function(event, ui) {
+					ui.oldHeader.find('input').attr('checked', false);
+					// valeur opposée pour la valeur de la checkbox
+					var input = ui.newHeader.find('input');
+					input.attr('checked', !input.attr('checked'));
+				}
+			});
+		}
+		accordion();
+		
+		var trans, firmid, firmName = '';
+		$('#firm').autocomplete({
+			source: function(objRequest, response) {
+				$.ajax({
+					method: 'get',
+					url: '<?php echo $this->tpl_vars['base']; ?>admin/entreprise/ajax_firms/',
+					data: "term="+objRequest.term,
+					beforeSend: function(){
+						$('#firm').addClass('loading');
+					},
+					complete: function(){
+						$('#firm').removeClass('loading');
+					}, //stop showing loading when the process is complete
+					success: function(result){
+						var res = $.parseJSON(result);
+						trans = res.trans;
+						response(res.data);
+					},
+					error: function() {
+						alert('Erreur lors du chargement de la liste des entreprises.');
+					}
+				});
+			},
+			// Lorsqu'un item est sélectionné dans la liste
+			select: function(event, ui) {
+				firmid = trans[ui.item.value];
+				$.ajax({
+					method: 'get',
+					url: '<?php echo $this->tpl_vars['base']; ?>admin/entreprise/ajax_contacts/',
+					data: "firmid="+firmid,
+					beforeSend: function(){
+						$('#replaceTitle').addClass('loading');
+					},
+					complete: function(){
+						$('#replaceTitle').removeClass('loading');
+					}, //stop showing loading when the process is complete
+					success: function(result){
+						$('#contact-liste').replaceWith(result);
+						accordion();
+					},
+					error: function() {
+						alert('Erreur lors du chargement des contacts.');
+					}
+				});
+				$('#firmid').attr('value', firmid);
+				// Mise à jour de l'info dans la case en dessous de la sélection d'une firm
+				// Affichage de l'existence de la firm + d'un lien vers sa fiche
+				document.getElementById('firm_presence').innerHTML = 
+					'<img src="/themes/system/images/icones/juste.png" alt="Oui"> '
+					+ '(<a href="/admin/entreprise/fiche/'+firmid+'" onclick="window.open(this.href); return false;">voir la fiche</a>)';
+				firmName = ui.item.value;
+			}
+		});
+		// Par défaut, lorsqu'on tape le nom d'une firm, on affiche qu'il faut la créer (voir bloc au dessus)
+		$('#firm').keydown(function() {
+			if ($(this).attr('value') != firmName) {
+				$('#firmid').attr('value', 0);
+				document.getElementById('firm_presence').innerHTML = 
+					'<img src="/themes/system/images/icones/del.png" alt="Non"> '
+					+ "L'entreprise sera créée.";
+				document.getElementById('contact-liste').innerHTML = '';
+			}
+		});
+	});
+</script>
+<div id="content" class="large">
+	<form action="" method="post">
+		<div class="item left style">
+			<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+			<h2>Traitement de la demande d'inscription d'un contact</h2>
+			<fieldset>
+				<legend>Entreprise rattachée à ce contact</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td>Entreprise demandée par le contact :</td>
+						<td><strong><?php echo $this->tpl_vars['firm_asked']; ?></strong></td>
+					</tr>
+					<tr>
+						<td><label for="firm">Rattacher le contact à cette entreprise :</label></td>
+						<td>
+							<input id="firm" type="text" name="firm" value="" />
+						</td>
+					</tr>
+					<tr>
+						<td>Présence dans la base de données :</td>
+						<td>
+							<input id="firmid" type="hidden" name="firmid" value="<?php echo $this->tpl_vars['firmid']; ?>" />
+							<span id="firm_presence"></span>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Données du contact</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="civilite">Civilité :</label></td>
+						<td>
+							<input id="Mme" type="radio" name="civilite" value="Mme"<?php if ($this->tpl_vars['civilite'] == 'Mme'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mme">Madame</label>
+							<input id="Mlle" type="radio" name="civilite" value="Mlle"<?php if ($this->tpl_vars['civilite'] == 'Mlle'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mlle">Mademoiselle</label>
+							<input id="Mr" type="radio" name="civilite" value="Mr"<?php if ($this->tpl_vars['civilite'] == 'Mr'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mr">Monsieur</label>
+							<input id="none" type="radio" name="civilite" value=""<?php if (empty($this->tpl_vars['civilite'])): ?> checked="checked"<?php endif; ?> />
+							<label for="none">Aucune</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="prenom">Prénom :</label></td>
+						<td><input id="prenom" type="text" name="prenom" value="<?php echo $this->tpl_vars['prenom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="poste">Poste au sein de l'organisation :</label></td>
+						<td><input id="poste" type="text" name="poste" value="<?php echo $this->tpl_vars['poste']; ?>" /></td>
+					</tr>
+					<tr>
+						<td>Langue parlée :</td>
+						<td>
+							<input id="langue_fr" type="radio" name="langue" value="fr" checked="checked" />
+							<label for="langue_fr">Français</label>
+							<input id="langue_all" type="radio" name="langue" value="all" />
+							<label for="langue_all">Allemand</label>
+							<input id="langue_en" type="radio" name="langue" value="en" />
+							<label for="langue_en">Anglais</label>
+							<input id="langue_autre" type="radio" name="langue" value="" />
+							<label for="langue_autre">Autre</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="adresse">Adresse :</label></td>
+						<td><textarea id="adresse" name="adresse" rows="10" cols="40"><?php echo $this->tpl_vars['adresse']; ?></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="tel_fixe">Téléphone fixe :</label></td>
+						<td><input id="tel_fixe" type="text" name="tel_fixe" value="<?php echo $this->tpl_vars['tel_fixe']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="tel_portable">Téléphone portable :</label></td>
+						<td><input id="tel_portable" type="text" name="tel_portable" value="<?php echo $this->tpl_vars['tel_portable']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="fax">Fax :</label></td>
+						<td><input id="fax" type="text" name="fax" value="<?php echo $this->tpl_vars['fax']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email :</label></td>
+						<td>
+							
+							<input id="email" type="text" name="email" value="<?php echo $this->tpl_vars['email']; ?>" size="25" readonly="readonly" />
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Email de confirmation</legend>
+				<input id="mailSend" type="checkbox" name="mailSend"checked="checked" />
+				<label for="mailSend">Envoyer un email au contact</label>
+				<!-- <a href="javascript:void(0);" onclick="$('#mailBodyWrapper').show(); this.style.display = 'none';">(modifier/voir le texte)</a><br />
+				
+				<div id="mailBodyWrapper" class="hidden">
+					<br /><textarea id="mailBody" name="mailBody" rows="10" cols="50">
+Bonjour,<br /><br />
+
+Votre demande d'inscription au Forum Est-Horizon a été validée par les organisateurs.<br />
+Vous pouvez dès à présent accéder à <a href="http://www.est-horizon.com/">votre espace personnel</a> avec les identifiant (e-mail) et mot de passe que vous avez fournis.<br /><br />
+
+Nous restons à votre disposition pour toute difficulté éventuelle.<br /><br />
+
+Cordialement,<br /><br />
+<strong>Le Forum Est-Horizon</strong>
+					</textarea>
+				</div>
+				<script type="text/javascript">
+					$(function() {
+						var editor = CKEDITOR.replace('mailBody', {
+							toolbar: 'Basic'
+						});
+						//CKFinder.setupCKEditor(editor, '/helpers/ckfinder/') ;
+					});
+				</script> -->
+			</fieldset>
+			<input type="submit" class="button-submit" value="Accepter le contact" />
+			<a class="button-submit refuser" href="/admin/entreprise/contact_refuse/<?php echo $this->tpl_vars['id']; ?>">Refuser le contact</a>
+		</div>
+		<div class="item right">
+			<h2 id="replaceTitle">Remplacement d'un contact de la base de données</h2>
+			<p>Sélectionnez un contact pour remplacement :</p>
+			<?php $this->display("apps/entreprise/admin/templates/contact_list.html"); ?>
+		</div>
+		<div class="clear"></div>
+	</form>
+</div>
+<div class="clear"></div>

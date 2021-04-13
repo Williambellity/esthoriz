@@ -1,0 +1,349 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<style>
+    #questions{
+        margin:40px;
+    }
+    
+    #error{
+        color:red;
+    }
+    
+    #page-select{
+        text-align:center;
+    }
+    
+    .quest{
+                margin:10px;
+                background:#eee;
+                padding:15px;
+                border-radius:5px;
+                border:1px solid #ddd;
+            }
+            
+            .quest div{
+                display:inline-block;
+            }
+            
+            .qu-del{
+                border:1px solid red;
+                padding:5px;
+                border-radius:3px;
+                cursor: pointer;
+                color:red;
+                box-shadow:0px 0px 0px transparent;
+                transition:all 0.2s ease;
+                margin-right:10px;
+            }
+            
+            .qu-del:hover{
+                background:red;
+                color:black;
+                box-shadow:2px 4px 10px rgba(0,0,0,0.3);
+            }
+            
+            .qu-app{
+                border:1px solid green;
+                padding:5px;
+                border-radius:3px;
+                cursor: pointer;
+                color:green;
+                box-shadow:0px 0px 0px transparent;
+                transition:all 0.2s ease;
+                margin-right:10px;
+            }
+            
+            .qu-app:hover{
+                background:green;
+                color:black;
+                box-shadow:2px 4px 10px rgba(0,0,0,0.3);
+            }
+</style>
+<script>
+    var SERV_ADDR = "https://www.est-horizon.com/quest_api.php";
+    var password = "";
+    var comm_pipeline = [];
+    
+    function ajCallback(){
+        if (this.readyState === XMLHttpRequest.DONE){
+            var fun = comm_pipeline[0];
+            comm_pipeline.splice(0,1);
+            ajax_working = false;
+            fun(this.responseText);
+        }
+    }
+
+    function ajaxCore(mode,params,callback){
+        comm_pipeline.push([mode,params],callback);
+    }
+
+    var ajax_working = false;
+
+    function comm_core(){
+        if(comm_pipeline.length==0){
+            return;
+        }
+        if(ajax_working){
+            return;
+        }
+        if(Function.prototype.isPrototypeOf(comm_pipeline[0])){
+            comm_pipeline[0]();
+            comm_pipeline.splice(0,1);
+            return;
+        }
+        mode = comm_pipeline[0][0];
+        params = comm_pipeline[0][1];
+        comm_pipeline.splice(0,1);
+
+        var httpRequest = new XMLHttpRequest();
+
+
+        httpRequest.onreadystatechange = ajCallback;
+        httpRequest.open('POST', SERV_ADDR);
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        var req = "req-type="+mode+"&login="+password+"&";
+        for(var i=0;i<params.length;i+=2){
+            req += params[i]+"="+params[i+1]+"&";
+        }
+
+        ajax_working = true;
+
+        httpRequest.send(req);
+    }
+    
+    function standard_callback(r){
+        console.log(r);
+    }
+
+    setInterval(comm_core,3);
+
+    // strip html
+
+    function strip_html(msg){
+        msg = msg.split("<").join("&lt;");
+        msg = msg.split(">").join("&gt;");
+        return(msg);
+    }
+    
+    function o(i){
+        return(document.querySelector(i));
+    }
+    
+    // extras
+    
+    var last_id = 0;
+    const msg_per_page = 20;
+    var msg_loading = false;
+    var questions = [];
+    var id_cache = [];
+    var verified = [];
+    var vr_cache = [];
+    
+    function load_questions(){
+        if(!msg_loading){
+            msg_loading = true;
+            ajaxCore("get-questions",["question_id",last_id],msg_ldr_cb);
+        }
+    }
+    
+    current_page = 0;
+    
+    function display_message(msg){
+        res = '<div class="quest" id="q'+msg[0]+'"><div class="qu-del" onclick="delete_quest(this)">delete</div>';
+        if(!msg[3]){
+            res+='<div class="qu-app" onclick="approve(this)">approve</div>';
+        }
+        res+=msg[1]+'</div>';
+        return(res);
+    }
+    
+    function approve(e){
+        quest_id = e.parentElement.id.split("q")[1];
+        ajaxCore("mod-question",["question_id",quest_id],function(){});
+        refresh_verified();
+    }
+    
+    function delete_quest(e){
+        quest_id = parseInt(e.parentElement.id.split("q")[1]);
+        ajaxCore("delete-question",["question_id",quest_id],function(){});
+        qu_list_id = id_cache.indexOf(quest_id);
+        vr_ind = vr_cache.indexOf(quest_id);
+        questions.splice(qu_list_id,1);
+        id_cache.splice(qu_list_id,1);
+        if(vr_ind!=-1){
+            verified.splice(vr_ind,1);
+            vr_cache.splice(vr_ind,1);
+        }
+        o("#quest-cont").removeChild(e.parentElement);
+    }
+    
+    function batch_display(lst,start,finish){
+        cnt = o("#quest-cont")
+        cnt.innerHTML = "";
+        for(i=start;(i<finish)&&(i<lst.length);i++){
+            cnt.innerHTML += display_message(lst[i])
+        }
+    }
+    
+    function msg_ldr_cb(r){
+        msgs = JSON.parse(r)
+        if(msgs.length>0){
+            updated+=1;
+            msgs = msgs.map(x=>[parseInt(x[0]),x[1],x[2],parseInt(x[3])]).reverse();
+            msg_cch = msgs.map(x=>x[0]);
+            last_id = msgs[0][0]+1
+            questions = msgs.concat(questions);;
+            id_cache = msg_cch.concat(id_cache);
+        }
+        refresh_verified();
+        msg_loading = false;
+    }
+    
+    function refresh_verified(){
+        ajaxCore("update-verified",[],refresh_cb);
+    }
+    
+    function refresh_cb(r){
+        r = JSON.parse(r);
+        for(p of r){
+            ind = vr_cache.indexOf(parseInt(p[0]));
+            if(ind==-1){
+                ind = id_cache.indexOf(parseInt(p[0]));
+                if(ind!=-1){
+                    questions[ind][3] = 1; verified.splice(0,0,questions[ind])
+                    vr_cache.splice(0,0,parseInt(p[0]));
+                    updated+=1;
+                }
+            }
+        }
+        if(updated>0){
+            display();
+            updated = 0;
+        }
+    }
+    
+    function display(){
+        var base_lst = (verified_only)?verified:questions;
+        batch_display(base_lst,
+                    current_page*msg_per_page,
+                    (current_page+1)*msg_per_page)
+        
+        o("#page-number").innerHTML = current_page+1;
+        o("#last-btn").disabled = true;
+        if(current_page>0){
+            o("#last-btn").disabled = false;
+        }
+        o("#next-btn").disabled = true;
+        if((current_page+1)*msg_per_page<base_lst.length){
+            o("#next-btn").disabled = false;
+        }
+    }
+    
+    function next_page(){
+        current_page+=1;
+        display();
+    }
+    
+    function last_page(){
+        current_page-=1;
+        display();
+    }
+    
+    function checkPrivilege(){
+        ajaxCore("isLogged",[],priv_check_cb);
+    }
+    
+    function priv_check_cb(r){
+        o("#temp-area").style.display = "none";
+        o("#login-area").style.display = "none";
+        o("#questions").style.display = "none";
+        if(r==0){
+            o("#login-area").style.display = "block";
+        }
+        else{
+            load_questions();
+            o("#questions").style.display = "block";
+        }
+    }
+    
+    function attempt_login(){
+        var pass = o("#login-pass").value;
+        password = pass;
+        ajaxCore("login",["req-login",pass],li_cb);
+    }
+    
+    function li_cb(r){
+        if(r=="0"){
+            priv_check_cb(1);
+        }
+        else{
+            o("#error").innerHTML = "incorrect password";
+        }
+    }
+    // rest of the program
+    
+    var verified_only = false;
+    var updated = 0;
+    function c_verif(e){
+        current_page = 0;
+        verified_only = e.target.checked;
+        display();
+    }
+    
+    var autoref = null; 
+    
+    function c_autor(e){
+        if(e.target.checked){
+            autoref = setInterval(load_questions,200);
+        }else{
+            clearInterval(autoref);
+        }
+    }
+    
+    function configure_check_box(){
+        o("#verifonly").onchange = c_verif;
+        o("#autorefresh").onchange = c_autor;
+        c_autor({target:{checked:true}});
+    }
+    
+    window.onload = function(){
+        configure_check_box();
+        checkPrivilege();
+    }
+</script>
+<div style="height:60px"></div>
+
+<div id="temp-area" style="text-align:center">
+    loading...
+</div>
+
+<div id="login-area" style="display:none;text-align: center">
+    <form action="javascript:attempt_login()">
+        <div id="error"></div>
+        enter password:<br>
+        <input type="password" id="login-pass"/><br>
+        <input type="submit"/>
+    </form>
+</div>
+
+<div id="questions" style="display: none">
+    <input type="checkbox" id="verifonly"/>
+    <label for="verifonly">
+        only show verified questions
+    </label>
+    <br>
+    <input type="checkbox" id="autorefresh" checked/>
+    <label for="autorefresh">
+        automatically refresh
+    </label>
+    <div id="quest-cont">
+    
+    </div>
+    <div id="page-select">
+        <input type="button" id="last-btn" value="< last" disabled onclick="last_page()"/>
+        <span id="page-number">
+            1
+        </span>
+        <input type="button" id="next-btn" value="next >" disabled onclick="next_page()"/>
+    </div>
+</div>

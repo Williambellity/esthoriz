@@ -1,0 +1,235 @@
+<div style="height : 100px;width : 100%;"></div>
+
+<!-- telechargement guide exposants -->
+
+	<div class="article art-typ1" style="top :-50px;">
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-xs-12 col-sm-12 col-lg-12">
+				  <h2 class="featurette-heading">Guide des exposants<span class="text-muted"> </span></h2>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-lg-2">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-6 animation-element right">  
+				  <p class="lead text-justify">
+						Merci de télécharger et remplir le forumulaire du Guide des Exposants, puis de le renvoyer au Centre Prouvé de Nancy.
+					</p>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-2 center-block left animation-element">
+					<a class="btn btn-lg btn-secondary v-center" href ="/upload/files/2017/Guide%20de%20l'Exposant%20FEH%202017.pdf" role="button" style="text-align: center;">Télécharger</a>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-lg-2">
+				</div>
+			 </div>	
+		</div>
+	</div>
+
+	<div class="article">
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-md-12">
+					<div class="col-md-12">
+					  <h2 class="featurette-heading">Récapitulatif de la commande<span class="text-muted"> </span></h2>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-8">
+						{block name="pack" id="pack"}
+						<div class="col-md-12">
+							<h3>{$ent.name}</h3>
+						</div>
+						<div class="col-md-12">
+							<h4>Pack choisi</h4>
+							<p>{$pack.nom}</p>
+						</div>
+						<div class="col-md-12">
+							<h4>Contenu</h4>
+							<p>{$pack.contenu_base}</p>
+						</div>
+						<div class="col-md-12">
+							<p>{$pack.contenu_pub}</p>
+						</div>
+						{/block}
+					</div>
+					<div class="col-md-2">
+					</div>
+				</div>			
+				<div class="col-md-12">
+					<div class="col-md-12">
+					  <h2 class="featurette-heading">Choix de publicité supplémentaire<span class="text-muted"> </span></h2>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-8">
+						<form method="post" enctype="multipart/form-data" action="/apps/bonus/front/Réservation.php" target="_blank" >
+						<div class="form-group">
+<script type="text/javascript">
+							var prix=0;
+							var repas=0;
+</script>	
+							<input type="hidden" id="verif" name="verif" value="1" >
+							{block name="pack" id="pack"}	
+							<input type="hidden" id="name" name="name" value="{$ent.name} ">
+							<input type="hidden" id="adress" name="adress" value="{$ent.adress} ">
+							<input type="hidden" id="pc" name="pc" value="{$ent.postal_code} ">
+							<input type="hidden" id="city" name="city" value="{$ent.city} ">
+							<input type="hidden" id="country" name="country" value="{$ent.country} ">
+							<input type="hidden" id="no" name="no" value="{$ent.id} ">
+
+							<input type="hidden" id="adress2" name="adress2" value="{$factu.adress} ">
+							<input type="hidden" id="pc2" name="pc2" value="{$factu.postal_code} ">
+							<input type="hidden" id="city2" name="city2" value="{$factu.city} ">
+							<input type="hidden" id="country2" name="country2" value="{$factu.country} ">
+
+							<input type="hidden" id="civ" name="civ" value="{$contact.civilite} ">
+							<input type="hidden" id="nomc" name="nomc" value="{$contact.nom} ">
+							<input type="hidden" id="prenomc" name="prenomc" value="{$contact.prenom} ">
+							<input type="hidden" id="tel" name="tel" value="{$contact.tel_fixe} ">
+							<input type="hidden" id="email" name="email" value="{$contact.email} ">
+
+							<input type="hidden" id="packName" name="packName" value="{$pack.nom} ">
+							<input type="hidden" id="packPrix" name="packPrix" value="{$pack.prix} ">
+						</div>
+						{/block}
+						{block name="pack" id="pack"}
+						{if $pack.id<>2}
+						<div class="form-group">
+							<label for="pub1" >Distribution de flyers publicitaires de votre entreprise aux visiteurs le jour du forum</label>
+							<input type="checkbox" class="form-control" id="pub1" name="pub1" value="1" onClick="p1();">
+							<p id="prix">300€</p>
+						</div>
+						{/if}
+						{/block}
+						{block name="pack" id="pack"}
+						{if $pack.id>=4}
+						<div class="form-group">
+							<label for="pub2" >Publicité en regard de la page de présentation de votre entreprise dans la brochure visiteurs</label>
+							<input type="checkbox" class="form-control" id="pub2" name="pub2" value="1" onClick="p2();">
+							<p id="prix">500€</p>
+						</div>
+						{else}
+						<div class="form-group">
+							<label for="pub2" ></label>
+							<input class="form-control" type="hidden" id="pub2" name="pub2" value="0">
+						</div>
+						{/if}	
+						{/block}
+						<div class="form-group">
+							<label for="pub3" >Présence d’une publicité sur la 2e ou 3e page de couverture de la brochure visiteurs</label>
+							<input class="form-control" type="checkbox" id="pub3" name="pub3" value="1" onClick="p3();document.getElementById('choix').style.display=(document.getElementById('choix').style.display=='none')?'block':'none';">
+							<p id="prix">900€</p>
+						</div>	
+						<div class="form-group" id="choix" style="display:none;">
+							<input class="form-control" type="radio" name="pub4" value ="1" checked="checked"/>2e page</input>
+							<input class="form-control" type="radio" name="pub4" value ="2"/>3e page</input>
+						</div>		
+<!-- 						{block name="pack" id="pack"}
+						{if $pack.id>=3}
+						<div class="form-group">
+							<label for="pub5" >Présence du logo de l’entreprise en  noir et blanc sur le sac distribué aux visiteurs</label>
+							<input type="checkbox" class="form-control" id="pub5" name="pub5" value="1" onClick="p5();">
+							<p id="prix">1300€</p>
+						</div>
+						{else}
+						<div class="form-group">
+							<label for="pub5" ></label>
+							<input class="form-control" type="hidden" id="pub5" name="pub5" value="0">
+						</div>
+						{/if}	
+						{/block} -->			
+						<div class="form-group">
+							<label type="hidden" for="pub6" ></label>
+							<input type="hidden" class="form-control" id="pub6" name="pub6" value="0" style="width : 50px" min="0" onBlur="p6();" onClick="p6();">
+						</div>
+						<div class="form-group art-typ1">
+							<p><a style="font-size : 2em;text-decoration : none; color : black;">Total suppléments :</a>
+							<a style="font-size : 2em;text-decoration : none; color : black;"id="total"></a>
+							<a style="font-size : 2em;text-decoration : none; color : black;">€</a></p>
+						</div>
+					</div>
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-12">
+						<div class="col-md-6">
+							<button type="submit" name="submit" class="btn btn-secondary center-block" value="Télécharger ma réservation">Télécharger ma réservation</button>
+							</form>
+						</div>
+						<div class="col-md-6">
+							<form method="post" enctype="multipart/form-data" class="frm" action="/brochure/"> 
+								<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise">Mettre à jour mon entreprise</button>
+							</form>
+						</div>
+					</div>   
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<script type="text/javascript">
+	function cool(){
+	if(prix+repas<750)
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok3.jpg";
+	else if(prix+repas<1500)
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok2.jpg";
+	else
+		document.getElementById("ok").src= "/apps/forum/front/photos/2015/ok1.jpg";
+			//if(prix>500){
+			/*var smiley =new Image();
+			smiley.src="/apps/forum/front/photos/2015/ok1.jpg"*/
+			
+			//document.getElementById("cool").innerHTML=myImg;}
+		}
+	function p1(){
+	
+	 if (document.getElementById('pub1').checked === true) {
+             prix+=300;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=300;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}
+	
+	function p2(){
+	 if (document.getElementById('pub2').checked === true) {
+             prix+=500;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=500;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}	
+		
+	function p3(){
+	 if (document.getElementById('pub3').checked === true) {
+             prix+=900;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=900;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}//cool();
+		}
+	
+	function p5(){
+	 if (document.getElementById('pub5').checked === true) {
+             prix+=1300;
+			 document.getElementById("total").innerHTML= prix+repas;
+          } 
+	else{
+			prix-=1300;
+			 document.getElementById("total").innerHTML= prix+repas;
+	}
+		/*cool();*/}
+		
+	function p6(){
+			repas=document.getElementById("pub6").value;
+			repas*=26;
+			 document.getElementById("total").innerHTML= prix+repas;
+			// cool();
+		}
+		
+		document.getElementById("total").innerHTML= prix+repas;
+</script>

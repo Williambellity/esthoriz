@@ -1,0 +1,166 @@
+<div id="box_resa">
+	<div id="state">
+		<div class="state_resa" id="r_state1">
+			<h3 class="state_title"><a id="lien_page1" href="javascript:void(0);">Votre stand</a></h3>
+			<span id="stand_state"></span><br/>
+			<ul id="reducs_stand"></ul>
+		</div>
+		<div class="spacer"></div>
+		<div class="state_resa" id="r_state2">
+			<h3 class="state_title"><a id="lien_page2" href="javascript:void(0);">Votre mobilier</a></h3>
+			<ul>
+				<li id="lot_state"></li>
+				<li>
+					<ul id="accbasic_state"></ul>
+				</li>
+				<li>
+					<ul id="accessoire_state"></ul>
+				</li>
+				<li>
+					<ul id="accfixe_state"></ul>
+				</li>
+			</ul>
+			<span id="r_state2_sub_total" class="sub_total"></span><br/>
+			<ul id="reducs_mobilier"></ul>
+		</div>
+		<div class="spacer"></div>
+		<div class="state_resa" id="r_state3">
+			<h3 class="state_title"><a id="lien_page3" href="javascript:void(0);">Vos options</a></h3>
+			<ul id="option_state"></ul>
+			<span id="r_state3_sub_total" class="sub_total"></span>
+			<ul id="reducs_options"></ul>
+		</div>
+		<h2 id="big_total_price">Total : 0€</h2><br/>
+		<ul id="reducs_tout"></ul><br/>
+		<h2 id="big_total_price_2"></h2>
+		<div class="spacer"></div>
+	</div>
+	<div id="main_box">
+		<div class="page_resa" id="resa1">
+			<h2>Votre stand</h2>
+			<div class="white_box" id="list_stands">
+				<div id="cont_stand"></div>
+				<div class="spacer"></div>
+			</div>
+			<a class="right_next_button" href="javascript:void(0);"><img src="/apps/logistic/front/images/next.png" alt="Suivant" /></a>
+			<div class="spacer"></div>
+		</div>
+		<div class="page_resa hidden" id="resa2">
+			<h2>Votre mobilier et vos accessoires</h2>
+			<div class="white_box" id="list_lots">
+				<h3 class="indent">Choix du lot</h3></br>			
+				<div id="cont_lot"></div>
+				<div class="spacer"></div>
+			</div>
+			<div class="white_box" id="list_accessoires">
+				<h3 class="indent">Choix de la couleur et des accessoires supplémentaires</h3>
+				<div id="img_color">
+					<div id="conteneur_colors">
+					</div>
+					<div id="img_list">
+						<div id="no_lot">Aucun lot séléctionné<br/>Vous pouvez ramener votre propre mobilier, dans ce cas, merci de preciser ce que vous ramenez dans la section commentaire page suivante.</div>
+					</div>
+				</div>
+				<div id="cont_accBasic"></div>
+				<div class="spacer"></div>
+				<hr/>
+				<div id="cont_accessoire"></div>
+				<div class="spacer"></div>
+			</div>
+			<div class="white_box" id="list_accfixes">
+				<h3 class="indent">Choix des accessoires communs à tous les lots</h3>
+				<div id="cont_accfixe"></div>
+				<div class="spacer"></div>
+			</div>
+			<a class="left_last_button" href="javascript:void(0);"><img src="/apps/logistic/front/images/last.png" alt="Précédent" /></a>
+			<a class="right_next_button" href="javascript:void(0);"><img src="/apps/logistic/front/images/next.png" alt="Suivant" /></a>
+		</div>
+		<div class="page_resa hidden" id="resa3">
+			<h2>Vos options</h2>
+			<div class="white_box" id="list_options">
+				<h3 class="indent">Choisissez les options qui vous conviennent</h3>
+				<div id="cont_option"></div>
+				<div class="spacer"></div>
+			</div>
+			<span class="nothing_selected">Vous devez obligatoirement sélectionner un stand (page 1) pour Enregistrer vos choix.</span>
+			<form method="POST" id="form_resa" action="/logistic/">
+				<input class="hidden" type="text" id="type_stand" name="type_stand" value=""/>
+				<input class="hidden" type="text" id="type_lot" name="type_lot" value=""/>
+				<input class="hidden" type="text" id="color" name="color" value=""/>
+				<input class="hidden" type="text" id="more_chaise" name="more_chaise" value=""/>
+				<input class="hidden" type="text" id="more_table" name="more_table" value=""/>
+				<input class="hidden" type="text" id="more_tabouret" name="more_tabouret" value=""/>
+				<input class="hidden" type="text" id="more_banque" name="more_banque" value=""/>
+				<input class="hidden" type="text" id="more_presentoir" name="more_presentoir" value=""/>
+				<input class="hidden" type="text" id="accessoires" name="accessoires" value=""/>
+				<input class="hidden" type="text" id="options" name="options" value=""/>
+				<input class="hidden" type="text" id="price" name="price" value=""/>
+				<div class="white_box" id="list_adding">
+					<h3 class="indent">Votre enseigne de stand et vos commentaires</h3>
+					<input type="text" class="adding" id="enseigne" name="enseigne" placeholder="Votre enseigne ici" value="{$enseigne}"/><br/>
+					<textarea id="commentaire" class="adding" name="commentaire" rows="5" cols="30" placeholder="Vos commentaires">{$commentaire}</textarea>
+					<div class="spacer"></div>
+				</div>
+				<a class="left_last_button" href="javascript:void(0);"><img src="/apps/logistic/front/images/last.png" alt="Précédent" /></a>
+				<div id="sp_reg_button"><input type="submit" id="end-button" name="submit" value="Enregistrer" disabled="disabled"/></div>
+			</form>
+		</div>
+	</div>
+<div class="spacer"></div>
+</div>
+<div class="spacer"></div>
+<script type="text/javascript" src="/themes/feh/js/jquery.tinyTips.js"></script>
+<script type="text/javascript" src="/apps/logistic/front/js/stand.js"></script>
+<script type="text/javascript">
+	//Ne pas enlever
+	LOGISTIC.system.recap.initTabs();
+
+	{$reducs}
+	{$stands}
+	{$lots}
+	{$accessoires}
+	{$basics}	
+		
+	{$options}
+	
+	{$selected}
+	//Exemples de récupération de données précédemment saisies, on doit toujours saisir une quantité dans le select, même si l'élément n'est pas 'countable'
+	/*LOGISTIC.elements.stand.stands[5].button.select(1);
+	
+	LOGISTIC.system.pages.selectPage(2);
+	
+	LOGISTIC.elements.lot.lots[2].button.select(1);
+	LOGISTIC.elements.lot.lots[2].accBasics['chaises']['Trône'].button.select(1);
+	LOGISTIC.buttons.buttonColor.select('noir');
+	
+	LOGISTIC.system.pages.selectPage(3);
+	
+	LOGISTIC.elements.option.options[7].button.select(8);
+	
+	LOGISTIC.system.pages.selectPage(1);*/
+	
+	/*
+	/Quelques consignes :
+	/	Les noms des éléments basics ne doivent pas comporter d'espace (si vraiment il le faut, il faut me le dire que je fasse 2 ou 3 modifs dans le code
+	/	Les accents dans les noms sont sensés passer (testé jusqu'à IE6) mais vérifier quand même
+	/	Les mots clés "morer" et "toggler correspondent respectivement à countable et non-countable
+	/	Si on donne des couleurs particulières à un élément comme un accessoire, bien faire attention à mettre toutes les couleurs possibles (quitte à remettre plusieurs fois la même image), sinon une erreur risquerait de survenir (au mieux, aucune image ne s'afficherait dans la case)
+	/	Les quantités renvoyées sont toujours numériques, même pour un élément non-countable (toggler)
+	/	Bien respecter l'ordre d'initialisation et de select des éléments sous risque d'un comportement non prévu.
+	/		Stands
+	/		Lots
+	/		Pour le select, la couleur
+	/		Eléments de lot (chaises, ...)
+	/		Accessoires spécifiques
+	/		Accessoires communs
+	/		Options
+	/	Les changements de pages introduits dans le select sont nécessaires pour éviter un bug possible sous Chrome qui n'applique pas les show et les hide sur les éléments qui ne sont pas visibles
+	/	Les images sont de la taille suivante :
+	/		90x90px pour les images des boutons
+	/		340x185px pour les images de lot
+	/	Les descriptions peuvent être en html ou en texte simple, ça ne devrait pas poser de problème
+	/	Il est impératif que le fichier binders.js soit inclus tout à la fin sinon les boutons n'auront aucune action
+	/	Il est impératif que la commande LOGISTIC.system.recap.initTabs(); soit située après stand.js et avant l'initialisation des objets
+	*/
+</script>
+<script type="text/javascript" src="/apps/logistic/front/js/binders.js"></script>

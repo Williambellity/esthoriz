@@ -1,0 +1,89 @@
+<div class="fleft box-left">
+	<h2><span>Filtres</span></h2>
+	
+	<form action="" method="get">
+		<p><label for="ecole">Ecoles</label><br />
+		<select name="ecole" onchange="submit();">
+			<option value="">Toutes</option>
+			<?php $this->tpl_vars['e']['count'] = -1;
+foreach($this->tpl_vars['ecoles'] as $this->tpl_vars['e']['key'] => $this->tpl_vars['e']['value']):
+$this->tpl_vars['e']['count']++; ?>
+			<option value="<?php echo $this->tpl_vars['e']['value']; ?>"<?php if ($this->tpl_vars['e']['value'] == $this->tpl_vars['fecole']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['e']['value']; ?></option>
+			<?php endforeach; ?>
+		</select>
+		</p>
+		
+		<p><label for="recherche">Recherche</label><br />
+		<select id="recherche" name="recherche" onchange="submit();">
+			<option value="">Tout</option>
+			<?php $this->tpl_vars['s']['count'] = -1;
+foreach($this->tpl_vars['stages'] as $this->tpl_vars['s']['key'] => $this->tpl_vars['s']['value']):
+$this->tpl_vars['s']['count']++; ?>
+			<option value="<?php echo $this->tpl_vars['s']['value']; ?>"<?php if ($this->tpl_vars['s']['value'] == $this->tpl_vars['frech']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['s']['value']; ?></option>
+			<?php endforeach; ?>
+		</select>
+		</p>
+	</form>
+</div>
+<div class="fleft box-center">
+	<h1><span>Base de données des CV</span></h1>
+	<table class="liste">
+		<colgroup>
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+				<col style="width: 30%;" />
+				<col style="width: 5%;" />
+				<col style="width: 10%;" />
+				<col style="width: 15%;" />
+			</colgroup>
+		<tr>
+			<th>Nom et prénom</th>
+			<th colspan="2">Informations</th>
+			<th>CV</th>
+			<th>Lettre motiv</th>
+			<th>Pôle conseil</th>
+		</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['bookings_block']) && is_array($this->tpl_vars['bookings_block'])):
+	foreach ($this->tpl_vars['bookings_block'] as $this->tpl_vars['bookings']): ?>
+		<tr class="pair">
+			<td rowspan="5" class="tcenter"><strong><?php echo $this->tpl_vars['bookings']['lastname']; ?> <?php echo $this->tpl_vars['bookings']['firstname']; ?></strong></td>
+			<td><strong>Email&nbsp;:</strong></td>
+			<td><?php echo $this->tpl_vars['bookings']['email']; ?></td>
+			<td rowspan="5" class="tcenter">
+				<a href="/upload/CV/2011/<?php echo $this->tpl_vars['bookings']['cv']; ?>">
+					<img src="/apps/participer/front/images/pdf.png" alt="pdf" /></a></td>
+			<td rowspan="5" class="tcenter">
+				<?php if (!empty($this->tpl_vars['bookings']['lettre'])): ?>
+				<a href="/upload/CV/2011/<?php echo $this->tpl_vars['bookings']['lettre']; ?>">
+					<img src="/apps/participer/front/images/pdf.png" alt="pdf" /></a>
+				<?php endif; ?>
+			</td>
+			<td rowspan="5" class="tcenter"><?php if ($this->tpl_vars['bookings']['interid'] != 0): ?><?php echo $this->tpl_vars['bookings']['name']; ?><br />à <?php echo $this->tpl_vars['bookings']['schedid']; ?>
+				<?php else: ?>Pas inscrit
+				<?php endif; ?></td>
+		</tr>
+		<tr class="impair">
+			<td><strong>Ecole&nbsp;:</strong></td>
+			<td><?php echo $this->tpl_vars['bookings']['ecole']; ?></td>
+		</tr>
+		<tr class="pair">
+			<td><strong>Diplôme&nbsp;:</strong></td>
+			<td><?php echo $this->tpl_vars['bookings']['diplome']; ?></td>
+		</tr>
+		<tr class="impair">
+			<td><strong>Secteur recherché&nbsp;:</strong></td>
+			<td><?php echo $this->tpl_vars['bookings']['secteur']; ?></td>
+		</tr>
+		<tr class="pair">
+			<td><strong>Stage attendu&nbsp;:</strong></td>
+			<td><?php echo $this->tpl_vars['bookings']['recherche']; ?></td>
+		</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+	<?php if ($this->tpl_vars['count'] == 0): ?>
+		<tr>
+			<td colspan="6" class="tcenter">Aucun inscrit pour l'instant</td>
+		</tr>
+	<?php endif; ?>
+	</table>
+</div>
+<div class="spacer"></div>

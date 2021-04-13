@@ -1,0 +1,4 @@
+010*/images/010_thumb.jpg*stand*
+011*/images/011_thumb.jpg*stand*
+
+031*/images/031_thumb.jpg*conference*

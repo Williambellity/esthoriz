@@ -1,0 +1,38 @@
+<script type="text/javascript">
+	var isPub = {$isPub};
+	var firmid = {$firmid};
+</script>
+<script type="text/javascript" src="/apps/brochure/front/js/pub.js"></script>
+{if !empty({$note})}{$note}{/if}
+<div id="pub_brochure">
+    <div class="fleft">
+    <div class="box-left">
+        <form method="post" enctype="multipart/form-data" id="pub_form" action="">
+		    <span id="ch_logo">
+			    <span id="message_drop">Posez votre publicité PDF ici ou </span>
+				<span id="message_alt" class="hidden">Envoyez votre publicité<br/></span>
+				<input type="button" id="parcourir" value="Parcourir"/>
+				<input type="file" class="hidden" name="choose_pub" id="choose_pub" accept="application/pdf"/>
+				<input type="checkbox" name="maudit_ie6" id="maudit_ie6" class="hidden"/>
+			</span>
+			<progress class="hidden" id="progressBar">Upload en cours...</progress>
+            <input id="reg-button" name="submit" type="submit" class="hidden" value="Enregistrer" />
+		</form>
+    </div>	
+    
+    <div class="box-left">
+        <h2><span>Contraintes</span></h2>
+        <ul>
+            <li>Format PDF</li>
+            <li>Format A5</li>
+            <li>300 dpi minimum</li>
+            <li>3mm de bords</li>
+        </ul>
+        <i>En cas de problème, envoyez-nous votre publicité par mail.</i>
+    </div>	
+    </div>
+    <div id="td_pub" class="box-center fleft">
+	    <img src="/apps/brochure/front/images/nopub.png" alt="pub"/>
+	</div>
+</div>
+<div class="spacer"></div>

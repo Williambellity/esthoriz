@@ -1,0 +1,142 @@
+<script type="text/javascript" src="/apps/cvtheque/front/js/register.js"></script>
+<form method="post" id="cv_form" class="box-center" action="/cvtheque/inscription/" enctype="multipart/form-data">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<h1><span>Inscription</span></h1>
+	
+	<p>Votre inscription en ligne vous permettra d'uploader votre CV afin d'enrichir une base de données à laquelle seules les entreprises inscrites au Forum ont accès. Selon leur intéressement par rapport à votre profil, elles sont susceptibles de rentrer en contact avec vous pour vous offrir un entretien pouvant conduire à une offre de stage.</p>
+	<p>Vous pouvez par la même occasion vous inscrire au pôle conseil du Forum.</p>
+	
+	<h3>Pôle conseil : simulation d'entretien d'embauche et correction de CV</h3>
+	
+	<p>Le pôle conseil accueille des intervenants qui viennent tout particulièrement pour vous faire passer des simulations d'entretiens d'embauche et corriger votre CV pendant des créneaux d'environ 30 minutes. Vous pouvez d'ores et déjà réserver des simulations avec :
+	<ul>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['intervenant_block']) && is_array($this->tpl_vars['intervenant_block'])):
+	foreach ($this->tpl_vars['intervenant_block'] as $this->tpl_vars['intervenant']): ?>
+		<li><strong><?php echo $this->tpl_vars['intervenant']['name']; ?></strong>, <em><?php echo $this->tpl_vars['intervenant']['firm']; ?></em> : <?php echo $this->tpl_vars['intervenant']['desc']; ?></li>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+	</ul>
+	</p>
+	
+	<table class="schedule" cellspacing="0" cellpadding="5" border="1">
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['intervenant_block']) && is_array($this->tpl_vars['intervenant_block'])):
+	foreach ($this->tpl_vars['intervenant_block'] as $this->tpl_vars['intervenant']): ?>
+		<tr>
+			<td><strong><?php echo $this->tpl_vars['intervenant']['name']; ?></strong><br />
+				<em><?php echo $this->tpl_vars['intervenant']['firm']; ?></em></td>
+			<td>
+				<?php $this->tpl_vars['s']['count'] = -1;
+foreach($this->tpl_vars['intervenant']['schedule'] as $this->tpl_vars['s']['key'] => $this->tpl_vars['s']['value']):
+$this->tpl_vars['s']['count']++; ?>
+				<label>
+					<?php if (!isset($this->tpl_vars['booking'][$this->tpl_vars['intervenant']['id'].'-'.$this->tpl_vars['s']['value']])): ?>
+					<input class="radio" type="radio" name="timeslot" value="<?php echo $this->tpl_vars['intervenant']['id']; ?>-<?php echo $this->tpl_vars['s']['value']; ?>" /><?php echo $this->tpl_vars['s']['value']; ?>
+					<?php else: ?>&nbsp;<strong>R.</strong>&nbsp;<?php echo $this->tpl_vars['s']['value']; ?>
+					<?php endif; ?>
+				</label>
+				<?php endforeach; ?>
+			</td>
+		</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+	</table>
+	<em><strong>R.</strong> = réservé</em><br />
+	
+	<p><label><input type="checkbox" name="noconseil" onclick="if (typeof $('.radio').attr('disabled') == 'undefined') $('.radio').attr('disabled', 'disabled'); else $('.radio').removeAttr('disabled');" /> 
+		Ne pas s'inscrire au pôle conseil</label></p>
+	
+	<h3>Informations + CV</h3>
+	<p>Ces données ne seront communiquées qu'aux entreprises présentes lors du Forum et ne seront pas divulguées à des tiers.</p>
+	
+	<table>
+		<tr>
+			<td><label for="mail">E-mail*</label></td>
+			<td><input id="mail" name="mail" value="<?php echo $this->tpl_vars['mail']; ?>" /> <em>(il vous servira d'identifiant de connexion)</em></td>
+		</tr>
+		<tr>
+			<td id="error-mail" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="password">Mot de passe*</label></td>
+			<td><input id="password" type="password" name="password" /></td>
+		</tr>
+		<tr>
+			<td id="error-password" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="lastname">Nom*</label></td>
+			<td><input id="lastname" name="lastname" value="<?php echo $this->tpl_vars['lastname']; ?>" /></td>
+		</tr>
+		<tr>
+			<td id="error-name" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="firstname">Prénom*</label></td>
+			<td><input id="firstname" name="firstname" value="<?php echo $this->tpl_vars['firstname']; ?>" /></td>
+		</tr>
+		<tr>
+			<td id="error-firstname" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="ecole">Ecole*</label></td>
+			<td>
+				<select name="ecole" onchange="if (this.value == 'autre') $('#autre').show(); else $('#autre').hide();">
+					<option value="Mines de Nancy">Ecole Nationale Supérieure des Mines de Nancy</option>
+					<option value="EEIGM">EEIGM</option>
+					<option value="ENSAIA">ENSAIA</option>
+					<option value="ENSAM Metz">ENSAM Metz</option>
+					<option value="ENSEM">ENSEM</option>
+					<option value="ENSG">ENSG</option>
+					<option value="ENSGSI">ENSGSI</option>
+					<option value="ENSIC">ENSIC</option>
+					<option value="EPITACH">EPITECH</option>
+					<option value="ESIAL">ESIAL</option>
+					<option value="ESSTIN">ESSTIN</option>
+					<option value="ICN Business School">ICN Business School</option>
+					<option value="INPL">INPL</option>
+					<option value="IUP Finance">IUP Finance</option>
+					<option value="Nancy Université">Nancy Université</option>
+					<option value="Sciences Po">Sciences Po</option>
+					<option value="Université Henri Poincaré">Université Henri Poincaré</option>
+					<option value="Université Nancy 2">Université Nancy 2</option>
+					<option value="autre">Autre</option>
+				</select>
+				<br />
+				<input id="autre" class="hidden" type="text" name="autre" value="" />
+			</td>
+		</tr>
+		<tr>
+			<td><label for="diplome">Dernier diplôme</label></td>
+			<td><input id="diplome" type="text" name="diplome" value="<?php echo $this->tpl_vars['diplome']; ?>" /></td>
+		</tr>
+		<tr>
+			<td><label for="recherche">Vous recherchez</label></td>
+			<td><select id="recherche" name="recherche">
+				<option value="Stage 2A (2 mois)">Stage 2A (2 mois)</option>
+				<option value="Stage de fin d'étude">Stage de fin d'étude</option>
+				<option value="Stage césure">Stage césure</option>
+				<option value="Stage ouvrier">Stage ouvrier</option>
+				<option value="Emploi">Emploi</option>
+				<option value="Alternance">Alternance</option>
+			</select></td>
+		</tr>
+		<tr>
+			<td><label for="secteur">Secteur d'intérêt*</label></td>
+			<td><input id="secteur" type="text" name="secteur" value="<?php echo $this->tpl_vars['secteur']; ?>" /> <em>Ce champ sera utile pour les recruteurs afin de cibler les cv (ex: aéronautique, ...).</em></td>
+		</tr>
+		<tr>
+			<td><label for="cv">Votre CV*</label></td>
+			<td><input type="file" name="cv" />
+				<br /><em>(.pdf, .doc acceptés)</em></td>
+		</tr>
+		<tr>
+			<td><label for="lettre">Votre lettre de motivation</label></td>
+			<td><input type="file" name="lettre" />
+				<br /><em>(.pdf, .doc acceptés)</em></td>
+		</tr>
+	</table>
+	
+	<p>* : champs obligatoires</p>
+	
+	<input type="submit" value="Envoyer" />
+	<div class="spacer"></div>
+</form>
+<div class="spacer"></div>

@@ -1,0 +1,42 @@
+/* h1 { */
+	/* text-align: center; */
+/* } */
+a {
+	text-align: justify;
+}
+
+.text-red {
+    color: #eb2123!important;
+}
+.text-pink {
+    color: #f7008a!important;
+}
+.news-feed-heading {
+    font-size: 2.5rem !important;
+}
+.news-heading-intro {
+    font-size: 1.25rem!important;
+}
+.text-black {
+  color: #000 !important;
+}
+
+.fullbar-item:hover {
+  background: #f6f6f6;
+}
+
+@media screen and (max-width: 768px) {
+  .in-news {
+    font-size: 1.5rem !important;    
+  }
+
+  .news-feed-heading {
+    font-size: 1.75rem !important; 
+  }
+  .feed-item-heading {
+    font-size: 1.25rem !important;
+  }
+  .news-heading-intro {
+    font-size: 1rem !important;
+  }
+}

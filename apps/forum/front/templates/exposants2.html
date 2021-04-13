@@ -1,0 +1,44 @@
+<h1 class="hidden">Nos exposants 2017</h1>
+
+<div class="fleft">
+	{include file=apps/forum/front/templates/nav.html}
+	
+	<div id="files_down" class="box-left">
+		<h3>Archives</h3>
+		<ul>
+			<li><a href="/upload/files/2010/Liste_exposant_25112010.pdf">Exposants de l'ancienne édition 2010</a></li>
+			<li><a href="/upload/files/2012/BrochureForum.pdf">Brochure de l'édition 2012</a></li>
+			<li><a href="/upload/files/2013/Brochure_2013.pdf">Brochure de l'édition 2013</a></li>
+			<li><a href="/upload/files/2014/brochure_2014.pdf">Brochure de l'édition 2014</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="fleft tjustify">
+	<div class="box-center">
+        <h2><span>Les exposants 2014</span></h2>
+		<div id="liste_expos" class="content">
+            {block name="expo"}
+            <div class="vignette">            
+                <a id='expo_{$expo.id}' class="firm_cat_{$expo.cat}" href="javascript:void(0);">
+                    {if !empty({$expo.logo})}
+					<p><span title="{$expo.name}"><img class="logo_vig" src="{$expo.logo}" alt="{$expo.name}"/></span></p>
+					{else}
+					<p>{$expo.name}</p>
+					{/if}
+                </a>
+            </div>
+            {/block}
+            <div class="spacer"></div>             
+        </div>
+	</div>
+</div>
+<div class="spacer"></div>
+<script src="/apps/forum/front/js/exposants.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        {block name="cat"}
+        EXPOSANTS.liste.cat.cats[{$cat.id}] = new EXPOSANTS.liste.cat({$cat.id},'{$cat.name}');
+        {/block}
+    });
+</script>

@@ -1,0 +1,40 @@
+<div class="box-left fleft">
+	<p>Pour toute information, veuillez contacter :</p>
+	<p><a href="mailto:forum@est-horizon.com"><img src="/themes/system/images/icones/letter.png" alt="email" style="vertical-align: middle;" /> Forum Est-Horizon</a><br />
+	Tél: + 33 3 55 66 27 13</p>
+</div>
+<div class="box-center fleft">
+	<h1><span>Connexion</span></h1>
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<form action="/user" method="post">
+		<table class="users">
+			<tr>
+				<td class="tright"><label for="nickname">Identifiant :</label></td>
+				<td><input id="nickname" type="text" name="nick" /></td>
+			</tr>
+			<tr>
+				<td class="tright"><label for="password">Mot de passe :</label></td>
+				<td><input id="password" type="password" name="pass" /></td>
+			</tr>
+			<tr>
+				<td class="tright"><label for="minutes">Rester connecté pendant :</label></td>
+				<td><input id="minutes" type="text" name="time" value="60" size="3" /> <em>minutes</em></td>
+			</tr>
+			<tr>
+				<td class="tright"><label for="always">Toujours rester connecté :</label></td>
+				<td><input id="always" type="checkbox" name="remember" 
+					onclick="document.getElementById('minutes').disabled = document.getElementById('minutes').disabled == true ? false : true;" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="tcenter">
+					<input type="hidden" name="redirect" value="<?php echo $this->tpl_vars['redirect']; ?>" />
+					<input type="submit" value="Connexion" />
+				</td>
+			</tr>
+			<!--<tr>
+				<td colspan="2" class="centre"><a href="">Mot de passe perdu ?</a></td>
+			</tr>-->
+		</table>
+	</form>
+</div>
+<div class="spacer"></div>

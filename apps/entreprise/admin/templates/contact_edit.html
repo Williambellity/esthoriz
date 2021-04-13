@@ -1,0 +1,148 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Informations sur le contact</h2>
+		<ul>
+			<li>Ajouté le <strong><?php echo $this->tpl_vars['date']; ?></strong></li>
+			<li>Entreprise : <strong><?php echo $this->tpl_vars['firmName']; ?></strong></li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<div class="item">
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<form action="" method="post">
+			<h2>Edition d'un contact</h2>
+			<fieldset>
+				<legend>Informations générales</legend>
+				<input type="hidden" name="userid" value="<?php echo $this->tpl_vars['userid']; ?>" />
+				<input type="hidden" name="firmid" value="<?php echo $this->tpl_vars['firmid']; ?>" />
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td>Civilité</td>
+						<td>
+							<input id="Mme" type="radio" name="civilite" value="Mme"<?php if ($this->tpl_vars['civilite'] == 'Mme'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mme">Madame</label>
+							<input id="Mlle" type="radio" name="civilite" value="Mlle"<?php if ($this->tpl_vars['civilite'] == 'Mlle'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mlle">Mademoiselle</label>
+							<input id="Mr" type="radio" name="civilite" value="Mr"<?php if ($this->tpl_vars['civilite'] == 'Mr'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mr">Monsieur</label>
+							<input id="none" type="radio" name="civilite" value=""<?php if (empty($this->tpl_vars['civilite'])): ?> checked="checked"<?php endif; ?> />
+							<label for="none">Aucune</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="prenom">Prénom :</label></td>
+						<td><input id="prenom" type="text" name="prenom" value="<?php echo $this->tpl_vars['prenom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="poste">Poste au sein de l'entreprise :</label></td>
+						<td><input id="poste" type="text" name="poste" value="<?php echo $this->tpl_vars['poste']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="langue">Langue parlée :</label></td>
+						<td><input id="langue" type="text" name="langue" value="<?php echo $this->tpl_vars['langue']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="adresse">Adresse :</label></td>
+						<td><textarea id="adresse" name="adresse" rows="10" cols="50"><?php echo $this->tpl_vars['adresse']; ?></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="tel_fixe">Téléphone fixe :</label></td>
+						<td><input id="tel_fixe" type="text" name="tel_fixe" value="<?php echo $this->tpl_vars['tel_fixe']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="tel_portable">Téléphone portable :</label></td>
+						<td><input id="tel_portable" type="text" name="tel_portable" value="<?php echo $this->tpl_vars['tel_portable']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="fax">Fax :</label></td>
+						<td><input id="fax" type="text" name="fax" value="<?php echo $this->tpl_vars['fax']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email :</label></td>
+						<td><input id="email" type="text" name="email" value="<?php echo $this->tpl_vars['email']; ?>" size="25" /></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Compte utilisateur</legend>
+				<input type="hidden" name="userid" value="<?php echo $this->tpl_vars['userid']; ?>" />
+				<?php if (empty($this->tpl_vars['userid'])): ?>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$(".button div").click(function() {
+							if ($(this).hasClass('unchecked')) {
+								$(this).removeClass('unchecked');
+								$(this).addClass('checked');
+								$(this).text("Oui");
+								$('.toggle').show();
+								document.getElementById('create').checked = "checked";
+							} else {
+								$(this).removeClass('checked');
+								$(this).addClass('unchecked');
+								$(this).text("Non");
+								$('.toggle').hide();
+								document.getElementById('create').checked = "";
+							}
+						});
+					});
+				</script>
+				<strong>Ce contact ne possède pas de compte utilisateur.</strong>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td style="padding-top: 1em;">Créer un compte utilisateur ? :</td>
+						<td>
+							<a href="javascript:void(0);" class="button"><div class="unchecked">Non</div></a>
+							<input id="create" type="checkbox" name="create" />
+							<div class="toggle">
+								<br /><input id="sendEmail" type="checkbox" name="sendEmail" />
+								<label for="sendEmail">Envoyer les informations concernant la création de compte par email</label>
+							</div>
+						</td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="nickname">Identifiant :</label></td>
+						<td><input type="text" id="nickname" name="nickname" /></td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="password">Mot de passe :</label></td>
+						<td>
+							<input type="text" id="password" name="pass1" value="" /><br />
+							<input type="text" id="password" name="pass2" value="" /> <em>(confirmation)</em>
+						</td>
+					</tr>
+				</table>
+				<?php else: ?>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td style="padding-top: 1em;">Ce contact possède un compte utilisateur :</td>
+						<td>
+							<a class="button"><div class="checked">Oui</div></a><br />
+							<input id="delAccount" name="delAccount" type="checkbox" />
+							<label for="delAccount">Supprimer ce compte utilisateur</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="nickname">Identifiant :</label></td>
+						<td><input type="text" id="nickname" name="nickname" value="<?php echo $this->tpl_vars['nickname']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="password">Changer son mot de passe :</label></td>
+						<td>
+							<input type="text" id="password" name="pass1" value="" /><br />
+							<input type="text" id="password" name="pass2" value="" /> <em>(confirmation)</em>
+						</td>
+					</tr>
+				</table>
+				<?php endif; ?>
+			</fieldset>
+			<input type="submit" class="button-submit" value="Modifier le contact" />
+		</form>
+	</div>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,136 @@
+<h1><span>Le programme de l'édition <b>2013</b></h1></span>
+
+
+	<p><strong>Télécharger au format PDF :</strong> 
+	<font size="5"> <b><a href="/upload/files/2013/Brochure_2013.pdf">Brochure Visiteur 2013</a> </b></font> </br></br>
+	<!--pas à jour:
+	| <a href="/upload/files/2011/Plan_FEH_2011.pdf">Plan de la salle</a></p>  
+	-->
+<font size="4">Sur le Campus Artem :</font>
+<br/>
+	<h2>La journée</h2>
+<div class="box-center fleft detail">
+    
+	<div id="time_fl">
+        <div id="end_fl"></div>
+        <div id="corps_fl">
+            <div id="up_fl">
+            </div>
+            <div id="down_fl">
+                <div id="start_end_time">
+                    <span id="start_time"></span>
+                    <span id="end_time"></span>
+                </div>
+            </div>
+        </div>
+        <div id="tete_fl"></div>
+    </div>    
+    <div id="ti_concerne" class="ti_filter">
+        <div class="filter_denom">Concerne :</div>
+        <div id="conc_cont_filter" class="cont_filter">
+            <a class="button_filter filter_b_all" id="concerne_all">Tous</a>            
+        </div> 
+        <div class="spacer"></div>   
+    </div>
+    <div class="spacer"></div>
+    <div id="ti_categories" class="ti_filter">
+        <div class="filter_denom">Catégories :</div>
+        <div id="cat_cont_filter" class="cont_filter">
+            <a class="button_filter filter_b_all" id="categories_all">Toutes</a>            
+        </div>  
+        <div class="spacer"></div>  
+    </div>    
+    <div class="spacer"></div>
+
+</div>
+<script type="text/javascript" src="/themes/feh/js/jquery.tinyTips.js"></script>
+<script src="/apps/forum/front/js/time.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        TIMELINE.system.line.initTabs();
+        TIMELINE.events.event.listEvents[1] = new TIMELINE.events.event(1, "Accueil des exposants", "<h3>Accueil des exposants</h3>Petit déjeuner", 8, 00, 09, 30, {0:"Exposants",1:"Conférenciers"}, {1:"Divers"}, 2);
+        TIMELINE.events.event.listEvents[2] = new TIMELINE.events.event(2, "Ouverture", "<h3>Ouverture du Forum</h3>", 09, 30, 10, 00, {0:"Visiteurs"}, {0:"Divers"}, 1);
+        
+		TIMELINE.events.event.listEvents[3] = new TIMELINE.events.event(3, "Tables rondes", "<h3>Tables rondes</h3>La liste des tables rondes est disponible ci dessous", 10, 00, 12, 00, {0:"Visiteurs",1:"Conférenciers"}, {0:"Tables rondes"}, 2);
+		TIMELINE.events.event.listEvents[4] = new TIMELINE.events.event(4, "Conseils", "Correction de CV et simulations d'entretien", 10, 00, 16, 00, {0:"Visiteurs",1:"Conférenciers"}, {1:"Divers"}, 3);
+
+		TIMELINE.events.event.listEvents[7] = new TIMELINE.events.event(7, "Arrivé du bus ENSAM", "Arrivé des élèves des Arts et Métiers de Metz", 14, 00, 14, 15, {0:"Visiteurs",1:"Exposants"}, {1:"Divers"}, 3);
+
+		TIMELINE.events.event.listEvents[5] = new TIMELINE.events.event(5, "Tables rondes", "<h3>Tables rondes</h3>La liste des tables rondes est disponible ci dessous", 14, 00, 16, 30, {0:"Visiteurs",1:"Conférenciers"}, {0:"Tables rondes"}, 2);
+		TIMELINE.events.event.listEvents[8] = new TIMELINE.events.event(8, "Départ du bus ENSAM", "Départ des élèves des Arts et Métiers de Metz", 16, 00, 16, 15, {0:"Visiteurs",1:"Exposants"}, {1:"Divers"}, 3);
+		TIMELINE.events.event.listEvents[6] = new TIMELINE.events.event(6, "Fermeture", "<h3>Fermeture du Forum</h3>", 17, 00, 17, 30, {0:"Exposants",1:"Conférenciers",2:"Visiteurs"}, {1:"Divers"}, 4);
+    });
+</script>
+<script src="/apps/forum/front/js/binders.js"></script>
+
+	<h2>Les tables rondes</h2>
+<div class="CSSTableGenerator" >
+	<table style="border-collapse: collapse">
+ 
+   <tr>
+       <td>Heures</td>
+       <td>Thème</td>
+   </tr>
+   <tr>
+       <td>10h00-11h00</td>
+       <td>Métiers de l'énergie</td>
+   </tr>
+   <tr>
+       <td>10h00-10h45</td>
+       <td>Métiers de l'assurance et de la gestion de patrimoine</td>
+   </tr>
+   <tr>
+       <td>10h00-10h45</td>
+       <td>Métiers du conseil en entreprise (hors finance)</td>
+   </tr>
+   <tr>
+       <td>11h00-12h00</td>
+       <td>Génie civil</td>
+   </tr>
+   <tr>
+       <td>11h00-12h00</td>
+       <td>Jump Informatique</td>
+   </tr>
+   <tr>
+       <td>11h00-12h00</td>
+       <td>Yupeek</td>
+   </tr>
+   <tr>
+       <td>11h30-12h15</td>
+       <td>Préparation à l’embauche dans les pays anglosaxons</td>
+   </tr>
+   <tr>
+       <td>14h00-14h45</td>
+       <td>Rédaction CV, lettre… dans une démarche de recrutement</td>
+   </tr>
+   <tr>
+       <td>14h00-14h45<br/>14h45-15h30</td>
+       <td>Stratégie de recherche d'emploi et travail réseau</td>
+   </tr>
+   <tr>
+       <td>14h00-15h00</td>
+       <td>Les carrières dans les grands groupes</td>
+   </tr>
+   <tr>
+       <td>14h00-15h00</td>
+       <td>ArcelorMittal</td>
+   </tr>
+    <tr>
+       <td>15h00-15h45<br/>15h45-16h30</td>
+       <td>Evolution du metier de l'ingénieur</td>
+   </tr>
+   <tr>
+       <td>15h00-15h45</td>
+       <td>Créer son entreprise</td>
+   </tr>
+   <tr>
+       <td>15h00-15h45</td>
+       <td>Métiers de l'audit et de la finance</td>
+   </tr>
+   <tr>
+       <td>15h30-16h15</td>
+       <td>Préparation à l’embauche en Allemagne</td>
+   </tr>
+
+</table>
+</div>

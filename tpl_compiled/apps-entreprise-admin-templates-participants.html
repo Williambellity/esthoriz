@@ -1,0 +1,42 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Statistiques</h2>
+		<ul>
+			<li><?php echo $this->tpl_vars['nb_participants']; ?> participants</li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 40%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+		</colgroup>
+		<tr>
+			<th class="sort <?php echo $this->tpl_vars['name_class']; ?>"><a href="/admin/entreprise/participants/name-<?php echo $this->tpl_vars['name_sort']; ?>/">Nom de l'entreprise</a></th>
+			<th class="sort <?php echo $this->tpl_vars['cat_name_class']; ?>"><a href="/admin/entreprise/participants/cat_name-<?php echo $this->tpl_vars['cat_name_sort']; ?>/">Secteur d'activité</a></th>
+			<th class="sort <?php echo $this->tpl_vars['country_class']; ?>"><a href="/admin/entreprise/participants/country-<?php echo $this->tpl_vars['country_sort']; ?>/">Pays</a></th>
+			<th class="sort <?php echo $this->tpl_vars['date_class']; ?>"><a href="/admin/entreprise/participants/date-<?php echo $this->tpl_vars['date_sort']; ?>/">Date d'inscription</a></th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['firm_block']) && is_array($this->tpl_vars['firm_block'])):
+	foreach ($this->tpl_vars['firm_block'] as $this->tpl_vars['firm']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><strong><?php echo $this->tpl_vars['firm']['name']; ?></strong></td>
+				<td><?php if (!empty($this->tpl_vars['firm']['cat_name'])): ?><?php echo $this->tpl_vars['firm']['cat_name']; ?>
+					<?php else: ?>Aucun<?php endif; ?></td>
+				<td><?php echo $this->tpl_vars['firm']['country']; ?></td>
+				<td><?php echo $this->tpl_vars['firm']['date']; ?></td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="5" class="tcenter">Aucune entreprise inscrite cette année</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,145 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Ajouter une catégorie</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<tr>
+					<td><label for="name">Nom :</label></td>
+					<td><input id="name" type="text" name="name" value="" /></td>
+				</tr>
+				<tr>
+					<td><label for="type">Type d'utilisateur :</label></td>
+					<td>
+						<script type="text/javascript">
+							function changeType(type) {
+								if (type == 'perso') {
+									$('#access').show();
+								} else {
+									$('#access').hide();
+								}
+							}
+						</script>
+						<select id="type" name="type" onchange="changeType(this.options[this.selectedIndex].value);">
+							<option value="none">Simple utilisateur</option>
+							<option value="all">Administrateur suprême</option>
+							<option value="perso">Mode personnalisé</option>
+						</select><br />
+						<ul id="access" class="hidden">
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['module_block']) && is_array($this->tpl_vars['module_block'])):
+	foreach ($this->tpl_vars['module_block'] as $this->tpl_vars['module']): ?>
+							<li>
+								<input id="<?php echo $this->tpl_vars['module']['name']; ?>" type="checkbox" name="access[<?php echo $this->tpl_vars['module']['name']; ?>]" />
+								<label for="<?php echo $this->tpl_vars['module']['name']; ?>"><?php echo ucfirst($this->tpl_vars['module']['name']); ?></label>
+								<?php if (count($this->tpl_vars['module']['levels']) > 0): ?>
+								<select name="level[<?php echo $this->tpl_vars['module']['name']; ?>]">
+									<?php $this->tpl_vars['level']['count'] = -1;
+foreach($this->tpl_vars['module']['levels'] as $this->tpl_vars['level']['key'] => $this->tpl_vars['level']['value']):
+$this->tpl_vars['level']['count']++; ?>
+									<option value="<?php echo $this->tpl_vars['level']['value']['id']; ?>"><?php echo $this->tpl_vars['level']['value']['name']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								<?php endif; ?>
+							</li>
+							<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="edition" class="block">
+		<div class="top"></div>
+		<h2>Editer une catégorie</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<tr>
+					<td><label for="nameEdit">Nom :</label></td>
+					<td>
+						<input id="idEdit" type="hidden" name="idEdit" value="" />
+						<input id="nameEdit" type="text" name="nameEdit" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td><label for="typeEdit">Type d'utilisateur :</label></td>
+					<td>
+						<script type="text/javascript">
+							function changeTypeEdit(type) {
+								if (type == 'perso') {
+									$('#accessEdit').show();
+								} else {
+									$('#accessEdit').hide();
+								}
+							}
+						</script>
+						<select id="typeEdit" name="typeEdit" onchange="changeTypeEdit(this.options[this.selectedIndex].value);">
+							<option value="none">Simple utilisateur</option>
+							<option value="all">Administrateur suprême</option>
+							<option value="perso">Mode personnalisé</option>
+						</select><br />
+						<ul id="accessEdit" class="hidden">
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['module_block']) && is_array($this->tpl_vars['module_block'])):
+	foreach ($this->tpl_vars['module_block'] as $this->tpl_vars['module']): ?>
+							<li>
+								<input id="<?php echo $this->tpl_vars['module']['name']; ?>Edit" class="accessEdit" type="checkbox" name="accessEdit[<?php echo $this->tpl_vars['module']['name']; ?>]" />
+								<label for="<?php echo $this->tpl_vars['module']['name']; ?>Edit"><?php echo ucfirst($this->tpl_vars['module']['name']); ?></label>
+								<?php if (count($this->tpl_vars['module']['levels']) > 0): ?>
+								<select id="level<?php echo $this->tpl_vars['module']['name']; ?>" name="levelEdit[<?php echo $this->tpl_vars['module']['name']; ?>]">
+									<?php $this->tpl_vars['level']['count'] = -1;
+foreach($this->tpl_vars['module']['levels'] as $this->tpl_vars['level']['key'] => $this->tpl_vars['level']['value']):
+$this->tpl_vars['level']['count']++; ?>
+									<option value="<?php echo $this->tpl_vars['level']['value']['id']; ?>"><?php echo $this->tpl_vars['level']['value']['name']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								<?php endif; ?>
+							</li>
+							<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 45%;" />
+			<col style="width: 45%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th class="sort <?php echo $this->tpl_vars['name_class']; ?>"><a href="/admin/users/cat/name-<?php echo $this->tpl_vars['name_sort']; ?>/">Nom de la catégorie</a></th>
+			<th class="sort <?php echo $this->tpl_vars['access_class']; ?>"><a href="/admin/users/cat/access-<?php echo $this->tpl_vars['access_sort']; ?>/">Accès par défaut</a></th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><strong><?php echo $this->tpl_vars['cat']['name']; ?></strong></td>
+				<td><?php echo $this->tpl_vars['cat']['access']; ?></td>
+				<td>
+					<a href="#edition" title="Editer" onclick="return editCat(<?php echo $this->tpl_vars['cat']['id']; ?>, '<?php echo $this->tpl_vars['cat']['name']; ?>', '<?php echo $this->tpl_vars['cat']['access']; ?>');"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/user/cat_del/<?php echo $this->tpl_vars['cat']['id']; ?>/" title="Supprimer" onclick="return checkDel('<?php echo $this->tpl_vars['cat']['name']; ?>');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="3" class="tcenter">Aucune catégorie disponible.</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

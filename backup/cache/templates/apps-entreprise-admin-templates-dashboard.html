@@ -1,0 +1,107 @@
+<div id="blocks">
+	<div id="filtres" class="block">
+		<script type="text/javascript">
+			$(function() {
+				$('#firm').focus();
+				var trans;
+				$('#firm').autocomplete({
+					source: function(objRequest, response) {
+						$.ajax({
+							method: 'get',
+							url: '/admin/entreprise/ajax_firms/',
+							data: "term="+objRequest.term,
+							beforeSend: function() {
+								$('#firm').addClass('loading');
+							},
+							complete: function() {
+								$('#firm').removeClass('loading');
+							}, //stop showing loading when the process is complete
+							success: function(result) {
+								var res = $.parseJSON(result);
+								trans = res.trans;
+								response(res.data);
+							},
+							error: function() {
+								alert('Erreur lors du chargement de la liste des entreprises.');
+							}
+						});
+					},
+					// Lorsqu'un item est sélectionné dans la liste
+					select: function(event, ui) {
+						var firmid = trans[ui.item.value];
+						window.location = '/admin/entreprise/fiche/'+firmid+'/';
+					}
+				});
+			});
+		</script>
+		<div class="top"></div>
+		<h2>Recherche rapide</h2>
+		<form action="/admin/entreprise/liste/" method="get">
+			<label for="firm">Nom :</label>
+			<input type="hidden" name="filter" value="name" />
+			<input id="firm" type="text" name="name" value="" />
+		</form>
+	</div>
+	<div id="links" class="block">
+		<div class="top"></div>
+		<h2>Liens rapides</h2>
+		<ul>
+			<li><a href="/admin/entreprise/liste/?year=<?php echo date('Y', time()); ?>"><strong>Participants au forum</strong></a></li>
+		</ul>
+	</div>
+	<div id="tribune" class="block">
+		<div class="top"></div>
+		<h2>Tribune libre</h2>
+		<div class="inner">
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['shoutbox_block']) && is_array($this->tpl_vars['shoutbox_block'])):
+	foreach ($this->tpl_vars['shoutbox_block'] as $this->tpl_vars['shoutbox']): ?>
+			<p><span>Par <strong><?php echo $this->tpl_vars['shoutbox']['nickname']; ?></strong> (<?php echo $this->tpl_vars['shoutbox']['date']; ?>)</span><br /> 
+			<?php echo $this->tpl_vars['shoutbox']['message']; ?></p> 
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</div>
+		<form action="/admin/entreprise/shoutbox_post/" method="post">
+			<textarea name="message" rows="" cols="" onfocus="this.innerHTML = '';">Votre message...</textarea>
+			<input type="hidden" name="poster" value="Fofif" />
+			<input type="submit" value="Poster !" />
+		</form>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<h2>Mes entreprises</h2>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 30%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th class="sort <?php echo $this->tpl_vars['name_class']; ?>"><a href="/admin/entreprise/dashboard/name-<?php echo $this->tpl_vars['name_sort']; ?>/">Nom de l'entreprise</a></th>
+			<th class="sort <?php echo $this->tpl_vars['cat_name_class']; ?>"><a href="/admin/entreprise/dashboard/cat_name-<?php echo $this->tpl_vars['cat_name_sort']; ?>/">Secteur d'activité</a></th>
+			<th class="sort <?php echo $this->tpl_vars['country_class']; ?>"><a href="/admin/entreprise/dashboard/country-<?php echo $this->tpl_vars['country_sort']; ?>/">Pays</a></th>
+			<th class="sort <?php echo $this->tpl_vars['phoning_step_class']; ?>"><a href="/admin/entreprise/dashboard/phoning_step-<?php echo $this->tpl_vars['phoning_step_sort']; ?>/">Etape phoning</a></th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['firm_block']) && is_array($this->tpl_vars['firm_block'])):
+	foreach ($this->tpl_vars['firm_block'] as $this->tpl_vars['firm']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><strong><?php echo $this->tpl_vars['firm']['name']; ?></strong></td>
+				<td><?php if (!empty($this->tpl_vars['firm']['cat_name'])): ?><?php echo $this->tpl_vars['firm']['cat_name']; ?>
+					<?php else: ?>Aucun<?php endif; ?></td>
+				<td><?php echo $this->tpl_vars['firm']['country']; ?></td>
+				<td><?php echo $this->tpl_vars['firm']['phoning_step']; ?></td>
+				<td>
+					<a href="/admin/entreprise/fiche/<?php echo $this->tpl_vars['firm']['id']; ?>" title="Voir la fiche entreprise"><img src="/themes/system/images/icones/edit.png" alt="Voir" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="5" class="tcenter">Aucune entreprise ne vous a été assignée</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

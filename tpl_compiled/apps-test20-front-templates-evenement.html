@@ -1,0 +1,85 @@
+<style>
+    .col-md-3 img{
+        max-height: 150px;
+    }
+
+    #down{
+        max-width: 200px !important;
+    }
+</style>
+
+            
+<div class="article art-typ4">
+	<div class="container ">	
+		<div class="col-xs-12 col-sm-12 col-lg-12">
+			<h2 class="featurette-heading">Galerie photo<span class="text-muted"> </span></h2>
+		</div>
+		
+		<div class="row">
+
+
+
+<?php
+	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+/* Essai lecture fichier txt */
+	//$document_root = $SERVER['document_root']; /* pour l'instant on est en local */
+	
+	/* fonctions ---------------------------------------------------------- */
+		
+	function serapateur($chaine,$separateur)
+	{
+		$vecteur = array ();
+		$m = strlen($chaine)-1;
+		$mot = "";
+		for ($i = 0 ; $i <= $m ;$i++) 
+		{
+			$caractere = $chaine[$i];
+			if ($caractere != $separateur)
+			{
+				$mot .= $caractere;
+			}
+			else 
+			{
+			$vecteur[] = $mot;
+			$mot = "";
+			}
+		}
+		return $vecteur;
+	}
+	
+	@$fp = fopen ("apps/test20/front/templates/images/links.txt",'rb');
+
+	if (!$fp) 
+	{
+		echo "<p>Erreur d'ouverture de fichier</p>";
+	}
+	else {
+		$type_exposant_precedent = "";
+		echo '<div>';
+		
+		while (!feof($fp)) // voir si la lecture du fichier et terminée 
+		{
+			$exposant = fgets($fp,999);
+			$vecteur = serapateur ($exposant,'*');		
+			$type_exposant_nouveau = $vecteur[1];
+			if ($type_exposant_nouveau != $type_exposant_precedent){
+				$type_exposant_precedent = $type_exposant_nouveau;
+				echo '</div>';
+				echo '<div class="col-xs-12">';
+				echo '<div id="'.$type_exposant_precedent.'"></div>';
+				echo '<div class="col-xs-12 field"><h3 style="text-transform : uppercase;" >'.$type_exposant_precedent.'</h3></div>';
+				}
+			echo '<div class="col-md-3 v-center">';
+			echo '<a href="'.$vecteur[1].'"><img src="'.$vecteur[0].'" height="110" class="img-responsive center-block margin-TB20 animation-element growing" title="'.$vecteur[1].'"/></a>';
+			//echo '<a href="'.$vecteur[1].'"><img src="apps/test20/front/templates/images/'.$vecteur[0].'_thumb.jpg" height="110" class="img-responsive center-block margin-TB20 animation-element growing" title="'.$vecteur[2].'"></a>';
+			echo '</div>';
+		}
+	fclose($fp);
+	}
+?>
+	
+		</div>
+	</div>
+</div>
+
+

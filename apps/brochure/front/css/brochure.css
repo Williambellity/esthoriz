@@ -1,0 +1,131 @@
+#profil {
+	width: 900px;
+	padding: 15px 15px 15px 15px;
+}
+
+legend {
+	font-family: Bebas, Arial, Geneva, Helvetica, sans-serif;
+	font-size: 1.5em;
+	font-weight: normal;
+	margin-bottom: 0;
+}
+
+#main_infos {
+	padding: 5px;
+	margin-bottom: 30px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	background-color: #f6d500;
+	behavior: url(/PIE.htc);
+}
+
+#main_infos select {
+	width: 150px;
+}
+
+#td_logo {
+	width: 125px;
+	height: 125px;
+	padding: 0 0 0 0;
+	vertical-align: middle;
+}
+
+#ch_logo {
+	text-align: center;
+	font-weight: bold;
+}
+
+#progressBar {
+	text-align: center;
+	font-weight: bold;
+}
+
+.ghost {
+	border-color: #f0f0f0;
+	margin-bottom: 30px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	behavior: url(/PIE.htc);
+}
+
+#left_ci {
+	float: right;
+	width: 400px;
+}
+
+#left_ci fieldset {
+	border-color: black;
+	margin-top: 15px;
+}
+
+#central_ci fieldset {
+	margin-bottom: 30px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	behavior: url(/PIE.htc);
+}
+
+#central_ci {
+	width: 420px;
+	/*height: 600px;*/
+	float: left;
+}
+
+#edit_form table {
+	border: 0;
+	margin: 0 auto;
+}
+
+#edit_form label {
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 1.3em;
+	margin: 0 0 5px 0;
+	font-weight: normal;
+	float: right;
+}
+
+#edit_form label.center {
+	float: left;
+	text-align: center;
+}
+
+#edit_form tr {
+	padding-top: 10px;
+}
+
+.form-error-inputs {
+	border-color: red;
+	background-color: #ffbebe;
+}
+
+.form-error-indic {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #cd2424;
+}
+
+#reg-button {
+	margin-top: 15px;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 2em;
+	padding: 20px 150px;
+	position : relative;
+	top: -20px;
+	left :0px;
+}
+
+.ui-widget {
+	font-family: Bebas, Arial, sans-serif;
+}
+
+.descriptif{
+font-weight: bold;
+color = rgb(0,128,0);
+}
+p{ color: rgb(176,155,108);
+font-weight: bold;}

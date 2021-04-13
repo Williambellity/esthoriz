@@ -1,0 +1,138 @@
+<div id="blocks" style="width:40%">
+	<div class="block" style="width:100%">
+		<div class="top"></div>
+		<h2>Ajouter un type d'options</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+				</colgroup>
+				<tr>
+					<td  style="text-align:right"><label for="taille">Nom :</label></td>
+					<td><input id="taille" type="text" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" style="width: 90%;"/></td>
+					<td  style="text-align:right"><label for="prix">Prix :</label></td>
+					<td><input id="prix" type="text" name="prix" value="<?php echo $this->tpl_vars['prix']; ?>"  style="width: 90%;"/></td>
+				</tr>
+				<tr>
+					<td style="vertical-align:top" /><label for="description">Description</label></td>
+					<td colspan="3" /><textarea id="description" type="text" name="description" style="width: 100%; height:70px"/><?php echo $this->tpl_vars['description']; ?></textarea></td>
+				</tr>
+				<tr>
+					<td  style="text-align:right"><label for="countable">Type :</label></td>
+					<td><select id="countable" name="countable" style="width: 90%;"/>	
+							<option value=2>Dénombrable</option>
+							<option value=1>On/Off</option>
+						</select>
+					</td>
+					<td  style="text-align:right"><label for="categorie">Catégorie :</label></td>
+					<td><select id="categorie" name="categorie" style="width: 90%;"/>	
+							<option value="1">Technique</option>
+							<option value="2">Com'</option>
+							<option value="4">Repas supplémentaires</option>
+							<option value="3">Autre</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="block" style="width:100%;display:none;" id="edition" />
+		<div class="top"></div>
+		<h2>Editer un type d'options</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+				</colgroup>
+				<tr>
+					<input id="idEdit" type="hidden" name="idEdit" value="" style="width: 90%;"/>
+					<td  style="text-align:right"><label for="nomEdit">Nom :</label></td>
+					<td><input id="nomEdit" type="text" name="nomEdit" value="" style="width: 90%;"/></td>
+					<td  style="text-align:right"><label for="prixEdit">Prix :</label></td>
+					<td><input id="prixEdit" type="text" name="prixEdit" value=""  style="width: 90%;"/></td>
+				</tr>
+				<tr>
+					<td style="vertical-align:top" /><label for="descriptionEdit">Description</label></td>
+					<td colspan="3" /><textarea id="descriptionEdit" type="text" name="descriptionEdit" style="width: 100%; height:70px"/></textarea></td>
+				</tr>
+				<tr>
+					<td  style="text-align:right"><label for="countableEdit">Type :</label></td>
+					<td><select id="countableEdit" name="countableEdit" style="width: 90%;"/>			
+							<option value=1>On/Off</option>
+							<option value=2>Dénombrable</option>							
+					</select>
+					</td>
+					<td  style="text-align:right"><label for="categorieEdit">Catégorie :</label></td>
+					<td><select id="categorieEdit" name="categorieEdit" style="width: 90%;"/>	
+							<option value="1">Technique</option>
+							<option value="2">Com'</option>
+							<option value="4">Repas supplémentaires</option>
+							<option value="3">Autre</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>	
+<div id="content"  style="width:59%">
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?> 
+<?php if ((isset($this->tpl_vars['def']) && $this->tpl_vars['def'])): ?>                                                 
+    <table class="liste">
+	<colgroup>
+		<col style="width: 5%; text-align:left" />
+		<col style="width: 10%; text-align:left" />
+		<col style="width: 10%; text-align:left" />
+		<col style="width: 30%; text-align:left" />
+		<col style="width: 15%; text-align:left" />
+		<col style="width: 15%; text-align:left" />
+		<col style="width: 5%; text-align:left" />
+	</colgroup>
+    <tr id="ligne">
+				<th> </th>
+				<th>Nom</th>
+				<th>Prix</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Catégorie</th>
+				<th>Actions</th>
+	</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['option_block']) && is_array($this->tpl_vars['option_block'])):
+	foreach ($this->tpl_vars['option_block'] as $this->tpl_vars['option']): ?>
+	<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+	<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>"  style="vertical-align:top;">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><?php echo $this->tpl_vars['option']['nom']; ?></td>
+				<td><?php echo $this->tpl_vars['option']['prix']; ?> €</td>
+				<td><?php echo $this->tpl_vars['option']['description']; ?></td>
+				<td><?php if (!$this->tpl_vars['option']['countable']): ?>On/Off<?php else: ?>Comptable<?php endif; ?></td>
+				<td><?php echo $this->tpl_vars['option']['categorie']; ?></td>
+				<td>	
+					<a href="/#edition" title="Editer" onclick="return editOption(<?php echo $this->tpl_vars['option']['id']; ?>, '<?php echo $this->tpl_vars['option']['nom']; ?>', '<?php echo $this->tpl_vars['option']['prix']; ?>', '<?php echo $this->tpl_vars['option']['description']; ?>', <?php echo $this->tpl_vars['option']['countable']; ?>, <?php echo $this->tpl_vars['option']['categorie_id']; ?>);"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/logistic/del_option/<?php echo $this->tpl_vars['option']['id']; ?>/" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer l\'option <?php echo $this->tpl_vars['option']['nom']; ?> ?');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+
+    </table>
+<?php endif; ?>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,51 @@
+<div id="content" style="width:100%">
+	<p><strong>Principe de fonctionnement de exceltomail</strong></p>
+	<p>Cette application permet d'envoyer, en grand nombre, des mails personnalisés. Le principe est simple. 
+	Dans un excel réserver la première colonne aux adresses mails des destinataires. Les colonnes suivantes constituent 
+	les variables telles que le nom d'une entreprise ou d'un personne.</p>
+	<p><u>Exemple</u> : Soit la i<SUP>ème</SUP> ligne de l'excel : (Colonne 1 : forum@est-horizon.com, Colonne 2 : Forum Est-Horizon, 
+	Colonne 3 : DUPONT, Colonne 4 : Madame). Soit le message envoyé suivant : <i>'Bonjour <strong>***004*** ***003***</strong>, nous vous informons que votre entreprise, <strong>***002***</strong>, 
+	est bien inscrite pour notre prochaine édition. Bien à vous.'</i> . Le mail reçu sera : <i> 'Bonjour <strong>Madame DUPONT</strong>, nous vous informons 
+	que votre entreprise, <strong>Forum Est-Horizon</strong>, est bien inscrite pour notre prochaine édition. Bien à vous.'</i> "</p>
+	<p><u>Remarque</u> : la première ligne de l'excel est réservée aux titres (email, nom, prénom, ...).</p>
+	<p><u>Astuce</u> : s'envoyer quelques mails tests au préalable.</p>
+</div>
+<form action="" method="post" enctype="multipart/form-data" onsubmit="if (!checkForm()) return false;">
+	<div id="content" style="width:100%">
+		<div class="item">
+			<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+			
+			<label>Excel des mails destinataires <br />
+			<input type="file" name="attachment" /></label><br />
+			
+			<label for="de">Nom de la feuille à traiter sur l'excel : </label>
+			<input id="de" type="text" name="nomfeuille" size="40" value="<?php echo $this->tpl_vars['nomfeuille']; ?>" /><br />	
+			
+			<label for="de">Adresse mail expéditeur :</label>
+			<input id="de" type="text" name="adresse" size="40" value="<?php echo $this->tpl_vars['adresse']; ?>" /><br />
+			
+			<label for="de">Prénom NOM expéditeur :</label>
+			<input id="de" type="text" name="nom" size="40" value="<?php echo $this->tpl_vars['nom']; ?>" /><br />
+			
+			<label for="objet" class="hidden">Objet :</label>
+			<input id="objet" class="empty" type="text" name="objet" size="40" value="<?php echo $this->tpl_vars['objet']; ?>" /><br />
+			
+			<label for="message" class="hidden">Corps du message :</label><br />
+			<textarea id="message" name="message" rows="15" cols="80"><?php echo $this->tpl_vars['message']; ?></textarea><br />
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('message');
+				CKFinder.setupCKEditor(editor, '<?php echo $this->tpl_vars['baseDir']; ?>helpers/ckfinder/') ;
+			</script>
+			
+<!-- 			<label>Pièces jointes<br />
+			<input type="file" name="attachment" /></label> -->
+			
+			<div class="tcenter">
+				<input type="submit" value="Envoyer" class="button-submit" />
+				<a href="/admin/exceltomail/previsualisation" class="button-submit">Prévisualiser</a>
+				<input type="button" value="Annuler" onclick="history.back();" class="button-submit" />
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</form>

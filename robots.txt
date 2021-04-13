@@ -1,0 +1,23 @@
+User-agent: *
+Disallow: /libraries
+Disallow: /admin
+Disallow: /temp
+Disallow: /helpers
+Disallow: /cache
+Disallow: /system
+Disallow: /evenement/
+Disallow: /forum/
+Disallow: /acces/
+Disallow: /cv/
+Disallow: /contacter/
+Disallow: /espace-etudiants/
+Disallow: /cvtheque/
+Disallow: /participer/
+Disallow: /form/
+Disallow: /preforum/
+Disallow: /upload/
+Disallow: /mobile/
+Disallow: /concours/
+
+
+

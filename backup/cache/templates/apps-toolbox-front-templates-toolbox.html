@@ -1,0 +1,21 @@
+<h1 class="hidden">Bienvenue sur votre espace personnel</h1>
+<div id="toolbox">
+	
+</div>
+<div id="applis">
+	Cette page se construit.
+</div>
+<div id="actus">
+	<h2><span>Dernières informations</span></h2>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['news_block']) && is_array($this->tpl_vars['news_block'])):
+	foreach ($this->tpl_vars['news_block'] as $this->tpl_vars['news']): ?>
+	<div class="item">
+		<?php if (!empty($this->tpl_vars['news']['image'])): ?><img src="/upload/news/<?php echo $this->tpl_vars['news']['image']; ?>" alt="<?php echo $this->tpl_vars['news']['title']; ?>" class="fleft" /><?php endif; ?>
+		<h3><?php echo $this->tpl_vars['news']['title']; ?></h3>
+		<em><?php echo $this->tpl_vars['news']['creation_time']; ?></em>
+		<p><?php echo $this->tpl_vars['news']['content']; ?></p>
+		<div class="spacer"></div>
+	</div>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+</div>
+<div class="spacer"></div>

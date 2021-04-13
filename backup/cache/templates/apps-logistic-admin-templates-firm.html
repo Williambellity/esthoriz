@@ -1,0 +1,66 @@
+<div id="content" style="width:100%"> 
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste" cellspacing="0">
+		<colgroup>
+				<col style="width: 20%; text-align:left" />
+				<col style="width: 10%; text-align:left" />
+				<col style="width: 25%; text-align:left" />
+				<col style="width: 10%; text-align:left" />
+				<col style="width: 10%; text-align:left" />
+				<col style="width: 10%; text-align:left" />
+				<col style="width: 10%; text-align:left" />
+				<col style="width: 5%; text-align:left" />
+		</colgroup>
+		<tr id="ligne">
+			<th>Enseigne</th>
+			<th>Lot</th>
+			<th>Mobilier supplémentaire</th>
+			<th>Stand</th>
+			<th>Accessoires</th>
+			<th>Options</th>
+			<th>Prix</th>
+			<th>Facture</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['firm_block']) && is_array($this->tpl_vars['firm_block'])):
+	foreach ($this->tpl_vars['firm_block'] as $this->tpl_vars['firm']): ?>
+		<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+		<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>" style="vertical-align: Text-top;">
+			<td><?php echo $this->tpl_vars['firm']['enseigne']; ?></td>
+			<td><?php echo $this->tpl_vars['firm']['type_lot']; ?> <br/> <?php echo $this->tpl_vars['firm']['color']; ?></td>
+			<td>
+				<ul>
+					<?php if (is_array($this->tpl_vars['firm']['more_chaise'])): ?><?php $this->tpl_vars['chaise']['count'] = -1;
+foreach($this->tpl_vars['firm']['more_chaise'] as $this->tpl_vars['chaise']['key'] => $this->tpl_vars['chaise']['value']):
+$this->tpl_vars['chaise']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['chaise']['value']['nombre']; ?> <?php echo $this->tpl_vars['chaise']['value']['nom']; ?></li><?php endforeach; ?><?php endif; ?>
+					<?php if (is_array($this->tpl_vars['firm']['more_table'])): ?><?php $this->tpl_vars['chaise']['count'] = -1;
+foreach($this->tpl_vars['firm']['more_table'] as $this->tpl_vars['chaise']['key'] => $this->tpl_vars['chaise']['value']):
+$this->tpl_vars['chaise']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['chaise']['value']['nombre']; ?> <?php echo $this->tpl_vars['chaise']['value']['nom']; ?></li><?php endforeach; ?><?php endif; ?>
+					<?php if (is_array($this->tpl_vars['firm']['more_tabouret'])): ?><?php $this->tpl_vars['chaise']['count'] = -1;
+foreach($this->tpl_vars['firm']['more_tabouret'] as $this->tpl_vars['chaise']['key'] => $this->tpl_vars['chaise']['value']):
+$this->tpl_vars['chaise']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['chaise']['value']['nombre']; ?> <?php echo $this->tpl_vars['chaise']['value']['nom']; ?></li><?php endforeach; ?><?php endif; ?>
+					<?php if (is_array($this->tpl_vars['firm']['more_banque'])): ?><?php $this->tpl_vars['chaise']['count'] = -1;
+foreach($this->tpl_vars['firm']['more_banque'] as $this->tpl_vars['chaise']['key'] => $this->tpl_vars['chaise']['value']):
+$this->tpl_vars['chaise']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['chaise']['value']['nombre']; ?> <?php echo $this->tpl_vars['chaise']['value']['nom']; ?></li><?php endforeach; ?><?php endif; ?>
+					<?php if (is_array($this->tpl_vars['firm']['more_presentoir'])): ?><?php $this->tpl_vars['chaise']['count'] = -1;
+foreach($this->tpl_vars['firm']['more_presentoir'] as $this->tpl_vars['chaise']['key'] => $this->tpl_vars['chaise']['value']):
+$this->tpl_vars['chaise']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['chaise']['value']['nombre']; ?> <?php echo $this->tpl_vars['chaise']['value']['nom']; ?></li><?php endforeach; ?><?php endif; ?>
+				</ul>
+			</td>
+			<td><?php echo $this->tpl_vars['firm']['type_stand']; ?> m²</td>
+			<td><?php $this->tpl_vars['a']['count'] = -1;
+foreach($this->tpl_vars['firm']['accessoires'] as $this->tpl_vars['a']['key'] => $this->tpl_vars['a']['value']):
+$this->tpl_vars['a']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['a']['value']['nombre']; ?>x<?php echo $this->tpl_vars['a']['value']['nom']; ?></LI><?php endforeach; ?></td>
+			<td><?php $this->tpl_vars['a']['count'] = -1;
+foreach($this->tpl_vars['firm']['options'] as $this->tpl_vars['a']['key'] => $this->tpl_vars['a']['value']):
+$this->tpl_vars['a']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['a']['value']['nombre']; ?>x<?php echo $this->tpl_vars['a']['value']['nom']; ?></LI><?php endforeach; ?></td>
+			<td><?php echo $this->tpl_vars['firm']['price']; ?> €</td>
+			<td><a href="/admin/logistic/facture/<?php echo $this->tpl_vars['firm']['firmid']; ?>" title="Générer la facture"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a></td>
+		</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>" style="vertical-align: Text-top;">
+			<td colspan = "6">TOTAL</td>
+			<td><?php echo $this->tpl_vars['sum']; ?> €</td>
+		</tr>
+	</table>
+</div>
+<div class="clear"></div>

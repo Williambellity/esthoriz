@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<toolbox>
+
+	<!--
+
+		Priorité des notifications :
+
+		0 = low
+
+		1-8 = medium
+
+		9 = high
+
+		-->
+
+	<!--<app>
+
+		<name>Accueil</name>
+
+		<icone>/apps/entreprise/front/images/icones/home.png</icone>
+
+		<href>/entreprise/</href>
+
+		<getState>/apps/entreprise/front/model.php|EntrepriseModel::getState()</getState>
+
+	</app>-->
+
+	<app>
+
+		<name>Mon profil</name>
+
+		<icone>/apps/entreprise/front/images/icones/contact.png</icone>
+
+		<href>/profil/</href>
+
+		<getState>/apps/profil/front/model.php|ProfilModel::getState()</getState>
+
+	</app>
+
+<!-- A DECOMMENTER QUAND FORUM PRESENTIEL -->
+	<!-- <app> -->
+
+		<!-- <name>Réservation du stand</name> -->
+
+		<!-- <icone>/apps/entreprise/front/images/icones/stand.png</icone> -->
+
+		<!-- <href>/pack/</href> -->
+
+		<!-- getState>/apps/pack/front/model.php|packModel::getState()</getState -->
+
+	<!-- </app> -->
+
+	<app>
+
+		<name>Réservation du pack virtuel</name>
+
+		<icone>/apps/entreprise/front/images/icones/facture.png</icone>
+
+		<href>/bonus/front/Réservation_Covid-19.php</href>
+
+	</app>
+
+	<app>
+
+		<name>Fiche signalétique</name>
+
+		<icone>/apps/entreprise/front/images/icones/brochure.png</icone>
+
+		<href>/brochure/</href>
+
+		<getState>/apps/brochure/front/model.php|BrochureModel::getState()</getState>
+
+	</app>
+
+	<app>
+
+		<name>Documents</name>
+
+		<icone>/apps/entreprise/front/images/icones/document.png</icone>
+
+		<href>/documents/</href>
+
+	</app>
+
+	<app>
+
+		<name>Services complémentaires</name>
+
+		<icone>/apps/entreprise/front/images/icones/complement.png</icone>
+
+		<href>/brochure/</href>
+
+		<getState>/apps/brochure/front/model.php|BrochureModel::getState()</getState>
+
+	</app>
+
+	<app>
+
+		<name>Handicafés©</name>
+
+		<icone>/apps/entreprise/front/images/icones/handicafe.png</icone>
+
+		<href>/handicafe/</href>
+
+	</app>
+
+</toolbox>

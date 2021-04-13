@@ -1,0 +1,66 @@
+<form method="post" id="customForm" action="">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<br />
+			<h2>Options du formulaire</h2>
+			<a href="javascript:void(0)" onclick="ajouterligne();">
+				<img src="/apps/fdh/admin/templates/ico_plus.png" alt="+" /> <strong>Ajouter un bus</strong></a><br />
+			<input id="submit" class="button-submit" type="submit" value="Send" />
+			<br /><br />
+		</div>
+	</div>
+	<div id="content"> 
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<input id="bus_to_delete" type="hidden" name="bus_to_delete" value="" />
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0" style="width: 100%;">
+			<colgroup>
+				<col style="width: 30%;" />
+				<col style="width: 30%;" />
+				<col style="width: 20%;" />
+				<col style="width: 10%;" />
+				<col style="width: 10%;" />
+			</colgroup>
+			<tr id="ligne">
+				<th>Lieu</th>
+				<th>Heure</th>
+				<th>Numéro du bus*</th>
+				<th>Max</th>
+				<th>Suppr.</th>
+			</tr>
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['bus_block']) && is_array($this->tpl_vars['bus_block'])):
+	foreach ($this->tpl_vars['bus_block'] as $this->tpl_vars['bus']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 1): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td>
+					<input type="hidden" name="idb[]" <?php if (!empty($this->tpl_vars['bus']['idb'])): ?>value="<?php echo $this->tpl_vars['bus']['idb']; ?>"<?php endif; ?> />
+					<input name="lieu[]" type="text" <?php if (!empty($this->tpl_vars['bus']['Lieu'])): ?>value="<?php echo $this->tpl_vars['bus']['Lieu']; ?>"<?php endif; ?> />
+				</td>
+				<td><input name="heure[]" type="text" <?php if (!empty($this->tpl_vars['bus']['heure'])): ?>value="<?php echo $this->tpl_vars['bus']['heure']; ?>"<?php endif; ?> size="2" />h<input name="minute[]" type="text" <?php if (!empty($this->tpl_vars['bus']['minute'])): ?>value="<?php echo $this->tpl_vars['bus']['minute']; ?>"<?php endif; ?> size="2" /></td>
+				<td><input name="numero[]" type="text" size="2" <?php if (!empty($this->tpl_vars['bus']['Numero'])): ?>value="<?php echo $this->tpl_vars['bus']['Numero']; ?>"<?php endif; ?> /></td>
+				<td><input name="max[]" type="text" size="3" <?php if (!empty($this->tpl_vars['bus']['max'])): ?>value="<?php echo $this->tpl_vars['bus']['max']; ?>"<?php endif; ?> /></td>
+				<td><a href="javascript:void(0)" onclick="supprligne(<?php echo $this->tpl_vars['bus']['idb']; ?>, this);"><img src="/apps/fdh/admin/templates/ico_moins.png" alt="-"/></a></td>
+			</tr>
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</table>
+		<em>* Un numéro peut être attribué à un bus s'il y a plusieurs départs à la même heure (facultatif).</em>
+		
+		<script type="text/javascript">
+			function ajouterligne() {
+				$($('#tableau tr').get(1)).clone().insertAfter('#tableau tr:last-child');
+				$('#tableau tr:last-child').find('input').val('');
+			}
+			
+			function supprligne(idb, element) {
+				// Ajoute le bus qu'on vient de supprimer à la liste à traiter
+				$('#bus_to_delete').val($('#bus_to_delete').val()+idb+',');
+				
+				if ($('#tableau tr').size() > 2) {
+					$(element).parent().parent().remove();
+				} else {
+					$($('#tableau tr').get(1)).find('input').val('');
+				}
+			}
+		</script>
+	</div>
+</form>
+<div class="clear"></div>

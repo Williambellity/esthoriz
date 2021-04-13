@@ -1,0 +1,79 @@
+
+div.tool_left {
+	width: 540px;
+	float: left;
+}
+
+#applis {
+	background-color: #f6d500;
+	border: 1px solid #b6b6ba;
+	padding: 10px;
+	margin-bottom: 1.5em;
+}
+
+#applis ul {
+	width: 400px;
+	list-style: none;
+	margin: 3em auto 0 auto;
+	padding: 0;
+}
+
+#applis ul li {
+	width: 100px;
+	text-align: center;
+	float: left;
+	margin-bottom: 1.5em;
+	font-weight: bold;
+}
+
+#applis a:hover {
+	text-decoration: underline;
+}
+
+div.tool_right {
+	width: 420px;
+	float: right;
+}
+
+#notifs {
+	padding: 10px 10px 0.5em 10px;
+	margin-bottom: 1.5em;
+	border: 1px solid #bfbfbf;
+}
+
+#notifs ul {
+	list-style: none;
+}
+
+#notifs .lvl0 {
+	color: green;
+	background: url('../../../../themes/system/images/icones/accept.png') no-repeat;
+	padding-left: 20px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.lvl1, .lvl2, .lvl3, .lvl4, .lvl5, .lvl6, .lvl7, .lvl8 {
+	color: #6c9ac7;
+	background: url('../../../../themes/system/images/icones/info.png') no-repeat;
+	padding-left: 20px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+.lvl9 {
+	color: #e15d52;
+	background: url('../../../../themes/system/images/icones/error.png') no-repeat;
+	padding-left: 20px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#actus {
+	text-align: justify;
+	padding: 10px 10px 0.5em 10px;
+	margin-bottom: 1.5em;
+	border: 1px solid #bfbfbf;
+}
+
+#actus .item {
+	margin-bottom: 1em;
+}

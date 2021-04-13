@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Le Forum Est-Horizon est l'un des plus grands salons de rencontres étudiants-entreprises de l'Est de la France. Ce forum se déroulera à Nancy à l'automne 2013." />
+	<meta name="keywords" content="forum, est, horizon, grand est, est-horizion, étudiant, étudiants, entreprise, entreprises, firm, salon, rencontres, mines, nancy, mines de nancy, conférences, tables rondes, préforum, pré-forum, pré forum, esial, telecom, telecom nancy, mines-telecom" />
+	<meta name="viewport" content="width=device-width" />
+	<title>{$pageTitle}</title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<!--<link type="text/css" rel="stylesheet" href="/themes/feh/css/jquery-ui-1.8.11.custom.css" />-->
+	<link type="text/css" rel="stylesheet" href="/themes/feh/css/jquery.fancybox-1.3.4.css" />
+	<link type="text/css" rel="stylesheet" href="/themes/feh/css/style.css" />
+	{if isset({$css})}{$css}{/if}
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" type="text/css" href="/themes/feh/css/ie-only.css" />
+	<![endif]-->
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="/themes/feh/css/ie-all-only.css" />
+	<![endif]-->
+
+	<script type="text/javascript" src="/themes/feh/js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="/themes/feh/js/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/feh/js/jquery.fancybox-1.3.4.pack.js"></script>
+	<!--<script type="text/javascript" src="/themes/feh/js/jquery.tinyTips.js"></script>-->
+	<script type="text/javascript" src="/themes/feh/js/script.js"></script>
+	{if isset({$js})}{$js}{/if}
+</head>
+
+<body>
+<div id="box">
+	<header>
+		<div class="left">
+			<div id="logo">
+				<a href="/" class="link"><span>Forum Mines-Telecom Nancy Est-Horizon</span></a>
+				<br /><p><span><time datetime="2013-11-14">14 Novembre 2013</time></span></p>
+				<p><span>30<sup>ème</sup> édition</span></p>
+				<!--p><span class="brown">Parc des expositions</span></p-->
+				<p><span class="brown">A Nancy</span></p>
+				<div itemscope itemtype="http://data-vocabulary.org/Event" class="hidden">
+					<span itemprop="summary">L'un des plus grands salons de rencontres entre étudiants et entreprises organisés dans l'est de la France.</span>
+					<a href="http://www.est-horizon.com/" itemprop="url">Forum Mines-Telecom Nancy Est Horizon</a>
+					<span itemprop="location">Campus ARTEM & Campus Aiguillettes </span>
+					<time itemprop="dtstart" datetime="2013-11-14">Novembre 2013</time>	
+					<img itemprop="photo" src="http://www.est-horizon.com/themes/feh/images/logo_hcard.png" alt="logo" />
+					<div itemprop="organizer" itemscope itemtype="http://data-vocabulary.org/Organization">
+						<span itemprop="name">Forum Mines-Telecom Nancy Est-Horizon</span>
+						<span itemprop="url">http://www.est-horizon.com/</span>
+						<span itemprop="tel">+33.3.55.66.27.14</span>
+						<span itemprop="adr">Forum Est-Horizon Campus ARTEM 54000 NANCY CEDEX</span>
+						<span itemprop="email">forum_est_horizon@yahoo.fr</span>
+						<img itemprop="logo" src="http://www.est-horizon.com/themes/feh/images/logo_hcard.png" alt="logo" />
+					</div>
+				</div>
+			</div>
+			<nav>
+				<ul id="menu">
+					<li class="home li_main"><a href="/" title="Accueil"><span>Accueil</span></a></li>
+					<?php if (!empty($_SESSION['firmid'])): ?>
+						<li id="li_main_outils" class="tools li_main"><a href="/entreprise/">Vos outils</a>
+							<ul class="submenu hidden">
+								<li><a href="/profil/">Mon profil</a></li>
+								<li><a href="/logistic/">Réservation du stand</a></li>				
+								<!--li><a href="/telecomreservation/">Réservation du stand</a></li-->
+								<li><a href="/brochure/">Fiche signalétique</a></li>
+								<!--li><a href="/brochure/pub/">Publicité brochure</a></li>
+								<li><a href="/cvtheque/entreprise/">CV-thèque</a></li-->
+							</ul>
+						</li>
+					<?php endif; ?>
+					<li id="li_main_forum" class="li_main"><a href="/forum/programme/">Le Forum</a>
+						<ul class="submenu hidden">
+							<li><a href="/forum/programme/">Programme</a></li>
+							<li><a href="/forum/exposants/">Les Exposants</a></li>
+							<li><a href="/forum/ecoles/">Les Ecoles</a></li>
+							<!--<li><a href="/preforum/">Le Pré-Forum</a></li>-->
+						</ul>
+					</li>
+					<!--li id="li_main_forum" class="li_main group_boss"><a href="/cvtheque/<?php if (!empty($_SESSION['firmid'])): ?>entreprise/<?php endif; ?>">CV-Thèque</a>
+						<ul class="submenu hidden">
+						</ul>
+					</li>
+                    <li class="li_main group_item"><a href="/forum/programme/">Programme</a>
+                        <ul class="submenu hidden">
+						</ul>
+                    </li>
+                    <li class="li_main group_item <?php if (!empty($_SESSION['firmid'])): ?>group_last_item<?php endif; ?>"><a href="/forum/exposants/">Exposants</a>
+                        <ul class="submenu hidden">
+						</ul>
+                    </li-->
+					<li class="li_main"><a href="/participer/exposer/">Exposer</a></li>
+                    <li class="li_main"><a href="/participer/visiter/">Visiter</a></li>
+					<li id="li_main_propos" class="li_main"><a href="/a-propos/association/">A Propos</a>
+						<ul class="submenu hidden">
+							<li><a href="/a-propos/association/">L'Association</a></li>
+							<li><a href="/a-propos/medias/">Médias</a></li>
+							<li><a href="/a-propos/partenaires/">Partenaires</a></li>
+						</ul>
+					</li>
+					<li class="li_main"><a href="/acces/">Accès</a></li>
+					<li class="li_main" style="margin-right: 0;"><a href="/contact/">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="right">
+			<div class="fleche"></div>
+			<div id="connect_box">
+				<?php if (empty($_SESSION['nickname'])): ?>
+				<form action="/user/" method="post">
+					<div class="inner">
+						<div id="connect_form">
+							<label for="log">Identifiant</label><br/>
+							<input id="log" type="text" name="nick" size="15" /><br/><br/>
+							<label for="mdp">Mot de passe</label><br/>
+							<input id="mdp" type="password" name="pass" size="15" /><br/><br/>
+							<input id="box_always" type="checkbox" name="remember" />
+							<label for="box_always">Rester connecté</label>
+							<hr/>
+						</div>
+						<span><a href="/user/" onclick="return false;">Connectez-vous</a></span>
+						<span class="hidden"><input class="submit" type="submit" value="Connexion" /></span>
+					</div>
+				</form>
+				<?php else: ?>
+				<div class="inner">
+					<?php if (!empty($_SESSION['firmid'])): ?>
+						<div id="connect_form">
+							<u><?php echo $_SESSION['firmname']; ?></u><br /><hr /><br />
+							<a href="/entreprise/toolbox/">Vos outils</a><br /><br />
+							<a href="/user/deconnexion/">Se déconnecter</a><br /><br />
+							<hr />
+						</div>
+						<?php echo $_SESSION['prenom']." ".$_SESSION['nom']; ?>						
+					<?php else: ?>
+						<div id="connect_form">
+							<?php if (!empty($_SESSION['accessString'])): ?>
+								<a href="/admin/">Administration</a><br /><br />
+							<?php endif; ?>
+							<?php if ($_SESSION['groupe'] == 9): // groupe élève ?>
+								<a href="/cvtheque/">Changer mes informations</a><br /><br />
+							<?php endif; ?>
+							<a href="/user/deconnexion/">Se déconnecter</a><br /><br />
+							<hr />
+						</div>
+						<?php echo $_SESSION['nickname']; ?>
+					<?php endif; ?>
+				</div>
+				<?php endif; ?>
+			</div>
+		</div>
+		<div class="spacer"></div>
+	</header>
+	<article id="content">
+		{include file={$include}}
+	</article>
+</div>
+<footer>
+	<div class="inner">
+		<div id="fl_down_f"></div>
+		<div class="right">
+			<nav id="sitemap">
+				<div class="column">
+					<h3>Participer</h3>
+					<ul>
+						<li><a href="/participer/exposer/">Exposer</a></li>
+						<li><a href="/participer/visiter/">Visiter</a></li>
+					</ul>
+				</div>
+				<div class="column">
+					<h3><a href="/forum/programme/">Le Forum</a></h3>
+					<ul>                        			
+						<li><a href="/forum/programme/">Programme</a></li>
+						<li><a href="/forum/exposants/">Les Exposants</a></li>
+						<li><a href="/forum/ecoles/">Les Ecoles</a></li>
+						<!--<li><a href="/preforum/">Le Pré-Forum</a></li>-->
+					</ul>
+				</div>
+				<div class="column">
+					<h3><a href="/a-propos/association/">A Propos</a></h3>
+					<ul>
+						<li><a href="/a-propos/association/">L'Association</a></li>
+						<li><a href="/a-propos/medias/">Médias</a></li>
+						<li><a href="/a-propos/partenaires/">Partenaires</a></li>
+					</ul>
+				</div>
+				<div class="column">
+					<h3><a href="/acces/">Accès</a></h3>
+					<ul>
+						<li><a href="/acces/">Tram et Bus</a></li>
+						<li><a href="/acces/">Train</a></li>
+						<li><a href="/acces/">Voiture</a></li>
+					</ul>
+				</div>
+				<div class="column">
+					<h3><a href="/contact/" >Contact</a></h3>
+					<ul>
+						<li><a href="/contact/" >E-Mail</a></li>
+						<li><a href="/contact/" >Téléphone</a></li>
+						<li><a href="/contact/" >Courrier</a></li>
+					</ul>
+				</div>
+				<div class="spacer"></div>
+			</nav>
+			<nav id="partners">
+				<h3><a href="/a-propos/partenaires/">Nos partenaires</a></h3>
+				<a href="http://artem.inpl-nancy.fr/"><img src="/images/logos/ecoles/artem.png" alt="artem" /></a>
+				<a href="http://www.mines.inpl-nancy.fr/"><img src="/images/logos/ecoles/logo-mines.png" alt="mines de nancy" width="120" /></a>
+				<a href="http://www.esial.uhp-nancy.fr/"><img src="/images/logos/ecoles/logo-esial.png" alt="telecom Nancy" /></a>
+				<a href="http://www.univ-lorraine.fr/"><img src="/images/logos/ecoles/UNIV-Lorraine.png" alt="université de Lorraine" width="120" /></a>
+			</nav>
+		</div>
+		<div class="spacer"></div>
+	</div>
+</footer>
+<div id="mentions">
+	&copy; Forum Est-Horizon 2013 - Tous droits réservés<br />
+	Campus ARTEM, rue du Sergeant Blandan, 54042 Nancy Cedex - tél : +33.3.83.58.41.28 - forum@mines.inpl-nancy.fr<br />
+	<a href="/plan-site/">Plan du site</a> - <a id="a_cred" href="javascript:void(0);">Crédits</a>
+</div>
+</body>
+
+</html>

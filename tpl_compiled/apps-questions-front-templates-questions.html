@@ -1,0 +1,42 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<style>
+    #question{
+        margin-top:120px;
+        text-align:center;
+        display:inline-block;
+    }
+</style>
+<script>
+
+    function format(){
+        var val = document.querySelector("#bod");
+        var r=val.value.toLowerCase();
+        r = r.replace(new RegExp(/[àáâãäå]/g),"a");
+        r = r.replace(new RegExp(/æ/g),"ae");
+        r = r.replace(new RegExp(/ç/g),"c");
+        r = r.replace(new RegExp(/[èéêë]/g),"e");
+        r = r.replace(new RegExp(/[ìíîï]/g),"i");
+        r = r.replace(new RegExp(/ñ/g),"n");                
+        r = r.replace(new RegExp(/[òóôõö]/g),"o");
+        r = r.replace(new RegExp(/œ/g),"oe");
+        r = r.replace(new RegExp(/[ùúûü]/g),"u");
+        r = r.replace(new RegExp(/[ýÿ]/g),"y");
+        val.value = r;
+    }
+    
+    function test(){
+        setInterval(format,10);
+    }
+    window.onload = test;
+</script>
+<div style="text-align:center">
+    <div id="question"><h1>Questions:</h1>
+        <form action="questions" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="issent"/>
+            <textarea id="bod" name="bod" rows="2" cols="40" maxlength="300"></textarea><br>
+            <div class="g-recaptcha" data-sitekey="6LcMgmEUAAAAAHeQ3H6PZ2M2XUv02cmPj-U7B67_"></div>
+            <input type="submit" value="envoyer"/>
+        </form>
+    </div>
+</div>

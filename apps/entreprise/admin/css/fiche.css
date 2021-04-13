@@ -1,0 +1,40 @@
+
+table.liste {
+	border-collapse: collapse;
+	border-color: gray;
+	border-width: 1px;
+}
+
+table.liste td {
+	padding: 4px;
+	border: 1px solid gray; 
+}
+
+table.liste th {
+	text-align: center;
+}
+
+tr.pair:hover td.tcenter {
+	background-color: #fafafa;
+}
+
+#name {
+	font-size: 1.7em;
+}
+
+#phoning legend {
+	cursor: pointer;
+}
+
+#history div.wrap {
+	max-height: 400px;
+	overflow: auto;
+}
+
+#history li {
+	margin-bottom: 0.5em;
+}
+
+#history strong {
+	color: #28b8f7;
+}

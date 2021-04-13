@@ -1,0 +1,227 @@
+<form action="" method="post" enctype="multipart/form-data">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<h2>Informations entreprise</h2>
+			<ul>
+				<li>Créée le <strong><?php echo $this->tpl_vars['date']; ?></strong></li>
+				<li>
+					<input type="hidden" name="old_registered" value="<?php echo intval($this->tpl_vars['registered']); ?>" />
+					<label><input type="checkbox" name="registered" checked="checked" /><!--<?php if (!empty($this->tpl_vars['registered'])): ?> checked="checked"<?php endif; ?> />-->Entreprise contactée cette année</label>
+				</li>
+			</ul>
+			<input type="submit" class="button-submit" value="Mettre à jour l'entreprise" />
+		</div>
+		<!--<div class="block">
+			<div class="top"></div>
+			<h2>Réductions</h2>
+			<ul>
+				<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['reduc_block']) && is_array($this->tpl_vars['reduc_block'])):
+	foreach ($this->tpl_vars['reduc_block'] as $this->tpl_vars['reduc']): ?>
+				<li>
+					<input type="checkbox" name="reducs[<?php echo $this->tpl_vars['reduc']['id']; ?>]" <?php if ($this->tpl_vars['reduc']['firm'] == 1): ?>checked="checked"<?php endif; ?>/>
+					<label for="reducs[<?php echo $this->tpl_vars['reduc']['id']; ?>]"><?php echo $this->tpl_vars['reduc']['nom']; ?><br/>&nbsp;&nbsp;&nbsp;<?php echo $this->tpl_vars['reduc']['taux']; ?>% sur <?php echo $this->tpl_vars['reduc']['applyTo']; ?></label>
+				</li>				
+				<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+			</ul>
+		</div>-->
+		<div class="block">
+			<div class="top"></div>
+			<h2>Actions</h2>
+			<ul>
+				<li><a href="/brochure/<?php echo $this->tpl_vars['id']; ?>/">Voir la brochure</a></li>
+                <li><a href="/brochure/pub/<?php echo $this->tpl_vars['id']; ?>/">Voir la publicité</a></li>
+                <li><a href="/logistic/<?php echo $this->tpl_vars['id']; ?>/">Voir le stand réservé</a></li>
+				<li><a href="/admin/entreprise/del/<?php echo $this->tpl_vars['id']; ?>">Supprimer l'entreprise "<?php echo $this->tpl_vars['name']; ?>"</a></li>
+			</ul>
+		</div>
+		<div id="history" class="block">
+			<div class="top"></div>
+			<h2>Historique</h2>
+			<div class="wrap">
+				<ul>
+					<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['history_block']) && is_array($this->tpl_vars['history_block'])):
+	foreach ($this->tpl_vars['history_block'] as $this->tpl_vars['history']): ?>
+					<li><em><?php echo $this->tpl_vars['history']['desc']; ?></em> by <strong><?php echo $this->tpl_vars['history']['nickname']; ?></strong><br />
+						<?php echo $this->tpl_vars['history']['date']; ?> (<span>#<?php echo $this->tpl_vars['history']['id']; ?></span>)</li>
+					<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="item">
+			<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+			
+			<fieldset>
+				<legend>Informations sur l'entreprise</legend>
+				<input type="hidden" name="id" value="<?php echo $this->tpl_vars['id']; ?>" />
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="name">Nom de l'entreprise :</label></td>
+						<td><input id="name" type="text" name="name" value="<?php echo $this->tpl_vars['name']; ?>" maxlength="80" size="30" /></td>
+					</tr>
+<!-- 					<tr>
+						<td><label for="name">Qualité de l’entreprise :</label></td>
+						<td>
+							<select class="rating" name="rate">
+								<option value="0">Indéfini</option>
+								<option value="☆">☆</option>
+								<option value="☆☆">☆☆</option>
+								<option value="☆☆☆">☆☆☆</option>
+								<option value="☆☆☆☆">☆☆☆☆</option>
+								<option value="☆☆☆☆☆">☆☆☆☆☆</option>
+							</select>
+						</td>
+					</tr> -->
+					<tr>
+						<td><label for="cat">Secteur d'activité :</label></td>
+						<td>
+							<select id="cat" name="cat">
+								<option value="0">Indéfini</option>
+								<?php $this->tpl_vars['a']['count'] = -1;
+foreach($this->tpl_vars['activites'] as $this->tpl_vars['a']['key'] => $this->tpl_vars['a']['value']):
+$this->tpl_vars['a']['count']++; ?>
+									<option value="<?php echo $this->tpl_vars['a']['value']['id']; ?>"<?php if ($this->tpl_vars['a']['value']['id'] == $this->tpl_vars['cat']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['a']['value']['cat_name']; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="adress">Coordonnées :</label></td>
+						<td><textarea id="adress" name="adress" rows="10" cols="50"><?php echo $this->tpl_vars['adress']; ?></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="postal_code">Code postal :</label></td>
+						<td><input id="postal_code" type="text" name="postal_code" value="<?php echo $this->tpl_vars['postal_code']; ?>" size="5" /></td>
+					</tr>
+					<tr>
+						<td><label for="city">Ville :</label></td>
+						<td><input id="city" type="text" name="city" value="<?php echo $this->tpl_vars['city']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="country">Pays :</label></td>
+						<td>
+							<select name="country">
+							<?php $this->tpl_vars['p']['count'] = -1;
+foreach($this->tpl_vars['pays'] as $this->tpl_vars['p']['key'] => $this->tpl_vars['p']['value']):
+$this->tpl_vars['p']['count']++; ?>
+								<option value="<?php echo $this->tpl_vars['p']['value']; ?>"<?php if ($this->tpl_vars['country'] == $this->tpl_vars['p']['value']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['p']['value']; ?></option>
+							<?php endforeach; ?>
+								<option value="Autre">Autre</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset id="phoning">
+				<legend onclick="$('#phoning div').slideToggle();">Données Phoning</legend>
+				<div>
+					<table cellpadding="5" cellspacing="0">
+						<tr>
+							<td><label for="phoning_user">Utilisateur en charge :</label></td>
+							<td>
+								<select id="phoning_user" name="phoning_user">
+									<option value="0">Indéfini</option>
+								<?php $this->tpl_vars['u']['count'] = -1;
+foreach($this->tpl_vars['users'] as $this->tpl_vars['u']['key'] => $this->tpl_vars['u']['value']):
+$this->tpl_vars['u']['count']++; ?>
+								<?php if ($this->tpl_vars['u']['value']['id']>=1214): ?>
+									<option value="<?php echo $this->tpl_vars['u']['value']['id']; ?>"<?php if ($this->tpl_vars['u']['value']['id'] == $this->tpl_vars['phoning_user']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['u']['value']['nickname']; ?></option>
+								<?php endif; ?>
+								<?php endforeach; ?>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td><label for="phoning_step">Etape :</label></td>
+							<td>
+								<select id="phoning_step" name="phoning_step" onchange="this.form.submit()">
+									<?php $this->tpl_vars['s']['count'] = -1;
+foreach($this->tpl_vars['steps'] as $this->tpl_vars['s']['key'] => $this->tpl_vars['s']['value']):
+$this->tpl_vars['s']['count']++; ?>
+										<option value="<?php echo $this->tpl_vars['s']['key']; ?>"<?php if ($this->tpl_vars['phoning_step'] == $this->tpl_vars['s']['key']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['s']['value']; ?></option>
+									<?php endforeach; ?>
+								</select>
+							</td>
+						<?php if ($this->tpl_vars['phoning_step'] == 1): ?>
+						<tr>
+							<td><label for="rappeler">Date de relance :</label></td>
+							<td><input id="rappeler" type="text" name="rappeler" value="" size="7" /></td>
+						</tr>
+						<?php endif ?>
+						<tr>
+							<td><label for="phoning_comment">Commentaires :</label></td>
+							<td><textarea id="phoning_comment" name="phoning_comment" rows="20" cols="60"><?php echo $this->tpl_vars['phoning_comment']; ?></textarea><br />
+								<em>N.B. : Ce champ est présent à titre indicatif. N'hésitez pas à nettoyer les informations obsolètes.</em></td>
+						</tr>
+					</table>
+				</div>
+			</fieldset>
+			
+			<h2>Les contacts liés à cette entreprise</h2>
+			<a href="/admin/entreprise/contact_add/<?php echo $this->tpl_vars['id']; ?>" class="button-submit">Ajouter un contact à cette entreprise</a><br /><br />
+			<table class="liste" cellpadding="0" cellspacing="0">
+				<colgroup>
+					<col style="width: 20%;" />
+					<col style="width: 18%;" />
+					<col style="width: 32%;" />
+					<col style="width: 10%;" />
+				</colgroup>
+				<tr>
+					<th>Nom et prénom</th>
+					<th colspan="2">Informations</th>
+					<th>Actions</th>
+				</tr>
+				<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['contact_block']) && is_array($this->tpl_vars['contact_block'])):
+	foreach ($this->tpl_vars['contact_block'] as $this->tpl_vars['contact']): ?>
+					<tr class="pair">
+						<td rowspan="7" class="tcenter"<?php if ($this->tpl_vars['contact']['current_ref']): ?> style="background: green;"<?php endif; ?>>
+							<strong><?php echo $this->tpl_vars['contact']['civilite']; ?> <?php echo strtoupper($this->tpl_vars['contact']['nom']); ?> <?php echo $this->tpl_vars['contact']['prenom']; ?></strong><br />
+							<?php echo $this->tpl_vars['contact']['date']; ?>
+						</td>
+						<td><strong>Poste :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['poste']; ?></td>
+						<td rowspan="7" class="tcenter">
+							<a href="/admin/entreprise/contact_edit/<?php echo $this->tpl_vars['contact']['id']; ?>" title="Editer">
+								<img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+							<a href="/admin/entreprise/contact_del/<?php echo $this->tpl_vars['contact']['id']; ?>" title="Supprimer">
+								<img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+						</td>
+					</tr>
+					<tr class="impair">
+						<td><strong>Langue parlée :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['langue']; ?></td>
+					</tr>
+					<tr class="pair">
+						<td><strong>Adresse :</strong></td>
+						<td><?php echo nl2br($this->tpl_vars['contact']['adresse']); ?></td>
+					</tr>
+					<tr class="impair">
+						<td><strong>Téléphone fixe :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['tel_fixe']; ?></td>
+					</tr>
+					<tr class="pair">
+						<td><strong>Téléphone portable :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['tel_portable']; ?></td>
+					</tr>
+					<tr class="impair">
+						<td><strong>Fax :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['fax']; ?></td>
+					</tr>
+					<tr class="pair">
+						<td><strong>Email :</strong></td>
+						<td><?php echo $this->tpl_vars['contact']['email']; ?></td>
+					</tr>
+				<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+				<?php if ($this->tpl_vars['count'] == 0): ?>
+					<tr>
+						<td colspan="4" class="tcenter">Aucun contact n'a été trouvé pour cette entreprise</td>
+					</tr>
+				<?php endif; ?>
+			</table>
+			<a href="/admin/entreprise/contact_add/<?php echo $this->tpl_vars['id']; ?>" class="button-submit">Ajouter un contact à cette entreprise</a>
+		</div>
+	</div>
+</form>
+<div class="clear"></div>

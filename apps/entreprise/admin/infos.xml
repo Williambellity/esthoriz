@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<infos>
+	<title>Entreprise</title>
+	<logo></logo>
+	<acl>
+		<level>
+			<id>0</id>
+			<name>Accès pour le phoning</name>
+		</level>
+		<level>
+			<id>1</id>
+			<name>Gestion de toutes les entreprises</name>
+		</level>
+		<level>
+			<id>2</id>
+			<name>Lecture des entreprises inscrites</name>
+		</level>
+	</acl>
+</infos>

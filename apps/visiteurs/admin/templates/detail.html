@@ -1,0 +1,54 @@
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<?php echo $this->tpl_vars['pagination']; ?>
+<table class="liste sorted" cellpadding="0" cellspacing="0">
+	<colgroup>
+		<col style="width: 25%;" />
+		<col style="width: 15%;" />
+		<col style="width: 10%;" />
+		<col style="width: 10%;" />
+		<col style="width: 10%;" />
+		<col style="width: 10%;" />
+		<col style="width: 10%;" />
+		<col style="width: 10%;" />
+	</colgroup>
+	<tr>
+		<th>Ecole</th>
+		<th>Nombre</th>
+		<th style="color : green;">Présents</th>
+		<th>Res. Soc.</th>
+		<th>Site internet</th>
+		<th>Respo Form.</th>
+		<th>Pub</th>
+		<th>Mail UL</th>
+		<th></th>
+		
+	</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['visiteurs_block']) && is_array($this->tpl_vars['visiteurs_block'])):
+	foreach ($this->tpl_vars['visiteurs_block'] as $this->tpl_vars['visiteurs']): ?>
+
+	<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['ecole']; ?></strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['nombre']; ?></strong></td>
+			<td style="color : green;"><strong><?php echo $this->tpl_vars['visiteurs']['present']; ?> %</strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['connu1']; ?> %</strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['connu2']; ?> %</strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['connu3']; ?> %</strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['connu4']; ?> %</strong></td>
+			<td><strong><?php echo $this->tpl_vars['visiteurs']['connu5']; ?> %</strong></td>
+			<!--<td class="tcenter"><?php echo $this->tpl_vars['visiteurs']['mail']; ?></td>-->
+			<!--<td class="tcenter"_
+				<?php if (!empty($this->tpl_vars['newsletter']['attachment'])): ?><img src="/themes/system/images/icones/juste.png" alt="Non" />
+				<?php else: ?><img src="/themes/system/images/icones/del.png" alt="Oui" /><?php endif; ?>
+			</td>
+			<td class="tcenter">
+				<a href="/admin/newsletter/read/<?php echo $this->tpl_vars['newsletter']['id']; ?>/" title="Lire"><img src="/themes/system/images/icones/letter.png" alt="Lire" /></a>
+			</td>-->
+		</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+	<?php if ($this->tpl_vars['count'] == 0): ?>
+		<tr>
+			<td colspan="5" class="tcenter">Aucune donnée </td>
+		</tr>
+	<?php endif; ?>
+</table>
+<?php echo $this->tpl_vars['pagination']; ?>

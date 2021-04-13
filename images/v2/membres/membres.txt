@@ -1,0 +1,20 @@
+corentin/Corentin VERMEULEN/Président/president@est-horizon.com/
+ophely/Ophély SAVARY/Vice-présidente/forum@est-horizon.com/
+alice/Alice DELMAS/Trésorière/tresorerie@est-horizon.com/
+anais/Anais DUCOURTHIAL/Secrétaire générale/forum@est-horizon.com/
+guillaume/Guillaume WAFFLART/Responsable qualité/forum@est-horizon.com/
+gabriel/Gabriel HENRY/Résponsable relations entreprises/relations-entreprises@est-horizon.com/
+capucine/Capucine BARON/Relations entreprises/relations-entreprises@est-horizon.com/
+clovis/Clovis LAPOINTE/Relations entreprises/relations-entreprises@est-horizon.com/
+remi/Rémi LOUX/Relations entreprises/relations-entreprises@est-horizon.com/
+stanislas/Stanislas MARQUES/Relations entreprises/relations-entreprises@est-horizon.com/
+elodie/Elodie JEANVOINE/Conférences et ateliers annexes/forum@est-horizon.com/
+kevin/Kevin CAMPION/Pré-Forum/forum@est-horizon.com/
+mathilde/Mathilde BOCQUEL/Responsable communication/communication@est-horizon.com/
+justine/Justine ZANINI/PAO/communication@est-horizon.com/
+emilien/Emilien BRIANT/Communication interne et PAO/communication@est-horizon.com/
+thomas/Thomas JARRIN/Relations écoles/relation-ecoles@est-horizon.com/
+alexandre/Alexandre TOKKA/Informatique/informatique@est-horizon.com/
+oumaima/Oumaima HAMMAMI/Logistique/logistique@est-horizon.com/
+vincent/Vincent DE SEPULVEDA/Logistique/logistique@est-horizon.com/
+renaud/Renaud FELTEN/Chargé transport et restauration/forum@est-horizon.com/

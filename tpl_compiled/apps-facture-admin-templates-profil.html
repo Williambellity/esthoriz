@@ -1,0 +1,299 @@
+<script type="text/javascript" src="/apps/profil/front/js/webforms2.js"></script>
+<div style="height :100px; width : 100%;"> 
+</div>
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<div class="article">
+	<div class="container marketing">
+		<div class="row featurette">
+			<div class="col-md-12">
+				<h2 class="featurette-heading">Edition d'un BDC/Facture pour pack<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+					
+					<form method="post" id="edit_form" > 
+                        <table>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputName">Nom de l'entreprise</label></td>
+								<td><input type="text" class="form-control" id="InputName" placeholder="Nom" name="name"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputNo">Identifiant</label></td>
+								<td><input type="text" class="form-control" id="InputNo" placeholder="No" name="no"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="BDCCode">Code BDC</label></td>
+								<td><input type="text" class="form-control" id="BDCCode" placeholder="Code BDC" name="BDCCode" value="0" required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputAdress">Adresse du siège social</label></td>
+								<td><input type="text" class="form-control" id="InputAdress" placeholder="Adress" name="adress"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="CompAdress">Adresse du siège social ( Complement )</label></td>
+								<td><input type="text" class="form-control" id="CompAdress" placeholder="Adresse" name="compadress"></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputAdress2">Adresse de facturation</label></td>
+								<td><input type="text" class="form-control" id="InputAdress2" placeholder="Adress2" name="adress2" ></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="CompAdress2">Adresse de facturation ( Complement )</label></td>
+								<td><input type="text" class="form-control" id="CompAdress2" placeholder="Adress2" name="compadress2" ></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputPoste">Responsable au forum</label></td>
+								<td><input type="text" class="form-control" id="InputPoste" placeholder="Poste" name="poste"   required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputEmail">Email</label></td>
+								<td><input type="text" class="form-control" id="InputEmail" placeholder="Email" name="email"   required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputTel">Téléphone</label></td>
+								<td><input type="text" class="form-control" id="InputTel" placeholder="Tel" name="tel"   required></td>
+							  </div>
+                            </tr>
+							
+                            <tr class="blank_row">
+								<td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+							</tr>
+							
+                            <tr>
+							  <div class="form-group" >
+								<!-- <hr style="width:50%;text-align:left;margin-left:0"> -->
+								<td><label for="InputPack">Pack</label></td>
+								<td><input type="text" class="form-control" id="InputPack" placeholder="Pack" name="pack" required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group" >
+								<td><label for="InputPackno">Nombre de Pack</label></td>
+								<td><input type="text" class="form-control" id="InputPackno" placeholder="Packno" name="packno" value="1" required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputPrix">Prix du pack</label></td>
+								<td><input type="text" class="form-control" id="InputPrix" placeholder="Prix" name="prix"  required></td>
+							  </div>
+                            </tr>
+							
+                            <tr class="blank_row">
+								<td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+							</tr>
+							
+                            <tr>
+							  <div class="form-group">
+								<!-- <hr style="width:50%;text-align:left;margin-left:0"> -->
+								<td><label for="InputFlyerno">Pack Flyers</label></td>
+								<!-- <td><input type="text" class="form-control" id="InputPrix" placeholder="Flyerno" name="flyerno" value="0"  required></td> -->
+								<td>
+									<select id="InputPrix" placeholder="Flyerno" name="flyerno" required>
+										<option value="0">Non</option>
+										<option value="1">Oui</option>
+									</select>
+								</td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputFlyerprix">Prix unitaire</label></td>
+								<td><input type="text" class="form-control" id="InputPrix" placeholder="Prix pack flyers" name="flyerprix"></td>
+							  </div>
+                            </tr>
+							
+                            <tr class="blank_row">
+								<td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+							</tr>
+							
+                            <tr>
+							  <div class="form-group" >
+								<!-- <hr style="width:50%;text-align:left;margin-left:0"> -->
+								<td><label for="InputRepas">Nombre de repas</label></td>
+								<td><input type="text" class="form-control" id="InputRepas" placeholder="Repas" name="repas" value="0"></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group" >
+								<!-- <hr style="width:50%;text-align:left;margin-left:0"> -->
+								<td><label for="InputPrixRepas">Prix unitaire</label></td>
+								<td><input type="text" class="form-control" id="InputPrixRepas" placeholder="Prix repas" name="repasprix"></td>
+							  </div>
+                            </tr>
+                            <!-- <tr>
+							  <div class="form-group">
+								<td><label for="InputParking">Parking</label></td>
+								<td><input type="text" class="form-control" id="InputParking" placeholder="Parking" name="parking" value="0" required></td>
+							  </div>
+                            </tr> -->
+							
+							<tr class="blank_row">
+								<td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+							</tr>
+							
+							<tr>
+							  <div class="form-group" >
+								<td><label for="Optionnom">Option supplémentaire</label></td>
+								<td><input type="text" class="form-control" id="Optionnom" placeholder="Option supplémentaire" name="optionnom"></td>
+							  </div>
+                            </tr>
+							<tr>
+							  <div class="form-group" >
+								<td><label for="Optionno">Quantité</label></td>
+								<td><input type="text" class="form-control" id="Optionno" placeholder="Quantité" name="optionno" value="0"></td>
+							  </div>
+                            </tr>
+							<tr>
+							  <div class="form-group" >
+								<td><label for="Optionprix">Prix unitaire</label></td>
+								<td><input type="text" class="form-control" id="Optionprix" placeholder="Prix unitaire" name="optionprix"></td>
+							  </div>
+                            </tr>
+							
+							<tr class="blank_row">
+								<td bgcolor="#FFFFFF" colspan="2">&nbsp;</td>
+							</tr>
+							
+							<tr>
+							  <div class="form-group">
+								<td><label for="Reduction">Reduction</label></td>
+								<td><input type="number" class="form-control" id="Reduction" placeholder="pour -20% ecrire 20" name="Reduction"  required></td>
+							  </div>
+                            </tr>
+                            
+                            </table>
+							  <div class="form-group">
+							  </div>
+
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/BDC-pack.php">BDC</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/BDC-Covid-19.php">BCD Covid-19</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/Facture-pack.php">Facture</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/Devis-pack.php">Devis</button>
+						</form>						
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-12">
+				<h2 class="featurette-heading">Edition d'un BDC/Facture pour complement<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+
+					<form method="post" id="edit_form" > 
+                        <table>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputName">Nom de l'entreprise</label></td>
+								<td><input type="text" class="form-control" id="InputName" placeholder="Nom" name="name"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputNo">Identifiant</label></td>
+								<td><input type="text" class="form-control" id="InputNo" placeholder="No" name="no"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="BDCCode">Code BDC</label></td>
+								<td><input type="text" class="form-control" id="BDCCode" placeholder="Code BDC" name="BDCCode" value="0" required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputAdress">Adresse du siège social</label></td>
+								<td><input type="text" class="form-control" id="InputAdress" placeholder="Adress" name="adress"  required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="CompAdress">Adresse du siège social ( Complement )</label></td>
+								<td><input type="text" class="form-control" id="CompAdress" placeholder="Adresse" name="compadress"></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputAdress2">Adresse de facturation</label></td>
+								<td><input type="text" class="form-control" id="InputAdress2" placeholder="Adress2" name="adress2" ></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="CompAdress2">Adresse de facturation ( Complement )</label></td>
+								<td><input type="text" class="form-control" id="CompAdress2" placeholder="Adress2" name="compadress2" ></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputPoste">Responsable au forum</label></td>
+								<td><input type="text" class="form-control" id="InputPoste" placeholder="Poste" name="poste"   required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputEmail">Email</label></td>
+								<td><input type="text" class="form-control" id="InputEmail" placeholder="Email" name="email"   required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group">
+								<td><label for="InputTel">Téléphone</label></td>
+								<td><input type="text" class="form-control" id="InputTel" placeholder="Tel" name="tel"   required></td>
+							  </div>
+                            </tr>
+                            <tr>
+							  <div class="form-group" >
+								<td><label for="InputRepas">Repas</label></td>
+								<td><input type="text" class="form-control" id="InputRepas" placeholder="Repas" name="repas" required></td>
+							  </div>
+                            </tr>
+                            <!-- <tr>
+							  <div class="form-group">
+								<td><label for="InputParking">Parking</label></td>
+								<td><input type="text" class="form-control" id="InputParking" placeholder="Parking" name="parking"  required></td>
+							  </div>
+                            </tr>-->
+                            <tr>
+							  <div class="form-group">
+								<td><label for="Reduction">Reduction</label></td>
+								<td><input type="number" class="form-control" id="Reduction" placeholder="pour -20% ecrire 20" name="Reduction"  required></td>
+							  </div>
+                            </tr>
+                        </table>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/BDC-complement.php">BDC</button>
+							<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/facture/admin/Facture-complement.php">Facture</button>
+						</form>						
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>

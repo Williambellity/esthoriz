@@ -1,0 +1,112 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Ajouter une catégorie</h2>
+		<form action="" method="post">
+			<table>
+				<tr>
+					<td><label for="cName">Nom :</label></td>
+					<td><input id="cName" type="text" name="cName" value="" /></td>
+				</tr>
+				<tr>
+					<td><label for="cShortname">Nom racourci :</label></td>
+					<td><input id="cShortname" type="text" name="cShortname" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><em>facultatif : nom pour désigner plus simplement la catégorie</em></td>
+				</tr>
+				<tr>
+					<td><label for="cParent">Catégorie parente :</label></td>
+					<td>
+						<select id="cParent" name="cParent">
+							<option value="0">Aucune</option>
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+								<option value="<?php echo $this->tpl_vars['cat']['cid']; ?>"><?php echo $this->tpl_vars['cat']['name']; ?></option>
+							<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="editCat" class="block">
+		<div class="top"></div>
+		<h2>Editer une catégorie</h2>
+		<form action="" method="post">
+			<table>
+				<tr>
+					<td><label for="cNameEdit">Nom :</label></td>
+					<td>
+						<input id="cIdEdit" type="hidden" name="cIdEdit" value="" />
+						<input id="cNameEdit" type="text" name="cNameEdit" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td><label for="cShortnameEdit">Nom racourci :</label></td>
+					<td><input id="cShortnameEdit" type="text" name="cShortnameEdit" /></td>
+				</tr>
+				<tr>
+					<td><label for="cParentEdit">Catégorie parente :</label></td>
+					<td>
+						<select id="cParentEdit" name="cParentEdit">
+							<option value="0">Aucune</option>
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+								<option value="<?php echo $this->tpl_vars['cat']['cid']; ?>"><?php echo $this->tpl_vars['cat']['name']; ?></option>
+							<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 10%;" />
+			<col style="width: 40%;" />
+			<col style="width: 30%;" />
+			<col style="width: 10%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th>#</th>
+			<th class="sort <?php echo $this->tpl_vars['name_class']; ?>"><a href="/admin/news/cat/name-<?php echo $this->tpl_vars['name_sort']; ?>/">Nom de la catégorie</a></th>
+			<th class="sort <?php echo $this->tpl_vars['shortname_class']; ?>"><a href="/admin/news/cat/shortname-<?php echo $this->tpl_vars['shortname_sort']; ?>/">Nom racourci</a></th>
+			<th># Parent</th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['cat']['cid']; ?></td>
+				<td><strong><?php echo $this->tpl_vars['cat']['name']; ?></strong></td>
+				<td><?php echo $this->tpl_vars['cat']['shortname']; ?></td>
+				<td><?php echo $this->tpl_vars['cat']['parent']; ?></td>
+				<td>
+					<a href="#" title="Editer" onclick="return editCat(<?php echo $this->tpl_vars['cat']['cid']; ?>, '<?php echo $this->tpl_vars['cat']['name']; ?>', '<?php echo $this->tpl_vars['cat']['shortname']; ?>', <?php echo $this->tpl_vars['cat']['parent']; ?>);"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/news/cat_del/<?php echo $this->tpl_vars['cat']['cid']; ?>/" title="Supprimer" onclick="return checkDel('<?php echo $this->tpl_vars['cat']['name']; ?>');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="6" class="tcenter">Aucune catégorie n'a été ajoutée.</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

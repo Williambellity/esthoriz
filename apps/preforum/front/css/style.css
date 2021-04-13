@@ -1,0 +1,204 @@
+
+.detail {
+	width: 700px;
+	text-align: center;
+	padding: 10px;
+}
+
+
+.part_info {
+	width: 500px;
+	padding: 20px;
+	border: 1px solid #666;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+}
+
+#effect_correction {
+	width: 520px;
+	height: 270px;
+	margin: auto;
+}
+
+#time_fl {
+    width: 700px;
+    height: 350px;
+}
+
+
+
+#end_fl {
+    width: 20px;
+    height: 100%;
+    background: url(/apps/preforum/front/images/end_time.png) no-repeat right top;
+    float: left;
+}
+
+#corps_fl {
+    width: 614px;
+    height: 100%;
+    background: url(/apps/preforum/front/images/corps_time.png) top repeat-x;
+    float: left;
+}
+
+#tete_fl {
+    width: 66px;
+    height: 100%;
+    background: url(/apps/preforum/front/images/tete_time.png) no-repeat left top;
+    float: left;
+}
+
+#up_fl {
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+#down_fl {
+    width: 100%;
+    height: 30px;
+}
+
+#start_end_time {
+    width: 100%;
+    height: 15px;
+    margin-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#start_time {
+    float: left;
+}
+
+#end_time {
+    float: right;
+}
+
+.ti_event {
+    position: absolute;
+}
+
+.ti_flag {
+    border-left: 2px solid black;
+    z-index: 2;
+}
+
+.ti_textflag {
+    background: none repeat scroll 0 0 black;
+    box-shadow: 0 2px 5px #666666;
+    color: white;
+    font-family: Bebas,Arial,Geneva,Helvetica,sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+    padding: 3px 5px 3px 5px;
+    float: left;
+}
+
+.ti_timing {
+    height: 25px;
+    font-weight: bold;
+    font-size: 0.8em;
+    font-family:Verdana,Arial;
+    z-index: 1;
+}
+
+.ti_estart {
+    float: left;
+}
+
+.ti_eend {
+    float: right;
+}
+
+.ti_filter {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 5px #666666;
+    margin: 20px;
+}
+
+.filter_denom {
+    border-right: 1px solid black;
+    float: left;
+    font-family: Bebas,Arial,sans-serif;
+    font-size: 1.5em;
+    height: 38px;
+    margin-right: 0;
+    padding: 13px 5px 0 0;
+    text-align: right;
+    width: 100px;
+}
+
+.cont_filter {
+    padding-top: 3px;
+}
+
+.button_filter {
+    border: 1px solid #666666;
+    color: black;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 5px #666666;
+    font-family: Bebas,Arial,sans-serif;
+    font-size: 1.2em;
+    float: left;
+    margin: 10px 7px 10px 7px;
+    padding: 0;
+    width: 90px;
+    display: block;
+}
+
+.button_filter_hover {
+    box-shadow: 0 2px 6px #000000;
+}
+
+.button_filter_selected {
+    box-shadow: 0 2px 6px #3bd526;
+}
+
+.bf_blue {
+    background: #747af4;
+}
+
+.bf_red {
+    background: #f47a74;
+}
+
+.bf_green {
+    background: #98f474;
+}
+
+.bf_purple {
+    background: #f49feb;
+}
+
+.filter_b_all {
+    background: #DB1F26;
+    color: white;
+}
+
+.ti_blue {
+    background: #747af4;
+}
+
+.ti_red {
+    background: #f47a74;
+}
+
+.ti_green {
+    background: #98f474;
+}
+
+.ti_purple {
+    background: #f49feb;
+}
+
+.button_filter_unselected {
+    background-color: #cfcfcf;
+    color: #a3a3a3;
+}
+
+.tinyTip .content {
+    margin-top: 25px;
+}
+

@@ -1,0 +1,13 @@
+<div id="content" class="large">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<div class="item">
+		<form action="" method="post" style="font-size: 1.2em;">
+			<p class="tcenter">
+				Pour confirmer la suppression définitive de tous les inscrits, inscrivez le mot <strong>SUPPRIMER</strong> dans la case ci-dessous :
+				<br /><br />
+				<input type="text" name="confirm" style="font-size: 1.2em; text-transform: uppercase; text-align: center;" />
+				<input type="submit" value="Envoyer" style="font-size: 1.2em;" />
+			</p>
+		</form>
+	</div>
+</div>

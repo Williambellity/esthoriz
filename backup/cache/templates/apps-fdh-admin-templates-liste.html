@@ -1,0 +1,54 @@
+<div id="content" class="large">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste" cellpadding="0" cellspacing="0" id="tableau" style="width: 100%;">
+		<colgroup>
+			<col style="width: 5%;" />
+			<col style="width: 15%;" />
+			<col style="width: 15%;" />
+			<col style="width: 20%;" />
+			<col style="width: 15%;" />
+			<col style="width: 10%;" />
+			<?php if (isset($this->tpl_vars['nom_bde'])): ?><col style="width: 20%;" /><?php endif; ?>
+		</colgroup>
+		<tr id="ligne">
+			<th>N&deg;</th>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Bus de retour</th>
+			<th>Date</th>
+			<th>Moyen de paiement</th>
+			<?php if (isset($this->tpl_vars['nom_bde'])): ?><th>BDE</th><?php endif; ?>
+			<th>Suppr.</th>
+		</tr>
+		<?php if ($this->tpl_vars['t'] = 0): ?><?php endif; ?>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['bus_block']) && is_array($this->tpl_vars['bus_block'])):
+	foreach ($this->tpl_vars['bus_block'] as $this->tpl_vars['bus']): ?>
+			<tr class="pair" style="font-weight:bold;font-size:15px">
+				<!--<td colspan="8">Inscrits dans le bus <?php echo $this->tpl_vars['bus']['heure']; ?> au depart <?php echo $this->tpl_vars['bus']['lieu']; ?><?php if (($this->tpl_vars['bus']['numero'] !=0)): ?> (Numéro <?php echo $this->tpl_vars['bus']['numero']; ?>)<?php endif; ?></td>-->
+			<td colspan="8">Inscrits dans le bus de retour à destination de <?php echo $this->tpl_vars['bus']['lieu']; ?><?php if (($this->tpl_vars['bus']['numero'] !=0)): ?> (Numéro <?php echo $this->tpl_vars['bus']['numero']; ?>)<?php endif; ?></td>
+			</tr>
+			<?php $this->tpl_vars['person']['count'] = -1;
+foreach($this->tpl_vars['bus_persons'][$this->tpl_vars['bus']['idb']] as $this->tpl_vars['person']['key'] => $this->tpl_vars['person']['value']):
+$this->tpl_vars['person']['count']++; ?>
+			<?php if ($this->tpl_vars['t'] = $this->tpl_vars['t'] + 1): ?><?php endif; ?>
+			<tr name="<?php echo $this->tpl_vars['t']; ?>" id="<?php echo $this->tpl_vars['t']; ?>" Class="<?php if ($this->tpl_vars['t'] % 2 == 1): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><?php echo $this->tpl_vars['person']['value']['nom']; ?></td>
+				<td><?php echo $this->tpl_vars['person']['value']['prenom']; ?></td>
+				<td><?php echo $this->tpl_vars['bus']['heure']; ?> au depart <?php echo $this->tpl_vars['bus']['lieu']; ?><?php if (($this->tpl_vars['bus']['numero'] !=0)): ?> (Numéro <?php echo $this->tpl_vars['bus']['numero']; ?>)<?php endif; ?></td>
+				<td><?php echo $this->tpl_vars['person']['value']['heure']; ?></td>
+				<td><?php echo $this->tpl_vars['person']['value']['pay_mod']; ?></td>
+				<?php if (isset($this->tpl_vars['nom_bde'])): ?><td><?php echo $this->tpl_vars['person']['value']['nickname']; ?></td><?php endif; ?>
+				<?php if (isset($this->tpl_vars['nom_bde']) || $this->tpl_vars['person']['value']['ecole'] == $this->tpl_vars['myuserid']): ?>
+				<td><a href="/admin/fdh/del_entry/<?php echo $this->tpl_vars['person']['value']['id']; ?>" onclick="if (!confirm('Êtes vous sûr de vouloir supprimer l\'inscription de <?php echo $this->tpl_vars['person']['value']['nom']; ?> ?')) return false;"><img src="/apps/fdh/admin/templates/ico_moins.png" alt="-"/></a></td>
+				<?php endif; ?>
+			</tr>
+			<?php endforeach; ?>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="7" class="tcenter">Aucune inscription</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>

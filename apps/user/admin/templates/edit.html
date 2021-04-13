@@ -1,0 +1,88 @@
+<div id="content" class="large">
+	<div class="item">
+		<h3></h3>
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<form action="" method="post">
+			<table cellpadding="5" cellspacing="0">
+				<tr>
+					<td><label for="nickname">Pseudonyme :</label></td>
+					<td>
+						<input type="hidden" name="id" value="<?php echo $this->tpl_vars['id']; ?>" />
+						<input id="nickname" type="text" name="nickname" value="<?php echo $this->tpl_vars['nickname']; ?>" maxlength="30" size="20" />
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 150px;"><label for="password">Mot de passe :</label><br />
+						<em>Laisser vide pour ne pas effectuer de modification.</em></td>
+					<td>
+						<input id="password" type="password" name="password" size="20" /><br />
+						<input id="password_confirm" type="password" name="password_confirm" size="20" />
+						<em>(confirmation)</em>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="email">Adresse email :</label></td>
+					<td><input id="email" type="text" name="email" value="<?php echo $this->tpl_vars['email']; ?>" size="35" /></td>
+				</tr>
+				<tr>
+					<td><label for="groupe">Groupe :</label></td>
+					<td>
+						<select id="groupe" name="groupe">
+							<option value="0">Aucun groupe</option>
+							<?php $this->tpl_vars['c']['count'] = -1;
+foreach($this->tpl_vars['cats'] as $this->tpl_vars['c']['key'] => $this->tpl_vars['c']['value']):
+$this->tpl_vars['c']['count']++; ?>
+								<option value="<?php echo $this->tpl_vars['c']['value']['id']; ?>"<?php if ($this->tpl_vars['c']['value']['id'] == $this->tpl_vars['groupe']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['c']['value']['name']; ?></option>
+							<?php endforeach; ?>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="type">Type d'utilisateur :</label></td>
+					<td>
+						<script type="text/javascript">
+							function changeType(type) {
+								if (type == 'perso') {
+									$('#access').show();
+								} else {
+									$('#access').hide();
+								}
+							}
+						</script>
+						<select id="type" name="type" onchange="changeType(this.options[this.selectedIndex].value);">
+							<option value="none"<?php if (empty($this->tpl_vars['access'])): ?> selected="selected"<?php endif; ?>>Simple utilisateur</option>
+							<option value="all"<?php if ($this->tpl_vars['access'] == 'all'): ?> selected="selected"<?php endif; ?>>Administrateur suprême</option>
+							<option value="perso"<?php if (!empty($this->tpl_vars['access']) && $this->tpl_vars['access'] != 'all'): ?> selected="selected"<?php endif; ?>>Mode personnalisé</option>
+						</select><br />
+						<ul id="access"<?php if (empty($this->tpl_vars['access']) || $this->tpl_vars['access'] == 'all'): ?> class="hidden"<?php endif; ?>>
+							<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['module_block']) && is_array($this->tpl_vars['module_block'])):
+	foreach ($this->tpl_vars['module_block'] as $this->tpl_vars['module']): ?>
+							<li>
+								<input id="<?php echo $this->tpl_vars['module']['name']; ?>" type="checkbox" name="access[<?php echo $this->tpl_vars['module']['name']; ?>]"
+									<?php if (strstr($this->tpl_vars['access'], $this->tpl_vars['module']['name']) !== false): ?> checked="checked"<?php endif; ?>/>
+								<label for="<?php echo $this->tpl_vars['module']['name']; ?>"><?php echo ucfirst($this->tpl_vars['module']['name']); ?></label>
+								<?php if (count($this->tpl_vars['module']['levels']) > 0): ?>
+								<select name="level[<?php echo $this->tpl_vars['module']['name']; ?>]">
+									<?php $this->tpl_vars['level']['count'] = -1;
+foreach($this->tpl_vars['module']['levels'] as $this->tpl_vars['level']['key'] => $this->tpl_vars['level']['value']):
+$this->tpl_vars['level']['count']++; ?>
+									<option value="<?php echo $this->tpl_vars['level']['value']['id']; ?>"><?php echo $this->tpl_vars['level']['value']['name']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								<?php endif; ?>
+							</li>
+							<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+						</ul>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<br />
+						<input type="submit" value="Modifier l'utilisateur" />
+						<input type="button" value="Annuler" onclick="history.back();" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

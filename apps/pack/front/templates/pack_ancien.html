@@ -1,0 +1,80 @@
+<div style="height :50px; width : 100%;"> 
+</div>
+
+	<div class="article" >
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-md-12">
+				  <h2 class="featurette-heading">Choix de pack<span class="text-muted"> </span></h2>
+				</div>
+				<div class="col-md-12">	
+					{if empty({$pack_choisi.nom})}
+					<div class="col-md-12 center-block">
+						<h2 >Votre choix</h4>
+					</div>				
+					<div class="col-md-12">
+						{block name="pack_choisi"}
+						<center><h4 >{$pack_choisi.nom}</h4></center>
+						<center>{$pack_choisi.prix} €</center>
+						{/block}
+					<hr class="featurette-divider"></hr>
+					</div>
+					<div style="height :50px; width : 100%;"></div>
+					{/if}
+					<div class="col-md-12 center-block">
+						<h2 >Nos différents packs</h2>
+					</div>	
+					<div class="col-md-12">
+						<div class="col-md-1"></div>
+						{block name="pack"}
+						{if {$pack.id}<>21}
+						<div class="col-md-2" id="tab_{$pack.id}">
+							<div class="col-md-12">
+								<h3>{$pack.nom}</h3>
+							</div>
+							<div class="col-md-12">
+								<h4>{$pack.prix} €</h4>
+							</div>
+							<div class="col-md-12">
+								<form method="post" action="">
+									<input type="hidden" value="{$pack.id}" name="choix">
+									<button type="submit" class="btn btn-secondary center-block" value="Choisir ce pack">Choisir ce pack</button>
+								</form>
+							</div>	
+							<div class="col-md-12">
+								<p>{$pack.contenu_base}</p>
+							</div>
+							<div class="col-md-12">
+								<p>{$pack.contenu_pub}</p>
+							</div>						
+						</div>
+						{/if}
+						{/block}
+						<div class="col-md-1"></div>
+					</div>
+					<div style="height :50px; width : 100%;"></div>					
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="article art-typ1" style="top :-60px;">
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-xs-12 col-sm-6 col-lg-2">
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-6 animation-element right">  
+				  <p class="lead text-justify">
+						Besoin d'une chaise ou d'un présentoir en plus ? N'hésitez pas à contacter le Centre Prouvé!
+					</p>
+				</div>
+				<div class="col-xs-12 col-sm-12 col-lg-2 center-block left animation-element">
+					<p class="lead text-justify">
+						<a href ="mailto:nbi@grandnancy-congresetevenements.com"> nbi@grandnancy-congresetevenements.com</a>
+					</p>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-lg-2">
+				</div>
+			 </div>	
+		</div>
+	</div>

@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="Le Forum Est-Horizon est l'un des plus grands salons de rencontres étudiants-entreprises de l'Est de la France." />
+	<meta name="keywords" content="
+	forum, est, horizon, grand est, est-horizion, étudiant, étudiants, entreprise, entreprises, 
+	firm, salon, rencontres, mines, nancy, mines de nancy, conférences, tables rondes, préforum, 
+	pré-forum, pré forum, recrutement, stage, stages, offre de stage, offre d'emplois,Emplois, Correction de CV, 
+	centre Prouvé,concours de projet, simulation d'entretiens, handicafé, jeudi 24 Novembre, Ingénieurs, 
+	Commerciaux, Managers, Géologia,Lorraine, Meuthe et moselle" />
+	<meta name="viewport" content="width=device-width" />
+	<title><?php echo $this->tpl_vars['pageTitle']; ?></title>
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	
+	<!-- <link type="text/css" rel="stylesheet" href="/themes/feh/css/style.css" /> -->
+	<!-- <link rel="stylesheet" href="/themes/feh/projekktor/theme/projekktor.style.css" type="text/css" media="screen" > -->
+	
+	<!--<link type="text/css" rel="stylesheet" href="/themes/feh/css/jquery-ui-1.8.11.custom.css" />-->
+	<link type="text/css" rel="stylesheet" href="/themes/feh/css/jquery.fancybox-1.3.4.css" />
+	<!--<link type="text/css" rel="stylesheet" href="/themes/feh/css/style.css" />-->
+	<link rel="stylesheet" href="/themes/feh/projekktor/theme/projekktor.style.css" type="text/css" media="screen" >
+	<!--bootstrap-->
+	<link href="/themes/feh/css/bootstrap1.css" rel="stylesheet">
+	<link href="/themes/feh/css/BS/bootstrap.css" rel="stylesheet">
+	<link href="/themes/feh/css/BS/carousel.css" rel="stylesheet">
+	<link href="/themes/feh/css/BS/signin.css" rel="stylesheet">
+	<?php if (isset($this->tpl_vars['css'])): ?><?php echo $this->tpl_vars['css']; ?><?php endif; ?>
+
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!--[if lte IE 8]>
+		<link rel="stylesheet" type="text/css" href="/themes/feh/css/ie-only.css" />
+	<![endif]-->
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="/themes/feh/css/ie-all-only.css" />
+	<![endif]-->
+
+	<script type="text/javascript" src="/themes/feh/js/jquery-1.6.2.min.js"></script>
+	<script type="text/javascript" src="/themes/feh/js/jquery-ui-1.8.16.custom.min.js"></script>
+	<script type="text/javascript" src="/themes/feh/js/jquery.fancybox-1.3.4.pack.js"></script>
+	<!--<script type="text/javascript" src="/themes/feh/js/jquery.tinyTips.js"></script>-->
+	<script type="text/javascript" src="/themes/feh/js/script.js"></script>
+	<script type="text/javascript" src="/themes/feh/projekktor/projekktor.min.js"></script>
+	<!--bootstrap-->
+	<script src="/themes/feh/js/BS/scroll_animate.js" type="text/javascript"></script>
+	<script type="text/javascript" src="/themes/feh/js/BS/bootstrap/js/jquery.js"></script>
+	<script type="text/javascript" src="/themes/feh/js/BS/bootstrap/js/bootstrap.js"></script> <!-- mettre .min pour la mise en ligne -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<?php if (isset($this->tpl_vars['js'])): ?><?php echo $this->tpl_vars['js']; ?><?php endif; ?>
+	<!-- <script type="text/javascript" src="/themes/feh/projekktor/jquery.min.js"></script> -->
+    <!-- <script type="text/javascript" src="/themes/feh/projekktor/projekktor.min.js"></script> -->
+   
+</head>
+
+<body>
+<div id="box">
+	<header>
+			
+<!--  =====================================================================	-->
+<!-- 		NAVIGATION 														-->													 
+<!--  =====================================================================	-->			
+			
+			<nav class="navbar navbar-default navbar-fixed-top nav_primary">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><img style="width : 250px;"src="/images/v2/logo/Logos 1.1.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+		  
+		  		<?php if (!empty($_SESSION['firmid'])): /*onglet pour les entreprises si connectées*/?>
+				
+					 <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="/entreprise/">Vos outils
+						<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+						  <li><a href="/entreprise/">Accueil</a></li>
+						  <li><a href="/profil/">Mon profil</a></li>
+						  <li><a href="/pack/">Réservation du stand</a></li>
+						  <li><a href="/brochure/">Fiche signalétique</a></li>
+						</ul>				
+					</li>
+				<?php endif; ?>
+		  
+            <li><a href="/evenement/">L'évènement</a></li>
+            <li><a href="/espace-etudiants/">Espace étudiants</a></li>
+            <li><a href="/espace-entreprises/">Espace entreprises</a></li>
+			<li><a href="/contacter/">Nous contacter</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+			<?php 
+			if (empty($_SESSION['nickname']))
+				{
+				echo '<a href="/connexion/">Se connecter</a>';
+				}
+			else
+				{
+				echo '<a href="/connexion/">'.$_SESSION['nickname'].'</a>'; 
+				}
+			?>			
+			</li>
+            <li><a href="/inscription/" style="color : rgb(247, 196, 6)!important;"><strong>S'inscrire</strong></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+ 
+		<div class="spacer"></div>
+	</header>
+	<article id="content">
+		<?php $this->display("".$this->tpl_vars['include'].""); ?>
+	</article>
+</div>
+
+<!--  =====================================================================	-->
+<!-- 		JAVASCRIPT 														-->													 
+<!--  =====================================================================	-->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="bootstrap/assets/js/vendor/jquery.min.js"><\/script>')</script>
+		<script src="bootstrap/js/bootstrap.js"></script>
+		<script src="bootstrap/js/scroll_animate.js" type="text/javascript"></script>
+		<!-- IE10 viewport Windows 8 bug -->
+		<script src="bootstrap/assets/js/ie10-viewport-bug-workaround.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.7.2.js"></script>
+	
+
+<!--  =====================================================================	-->
+<!-- 		FOOTER	 														-->													 
+<!--  =====================================================================	-->
+		<div class="container ">
+			<hr class="featurette-divider">
+			<footer>
+			<div class="row">
+				<div class="col-sm-12 icones" style="margin-bottom : 10px;">
+					<a href="https://fr-fr.facebook.com/pages/Forum-Est-Horizon/225296360945762" target="_blank" title="Visitez notre page Facebook">
+						<img  src="/themes/feh/images/reseaux sociaux/fb.png">
+					</a>
+					<a title="Visitez notre page LinkedIn" target="_blank" href="https://fr.linkedin.com/company/9339999"> 
+						<img src="/themes/feh/images/reseaux sociaux/in.png">
+					</a>
+					<a href="https://twitter.com/forumesthorizon" target="_blank" title="Visitez notre page Twitter">
+						<img src="/themes/feh/images/reseaux sociaux/twitter.png" >
+					</a>
+				</div>
+				<div class="col-sm-12">
+					<p class="pull-right" ><a href="#" >Back to top</a></p>
+					<p>&copy; 2016 Forum Est-Horizon &middot; <a href="#" data-toggle="modal" data-target="#ModalPrivacy">Privacy</a> &middot; <a href="#" data-toggle="modal" data-target="#ModalTerms">Terms</a></p>
+				</div>
+			 </div>
+			 </footer>
+		</div>
+		
+		<!-- Privacy -->
+		<div id="ModalPrivacy" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Privacy</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>
+					<strong>Loi 1901</strong>
+				</p>
+				<p>
+					Le Forum Est-Horizon est une association de type loi 1901 à but non lucratif. Elle existe depuis 1984.
+					L'ensemble de ses membres sont des bénévoles.				
+				</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+			  </div>
+			</div>
+
+		  </div>
+		</div>		
+
+		<!-- Terms -->
+		<div id="ModalTerms" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Terms</h4>
+			  </div>
+			  <div class="modal-body">
+				<p>
+					<strong>Développeurs</strong>
+				</p>
+				<p>
+					Ce site a été développé par Julien Blatecky et Johan Dufau, anciens responsables informatique du Forum Est-Horizon, 
+					avec l'aide précieuse de Ludovic Vanhove, ancien responsable Logistique.
+					Nous sommes tous élèves à l'École des Mines de Nancy.
+				</p>
+				<p>
+					<strong>Hébergeur </strong>
+				</p>
+				<p>
+					L'hébergement de notre site Internet est assuré par OVH.
+				</p>
+				<p>
+					<strong>Technologies </strong>
+				</p>
+				<p>
+					Pour propulser ce site, nous utilisons un gestionnaire de contenu (CMS) codé par nos soins et nommé Wity.
+					Pour l'affichage des pages, nous utilisons uniquement HTML, CSS et JavaScript.
+					Notre site est compatible avec Internet Explorer 6 et 7 mais le rendu n'est optimum que sur des navigateurs 
+					récents (Firefox 3.6, Internet Explorer 8, ...).
+				</p>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+			  </div>
+			</div>
+
+		  </div>
+		</div>	
+
+</body>
+
+</html>

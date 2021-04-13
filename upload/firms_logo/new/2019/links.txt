@@ -1,0 +1,58 @@
+14*http://www.abylsen.com/fr*Abylsen Est
+16*http://www.recrute.accenture.fr*Accenture
+83*https://www.alten.fr*Alten
+87*http://www.altran.com*Altran
+95*http://www.anrt.asso.fr*ANRT CIFRE
+117*http://www.sengager.fr*Armée de Terre
+132*http://fr.atos.net/*Atos
+185*http://group.bnpparibas/emploi-carriere*BNP Paribas
+280*https://www.clubmedjobs.fr*Club Med
+292*http://www.colas.com*Colas Nord Est
+343*https://www.3ds.com/fr/*Dassault Système
+386*https://mines-nancy.univ-lorraine.fr/*Ecole des Mines de Nancy
+390*http://www.edf.fr*EDF
+426*http://www.ey.com/fr/carrieres*EY Services France
+442*http://www.essec.edu*ESSEC
+495*https://www.eiffageenergiesystemes.com*Eiffage Energie
+541*http://www.gfi.world*Gfi
+576*http://orange.jobs*Orange
+626*http://www.ifp-school.com*IFP School
+682*http://www.kleegroup.com*Klee
+765*http://www.etremarin.fr*Marine Nationale
+771*https://www.mazarsrecrute.fr*Mazars
+812*http://murex.com*Murex
+858*http://www.oresys-recrute.eu*ORESYS
+919*https://fr.prysmiangroup.com/*Prysmian
+958*https://www.rte-france.com*RTE
+1051*http://www.wavestone.com*Wavestone Luxembourg
+1223*http://www.deloitte.com/lu*Deloitte Luxembourg
+1238*http://peel.univ-lorraine.fr/*Peel
+1242*https://versusmind.eu*Versusmind
+1245*https://www.e-i.com/*EURO-INFORMATION
+1255*https://www.fivesgroup.com/fr/?no_cache=1*Fives Nordon
+1260*https://www.arketeam.com*ARKETEAM
+1285*http://www.aeriades.org*AERIADES
+1287*http://jump-technology.com*JUMP Technology
+1305*http://www.fr.capgemini.com/carrieres*Capgemini
+1332*https://www.transdigm.com/*Leach International Europe
+1356*http://www.soprasteria.com*Sopra Steria
+1368*https://home.kpmg/lu/en/home.html*KPMG Luxembourg
+1386*http://viantmedical.com/*Viant SAS Chaumont
+1454*http://www.saga-ingenierie.eu/*SAGA Ingenierie
+1510*http://choosemycompany.com/fr/*Choosemycompany.com
+1511*http://www.efor-group.fr/efor/*EFOR GROUP
+1513*http://www.tarkett.com*TARKETT GDL SA
+1548*https://goshaba.com*Goshaba
+1571*https://www.joinexpleogroup.com*Expleo Group
+1602*http://www.baudinchateauneuf.com*Baudin Chateauneuf
+1604*https://www.cameo-energy.com*CAMEO Energy
+1606*https://www.dedalus-france.fr*Dedalus France
+1607*http://www-dam.cea.fr/valduc/*CEA DAM
+1612*https://www.quinten-france.com*Quinten
+1617*https://www.bpifrance.fr*BPI France
+1619*https://www.eqiom.com*EQIOM
+1621*https://www.epitech.eu/fr/*EPITECH
+1622*https://www.gatewatcher.com/fr/*Gatewatcher
+1623*http://www.equancy.fr/fr/accueil*Equancy
+1628*https://www.kep-technologies.fr*Kep Technologies Integrated Systems
+1629*https://www.manuloc.fr*Manuloc

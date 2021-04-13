@@ -1,0 +1,103 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Informations entreprise</h2>
+		<ul>
+			<li>Créée le <strong><?php echo $this->tpl_vars['date']; ?></strong></li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<div class="item">
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<fieldset>
+			<legend>Informations sur l'entreprise</legend>
+			<input type="hidden" name="id" value="<?php echo $this->tpl_vars['id']; ?>" />
+			<table cellpadding="5" cellspacing="0">
+				<tr>
+					<td><strong>Nom de l'entreprise :</strong></td>
+					<td><?php echo $this->tpl_vars['name']; ?></td>
+				</tr>
+				<tr>
+					<td><strong>Secteur d'activité :</strong></td>
+					<td><?php echo $this->tpl_vars['cat']; ?></td>
+				</tr>
+				<tr>
+					<td><strong>Coordonnées :</strong></td>
+					<td><?php echo $this->tpl_vars['adress']; ?></td>
+				</tr>
+				<tr>
+					<td><strong>Code postal :</strong></td>
+					<td><?php echo $this->tpl_vars['postal_code']; ?></td>
+				</tr>
+				<tr>
+					<td><strong>Ville :</strong></td>
+					<td><?php echo $this->tpl_vars['city']; ?></td>
+				</tr>
+				<tr>
+					<td><strong>Pays :</strong></td>
+					<td><?php echo $this->tpl_vars['country']; ?></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<h2>Les contacts liés à cette entreprise</h2>
+		<table class="liste" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+				<col style="width: 30%;" />
+				<col style="width: 10%;" />
+			</colgroup>
+			<tr>
+				<th>Nom et prénom</th>
+				<th colspan="2">Informations</th>
+				<th>Actions</th>
+			</tr>
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['contact_block']) && is_array($this->tpl_vars['contact_block'])):
+	foreach ($this->tpl_vars['contact_block'] as $this->tpl_vars['contact']): ?>
+				<tr class="pair">
+					<td rowspan="7" class="tcenter"><strong><?php echo $this->tpl_vars['contact']['civilite']; ?> <?php echo strtoupper($this->tpl_vars['contact']['nom']); ?> <?php echo $this->tpl_vars['contact']['prenom']; ?></strong></td>
+					<td><strong>Poste :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['poste']; ?></td>
+					<td rowspan="7" class="tcenter">
+						<a href="/admin/entreprise/contact_edit/<?php echo $this->tpl_vars['contact']['id']; ?>" title="Editer">
+							<img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+						<a href="/admin/entreprise/contact_del/<?php echo $this->tpl_vars['contact']['id']; ?>" title="Supprimer">
+							<img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+					</td>
+				</tr>
+				<tr class="impair">
+					<td><strong>Langue parlée :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['langue']; ?></td>
+				</tr>
+				<tr class="pair">
+					<td><strong>Adresse :</strong></td>
+					<td><?php echo nl2br($this->tpl_vars['contact']['adresse']); ?></td>
+				</tr>
+				<tr class="impair">
+					<td><strong>Téléphone fixe :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['tel_fixe']; ?></td>
+				</tr>
+				<tr class="pair">
+					<td><strong>Téléphone portable :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['tel_portable']; ?></td>
+				</tr>
+				<tr class="impair">
+					<td><strong>Fax :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['fax']; ?></td>
+				</tr>
+				<tr class="pair">
+					<td><strong>Email :</strong></td>
+					<td><?php echo $this->tpl_vars['contact']['email']; ?></td>
+				</tr>
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+			<?php if ($this->tpl_vars['count'] == 0): ?>
+				<tr>
+					<td colspan="4" class="tcenter">Aucun contact n'a été trouvé pour cette entreprise</td>
+				</tr>
+			<?php endif; ?>
+		</table>
+	</div>
+</div>
+<div class="clear"></div>

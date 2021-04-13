@@ -1,0 +1,42 @@
+#box {
+	width: 1000px;
+	/*min-height: 100%;
+	height: auto !important;
+	height: 100%;*/
+}
+
+#fl_down_f {
+	display: none;
+}
+
+#participer {
+	width: 750px;
+}
+
+#files_down {
+	width: 160px;
+}
+
+#inscription {
+	width: 180px;
+}
+
+.button_hover {
+	border: 1px solid black;
+}
+
+.button {
+	border: 1px solid #666;
+}
+
+.ghost {
+	background: white;
+}
+
+#central_ci fieldset {
+	background: white;
+}
+
+.acces_inner {
+	background: white;
+}

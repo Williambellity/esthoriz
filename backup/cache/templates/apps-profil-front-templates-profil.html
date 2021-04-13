@@ -1,0 +1,87 @@
+<script type="text/javascript" src="/apps/profil/front/js/webforms2.js"></script>
+<div id="profil">
+<h1><span>Edition de votre profil</span></h1>
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<form method="post" id="edit_form" action="/profil/"> 
+	<table>
+		<tr>
+			<td><label for="civilite">Civilité :</label></td>
+			<td>
+				<select id="civilite" name="civilite">
+					<option <?php if (($this->tpl_vars['civilite']=='Mme')): ?>selected<?php endif; ?> value="Mme">Madame</option>
+					<option <?php if (($this->tpl_vars['civilite']=='Mlle')): ?>selected<?php endif; ?> value="Mlle">Mademoiselle</option>
+					<option <?php if (($this->tpl_vars['civilite']=='Mr')): ?>selected<?php endif; ?> value="Mr">Monsieur</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="nom">Nom :</label></td>
+			<td><input id="nom" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" required/></td>
+		</tr>
+		<tr>
+			<td id="error-nom" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="prenom">Prénom :</label></td>
+			<td><input id="prenom" name="prenom"  value="<?php echo $this->tpl_vars['prenom']; ?>" required/></td>
+		</tr>
+		<tr>
+			<td id="error-prenom" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="email">E-Mail / Login :</label></td>
+			<td><input id="email" name="email"  type="email" disabled="disabled" value="<?php echo $this->tpl_vars['email']; ?>" required/></td>
+		</tr>
+		<tr>
+			<td id="error-email" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="poste">Votre poste :</label></td>
+			<td><input id="poste" name="poste"  value="<?php echo $this->tpl_vars['poste']; ?>" required/></td>
+		</tr>
+		<tr>
+			<td id="error-poste" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="langue">Langue :</label></td>
+			<td><input id="langue" name="langue"  value="<?php echo $this->tpl_vars['langue']; ?>"/></td>
+		</tr>
+		<tr>
+			<td id="error-langue" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="adresse">Adresse postale :</label></td>
+			<td><textarea id="adresse" name="adresse" rows="5" cols="30" required><?php echo $this->tpl_vars['adresse']; ?></textarea></td>
+		</tr>
+		<tr>
+			<td id="error-adresse" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="tel_fixe">Téléphone :</label></td>
+			<td><input id="tel_fixe" name="tel_fixe"  type="tel" value="<?php echo $this->tpl_vars['tel_fixe']; ?>"/></td>
+		</tr>
+		<tr>
+			<td id="error-tel_fixe" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="tel_portable">Mobile :</label></td>
+			<td><input id="tel_portable" name="tel_portable"  type="tel" value="<?php echo $this->tpl_vars['tel_portable']; ?>"/></td>
+		</tr>
+		<tr>
+			<td id="error-tel_portable" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td><label for="fax">Fax :</label></td>
+			<td><input id="fax" name="fax"  type="tel" value="<?php echo $this->tpl_vars['fax']; ?>"/></td>
+		</tr>
+		<tr>
+			<td id="error-fax" class="form-error-indic" colspan="2"></td>
+		</tr>
+		<tr>
+			<td class="tcenter" colspan="2">
+				<input id="reg-button" name="submit" type="submit" value="Enregistrer" />
+			</td>
+		</tr>
+	</table>
+</form>
+</div>

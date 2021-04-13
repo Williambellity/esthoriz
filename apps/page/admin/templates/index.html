@@ -1,0 +1,41 @@
+<div id="content" class="large">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 5%;" />
+			<col style="width: 35%;" />
+			<col style="width: 20%;" />
+			<col style="width: 15%;" />
+			<col style="width: 15%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th class="sort <?php echo $this->tpl_vars['id_class']; ?>"><a href="/admin/page/id-<?php echo $this->tpl_vars['id_sort']; ?>/">#</a></th>
+			<th class="sort <?php echo $this->tpl_vars['title_class']; ?>"><a href="/admin/page/title-<?php echo $this->tpl_vars['title_sort']; ?>/">Titre</a></th>
+			<th class="sort <?php echo $this->tpl_vars['author_class']; ?>"><a href="/admin/page/author-<?php echo $this->tpl_vars['author_sort']; ?>/">Auteur</a></th>
+			<th class="sort <?php echo $this->tpl_vars['creation_time_class']; ?>"><a href="/admin/page/creation_time-<?php echo $this->tpl_vars['creation_time_sort']; ?>/">Date de création</a></th>
+			<th class="sort <?php echo $this->tpl_vars['edit_time_class']; ?>"><a href="/admin/page/edit_time-<?php echo $this->tpl_vars['edit_time_sort']; ?>/">Dernière édition</a></th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['pages_block']) && is_array($this->tpl_vars['pages_block'])):
+	foreach ($this->tpl_vars['pages_block'] as $this->tpl_vars['pages']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['pages']['id']; ?></td>
+				<td><strong><?php echo $this->tpl_vars['pages']['title']; ?></strong></td>
+				<td><?php echo $this->tpl_vars['pages']['author']; ?></td>
+				<td><?php echo $this->tpl_vars['pages']['creation_time']; ?></td>
+				<td><?php echo $this->tpl_vars['pages']['edit_time']; ?></td>
+				<td>
+					<a href="/admin/page/edit/<?php echo $this->tpl_vars['pages']['id']; ?>-<?php echo $this->tpl_vars['pages']['url']; ?>/" title="Editer"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/page/del/<?php echo $this->tpl_vars['pages']['id']; ?>-<?php echo $this->tpl_vars['pages']['url']; ?>/" title="Supprimer"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="6" class="tcenter">Aucune page n'a été ajoutée.</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

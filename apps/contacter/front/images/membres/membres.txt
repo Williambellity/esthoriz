@@ -1,0 +1,19 @@
+﻿president.jpg/Nicolas RAUX/Président/president@est-horizon.com/
+loic.jpg/Loic SALLEYRETTE/Vice-président/forum@est-horizon.com/
+guillaume.jpg/Guillaume DE CERTAINES/Secrétaire général/secretaire@est-horizon.com/
+valentin.jpg/Valentin CHANDOR/Trésorier/tresorerie@est-horizon.com/
+matthias.jpg/Matthias HAUTH/Responsable qualité/forum@est-horizon.com/
+solene.jpg/Solène GATTELIER/Responsable relations entreprises/relations-entreprises@est-horizon.com/
+eleonore.jpg/Eléonore SPAAK/Relations entreprises/eleonore.spaak@est-horizon.com/
+anne-cecile.jpg/Anne-Cécile BEQUET/Relations entreprises/anne-cecile.bequet@est-horizon.com/
+tristan.jpg/Tristan DARDOIZE/Relations entreprises/tristan.dardoize@est-horizon.com/
+victor.jpg/Victor PATRIN/Relations entreprises/victor.patrin@est-horizon.com/
+maxime.jpg/Maxime VERGES/Pré-Forum/preforum@est-horizon.com/
+paul.jpg/Paul BAUMANN/Pré-Forum/preforum@est-horizon.com/
+catherine.jpg/Catherine CHOU/Responsable communication/communication@est-horizon.com/
+antoine.jpg/Antoine FERRE/Communication/communication@est-horizon.com/
+alexis.jpg/Alexis CAILLON/PAO/communication@est-horizon.com/
+anatole.jpg/Anatole GEFFRAULT/Relations écoles/relation-ecoles@est-horizon.com/
+yanis.jpg/Yanis SASSI/Informatique/informatique@est-horizon.com/
+mathieu.jpg/Mathieu LASSERRE/Logistique/logistique@est-horizon.com/
+jeremy.jpg/Jérémy ALBRIEUX-CASTILLE/Logistique/logistique@est-horizon.com/

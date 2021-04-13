@@ -1,0 +1,110 @@
+<div id="blocks" style="width:40%">
+	<div class="block" style="width:100%">
+		<div class="top"></div>
+		<h2>Ajouter une réduction</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+				</colgroup>
+				<tr>
+					<td style="vertical-align:top;text-align:right" /><label for="nom">Nom :</label></td>
+					<td colspan="3" /><input id="nom" type="text" name="nom" style="width: 100%;"/><?php echo $this->tpl_vars['nom']; ?></input></td>
+				</tr>
+				<tr>
+					<td  style="text-align:right"><label for="taux">Taux (%) :</label></td>
+					<td><input id="taux" type="text" name="taux" value="<?php echo $this->tpl_vars['taux']; ?>" style="width: 90%;"/></td>
+					<td  style="text-align:right"><label for="applyTo">Concerne :</label></td>
+					<td><select id="applyTo" name="applyTo" style="width: 90%;"/>	
+							<option value="stand">Stand</option>
+							<option value="mobilier">Mobilier</option>
+							<option value="options">Options</option>
+							<option value="tout">Tout</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="block" style="width:100%;display:none;" id="edition" />
+		<div class="top"></div>
+		<h2>Editer une réduction</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+					<col style="width: 20%;" />
+					<col style="width: 30%;" />
+				</colgroup>
+				<tr>
+					<input id="idEdit" type="hidden" name="idEdit" value="" style="width: 90%;"/>
+					<td style="vertical-align:top;text-align:right" /><label for="nomEdit">Nom :</label></td>
+					<td colspan="3" /><input id="nomEdit" type="text" name="nomEdit" style="width: 100%;"/></input></td>
+				</tr>
+				<tr>
+					<td  style="text-align:right"><label for="tauxEdit">Taux (%) :</label></td>
+					<td><input id="tauxEdit" type="text" name="tauxEdit" value="" style="width: 90%;"/></td>
+					<td  style="text-align:right"><label for="applyToEdit">Concerne :</label></td>
+					<td><select id="applyToEdit" name="applyToEdit" style="width: 90%;"/>	
+							<option value="stand">Stand</option>
+							<option value="mobilier">Mobilier</option>
+							<option value="options">Options</option>
+							<option value="tout">Tout</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>	
+<div id="content"  style="width:59%">
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?> 
+<?php if ((isset($this->tpl_vars['def']) && $this->tpl_vars['def'])): ?>                                                 
+    <table class="liste">
+	<colgroup>
+		<col style="width: 5%; text-align:left" />
+		<col style="width: 50%; text-align:left" />
+		<col style="width: 10%; text-align:left" />
+		<col style="width: 30%; text-align:left" />
+		<col style="width: 5%; text-align:left" />
+	</colgroup>
+    <tr id="ligne">
+				<th> </th>
+				<th>Nom</th>
+				<th>Taux</th>
+				<th>Concerne</th>
+				<th>Actions</th>
+	</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['reduc_block']) && is_array($this->tpl_vars['reduc_block'])):
+	foreach ($this->tpl_vars['reduc_block'] as $this->tpl_vars['reduc']): ?>
+	<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+	<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>"  style="vertical-align:top;">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><?php echo $this->tpl_vars['reduc']['nom']; ?></td>
+				<td><?php echo $this->tpl_vars['reduc']['taux']; ?> %</td>
+				<td><?php echo $this->tpl_vars['reduc']['applyTo']; ?></td>
+				<td>	
+					<a href="/#edition" title="Editer" onclick="return editReduc(<?php echo $this->tpl_vars['reduc']['id']; ?>, '<?php echo $this->tpl_vars['reduc']['nom']; ?>', '<?php echo $this->tpl_vars['reduc']['taux']; ?>', '<?php echo $this->tpl_vars['reduc']['applyTo']; ?>');"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/logistic/del_reduc/<?php echo $this->tpl_vars['reduc']['id']; ?>/" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer la réduction <?php echo $this->tpl_vars['reduc']['nom']; ?> ?');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+
+    </table>
+<?php endif; ?>
+</div>
+<div class="clear"></div>

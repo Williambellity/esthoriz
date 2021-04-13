@@ -1,0 +1,45 @@
+<div id="contact-liste">
+	<?php if (!empty($this->tpl_vars['firmName'])): ?>
+		<u>Entreprise sélectionnée :</u> <strong><?php echo $this->tpl_vars['firmName']; ?></strong>
+	<?php endif; ?>
+	<div id="contacts-accordion">
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['contact_block']) && is_array($this->tpl_vars['contact_block'])):
+	foreach ($this->tpl_vars['contact_block'] as $this->tpl_vars['contact']): ?>
+			<h3>
+				<input type="checkbox" name="remplace[<?php echo $this->tpl_vars['contact']['id']; ?>]" />
+				<a href="/#"><?php echo $this->tpl_vars['contact']['civilite']; ?> <?php echo strtoupper($this->tpl_vars['contact']['nom']); ?> <?php echo $this->tpl_vars['contact']['prenom']; ?></a>
+			</h3>
+			<div>
+				<table>
+					<tr>
+						<th>Langue parlée :</th>
+						<td><?php echo $this->tpl_vars['contact']['langue']; ?></td>
+					</tr>
+					<tr>
+						<th>Adresse :</th>
+						<td><?php echo nl2br($this->tpl_vars['contact']['adresse']); ?></td>
+					</tr>
+					<tr>
+						<th>Téléphone fixe :</th>
+						<td><?php echo $this->tpl_vars['contact']['tel_fixe']; ?></td>
+					</tr>
+					<tr>
+						<th>Téléphone portable :</th>
+						<td><?php echo $this->tpl_vars['contact']['tel_portable']; ?></td>
+					</tr>
+					<tr>
+						<th>Fax :</th>
+						<td><?php echo $this->tpl_vars['contact']['fax']; ?></td>
+					</tr>
+					<tr>
+						<th>Email :</th>
+						<td><?php echo $this->tpl_vars['contact']['email']; ?></td>
+					</tr>
+				</table>
+			</div>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<p><strong>Aucun contact n'a été trouvé pour cette entreprise.</strong></p>
+		<?php endif; ?>
+	</table>
+</div>

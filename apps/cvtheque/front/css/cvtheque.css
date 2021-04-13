@@ -1,0 +1,74 @@
+
+#cv_form {
+	width: 950px;
+}
+
+.schedule table, .schedule td {
+	border: 1px solid black;
+}
+
+.box-center label {
+	cursor: pointer;
+}
+
+/*****************************************************************
+  TABLEAU POUR LISTER
+*****************************************************************/
+
+table.liste {
+	width: 100%;
+	border: 1px solid #ebebeb;
+	padding: 2px;
+	margin-bottom: 10px;
+}
+
+table.liste td {
+	padding: 8px;
+}
+
+table.liste em {
+	color: #cdcdcb;
+}
+
+table.liste th {
+	background: #f6d500;
+	padding: 8px;
+	text-align: left;
+}
+
+table.liste tr.pair {
+	
+}
+table.liste tr.impair {
+	background: #f3f3f3;
+}
+table.liste tr.pair:hover, table.liste tr.impair:hover {
+	background: #eaeae8;
+}
+
+/* Sorting Style */
+table.liste.sorted th.sort {
+    background-image: url('../../system/images/icones/small.gif');
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding-left: 20px;
+}
+table.liste.sorted th.sort a { color: #999999; }
+table.liste.sorted th.sort a:hover { color: #28b8f7; }
+table.liste.sorted th.sortAsc { background-image: url('../../system/images/icones/asc.gif'); }
+table.liste.sorted th.sortDesc { background-image: url('../../system/images/icones/desc.gif'); }
+
+table.liste {
+	border-collapse: collapse;
+	border-color: gray;
+	border-width: 1px;
+}
+
+table.liste td {
+	padding: 4px;
+	border: 1px solid gray; 
+}
+
+table.liste th {
+	text-align: center;
+}

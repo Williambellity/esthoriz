@@ -1,0 +1,90 @@
+<script type="text/javascript" src="/apps/forum/front/js/association.js"></script>
+<h1 class="hidden">L'association</h1>
+<div class="fleft">
+	<?php $this->display("apps/forum/front/templates/nav.html"); ?>
+	
+	<div class="box-left">
+		<h2><span>Association</span></h2>
+		<h3>Loi 1901</h3>
+		<p>Le Forum Est-Horizon est une association de type <em>loi 1901</em> à but non lucratif. Elle existe depuis 1984.</p> <!--maintenant 30 ans.</p>-->
+		<p>L'ensemble de ses membres sont des bénévoles.</p>
+	</div>
+	<div class="box-left">
+		<h2><span>Election</span></h2>
+		<h3>Une campagne tous les ans</h3>
+
+		<p>Chaque année, les membres de l'association sont élus par les élèves de l'Ecole des Mines de Nancy, après une campagne de 3 ou 4 jours.</p>
+		<p>Durant cette campagne, la coordination, l'entente, l'imagination, la gestion, la logistique et l'endurance sont mises à rude épreuve afin de prouver la compétence de l'équipe à organiser le Forum Est-Horizon.</p>
+	</div>
+</div>
+<div id="equipe" class="box-center fleft">
+	<h2><span>Notre équipe</span></h2>
+	
+	<p>Depuis sa création, en 1984, le Forum Est-Horizon est une association gérée par une équipe soudée de jeunes bénévoles&nbsp;: 20 élèves ingénieurs de Mines Nancy mettent leurs compétences au service des entreprises pour préparer ce grand événement.</p>
+	<p>Le Forum Est-Horizon est présidé par <strong>Corentin VERMEULEN</strong>.</p>
+	
+	<div id="trombi">
+						<?php
+						
+							/* fonctions ---------------------------------------------------------- */
+								
+							function serapateur($chaine)
+							{
+								$vecteur = array ();
+								$m = strlen($chaine);
+								$mot = "";
+								for ($i = 0 ; $i < $m ;$i++) 
+								{
+									$caractere = $chaine[$i];
+									if ($caractere != "/")
+									{
+										$mot .= $caractere;
+									}
+									else 
+									{
+									$vecteur[] = $mot;
+									$mot = "";
+									}
+								}
+								return $vecteur;
+							}
+							
+							
+							/* programme ---------------------------------------------------------- */
+							
+							$fp = fopen ("apps/forum/front/photos/2016/membres.txt",'rb');
+							
+							if (!$fp) 
+							{
+								echo "<p>Erreur d'ouverture de fichier</p>";
+							}
+							else {
+								$n = 0;
+								while (!feof($fp)) // voir si la lecture du fichier et terminée 
+								{
+									$membre = fgets($fp,999); 
+									echo "<div class='item'>";
+									$vecteur = serapateur ($membre);
+									echo '<img src="/apps/forum/front/photos/2016/'.$vecteur[0].'.png" alt="'.$vecteur[1].'" style="width: 80px"/><br />';
+									echo '<div><span title="nom">'.$vecteur[1].'</span><br />';
+									echo '<span title="poste">'.$vecteur[2].'</span><br />';
+									echo '<span title="email">'.$vecteur[3].'</span></div>';
+									echo "</div>";
+									$n++;
+								} 
+								/* fermeture ---------------------------------------------------------- */
+								fclose($fp);
+							}
+
+						?>		
+
+		<div class="spacer"></div>
+		</br>
+	</div>
+	<div id="infos">
+		<span id="infos_nom"></span><br /><br />
+		<strong>Fonction :</strong> <span id="infos_poste"></span><br />
+		<strong>Email :</strong> <span id="infos_email"></span>
+	</div>
+</div>
+<div class="spacer"></div>

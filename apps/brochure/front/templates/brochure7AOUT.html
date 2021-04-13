@@ -1,0 +1,158 @@
+<script type="text/javascript">
+	var isLogo = <?php echo $this->tpl_vars['isLogo']; ?>;
+	var firmid = <?php echo $this->tpl_vars['firmid']; ?>;
+</script>
+<script type="text/javascript" src="/apps/brochure/front/js/brochure.js"></script>
+
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<div style="height :50px; width : 100%;"> 
+</div>
+
+	<div class="article">
+		<div class="container marketing">
+			<div class="row featurette">
+				<div class="col-md-12">
+				  <h2 class="featurette-heading">Brochure<span class="text-muted"> </span></h2>
+				</div>
+				<form method="post" enctype="multipart/form-data" id="edit_form" action="">
+				<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="col-md-12 center-block">
+						  <h2 >Présentation générale</h4>
+						</div>
+						<div class="col-md-12">
+							<p class="text-justify">Secteur d’activité de l’entreprise, les différentes problématiques associées, </br>
+							les corps de métier, les spécialités, ses partenaires (d’autres entreprises notamment) 
+							avec lesquels les collaborateurs sont susceptibles de travailler,...
+							</p>
+							 <div class="form-group">
+								<label for="InputPresentation">Présentation</label>
+								<textarea type="text" class="form-control" id="InputPresentation" placeholder="Présentation" name="presentation" rows="8" style="height : 100%" ><?php echo $this->tpl_vars['presentation']; ?></textarea>
+							</div>							
+							 <div class="form-group">
+								<label for="InputMarques">Principales marques</label>
+								<textarea type="text" class="form-control" id="InputMarques" placeholder="Marques" name="marques" rows="8" style="height : 100%" ><?php echo $this->tpl_vars['marques']; ?></textarea>
+							</div>								
+						</div>
+						<div class="col-md-12 center-block">
+						  <h2 >Stages et recrutement</h4>
+						</div>
+						<div class="col-md-12">
+							 <div class="form-group">
+								<textarea type="text" class="form-control" id="InputSavoir" name="savoir" rows="8" style="height : 100%" ><?php echo $this->tpl_vars['savoir']; ?></textarea>
+							</div>								
+						</div>
+						<div class="col-md-12 center-block">
+						  <h2 >Message aux étudiants</h4>
+						</div>
+						<div class="col-md-12">
+							 <div class="form-group">
+								<textarea type="text" class="form-control" id="InputEtu" name="etu" rows="8" style="height : 100%" ><?php echo $this->tpl_vars['etu']; ?></textarea>
+							</div>								
+						</div>
+					</div>
+					
+					<div class="col-md-6">
+						<div class="col-md-12 center-block">
+						  <h2 >Etudiant</h4>
+						</div>
+						<div class="col-md-12">
+						
+							 <div class="form-group" id="td_logo">
+								<label for="InputMarques">Logo</label>
+								<img src="/apps/brochure/front/images/nologo.jpg" alt="logo" width="125" />
+							</div>		
+							 <div class="form-group">
+								<span id="ch_logo">
+									<span id="message_drop">Posez votre logo ici ou </span>
+									<span id="message_alt" class="hidden">Envoyez votre logo<br/></span>
+									<input type="button" id="parcourir" value="Parcourir"/>
+									<input type="file" class="hidden" name="choose_logo" id="choose_logo" accept="image/*"/>
+									<input type="checkbox" name="maudit_ie6" id="maudit_ie6" class="hidden"/>
+								</span>
+								<progress class="hidden" id="progressBar">Upload en cours...</progress>
+							</div>	
+							 <div class="form-group">
+								<label for="InputEntrep">Nom de l'entreprise</label>
+								<input type="text" class="form-control" id="InputEntrep" name="name" value="<?php echo $this->tpl_vars['name']; ?>" required>
+							</div>								
+							 <div class="form-group">
+								<label for="InputDomaine">Domaine</label>
+								<select class="form-control" id="InputDomaine" name="cat">
+									<option value="0">Indéfini</option>
+									<?php $this->tpl_vars['c']['count'] = -1;
+foreach($this->tpl_vars['cat_list'] as $this->tpl_vars['c']['key'] => $this->tpl_vars['c']['value']):
+$this->tpl_vars['c']['count']++; ?>
+									<option value="<?php echo $this->tpl_vars['c']['value']['id']; ?>"<?php if ($this->tpl_vars['c']['value']['id'] == $this->tpl_vars['cat']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['c']['value']['cat_name']; ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>	
+							 <div class="form-group">
+								<label for="InputFondateurs">Fondateurs</label>
+								<input type="text" class="form-control" id="InputFondateurs" name="f1"  value="<?php echo $this->tpl_vars['f1']; ?>" >
+								<input style="margin-top : 5px;" type="text" class="form-control" id="InputFondateurs" name="f2"  value="<?php echo $this->tpl_vars['f2']; ?>" >
+								<input style="margin-top : 5px;" type="text" class="form-control" id="InputFondateurs" name="f3"  value="<?php echo $this->tpl_vars['f3']; ?>" >
+								<input style="margin-top : 5px;" type="text" class="form-control" id="InputFondateurs" name="f4"  value="<?php echo $this->tpl_vars['f4']; ?>" >
+								<input style="margin-top : 5px;" type="text" class="form-control" id="InputFondateurs" name="f5"  value="<?php echo $this->tpl_vars['f5']; ?>" >
+							</div>		
+							 <div class="form-group">
+								<label for="InputDate">Date de création</label>
+								<input type="text" class="form-control" id="InputDate" name="creation_date" value="<?php echo $this->tpl_vars['creation_date']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputPDG">PDG actuel</label>
+								<input type="text" class="form-control" id="InputPDG" name="pdg"  value="<?php echo $this->tpl_vars['pdg']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputLieu">Lieu d'implantation</label>
+								<input type="text" class="form-control" id="InputLieu" name="implantation"  value="<?php echo $this->tpl_vars['implantation']; ?>">
+							</div>
+							 <div class="form-group">
+								<label for="InputEffectifs">Effectifs</label>
+								<input type="text" class="form-control" id="InputEffectifs" placeholder="Nombre" name="effectifs"  type="text" value="<?php echo $this->tpl_vars['effectifs']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputCA">CA annuel</label>
+								<input type="text" class="form-control" id="InputCA" placeholder="En million d'euros" name="ca" value="<?php echo $this->tpl_vars['ca']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputSiege">Adresse du siège social</label>
+								<input type="text" class="form-control" id="InputSiege" name="adress" value="<?php echo $this->tpl_vars['adress']; ?>">
+							</div>	
+							<div class="form-group">
+								<input type="hidden" id="co" name="co" value="<?php echo $this->tpl_vars['co']; ?>" />
+							</div>	
+							 <div class="form-group">
+								<label for="InputPostal">Code postal</label>
+								<input type="text" class="form-control" id="InputPostal" name="postal_code" value="<?php echo $this->tpl_vars['postal_code']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputVille">Ville</label>
+								<input type="text" class="form-control" id="InputVille" name="city" value="<?php echo $this->tpl_vars['city']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputPays">Pays</label>
+								<input type="text" class="form-control" id="InputPays" name="country" value="<?php echo $this->tpl_vars['country']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputURL">Site internet</label>
+								<input type="text" class="form-control" id="InputURL" name="website" type="url"  value="<?php echo $this->tpl_vars['website']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputRecrut">Adresse mail (recrutement) </label>
+								<input type="text" class="form-control" id="InputRecrut" name="contact" value="<?php echo $this->tpl_vars['contact']; ?>">
+							</div>	
+							 <div class="form-group">
+								<label for="InputTel">Téléphone</label>
+								<input type="text" class="form-control" id="InputTel" name="tel" value="<?php echo $this->tpl_vars['tel']; ?>">
+							</div>		
+						</div>
+					</div>				
+				<div class="col-md-12">
+					<button type="submit" class="btn btn-secondary center-block" name="submit" value="Enregistrer">Enregistrer</button>
+				</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>

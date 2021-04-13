@@ -1,0 +1,185 @@
+
+ <figure class="title">
+ <p><br/>Formulaire d'inscription</p></figure>
+
+<form method="post" enctype="multipart/form-data" class="frm" action=""> 
+	
+		Nom : 
+	<tr>
+		<td><label for="nom"></label></td><br/>
+		<td><input type = "text" id="nom" name= "nom" value= "" required/></td>
+	</tr>	
+	 
+	 </br></br>
+	 Prénom	: 	
+	 <tr>
+		<td><label for="prenom"></label></td><br/>
+		<td><input type = "text" id="prenom" name= "prenom" value= "" required/></td>
+	</tr>
+	 
+	 </br></br>
+	 e-mail	: 	
+	  <tr>
+		<td><label for="email"></label></td><br/>
+		<td><input type = "email" id="mail" name= "mail" value= "" required/></td>
+	</tr>
+	 
+	 </br> </br></br>
+	Quelle est votre formation?</br>
+	<tr>
+		<td><label for="ecole"></label></td>
+		<td>
+	 <select id="ecole" name= "ecole" required>
+		<option></option>
+		<option disabled="disabled">-UFR-</option>
+		<option value = "01">Sciences et Technologies</option>
+		<option value = "02">Faculté de Droit, Sciences Economiques et Gestion</option>
+		<option value = "03">Mathématiques et Informatique</option>
+		<option disabled="disabled">-Ecoles d'informatique-</p></option>
+		<option value = "04">EPITECH</option>
+		<option disabled="disabled">-Ecoles d'ingénieurs-</option>
+		<option value = "05">CESI</option>
+		<option value = "06">EEIGM</option>
+		<option value = "07">ENGREF</option>
+		<option value = "08">ENSAIA</option>
+		<option value = "09">ENSEM</option>
+		<option value = "10">ENSG</option>
+		<option value = "11">ENSGSI</option>
+		<option value = "12">ENSIC</option>
+		<option value = "13">ESSTIN</option>
+		<option value = "14">Mines Nancy</option>
+		<option value = "15">TELECOM Nancy</option>
+		<option disabled="disabled">-Ecoles de Management-</option>
+		<option value = "16">ICN</option>
+		<option value = "17">ISAM-IAE</option>
+		<option disabled="disabled">-Autre-</option>
+		<option value = "18">Autre</option>		
+	</select></td>
+	</tr>
+	
+	</br> 
+	Si "Autre" préciser : 
+	<tr>
+		<td><label for="autres"></label></td>
+		<td><input type = "text" id="autres" name= "autres" value= "" /></td>
+	</tr>
+	
+	</br></br></br>
+	
+	Comment connaissez-vous le Forum Est-Horizon ?</br>
+<tr>
+		<td><label for="connu1"></label></td>
+		<td><input type="checkbox" id="connu1" name="connu1" value="1">Réseaux sociaux<br></td>
+	</tr>
+		<tr>
+		<td><label for="connu2"></label></td>
+		<td><input type="checkbox" id="connu2" name="connu2" value="1">Site internet du Forum Est-Horizon<br></td>
+	</tr>
+	<tr>
+		<td><label for="connu3"></label></td>
+		<td><input type="checkbox" id="connu3" name="connu3" value="1">Via vos responsables de formations<br></td>
+	</tr>
+	<tr>
+		<td><label for="connu4"></label></td>
+		<td><input type="checkbox" id="connu4" name="connu4" value="1">Affiches publicitaires aux arrêts de tram<br></td>
+	</tr>
+	<tr>
+		<td><label for="connu5"></label></td>
+		<td><input type="checkbox" id="connu5" name="connu5" value="1">Mail de l'Université de Lorraine<br></td>
+	</tr>		
+		
+		
+		
+		
+	</br>
+	<input id="reg-button" name="submit" type="submit" value="S'inscrire" />
+	
+        
+				
+</form>
+			
+			
+<!--			
+<form method="post" id="customForm" action="">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<br />
+			<a href="javascript:void(0)" onclick="ajouterligne();">
+				<img src="/apps/fdh/admin/templates/ico_plus.png" alt="+" /> <strong>Ajouter une ligne</strong></a>
+			<br /><br />
+			<a href="javascript:void(0)" onclick="suppligne();">
+				<img src="/apps/fdh/admin/templates/ico_moins.png" alt="-"/> <strong>Retirer une ligne</strong></a>
+			<br />
+			<input id="submit" class="button-submit" type="submit" value="Send" />
+		</div>
+	</div>
+	<div id="content"> 
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col style="width: 5%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+			</colgroup>
+			<tr id="ligne">
+				<th>N&deg;</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Bus de retour</th>
+				<th>Mode de paiement</th>
+			</tr>
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['a_reinscrire_block']) && is_array($this->tpl_vars['a_reinscrire_block'])):
+	foreach ($this->tpl_vars['a_reinscrire_block'] as $this->tpl_vars['a_reinscrire']): ?>
+			<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+			<tr id="row-<?php echo $this->tpl_vars['t']; ?>" class="<?php if ($this->tpl_vars['count'] % 2 == 1): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><input name="nom[]" type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['nom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['nom']; ?>"<?php endif; ?> /></td>
+				<td><input name="prenom[]" type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['prenom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['prenom']; ?>"<?php endif; ?> /></td>
+				<td>
+					<select name="bus[]">
+					<?php if ((!empty($this->tpl_vars['a_reinscrire']['bus']))): ?>
+						<option value="<?php echo $this->tpl_vars['a_reinscrire']['bus']; ?>"><?php echo $this->tpl_vars['a_reinscrire']['bus_lieu']; ?><?php if (($this->tpl_vars['a_reinscrire']['bus_numero'] !=0)): ?> N°<?php echo $this->tpl_vars['a_reinscrire']['bus_numero']; ?><?php endif; ?>-<?php echo $this->tpl_vars['a_reinscrire']['bus_heure']; ?></option>
+					<?php else: ?>
+						<option value="0">Veuillez choisir un bus</option>
+					<?php endif; ?>
+					<?php echo $this->tpl_vars['bus_select']; ?>
+					</select> 
+				</td>
+				<td>
+					<select name="paymod[]">
+						<option value="0">Moyen de paiement</option>
+						<option value="1" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==1))): ?>selected="selected"<?php endif; ?>>Chèque(ordre : Forum Est-Horizon)</option>
+						<option value="2" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==2))): ?>selected="selected"<?php endif; ?>>Liquide</option>
+						<?php if (isset($this->tpl_vars['enable'])): ?>
+						<option value="3" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==3))): ?>selected="selected"<?php endif; ?>>Exonéré</option>
+						<?php endif; ?>
+					</select> 
+				</td>
+			</tr>
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</table>
+		
+		<script type="text/javascript">
+			var current = <?php echo $this->tpl_vars['t']; ?>;
+			
+			function ajouterligne() {
+				current++;
+				$('#row-1').clone().attr('id', 'row-'+current).insertAfter('#row-'+(current-1));
+				$('#row-'+current).find('input').val('');
+				$('#row-'+current).find('select').val(0);
+				$('#row-'+current).find('td').first().html(current);
+			}
+			
+			function suppligne() {
+				if (current > 1) {
+					$('#row-'+current).remove();
+					current--;
+				}		
+			}
+		</script>
+	</div>
+</form>
+<div class="clear"></div>-->

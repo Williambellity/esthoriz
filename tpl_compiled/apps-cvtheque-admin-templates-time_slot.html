@@ -1,0 +1,105 @@
+<script type="text/javascript">
+	$(function() {
+		var trans, firmid, firmName = '';
+		$('#firm').autocomplete({
+			source: function(objRequest, response) {
+				$.ajax({
+					method: 'get',
+					url: '<?php echo $this->tpl_vars['base']; ?>admin/entreprise/ajax_firms/',
+					data: "term="+objRequest.term,
+					beforeSend: function(){
+						$('#firm').addClass('loading');
+					},
+					complete: function(){
+						$('#firm').removeClass('loading');
+					}, //stop showing loading when the process is complete
+					success: function(result){
+						var res = $.parseJSON(result);
+						trans = res.trans;
+						response(res.data);
+					},
+					error: function() {
+						alert('Erreur lors du chargement de la liste des entreprises.');
+					}
+				});
+			},
+			// Lorsqu'un item est sélectionné dans la liste
+			select: function(event, ui) {
+				firmid = trans[ui.item.value];
+				$.ajax({
+					method: 'get',
+					url: '<?php echo $this->tpl_vars['base']; ?>admin/entreprise/ajax_contacts/',
+					data: "firmid="+firmid,
+					beforeSend: function(){
+						$('#replaceTitle').addClass('loading');
+					},
+					complete: function(){
+						$('#replaceTitle').removeClass('loading');
+					}, //stop showing loading when the process is complete
+					success: function(result){
+						$('#contact-liste').replaceWith(result);
+						accordion();
+					},
+					error: function() {
+						alert('Erreur lors du chargement des contacts.');
+					}
+				});
+				$('#firmid').attr('value', firmid);
+			}
+		});
+		
+		var i = 0;
+		$('#plus').click(function() {
+			$('#cr0').clone().attr('id', 'cr'+(i+1)).insertAfter($('#cr'+i));
+			i++;
+		});
+	});
+</script>
+<div id="content" class="large">
+	<div class="item">
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<form action="" method="post">
+			<h2>Ajout d'un créneau</h2>
+			<fieldset>
+				<legend>Intervenant</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="name">Nom de l'intervenant :</label></td>
+						<td><input id="name" type="text" name="name" value="" /></td>
+					</tr>
+					<tr>
+						<td><label for="firm">Entreprise :</label></td>
+						<td>
+							<input id="firm" type="text" name="firm" value="" />
+							<input id="firmid" type="hidden" name="firmid" />
+						</td>
+					</tr>
+					<tr>
+						<td><label for="desc">Courte description :</label></td>
+						<td><textarea id="desc" name="desc" rows="8" cols="30"></textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			<div id="creneaux">
+				<fieldset>
+					<legend>Créneaux</legend>
+					<table cellpadding="5" cellspacing="0">
+						<tr>
+							<th>Début du créneau <em>(format : 15:00)</em></th>
+							<th>Durée <em>(en minutes)</em></th>
+							<th>Nombré de créneaux</th>
+						</tr>
+						<tr id="cr0">
+							<td><input id="start" type="text" name="start[]" value="" /></td>
+							<td><input id="duration" type="text" name="duration[]" value="" /></td>
+							<td><input id="number" type="text" name="number[]" value="" /></td>
+						</tr>
+					</table>
+					<p><a id="plus" href="javascript:void(0);">+ 1 créneau</a></p>
+				</fieldset>
+			</div>
+			<div><input type="submit" class="button-submit" value="Ajouter le créneau" /></div>
+		</form>
+	</div>
+</div>
+<div class="clear"></div>

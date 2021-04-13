@@ -1,0 +1,137 @@
+<div id="blocks" style="width:40%" />
+	<div class="block" style="width:100%" id="add"/>
+		<div class="top"></div>
+		
+		<h2><?php if (!isset($this->tpl_vars['edit'])): ?>Ajouter un type de Lot<?php else: ?>Editer un type de Lot<?php endif; ?></h2>
+		<form action="<?php if (isset($this->tpl_vars['edit'])): ?>../<?php endif; ?>" method="post" enctype="multipart/form-data"/>
+			<?php if (isset($this->tpl_vars['edit'])): ?><input name="idEdit" value="<?php echo $this->tpl_vars['idEdit']; ?>" type="hidden" /><?php else: ?><input name="idEdit" value="false" type="hidden" /><?php endif; ?>
+			<fieldset>
+				<legend>Informations générales</legend>
+				<table style="width: 100%;" />
+					<colgroup>
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 40%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 40%; text-align:left" />
+					</colgroup>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" style="width: 90%;" /></td>
+						<td><label for="prix" />Prix :</label></td>
+						<td><input id="prix" type="text" name="prix" value="<?php echo $this->tpl_vars['prix']; ?>"  style="width: 90%;" /></td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top" /><label for="description">Description</label></td>
+						<td colspan="3" /><textarea id="description" type="text" name="description" style="width: 100%; height:70px"/><?php echo $this->tpl_vars['description']; ?></textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Eléments</legend>
+				<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['elements_block']) && is_array($this->tpl_vars['elements_block'])):
+	foreach ($this->tpl_vars['elements_block'] as $this->tpl_vars['elements']): ?>
+					<!---<?php echo $this->tpl_vars['elements']['type']; ?>-->
+					<legend><?php echo $this->tpl_vars['elements']['type_nom']; ?><img src="/themes/system/images/icones/add.png" onclick="ajouterligne('<?php echo $this->tpl_vars['elements']['type']; ?>');" id="addbutton"/> <img src="/themes/system/images/icones/del.png" onclick="suppligne('<?php echo $this->tpl_vars['elements']['type']; ?>');" /></legend>
+					<?php if ($this->tpl_vars['t'] = 0): ?><?php endif; ?>
+					<?php $this->tpl_vars['element']['count'] = -1;
+foreach($this->tpl_vars['elements']['values'] as $this->tpl_vars['element']['key'] => $this->tpl_vars['element']['value']):
+$this->tpl_vars['element']['count']++; ?>
+						<?php if ($this->tpl_vars['t'] = $this->tpl_vars['t']+1): ?><?php endif; ?> 
+						<div id="<?php echo $this->tpl_vars['elements']['type']; ?>_<?php echo $this->tpl_vars['t']; ?>" style="margin:5px;">Nom :				
+							<input id="nom" type="text" name="<?php echo $this->tpl_vars['elements']['type']; ?>_nom[]" value="<?php echo $this->tpl_vars['element']['value']['nom']; ?>" style="width: 25%;" />
+							Nombre :
+							<select id="nombre" type="text" name="<?php echo $this->tpl_vars['elements']['type']; ?>_number[]"  style="width: 15%;" />
+								<option value="0" <?php if ($this->tpl_vars['element']['value']['number']==0): ?>selected<?php endif; ?>>0</option>
+								<option value="1" <?php if ($this->tpl_vars['element']['value']['number']==1): ?>selected<?php endif; ?>>1</option>
+								<option value="2" <?php if ($this->tpl_vars['element']['value']['number']==2): ?>selected<?php endif; ?>>2</option>
+								<option value="3" <?php if ($this->tpl_vars['element']['value']['number']==3): ?>selected<?php endif; ?>>3</option>
+								<option value="4" <?php if ($this->tpl_vars['element']['value']['number']==4): ?>selected<?php endif; ?>>4</option>
+								<option value="5" <?php if ($this->tpl_vars['element']['value']['number']==5): ?>selected<?php endif; ?>>5</option>
+							</select>
+							Prix :
+							<input type="text" name="<?php echo $this->tpl_vars['elements']['type']; ?>_prix[]" value="<?php echo $this->tpl_vars['element']['value']['prix']; ?>"  style="width: 15%;" />
+						</div>
+					<?php endforeach; ?>
+				<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+			</fieldset>
+			<fieldset>
+				<legend>Couleurs & Accessoires</legend>
+				<legend>Couleurs</legend>
+				<input id="nom" type="text" name="color" value="<?php echo $this->tpl_vars['color']; ?>" style="width: 100%;" />
+				<br/><i>Séparer les couleurs par #</i><br/>
+				<?php if ((isset($this->tpl_vars['def_all']) && $this->tpl_vars['def_all'])): ?>  
+				<legend>Accessoires</legend>
+					<select name="accessoire_spec[]" MULTIPLE SIZE=5 style="width:100%"/>
+						<option value="0" <?php if (!$this->tpl_vars['accessoire_specific_lot']): ?>selected<?php endif; ?> />Aucun</option>
+						<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['accessoire_specific_block']) && is_array($this->tpl_vars['accessoire_specific_block'])):
+	foreach ($this->tpl_vars['accessoire_specific_block'] as $this->tpl_vars['accessoire_specific']): ?>
+							<option value="<?php echo $this->tpl_vars['accessoire_specific']['id']; ?>"<?php if ($this->tpl_vars['accessoire_specific']['select']): ?> selected<?php endif; ?> /><?php echo $this->tpl_vars['accessoire_specific']['nom']; ?></option>
+						<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+				<?php else: ?>
+					<input type="hidden" value="0" name="accessoire_spec" />
+				<?php endif; ?>
+			</fieldset><br/>
+			<center><input type="submit" value="<?php if (!isset($this->tpl_vars['edit'])): ?>Ajouter<?php else: ?>Editer<?php endif; ?>" /></center>
+		</form>
+	</div>
+</div>
+<div id="content" style="width:59%"> 
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<?php if ((isset($this->tpl_vars['def']) && $this->tpl_vars['def'])): ?> 
+		<table class="liste" style = "width:100%">
+				<colgroup>
+						<col style="width: 8%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 10%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 25%; text-align:left" />
+						<col style="width: 5%; text-align:left" />
+				</colgroup>
+				<tr id="ligne">
+					<th>Nom</th>
+					<th>Prix</th>
+					<th>Description</th>
+					<th>Couleurs</th>
+					<th>Composition</th>
+					<th>Accessoires</th>
+					<th>Actions</th>
+				</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['lot_block']) && is_array($this->tpl_vars['lot_block'])):
+	foreach ($this->tpl_vars['lot_block'] as $this->tpl_vars['lot']): ?>
+		<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+				<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>" style="vertical-align: Text-top;">
+					<td><?php echo $this->tpl_vars['lot']['nom']; ?></td>
+					<td><?php echo $this->tpl_vars['lot']['prix']; ?> €</td>
+					<td><?php echo $this->tpl_vars['lot']['description']; ?></td>
+					<td><?php $this->tpl_vars['a']['count'] = -1;
+foreach($this->tpl_vars['lot']['color'] as $this->tpl_vars['a']['key'] => $this->tpl_vars['a']['value']):
+$this->tpl_vars['a']['count']++; ?><li style="margin-left:10px"><?php echo $this->tpl_vars['a']['value']; ?></LI><?php endforeach; ?></td>
+					<td><?php $this->tpl_vars['element']['count'] = -1;
+foreach($this->tpl_vars['lot']['elements'] as $this->tpl_vars['element']['key'] => $this->tpl_vars['element']['value']):
+$this->tpl_vars['element']['count']++; ?>
+						<legend><?php echo $this->tpl_vars['element']['value']['nom']; ?></legend>
+							<?php $this->tpl_vars['l']['count'] = -1;
+foreach($this->tpl_vars['element']['value']['values'] as $this->tpl_vars['l']['key'] => $this->tpl_vars['l']['value']):
+$this->tpl_vars['l']['count']++; ?>
+								<li style="margin-left:10px;"><?php echo $this->tpl_vars['l']['value']['nombre']; ?> <?php echo $this->tpl_vars['l']['value']['nom']; ?>;Prix: <?php echo $this->tpl_vars['l']['value']['prix']; ?>€</li>							
+							<?php endforeach; ?>
+					<?php endforeach; ?>
+					</td>
+					<td>				
+					<?php $this->tpl_vars['acc']['count'] = -1;
+foreach($this->tpl_vars['lot']['accessoires_specific'] as $this->tpl_vars['acc']['key'] => $this->tpl_vars['acc']['value']):
+$this->tpl_vars['acc']['count']++; ?>
+						<li style="margin-left:10px;"><?php echo $this->tpl_vars['acc']['value']['nom']; ?>; Prix: <?php echo $this->tpl_vars['acc']['value']['prix']; ?> €</li>
+					<?php endforeach; ?>					
+					</td>
+					<td>
+						<a href="/admin/logistic/type_lots/edit/<?php echo $this->tpl_vars['lot']['id']; ?>" title="Editer le lot"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+						<a href="/admin/logistic/del_lot/<?php echo $this->tpl_vars['lot']['id']; ?>" onclick="return confirm('Voulez-vous vraiment supprimer le lot <?php echo $this->tpl_vars['lot']['nom']; ?> ?');" title="Supprimer"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+					</td>
+				</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</table>
+<?php endif; ?>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,97 @@
+<div id="blocks" style="width:60%">
+	<div class="block" style="width:100%">
+		<div class="top"></div>
+		<h2>Ajouter un type de Stand</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 25%; text-align:left" />
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 25%; text-align:left" />
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 20%; text-align:left" />
+				</colgroup>
+				<tr>
+					<td><label for="taille">Taille :</label></td>
+					<td><input id="taille" type="text" name="taille" value="" style="width: 90%;"/></td>
+					<td><label for="prix">Prix :</label></td>
+					<td><input id="prix" type="text" name="prix" value=""  style="width: 90%;"//></td>
+					<td><label for="nbstand">Nbstand :</label></td>
+					<td><input id="nbstand" type="text" name="nbstand" value=""  style="width: 90%;"//></td>
+				</tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="block" style="width:100%;display:none;" id="edition">
+		<div class="top"></div>
+		<h2>Editer un type de Stand</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<colgroup>
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 25%; text-align:left" />
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 25%; text-align:left" />
+					<col style="width: 10%; text-align:left" />
+					<col style="width: 20%; text-align:left" />
+				</colgroup>
+				<tr>
+					<input id="idEdit" type="hidden" name="idEdit" value=""/>
+					<td><label for="tailleEdit">Taille :</label></td>
+					<td><input id="tailleEdit" type="text" name="tailleEdit" value="" style="width: 90%;"/></td>
+					<td><label for="prixEdit">Prix :</label></td>
+					<td><input id="prixEdit" type="text" name="prixEdit" value=""  style="width: 90%;"//></td>
+					<td><label for="nbstandEdit">Nbstand :</label></td>
+					<td><input id="nbstandEdit" type="text" name="nbstandEdit" value=""  style="width: 90%;"//></td>
+				</tr>
+				<tr>
+					<td colspan="4" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>	
+<div id="content"  style="width:40%">
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?> 
+<?php if ((isset($this->tpl_vars['def']) && $this->tpl_vars['def'])): ?>                                                 
+    <table class="liste">
+	<colgroup>
+		<col style="width: 10%; text-align:left" />
+		<col style="width: 40%; text-align:left" />
+		<col style="width: 10%; text-align:left" />
+		<col style="width: 10%; text-align:left" />
+	</colgroup>
+    <tr id="ligne">
+				<th> </th>
+				<th>Taille</th>
+				<th>Prix</th>
+				<th>Nbstand</th>
+				<th>Action</th>
+			</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['stand_block']) && is_array($this->tpl_vars['stand_block'])):
+	foreach ($this->tpl_vars['stand_block'] as $this->tpl_vars['stand']): ?>
+	<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+	<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><?php echo $this->tpl_vars['stand']['taille']; ?> m²</td>
+				<td><?php echo $this->tpl_vars['stand']['prix']; ?> €</td>
+				<td><?php echo $this->tpl_vars['stand']['nbstand']; ?></td>
+				<td>	
+					<a href="/#edition" title="Editer" onclick="return editStand(<?php echo $this->tpl_vars['stand']['id']; ?>, '<?php echo $this->tpl_vars['stand']['taille']; ?>', '<?php echo $this->tpl_vars['stand']['prix']; ?>');"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/logistic/del_stand/<?php echo $this->tpl_vars['stand']['id']; ?>/" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer le stand de <?php echo $this->tpl_vars['stand']['taille']; ?> m² ?');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+
+    </table>
+<?php endif; ?>
+</div>
+<div class="clear"></div>

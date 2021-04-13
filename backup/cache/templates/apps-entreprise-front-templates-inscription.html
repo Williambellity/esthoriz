@@ -1,0 +1,115 @@
+<script type="text/javascript" src="/apps/entreprise/front/js/register.js"></script>
+<form method="post" id="register_form" action="/entreprise/inscription/"> 
+	<div class="status_form">
+		<img src="/themes/feh/images/beg_status.png" />
+		<!--Ici les images des étapes du formulaire-->
+		<a href="javascript:void(0);"><img class="active" id="p1_status" src="/themes/feh/images/firm.png" alt="Votre Entreprise" /></a>
+		<a href="javascript:void(0);"><img class="inactive" id="p2_status" src="/themes/feh/images/contact_inactive.png" alt="Contact" /></a>
+		<a href="javascript:void(0);"><img class="inactive" id="p3_status" src="/themes/feh/images/login_inactive.png" alt="Login" /></a>
+		<img src="/themes/feh/images/end_status.png" />
+	</div>
+    <div class="page page1">
+		<input class="hidden" id="index" />
+		<p>Ceci est le formulaire d'inscription pour devenir un exposant au <strong>Forum Est-Horizon</strong>.</p>
+		<table>
+			<tr>
+				<td><label class="center" for="firm">Nom de votre entreprise :</label></td>
+			</tr>
+			<tr>
+				<td><input id="firm" name="firm" /></td>
+			</tr>
+		</table>	
+		<span id="error-firm" class="form-error-indic"></span>	
+    </div>
+    <div class="page page2 hidden">
+		<table>
+			<tr>
+				<td><label for="civi">Civilité :</label></td>
+				<td>
+					<select id="civi" name="civi">
+						<option value="Mme">Madame</option>
+						<option value="Mlle">Mademoiselle</option>
+						<option value="Mr">Monsieur</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="name">Nom :</label></td>
+				<td><input id="name" name="name" /></td>
+			</tr>
+			<tr>
+				<td id="error-name" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="fname">Prénom :</label></td>
+				<td><input id="fname" name="fname" /></td>
+			</tr>
+			<tr>
+				<td id="error-fname" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="poste">Votre poste :</label></td>
+				<td><input id="poste" name="poste" /></td>
+			</tr>
+			<tr>
+				<td id="error-poste" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="address">Adresse postale<br/>de l'entreprise :</label></td>
+				<td><textarea id="address" name="address" rows="5" cols="30"></textarea></td>
+			</tr>
+			<tr>
+				<td id="error-address" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="tel">Téléphone :</label></td>
+				<td><input id="tel" name="tel" /></td>
+			</tr>
+			<tr>
+				<td id="error-tel" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="mob">Mobile :</label></td>
+				<td><input id="mob" name="mob" /></td>
+			</tr>
+			<tr>
+				<td id="error-mob" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="fax">Fax :</label></td>
+				<td><input id="fax" name="fax" /></td>
+			</tr>
+			<tr>
+				<td id="error-fax" class="form-error-indic" colspan="2"></td>
+			</tr>
+		</table>
+    </div>
+    <div class="page page3 hidden">
+		<table>
+			<tr>
+				<td><label for="mail">E-mail :</label></td>
+				<td><input id="mail" name="mail" /></td>
+			</tr>
+			<tr>
+				<td id="error-mail" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td><label for="password">Mot de passe :</label></td>
+				<td><input id="password" type="password" name="password" /></td>
+			</tr>
+			<tr>
+				<td id="error-password" class="form-error-indic" colspan="2"></td>
+			</tr>
+			<tr>
+				<td class="tcenter" colspan="2">
+					<input id="reg-button" disabled=true name="submit" type="submit" value="Valider" />
+				</td>
+			</tr>
+		</table> 
+    </div>
+	<div class="spacer"></div>
+	<div class="navig">
+		<a href="javascript:void(0);"><img class="last inactive" src="/themes/feh/images/last_inactive.png" alt="Précédente"/></a>
+		<a href="javascript:void(0);"><img class="next inactive" src="/themes/feh/images/next_inactive.png" alt="Suivante"/></a>
+	</div>
+</form>

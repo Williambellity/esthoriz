@@ -1,0 +1,44 @@
+#liste_expos {
+}
+
+.vignette {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #666666;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 2px 5px #666666;
+    float: left;
+    margin: 7px;
+    padding: 5px;
+    text-shadow: 0 0 5px #FFFFFF;
+}
+
+.vignette p {
+    height:90px;
+    margin: 0;
+    text-align:center; /* centrage horizontal d'un élément en-ligne */
+}
+
+.vignette p span {
+	line-height:90px;
+}
+
+.vignette img {
+    vertical-align:middle;
+    max-height: 90px;
+    max-width: 90px;
+}
+
+#files_down h2 {
+	margin-top: 0;
+}
+
+#files_down ul {
+	list-style-image: url('/apps/participer/front/images/pdf.png');
+	padding: 0 0 0 30px;
+}
+
+#files_down ul li {
+	font-style: italic;
+	font-size: 1.1em;
+}

@@ -1,0 +1,79 @@
+<script type="text/javascript" src="/apps/complement/front/js/webforms2.js"></script>
+<div style="height :100px; width : 100%;"> 
+</div>
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+
+<div class="article">
+	<div class="container marketing">
+		<div class="row featurette">
+			<div class="col-md-12">
+				<h2 class="featurette-heading">Édition de vos données<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-12">
+				<div class="col-md-3">
+				</div>
+				<div class="col-md-6">
+					<form method="post" id="edit_form" enctype="multipart/form-data" target="_blank" >
+							<input type="hidden" id="name" name="name" value="<?php echo $this->tpl_vars['name']; ?> ">
+							<input type="hidden" id="adress" name="adress" value="<?php echo $this->tpl_vars['adress']; ?> ">
+							<input type="hidden" id="pc" name="pc" value="<?php echo $this->tpl_vars['postal_code']; ?> ">
+							<input type="hidden" id="city" name="city" value="<?php echo $this->tpl_vars['city']; ?> ">
+							<input type="hidden" id="country" name="country" value="<?php echo $this->tpl_vars['country']; ?> ">
+							<input type="hidden" id="no" name="no" value="<?php echo $this->tpl_vars['id']; ?> ">
+							<input type="hidden" id="civ" name="civ" value="<?php echo $this->tpl_vars['civilite']; ?> ">
+							<input type="hidden" id="nomc" name="nomc" value="<?php echo $this->tpl_vars['nom']; ?> ">
+							<input type="hidden" id="prenomc" name="prenomc" value="<?php echo $this->tpl_vars['prenom']; ?> ">
+							<input type="hidden" id="tel" name="tel" value="<?php echo $this->tpl_vars['tel_fixe']; ?> ">
+							<input type="hidden" id="email" name="email" value="<?php echo $this->tpl_vars['email']; ?> ">
+							<div class="form-group">
+								<label for="repas-nbr" >Nombre de repas supplémentaires facturés à 26€ l’unité (2 repas sont déjà compris avec l'achat de votre pack)</label>
+								<input type="number" class="form-control" id="repas_nbr" placeholder="Repas_nbr" name="repas_nbr" value="<?php echo $this->tpl_vars['repas_nbr']; ?>" required>
+							</div>
+							 <div class="form-group">
+								<label for="repas_info">Précisions en cas de repas spéciaux</label>
+								<input type="text" class="form-control" id="repas_info" placeholder="Informations concernant vos repas" name="repas_info" value="<?php echo $this->tpl_vars['repas_info']; ?>">
+							 </div>
+							 <div class="form-group">
+								<label for="intervenant_nbr">Nombre d'intervenants lors du Forum</label>
+								<input type="number" class="form-control" id="intervenant_nbr" placeholder="Intervenant_nbr" name="intervenant_nbr" value="<?php echo $this->tpl_vars['intervenant_nbr']; ?>" required>
+							 </div>
+							 <div class="form-group">
+								<label for="intervenant_info">Noms des intervenants (merci de les séparer par une virgule en cas de nécessité)</label>
+								<input type="text" class="form-control" id="intervenant_info" placeholder="Noms des intervenants" name="intervenant_nom" value="<?php echo $this->tpl_vars['intervenant_nom']; ?>" required>
+							 </div>
+							 <!--<div class="form-group">
+								<label for="parking">Nombre de places de parking (15€ la place de 8h à 19h)</label>
+								<input type="number" class="form-control" id="parking" placeholder="Parking" name="parking"  value="<?php echo $this->tpl_vars['parking']; ?>" required>
+							 </div>-->				  
+							 <div class="form-group">
+                                 <label>Souhaitez vous participer à l'Handicafé© (en cas de réponse positive merci de vous rendre dans l'onglet correspondant)</label><br>
+								<!--<input type="number" class="form-control" id="handicafe" placeholder="1 : OUI 0 : NON" name="handicafe" value="<?php echo $this->tpl_vars['handicafe']; ?>" ><label for=handicafe>1 : OUI  0 : NON</label><br/>-->
+                                <input type="radio" name="handicafe" id="handinon" value="0" checked/>
+                                 <label for="handinon">Non</label>
+                                 <input type="radio" name="handicafe" id="handioui" value="1" 
+                                        <?php if($this->tpl_vars['handicafe']){
+                                            echo "checked";
+                                        }?>/>
+                                 <label for="handioui">Oui</label>
+							 <div>
+							 	<p class="text-justify">Pour un soucis de logistique cette réservation comprenant vos informations complémentaires est dissociée de votre réservation de stand, il est donc nécessaire d'avoir téléchargé au préalable votre bon de commande dans l'onglet réservation du stand.</p>
+							 </div>
+							 <div class="col-md-12">
+								<div class="col-md-6">
+								<button name="submit" type="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/complement/">Mettre à jour mon entreprise</button>
+							</div>	
+							<div class="col-md-6">
+								<button type="submit" name="submit" class="btn btn-secondary center-block" value="Mettre à jour mon entreprise" formaction="/apps/complement/front/Réservation.php">Télécharger ma réservation <br/>(après avoir mis à jour <br/>mes informations)</button>
+							</div>
+							</form>
+					
+				</div>
+				<div class="col-md-3">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

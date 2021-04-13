@@ -1,0 +1,135 @@
+<div id="blocks">
+	<div id="filtres" class="block">
+		<script type="text/javascript">
+			$(function() {
+				$('#firm').focus();
+				var trans;
+				$('#firm').autocomplete({
+					source: function(objRequest, response) {
+						$.ajax({
+							method: 'get',
+							url: '/admin/entreprise/ajax_firms/',
+							data: "term="+objRequest.term,
+							beforeSend: function() {
+								$('#firm').addClass('loading');
+							},
+							complete: function() {
+								$('#firm').removeClass('loading');
+							}, //stop showing loading when the process is complete
+							success: function(result) {
+								var res = $.parseJSON(result);
+								trans = res.trans;
+								response(res.data);
+							},
+							error: function() {
+								alert('Erreur lors du chargement de la liste des entreprises.');
+							}
+						});
+					},
+					// Lorsqu'un item est sélectionné dans la liste
+					select: function(event, ui) {
+						var firmid = trans[ui.item.value];
+						window.location = '/admin/entreprise/fiche/'+firmid+'/';
+					}
+				});
+			});
+		</script>
+		<div class="top"></div>
+		<h2>Rechercher par...</h2>
+		<form action="" method="get">
+			<label for="firm">Nom :</label>
+			<input id="firm" type="text" name="name" value="<?php if (isset($this->tpl_vars['filter_name'])): ?><?php echo $this->tpl_vars['filter_name']; ?><?php endif; ?>" />
+		</form>
+		<form id="firms_participant" action="" method="get">
+			<label for="participants">Année :</label>
+			<select id="participants" name="year" onchange="document.getElementById('firms_participant').submit()">
+				<option></option>
+				<?php $this->tpl_vars['year']['count'] = -1;
+foreach($this->tpl_vars['register_years'] as $this->tpl_vars['year']['key'] => $this->tpl_vars['year']['value']):
+$this->tpl_vars['year']['count']++; ?>
+				<option value="<?php echo $this->tpl_vars['year']['value']; ?>"<?php if (isset($this->tpl_vars['filter_year_selected']) && $this->tpl_vars['filter_year_selected'] == $this->tpl_vars['year']['value']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['year']['value']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</form>
+		<form id="firms_phoning_step" action="" method="get">
+			<label for="phoning_step">Etape :</label>			
+			<select id="phoning_step" name="phoning_step" onchange="document.getElementById('firms_phoning_step').submit()">
+				<option></option>
+				<?php $this->tpl_vars['s']['count'] = -1;
+foreach($this->tpl_vars['steps'] as $this->tpl_vars['s']['key'] => $this->tpl_vars['s']['value']):
+$this->tpl_vars['s']['count']++; ?>
+					<option value="<?php echo $this->tpl_vars['s']['key']; ?>"<?php if (isset($this->tpl_vars['filter_phoning_step']) && $this->tpl_vars['filter_phoning_step'] == $this->tpl_vars['s']['key']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['s']['value']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</form>
+		<form id="firms_phoning_user" action="" method="get">
+			<label for="phoning_user">Phoner :</label>			
+			<select id="phoning_user" name="phoning_user" onchange="document.getElementById('firms_phoning_user').submit()">
+				<option></option>
+				<option value="0">Indéfini</option>
+			<?php $this->tpl_vars['u']['count'] = -1;
+foreach($this->tpl_vars['users'] as $this->tpl_vars['u']['key'] => $this->tpl_vars['u']['value']):
+$this->tpl_vars['u']['count']++; ?>
+				<option value="<?php echo $this->tpl_vars['u']['value']['id']; ?>"<?php if (isset($this->tpl_vars['filter_phoning_user']) && $this->tpl_vars['filter_phoning_user'] == $this->tpl_vars['u']['value']['id']): ?> selected="selected"<?php endif; ?>><?php echo $this->tpl_vars['u']['value']['nickname']; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</form>
+	</div>
+	<div class="block">
+		<div class="top"></div>
+		<h2>Statistiques</h2>
+		<ul>
+			<?php if (isset($this->tpl_vars['count_search'])): ?><li>La recherche a retourné <strong><?php echo $this->tpl_vars['count_search']; ?> entreprises</strong></li><?php endif; ?>
+			<li><strong><?php echo $this->tpl_vars['count_total']; ?> entreprises</strong> dans la base de données</li>
+			<li><strong><?php echo $this->tpl_vars['count_contacts']; ?> contacts</strong></li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<?php echo $this->tpl_vars['pagination']; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 25%;" />
+			<col style="width: 15%;" />
+			<col style="width: 10%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th class="sort <?php echo $this->tpl_vars['name_class']; ?>"><a href="/admin/entreprise/liste/name-<?php echo $this->tpl_vars['name_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Nom de l'entreprise</a></th>
+			<th class="sort <?php echo $this->tpl_vars['cat_name_class']; ?>"><a href="/admin/entreprise/liste/cat_name-<?php echo $this->tpl_vars['cat_name_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Secteur d'activité</a></th>
+			<th class="sort <?php echo $this->tpl_vars['country_class']; ?>"><a href="/admin/entreprise/liste/country-<?php echo $this->tpl_vars['country_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Pays</a></th>
+			<th class="sort <?php echo $this->tpl_vars['phoning_step_class']; ?>"><a href="/admin/entreprise/liste/phoning_step-<?php echo $this->tpl_vars['phoning_step_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Etape</a></th>
+			<th class="sort <?php echo $this->tpl_vars['nickname_class']; ?>"><a href="/admin/entreprise/liste/nickname-<?php echo $this->tpl_vars['nickname_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Utilisateur</a></th>
+			<th class="sort <?php echo $this->tpl_vars['choix_pack_class']; ?>"><a href="/admin/entreprise/liste/choix_pack-<?php echo $this->tpl_vars['choix_pack_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">Pack choisi</a></th>
+			<th class="sort <?php echo $this->tpl_vars['id']; ?>"><a href="/admin/entreprise/liste/id-<?php echo $this->tpl_vars['id_sort']; ?>/<?php echo $this->tpl_vars['querystring']; ?>">ID</a></th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['entreprise_block']) && is_array($this->tpl_vars['entreprise_block'])):
+	foreach ($this->tpl_vars['entreprise_block'] as $this->tpl_vars['entreprise']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><strong><?php echo $this->tpl_vars['entreprise']['name']; ?></strong></td>
+				<td><?php if (!empty($this->tpl_vars['entreprise']['cat_name'])): ?><?php echo $this->tpl_vars['entreprise']['cat_name']; ?>
+					<?php else: ?>Aucun<?php endif; ?></td>
+				<td><?php echo $this->tpl_vars['entreprise']['country']; ?></td>
+				<td><?php echo $this->tpl_vars['entreprise']['phoning_step']; ?></td>
+				<td><?php echo $this->tpl_vars['entreprise']['nickname']; ?></td>
+				<td><?php echo $this->tpl_vars['entreprise']['choix_pack']; ?></td>
+				<td><?php echo $this->tpl_vars['entreprise']['id']; ?></td>
+				<td>
+					<a href="/admin/entreprise/fiche/<?php echo $this->tpl_vars['entreprise']['id']; ?>" title="Voir la fiche entreprise"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/entreprise/del/<?php echo $this->tpl_vars['entreprise']['id']; ?>" title="Supprimer"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="5" class="tcenter">Aucune entreprise dans la base de données</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+	<?php echo $this->tpl_vars['pagination']; ?>
+</div>
+<div class="clear"></div>

@@ -1,0 +1,50 @@
+/* Tribune libre */
+#tribune div.inner {
+	height: 180px;
+	overflow: auto;
+	margin: 5px;
+	background: #f4f4f6;
+	border-top: 1px solid #ccccce;
+}
+
+#tribune p {
+	margin: 0;
+	margin-bottom: 10px;
+	padding: 3px;
+	border-bottom: 1px solid #ccccce;
+}
+
+#tribune p span {
+	text-transform: uppercase;
+	font-size: 0.8em;
+}
+
+#tribune p strong {
+	color: #28b8f7;
+}
+
+#tribune form {
+	padding: 5px;
+}
+
+#tribune textarea {
+	width: 210px;
+	height: 40px;
+	background: #f4f4f6;
+	border: 1px solid #ccccce;
+	font-size: 1em;
+	color: #7b7883;
+	float: left;
+	margin-right: 5px;
+}
+
+#tribune input {
+	height: 40px;
+	font-size: 1em;
+	font-weight: bold;
+	color: gray;
+	background: #BAE3F5 url('images/tribune-envoyer-bg.jpg') repeat-x;
+	border: 1px solid #ccccce;
+	text-transform: uppercase;
+	cursor: pointer;
+}

@@ -1,0 +1,4 @@
+AuthUserFile "/homez.424/esthoriz/www/upload/CV/.htpasswd"
+AuthName "Identifiez-vous"
+AuthType Basic
+Require valid-user

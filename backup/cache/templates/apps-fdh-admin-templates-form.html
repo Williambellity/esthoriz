@@ -1,0 +1,101 @@
+<div id="content"> 
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col style="width: 5%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+			</colgroup>
+			<tr id="ligne">
+				<th>Les inscriptions sont fermées</th>
+			</tr>
+		</table>
+</div>
+
+			
+			
+<!--			
+<form method="post" id="customForm" action="">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<br />
+			<a href="javascript:void(0)" onclick="ajouterligne();">
+				<img src="/apps/fdh/admin/templates/ico_plus.png" alt="+" /> <strong>Ajouter une ligne</strong></a>
+			<br /><br />
+			<a href="javascript:void(0)" onclick="suppligne();">
+				<img src="/apps/fdh/admin/templates/ico_moins.png" alt="-"/> <strong>Retirer une ligne</strong></a>
+			<br />
+			<input id="submit" class="button-submit" type="submit" value="Send" />
+		</div>
+	</div>
+	<div id="content"> 
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col style="width: 5%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+			</colgroup>
+			<tr id="ligne">
+				<th>N&deg;</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Bus de retour</th>
+				<th>Mode de paiement</th>
+			</tr>
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['a_reinscrire_block']) && is_array($this->tpl_vars['a_reinscrire_block'])):
+	foreach ($this->tpl_vars['a_reinscrire_block'] as $this->tpl_vars['a_reinscrire']): ?>
+			<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+			<tr id="row-<?php echo $this->tpl_vars['t']; ?>" class="<?php if ($this->tpl_vars['count'] % 2 == 1): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><input name="nom[]" type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['nom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['nom']; ?>"<?php endif; ?> /></td>
+				<td><input name="prenom[]" type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['prenom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['prenom']; ?>"<?php endif; ?> /></td>
+				<td>
+					<select name="bus[]">
+					<?php if ((!empty($this->tpl_vars['a_reinscrire']['bus']))): ?>
+						<option value="<?php echo $this->tpl_vars['a_reinscrire']['bus']; ?>"><?php echo $this->tpl_vars['a_reinscrire']['bus_lieu']; ?><?php if (($this->tpl_vars['a_reinscrire']['bus_numero'] !=0)): ?> N°<?php echo $this->tpl_vars['a_reinscrire']['bus_numero']; ?><?php endif; ?>-<?php echo $this->tpl_vars['a_reinscrire']['bus_heure']; ?></option>
+					<?php else: ?>
+						<option value="0">Veuillez choisir un bus</option>
+					<?php endif; ?>
+					<?php echo $this->tpl_vars['bus_select']; ?>
+					</select> 
+				</td>
+				<td>
+					<select name="paymod[]">
+						<option value="0">Moyen de paiement</option>
+						<option value="1" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==1))): ?>selected="selected"<?php endif; ?>>Chèque(ordre : Forum Est-Horizon)</option>
+						<option value="2" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==2))): ?>selected="selected"<?php endif; ?>>Liquide</option>
+						<?php if (isset($this->tpl_vars['enable'])): ?>
+						<option value="3" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==3))): ?>selected="selected"<?php endif; ?>>Exonéré</option>
+						<?php endif; ?>
+					</select> 
+				</td>
+			</tr>
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</table>
+		
+		<script type="text/javascript">
+			var current = <?php echo $this->tpl_vars['t']; ?>;
+			
+			function ajouterligne() {
+				current++;
+				$('#row-1').clone().attr('id', 'row-'+current).insertAfter('#row-'+(current-1));
+				$('#row-'+current).find('input').val('');
+				$('#row-'+current).find('select').val(0);
+				$('#row-'+current).find('td').first().html(current);
+			}
+			
+			function suppligne() {
+				if (current > 1) {
+					$('#row-'+current).remove();
+					current--;
+				}		
+			}
+		</script>
+	</div>
+</form>
+<div class="clear"></div>-->

@@ -1,0 +1,68 @@
+<div id="blocks">
+	<div class="block">
+		<div class="top"></div>
+		<h2>Ajouter un secteur</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<tr>
+					<td><label for="name">Nom :</label></td>
+					<td><input id="name" type="text" name="name" value="" /></td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Ajouter" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="edition" class="block">
+		<div class="top"></div>
+		<h2>Editer un secteur</h2>
+		<form action="" method="post">
+			<table style="width: 100%;">
+				<tr>
+					<td><label for="nameEdit">Nom :</label></td>
+					<td>
+						<input id="idEdit" type="hidden" name="idEdit" value="" />
+						<input id="nameEdit" type="text" name="nameEdit" value="" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="tcenter">
+						<input type="submit" value="Editer" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th>Nom de la catégorie</th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><strong><?php echo $this->tpl_vars['cat']['cat_name']; ?></strong></td>
+				<td>
+					<a href="/#edition" title="Editer" onclick="return editCat(<?php echo $this->tpl_vars['cat']['id']; ?>, '<?php echo addslashes($this->tpl_vars['cat']['cat_name']); ?>');"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/entreprise/cat_del/<?php echo $this->tpl_vars['cat']['id']; ?>/" title="Supprimer" onclick="return checkDel('<?php echo $this->tpl_vars['cat']['cat_name']; ?>');"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="2" class="tcenter">Aucune catégorie disponible.</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+</div>
+<div class="clear"></div>

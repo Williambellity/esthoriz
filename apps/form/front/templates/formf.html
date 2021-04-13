@@ -1,0 +1,100 @@
+<div id="content"> 
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0">
+			<!--<colgroup>
+				<col style="width: 5%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+			</colgroup>-->
+			<tr id="ligne">
+				<th>Les inscriptions étudiantes sont fermées pour le moment</th>
+			</tr>
+		</table>
+</div>
+
+			
+			
+<!--			
+<form method="post" id="customForm" action="">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<br />
+			<a href="javascript:void(0)" onclick="ajouterligne();">
+				<img src="/apps/fdh/admin/templates/ico_plus.png" alt="+" /> <strong>Ajouter une ligne</strong></a>
+			<br /><br />
+			<a href="javascript:void(0)" onclick="suppligne();">
+				<img src="/apps/fdh/admin/templates/ico_moins.png" alt="-"/> <strong>Retirer une ligne</strong></a>
+			<br />
+			<input id="submit" class="button-submit" type="submit" value="Send" />
+		</div>
+	</div>
+	<div id="content"> 
+		{if !empty({$note})}{$note}{/if}
+		<table id="tableau" class="liste" cellpadding="0" cellspacing="0">
+			<colgroup>
+				<col style="width: 5%;" />
+				<col style="width: 15%;" />
+				<col style="width: 15%;" />
+				<col style="width: 20%;" />
+				<col style="width: 20%;" />
+			</colgroup>
+			<tr id="ligne">
+				<th>N&deg;</th>
+				<th>Nom</th>
+				<th>Prenom</th>
+				<th>Bus de retour</th>
+				<th>Mode de paiement</th>
+			</tr>
+			{block name="a_reinscrire"}
+			{if $t = {$count} +1}{/if}
+			<tr id="row-{$t}" class="{if {$count} % 2 == 1}pair{else}impair{/if}">
+				<td>{$t}</td>
+				<td><input name="nom[]" type="text" {if !empty({$a_reinscrire.nom})}value="{$a_reinscrire.nom}"{/if} /></td>
+				<td><input name="prenom[]" type="text" {if !empty({$a_reinscrire.prenom})}value="{$a_reinscrire.prenom}"{/if} /></td>
+				<td>
+					<select name="bus[]">
+					{if (!empty({$a_reinscrire.bus}))}
+						<option value="{$a_reinscrire.bus}">{$a_reinscrire.bus_lieu}{if ({$a_reinscrire.bus_numero} !=0)} N°{$a_reinscrire.bus_numero}{/if}-{$a_reinscrire.bus_heure}</option>
+					{else}
+						<option value="0">Veuillez choisir un bus</option>
+					{/if}
+					{$bus_select}
+					</select> 
+				</td>
+				<td>
+					<select name="paymod[]">
+						<option value="0">Moyen de paiement</option>
+						<option value="1" {if (!empty({$a_reinscrire.paymod}) && ({$a_reinscrire.paymod}==1))}selected="selected"{/if}>Chèque(ordre : Forum Est-Horizon)</option>
+						<option value="2" {if (!empty({$a_reinscrire.paymod}) && ({$a_reinscrire.paymod}==2))}selected="selected"{/if}>Liquide</option>
+						{if isset({$enable})}
+						<option value="3" {if (!empty({$a_reinscrire.paymod}) && ({$a_reinscrire.paymod}==3))}selected="selected"{/if}>Exonéré</option>
+						{/if}
+					</select> 
+				</td>
+			</tr>
+			{/block}
+		</table>
+		
+		<script type="text/javascript">
+			var current = {$t};
+			
+			function ajouterligne() {
+				current++;
+				$('#row-1').clone().attr('id', 'row-'+current).insertAfter('#row-'+(current-1));
+				$('#row-'+current).find('input').val('');
+				$('#row-'+current).find('select').val(0);
+				$('#row-'+current).find('td').first().html(current);
+			}
+			
+			function suppligne() {
+				if (current > 1) {
+					$('#row-'+current).remove();
+					current--;
+				}		
+			}
+		</script>
+	</div>
+</form>
+<div class="clear"></div>-->

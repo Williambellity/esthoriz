@@ -1,0 +1,365 @@
+#box_resa {
+	width: 970px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#box_resa ul {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	list-style: none;
+}
+
+#state{
+	width: 150px;
+	float: left;
+	padding: 5px 5px 5px 5px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	background-color: #f6d500;
+	behavior: url(/PIE.htc);
+}
+
+.adding {
+	margin: 15px 0 15px 20px;
+}
+
+img.image_button {
+	width: 90px;
+	height: 90px;
+	margin: 5px 5px 5px 5px;
+}
+
+#cont_lot  img.image_button {
+	width: 100px;
+	height: 100px;
+	margin: 0 0 0 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/PIE.htc);
+}
+
+.denom_price {
+	font-weight: bold;
+	margin-top: 3px;
+	padding-top: 3px;
+	font-size: 1.2em;
+	text-align: left;
+}
+
+.sub_denom {
+	font-weight: normal;
+	text-align: left;
+	font-style: italic;
+	font-size: 0.8em;
+	padding-left: 5px;
+	margin-left: 5px;
+	display: block;
+}
+
+.button_quantity {
+	text-align: center;
+	padding: 0 2px 0 2px;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 2em;
+	display: inline;
+}
+
+.button_quantity_tiny {
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 1.6em;
+}
+
+#no_lot {
+	text-align: center;
+	padding: 20px 10px 10px 10px;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 2em;
+}
+
+.nothing_selected {
+	font-style: italic;
+}
+
+.option_cat {
+	margin: 20px 20px 20px 20px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/PIE.htc);
+}
+
+.cat_option_denom {
+	width: 150px;
+	height: 75px;
+	float: left;
+	text-align: right;
+	padding: 50px 5px 0 0;
+	margin-right: 0px;
+	border-right: 1px solid black;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 1.5em;
+}
+
+.detail_price {
+	font-weight: bold;
+	text-align: right;
+	font-size: 1.2em;
+	display: block;
+}
+
+.sub_total {
+	margin-top: 5px;
+	font-size: 1.4em;
+	font-weight: bold;
+	text-align: right;
+	display: block;
+}
+
+.indent {
+	padding-left: 15px;
+	margin-left: 15px;
+}
+
+#main_box {
+	width: 760px;
+	float: right;
+	padding: 20px 20px 20px 20px;
+}
+
+.white_box {
+	border: 1px solid #666;
+	margin-bottom: 15px;
+}
+
+#list_lots {
+	width: 760px;
+}
+
+.button sup {
+	font-size: 0.4em;
+}
+
+.marg_top {
+	margin-top: 28px;
+}
+
+#list_accessoires {
+	width: 760px;
+}
+
+#img_color {
+	width: 340px;
+	height: 220px;
+	float: left;
+	margin: 10px 10px 10px 10px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	background-color: #f6d500;
+	behavior: url(/PIE.htc);
+}
+
+#conteneur_colors {
+	width: 100%;
+	height: 35px;
+}
+
+#img_list {
+	width: 100%;
+	height: 185px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+#list_accfixes {
+	width: 760px;
+}
+
+.button {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 10px 10px 10px 10px;
+	padding: 0 0 0 0;
+	border: 1px solid #666;
+	text-shadow: 0px 0px 5px #ffffff;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(/PIE.htc);
+}
+
+.b_color {
+	width: 15px;
+	height: 15px;
+	margin: 5px 5px 5px 5px;
+	padding: 5px 5px 5px 5px;
+}
+
+.button_hover {
+	-webkit-box-shadow: #000 0px 4px 6px;
+	-moz-box-shadow: #000 0px 4px 6px;
+	box-shadow: #000 0px 4px 6px;
+	behavior: url(/PIE.htc);
+}
+
+.left_last_button {
+	float: left;
+	display: block;
+	text-align: left;
+}
+
+.right_next_button {
+	float: right;
+	display: block;
+	text-align: right;
+}
+
+#end-button {
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 2em;
+	padding: 20px 40px;
+	display: block;
+}
+
+#form_resa {
+	width: 100%;
+}
+
+#sp_reg_button {
+	width: 550px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.color {
+}
+
+.button_bottom_left {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+}
+
+.button_bottom_right {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+
+.button_price { 
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.button_sub_price {
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+.toggler .button_center {
+	position: absolute;
+	top: 25px;
+	left: 5px;
+	height: 39px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.morer .button_center {
+	position: absolute;
+	top: 32px;
+	left: 5px;
+	text-align: center;
+	width: 90px;
+	height: 39px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+.button_plus {
+	text-align: right;
+	display: inline;
+}
+
+.button_moins {
+	text-align: left;
+	display: inline;
+}
+
+.button_top {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-weight: bold;
+}
+
+#big_total_price {
+	margin-top: 20px;
+	font-size: 1.7em;
+	text-align: right;
+}
+
+#big_total_price_2 {
+	font-size: 1.9em;
+	text-align: right;
+}
+
+.button_selected_shadow {
+	-webkit-box-shadow: #00f600 0px 2px 3px;
+	-moz-box-shadow: #00f600 0px 2px 3px;
+	box-shadow: #00f600 0px 2px 5px;
+	behavior: url(/PIE.htc);
+}
+
+.c_blanc {
+	background: white;
+}
+
+.c_noir {
+	background: black;
+}
+
+.c_anis {
+	background: #acc44b;
+}
+
+.c_mauve {
+	background: #c16da2;
+}
+
+.c_bleu {
+	background: #1242ba;
+}
+
+.c_orange {
+	background: #cd6202;
+}
+
+.c_rouge {
+	background: #cf2710;
+}
+
+.c_turquoise {
+	background: #15b8cb;
+}
+
+.c_violet {
+	background: #956bbd;
+}

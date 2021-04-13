@@ -1,0 +1,33 @@
+<div id="content" class="large">
+	<div class="item">
+		<h2>Suppression de la demande de <?php echo $this->tpl_vars['civilite']; ?> <?php echo $this->tpl_vars['nom']; ?> <?php echo $this->tpl_vars['prenom']; ?></h2>
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		
+		<form action="" method="post">
+		<!-- <input id="send" type="checkbox" name="send" checked="checked" />
+			<label for="send">Envoyer un e-mail d'information au contact en question</label><br /><br />
+			
+			<label for="email">Corps de l'email :</label><br />
+			<textarea id="email" name="email" rows="10" cols="50">
+Bonjour,<br /><br />
+
+Nous avons le regret de vous informer que votre demande d'inscription au Forum Est-Horizon <?php echo $this->tpl_vars['annee']; ?> a été refusée.<br /><br />
+
+Pour obtenir de plus amples informations, vous pouvez contacter les organisateurs par email à cette adresse :<br />
+<a href="mailto:forum@est-horizon.com">forum@est-horizon.com</a><br /><br />
+
+Nous vous prions de croire en l'expression de nos sincères salutations.<br /><br />
+<strong>Le Forum Est-Horizon</strong>
+			</textarea>
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('email', {
+					toolbar: 'Basic'
+				});
+				CKFinder.setupCKEditor(editor, '/helpers/ckfinder/') ;
+			</script>
+			<br />-->
+			<input type="submit" class="button-submit" name="confirmation" value="Confirmer la suppression" />
+		</form> 
+	</div>
+</div>
+<div class="clear"></div>

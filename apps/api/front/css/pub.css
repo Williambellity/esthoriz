@@ -1,0 +1,29 @@
+#ch_logo {
+	text-align: center;
+	font-weight: bold;
+}
+
+#td_pub {
+    text-align: center;
+}
+
+#progressBar {
+	text-align: center;
+	font-weight: bold;
+}
+
+#reg-button {
+	margin-top: 15px;
+	font-family: Bebas, Arial, sans-serif;
+	font-size: 2em;
+	padding: 20px 40px;
+}
+
+.ui-widget {
+	font-family: Bebas, Arial, sans-serif;
+}
+
+#td_pub img {
+    width: 420px;
+    height: 595px;
+}

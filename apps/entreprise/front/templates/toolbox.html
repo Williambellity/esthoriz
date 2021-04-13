@@ -1,0 +1,62 @@
+<div style="height: 50px; width: 100%"></div>
+<h1 class="hidden">Bienvenue sur votre espace personnel</h1>
+<div id="toolbox"></div>
+<div class="tool_left">
+  <div id="applis">
+    <h2><span>Espace personnel</span></h2>
+
+    <ul>
+      <?php $this->tpl_vars['count'] = 0;if
+      (isset($this->tpl_vars['applis_block']) &&
+      is_array($this->tpl_vars['applis_block'])): foreach
+      ($this->tpl_vars['applis_block'] as $this->tpl_vars['applis']): ?>
+      <li>
+        <a href="<?php echo $this->tpl_vars['applis']['href']; ?>"
+          ><img
+            src="<?php echo $this->tpl_vars['applis']['icone']; ?>"
+            width="50"
+            alt="<?php echo $this->tpl_vars['applis']['name']; ?>"
+          />
+          <br /><?php echo $this->tpl_vars['applis']['name']; ?></a
+        >
+      </li>
+      <?php $this->tpl_vars['count']++; endforeach; endif; ?>
+    </ul>
+    <div class="spacer"></div>
+  </div>
+</div>
+<div class="tool_right">
+  <div id="notifs">
+    <?php if ($this->tpl_vars['notifs_count'] == 0): ?>
+    <h2><span>Aucune notification</span></h2>
+    <?php else: ?>
+    <h2>
+      <span
+        ><?php echo $this->tpl_vars['notifs_count']; ?> notification<?php if ($this->tpl_vars['notifs_count']
+        > 1): ?>s<?php endif; ?></span
+      >
+    </h2>
+    <?php endif; ?>
+    <ul>
+      <?php $this->tpl_vars['count'] = 0;if
+      (isset($this->tpl_vars['notifs_block']) &&
+      is_array($this->tpl_vars['notifs_block'])): foreach
+      ($this->tpl_vars['notifs_block'] as $this->tpl_vars['notifs']): ?>
+      <li class="lvl<?php echo $this->tpl_vars['notifs']['priority']; ?>">
+        <?php echo $this->tpl_vars['notifs']['message']; ?>
+      </li>
+      <?php $this->tpl_vars['count']++; endforeach; endif; ?>
+    </ul>
+  </div>
+  <!-- <div id="actus">		
+		<h2><span>Dernières informations</span></h2>		
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['news_block']) && is_array($this->tpl_vars['news_block'])):
+	foreach ($this->tpl_vars['news_block'] as $this->tpl_vars['news']): ?>		<div class="item">			
+		<?php if (!empty($this->tpl_vars['news']['image'])): ?><img src="/upload/news/<?php echo $this->tpl_vars['news']['image']; ?>" alt="<?php echo $this->tpl_vars['news']['title']; ?>" class="fleft" /><?php endif; ?>			
+		<h3><?php echo $this->tpl_vars['news']['title']; ?></h3>			
+		<em><?php echo $this->tpl_vars['news']['date']; ?></em>			
+		<p><?php echo $this->tpl_vars['news']['content']; ?></p>			
+		<div class="spacer"></div>		</div>		
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>	</div> -->
+</div>
+<div class="spacer"></div>

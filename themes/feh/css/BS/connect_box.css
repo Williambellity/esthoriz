@@ -1,0 +1,46 @@
+#connect_box {
+	height: 20%;
+	width: 100%;
+    z-index: 3;
+}
+
+#connect_box .inner {
+	width: 160px;
+	/* position: absolute; */
+	padding-top: 15px;
+	padding-bottom: 10px;
+	padding-left : 15px;
+/* 	color: #ffffff;
+	font-weight: bold; */
+/* 	text-align: center; */
+/*  border: 1px solid black; */
+/*	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	-webkit-box-shadow: #666 0px 2px 3px;
+	-moz-box-shadow: #666 0px 2px 3px;
+	box-shadow: #666 0px 2px 5px;
+	background: black;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#948869), to(#000000));
+	background: -moz-linear-gradient(#948869, #000000);
+	background: linear-gradient(#948869, #000000); */
+    z-index: 3;
+}
+
+#connect_box a {
+	color: white;
+}
+
+#connect_box input.submit {
+	color: #ffffff;
+	font-weight: bold;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+#connect_form {
+	font-weight: bold;
+	text-align: center;
+	display: none;
+}

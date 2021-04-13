@@ -1,0 +1,9 @@
+p.hour{
+	font-style: italic;
+	font-size : 12px !important;
+}
+
+p.title{
+	text-decoration: underline;
+	font-size : 14px !important;
+}

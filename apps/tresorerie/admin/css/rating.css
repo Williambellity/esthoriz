@@ -1,0 +1,14 @@
+
+.rating a {
+	/* float : right; */
+	color: orange !important;
+	text-decoration: none !important;
+	font-size: 2em !important;
+}
+
+.rating option {
+	/* float : right; */
+	color: orange !important;
+	text-decoration: none !important;
+	font-size: 2em !important;
+}

@@ -1,0 +1,46 @@
+<h1 class="hidden">Nos exposants</h1>
+
+<div class="fleft">
+	<?php $this->display("apps/forum/front/templates/nav.html"); ?>
+	
+	<div id="files_down" class="box-left">
+		<h3>Archives</h3>
+		<ul>
+			<li><a href="/upload/files/2010/Liste_exposant_25112010.pdf">Exposants de l'ancienne édition 2010</a></li>
+			<li><a href="/upload/files/2012/BrochureForum.pdf">Brochure de l'édition 2012</a></li>
+			<li><a href="/upload/files/2013/Brochure_2013.pdf">Brochure de l'édition 2013</a></li>
+			<li><a href="/upload/files/2014/brochure_2014.pdf">Brochure de l'édition 2014</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="fleft tjustify">
+	<div class="box-center">
+        <h2><span>Les exposants 2014</span></h2>
+		<div id="liste_expos" class="content">
+            <?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['expo_block']) && is_array($this->tpl_vars['expo_block'])):
+	foreach ($this->tpl_vars['expo_block'] as $this->tpl_vars['expo']): ?>
+            <div class="vignette">            
+                <a id='expo_<?php echo $this->tpl_vars['expo']['id']; ?>' class="firm_cat_<?php echo $this->tpl_vars['expo']['cat']; ?>" href="<?php echo $this->tpl_vars['expo']['website']; ?>">
+                    <?php if (!empty($this->tpl_vars['expo']['logo'])): ?>
+					<p><span title="<?php echo $this->tpl_vars['expo']['name']; ?>"><img class="logo_vig" src="<?php echo $this->tpl_vars['expo']['logo']; ?>" alt="<?php echo $this->tpl_vars['expo']['name']; ?>"/></span></p>
+					<?php else: ?>
+					<p><?php echo $this->tpl_vars['expo']['name']; ?></p>
+					<?php endif; ?>
+                </a>
+            </div>
+            <?php $this->tpl_vars['count']++; endforeach; endif; ?>
+            <div class="spacer"></div>             
+        </div>
+	</div>
+</div>
+<div class="spacer"></div>
+<script src="/apps/forum/front/js/exposants.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        <?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+        EXPOSANTS.liste.cat.cats[<?php echo $this->tpl_vars['cat']['id']; ?>] = new EXPOSANTS.liste.cat(<?php echo $this->tpl_vars['cat']['id']; ?>,'<?php echo $this->tpl_vars['cat']['name']; ?>');
+        <?php $this->tpl_vars['count']++; endforeach; endif; ?>
+    });
+</script>

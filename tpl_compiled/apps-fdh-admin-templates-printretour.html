@@ -1,0 +1,9 @@
+<br><a href="/admin/fdh/excel_printretour">print all</a><br>
+<a href="/admin/fdh/mn_printretour">print mines nancy</a>
+<form action="./printretourbus/" method="GET">
+    <label for="bus-id">choisir bus:</label>
+    <select name="bus-id" id="bus-id">
+        <?php echo $this->tpl_vars['bus_retour_select']; ?>
+    </select>
+    <input type="submit"/>
+</form>

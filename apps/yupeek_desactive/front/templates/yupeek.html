@@ -1,0 +1,42 @@
+	
+
+<div class="box-center fleft detail">
+	
+
+<?php if (!empty($_SESSION['firmid'])): ?>
+	<h1><span>Yupeek</span></h1>
+		<br/>
+			<iframe width="800" height="1500" frameborder="0" scrolling="yes" align ="left" name="searchForum" src="http://yupeek.com/embed/searchConnect/forum/4/6FET-541F-FERF-FREF?i=<?php echo($_SESSION['nickname']) ?>&p=password"></iframe>
+<?php else:?>
+	<div class="box-center max">
+		<h1><span>Yupeek</span></h1>
+
+		<p>Il vous suffit de vous inscrire ou du vous connecter ci-dessous pour être non seulement inscrit comme participant au Forum Est-Horizon sur Yupeek, mais aussi accéder au profil de toutes les entreprises participant au Forum Est-Horizon 2013 et être visible par elles en amont et en aval du forum !</p>
+
+		<p>Il vous est vivement conseillé de remplir au maximum votre profil afin d'avoir plus de visibilité et de crédibilité pour les entreprises.</p>
+
+		<br/>
+	</div>
+	
+	<iframe width="800" height="1500" frameborder="0" scrolling="yes" align ="left" name="signStudent" src="http://yupeek.com/embed/signStudent/forum/4/ZEMF-DE84-VFVF-8485" ></iframe>
+	
+	<div class="box-center max" style=" margin-top : 1050px">
+
+		<h2><span>Le fonctionnement de Yupeek</span></h2>
+		<h3><span>Intérêt du site</span></h3>
+			<p align="left">Ce réseau social répond à 3 grands besoins fondamentaux des étudiants et jeunes diplômés :
+				<li>Se mettre en avant via un CV 2.0</li>
+				<li>L’insertion professionnelle via le stage et le primo emploi</li>
+				<li>Centraliser en un site l’information, la veille et l’aide de son premier réseau professionnel</li>
+			</p>
+		<h3><span>Concept</span></h3>
+			<p align="left">Il y a 2 fonctions majeures sur Yupeek :
+				<li>Les recruteurs contactent directement les candidats : le système de recrutement de la plateforme repose sur de la “chasse” de profil via un algorithme de matching calqué sur celui des sites de rencontres. L’approche se fait de façon anonyme : pas d’accès au nom, à la photo ni aux coordonnés mail.</li>
+				<li>Les candidats peuvent directement postuler en 1 clic à toutes les annonces du site, la particularité étant de pouvoir les trier selon leur profil et donc d’exclure a priori celles qui ne leur correspondent pas. Sur Yupeek, les annonces sont en quelque sorte personnalisées pour chaque candidat.</li>
+			</p>
+	</div>
+	
+<?php endif; ?>	
+
+</div>
+<div class="spacer"></div>

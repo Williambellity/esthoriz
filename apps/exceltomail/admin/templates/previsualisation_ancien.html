@@ -1,0 +1,22 @@
+	<div id="content" style="width:100%">
+		<div class="item">
+			<div>
+				<p><a><strong>Prénom et NOM de l'expéditeur : </strong></a><a>{$nom}</a></p>
+				<p><a><strong>Adresse mail de l'expéditeur : </strong></a><a>{$adresse_expediteur}</a></p>
+				<p><a><strong>Objet : </strong></a><a>{$objet}</a></p>
+			</div>		
+		{block name="mail"}
+		<div style = "margin-top : 30px;">
+			<div>
+				<hr style = "width : 100%;"></hr>
+				<p style = "text-align : center;"><a><strong>N°</strong></a><a>{$mail.numero}</a></p>
+				<p><a><strong>Adresse mail du destinataire : </strong></a><a>{$mail.adresse_destinataire}</a></p>
+			</div>
+				{$mail.message}
+			<div>
+				
+			</div>		
+		</div>
+		{/block}
+		</div>
+	</div>

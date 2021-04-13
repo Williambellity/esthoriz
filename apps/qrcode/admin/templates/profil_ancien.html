@@ -1,0 +1,22 @@
+<script type="text/javascript" src="/apps/documents/front/js/webforms2.js"></script>
+<div style="height :100px; width : 100%;"> 
+</div>
+{if !empty({$note})}{$note}{/if}
+<div class="article">
+	<div class="container marketing">
+		<div class="row featurette">
+			<div class="col-md-12">
+				<h2 class="featurette-heading">Visiteurs<span class="text-muted"> </span></h2>
+			</div>
+			<div class="col-md-6">
+					<form method="post" id="edit_form" enctype="multipart/form-data" target="_blank" >
+							<input type="hidden" id="mail" name="mail" value="<?php echo $_GET['mail'];?>">
+							<div class="form-group">
+								<label for="repas-nbr" >Mot de passe : </label>
+								<input type="number" class="form-control" id="mdp" placeholder="Mot_de_passe" name="mdp" value=2017 required>
+							</div>	
+					<button type="submit" name="submit" class="btn btn-secondary center-block" value="Envoyer">Envoyer</button>		
+				</div>
+		</div>
+	</div>
+</div>

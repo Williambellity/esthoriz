@@ -1,0 +1,301 @@
+#csstabs{
+position:relative;
+width:650px;
+height:300px;
+}
+#csstabs img{
+padding:5px;
+width:70px;
+height:70px;
+text-align:center;
+border-top:1px solid #000;
+border-left:1px solid #000;
+border-right:1px solid #000;
+/*border-bottom:1px solid #000;*/
+}
+
+.tabcontent{
+padding:10px 10px 10px 40px;
+width:100%;
+background:#fff;
+border:1px solid #000;
+}
+
+#csstabs:hover img,
+#csstabs:focus img,
+#csstabs:active img{
+background:none;
+}
+
+#csstabs:hover .tabcontent,
+#csstabs:focus .tabcontent,
+#csstabs:active .tabcontent{
+opacity:0;
+transition : opacity .75s ease-in;
+}
+
+
+#tab_5 .tabcontent{
+z-index:2;
+position:absolute;
+left:0;
+top:80px;
+background:#fff;
+}
+
+#tab_5 img{
+z-index:3;
+/*width:150px;*/
+position:absolute;
+left:0;
+top:0;
+background:#fff;
+}
+
+#tab_5:hover img,
+#tab_5:focus img,
+#tab_5:active img{
+z-index:4;
+background:#fff;
+}
+
+#tab_5:hover .tabcontent,
+#tab_5:focus .tabcontent,
+#tab_5:active .tabcontent{
+z-index:3;
+background:#fff;
+opacity:1;
+transition : opacity 1s ease-in;
+}
+
+
+#tab_4 .tabcontent{
+z-index:1;
+position:absolute;
+left:0;
+top:80px;
+opacity:0;
+}
+
+#tab_4 img{
+/*width:150px;*/
+position:absolute;
+left:100px;
+top:0;
+}
+
+#tab_4:hover img,
+#tab_4:focus img,
+#tab_4:active img{
+z-index:4;
+background:#fff;
+}
+
+#tab_4:hover .tabcontent,
+#tab_4:focus .tabcontent,
+#tab_4:active .tabcontent{
+z-index:3;
+background:#fff;
+opacity:1;
+transition : opacity 1s ease-in;
+}
+
+#tab_3 .tabcontent{
+z-index:1;
+position:absolute;
+left:0;
+top:80px;
+opacity:0;
+}
+
+#tab_3 img{
+/*width:150px;*/
+position:absolute;
+left:200px;
+top:0;
+}
+
+#tab_3:hover img,
+#tab_3:focus img,
+#tab_3:active img{
+z-index:4;
+background:#fff;
+}
+
+#tab_3:hover .tabcontent,
+#tab_3:focus .tabcontent,
+#tab_3:active .tabcontent{
+z-index:3;
+background:#fff;
+opacity:1;
+transition : opacity 1s ease-in;
+}
+
+#tab_2 .tabcontent{
+z-index:1;
+position:absolute;
+left:0;
+top:80px;
+opacity:0;
+}
+
+#tab_2 img{
+/*width:150px;*/
+position:absolute;
+left:300px;
+top:0;
+}
+
+#tab_2:hover img,
+#tab_2:focus img,
+#tab_2:active img{
+z-index:4;
+background:#fff;
+}
+
+#tab_2:hover .tabcontent,
+#tab_2:focus .tabcontent,
+#tab_2:active .tabcontent{
+z-index:3;
+background:#fff;
+opacity:1;
+transition : opacity 1s ease-in;
+}
+
+#tab_1 .tabcontent{
+z-index:1;
+position:absolute;
+left:0;
+top:80px;
+opacity:0;
+}
+
+#tab_1 img{
+/*width:150px;*/
+position:absolute;
+left:400px;
+top:0;
+}
+
+#tab_1:hover img,
+#tab_1:focus img,
+#tab_1:active img{
+z-index:4;
+background:#fff;
+}
+
+#tab_1:hover .tabcontent,
+#tab_1:focus .tabcontent,
+#tab_1:active .tabcontent{
+z-index:3;
+background:#fff;
+opacity:1;
+transition : opacity 1s ease-in;
+}
+
+
+.myButton{
+float:right;
+}
+.box-left p {
+	text-align: justify;
+}
+
+#statistiques {
+	width: 190px;
+	padding: 10px 5px 10px 5px;
+}
+
+#statistiques table {
+	border-style: hidden;
+}
+
+.acc_top p {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.acc_label {
+	font-size: 0.7em;
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.acc_lvl1 {
+	font-family: Bebas, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 2.5em;
+	text-align: left;
+}
+
+.acc_lvl2 {
+	font-family: Bebas, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 1.7em;
+	text-align: left;
+}
+
+.acc_lvl3 {
+	font-family: Bebas, Verdana, Geneva, Helvetica, sans-serif;
+	font-size: 1.3em;
+	text-align: left;
+}
+
+.fleft.center {
+	width: 560px;
+}
+
+#edito, #actu {
+	text-align: justify;
+}
+
+#edito strong {
+	
+}
+
+	margin-bottom: 1em;
+	
+	
+}
+h3 {
+
+	text-align : center;
+}
+
+.okok {
+
+	text-align : center;
+}	
+
+#actu h3 {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	
+		
+}
+
+#actu p {
+	padding: 0;
+	margin: 0 0 0.5em 0;
+}
+
+#actu img {
+	border: 1px solid black;
+	margin: 5px 10px 0 0;
+}
+
+#pub{
+/*color:rgb(27, 134, 0);*/
+color:rgb(150, 130, 30);
+}
+
+.box-left img {
+	position: relative;
+	padding:1px;
+	width:100px;
+	height: 100px;
+	border-top:1px solid rgb(150, 130, 30);/*#000;*/
+	border-left:1px solid rgb(150, 130, 30);
+	border-right:1px solid rgb(150, 130, 30);
+	border-bottom:1px solid rgb(150, 130, 30);
+	right: 0px;/*-38px;/* bon feeling su ce nombre
+}

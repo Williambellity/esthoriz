@@ -1,0 +1,87 @@
+<div id="blocks">
+	<div id="edit" class="block">
+		<div class="top"></div>
+		<h2>Editer</h2>
+		<form action="" method="post">
+			<label for="nickname"><strong>Pseudo :</strong></label>
+			<input id="nickname" type="text" name="nickname"/><br />
+			<label for="email">Email :</label>
+			<input id="email" type="text" name="email"/><br />
+			<label for="password">Mot de passe :</label>
+			<input id="password" type="password" name="password" size="20" /><br />
+			<label for="password_confirm"><em>(confirmation)</em></label>
+			<input id="password_confirm" type="password" name="password_confirm" size="20" />
+			<br />
+			<i>Laisser vide pour ne pas effectuer de modification.</i><br/>
+			<input id="id" class="hidden" type="text" name="id"/>
+			<input id="onEdit" class="hidden" type="checkbox" name="onEdit" checked="checked"/>
+			<div class="tcenter"><input type="submit" value="Editer" /></div>
+		</form>
+	</div>
+	<div id="add" class="block">
+		<div class="top"></div>
+		<h2>Ajouter</h2>
+		<form action="" method="post">
+			<label for="nickname"><strong>Pseudo :</strong></label>
+			<input id="nickname_add" type="text" name="nickname"/><br />
+			<label for="email">Email :</label>
+			<input id="email_add" type="text" name="email"/><br />
+			<label for="password">Mot de passe :</label>
+			<input id="password_add" type="password" name="password" size="20" /><br />
+			<label for="password_confirm"><em>(confirmation)</em></label>
+			<input id="password_confirm_add" type="password" name="password_confirm" size="20" />
+			<br />
+			<input id="onEdit_add" class="hidden" type="checkbox" name="onEdit"/>
+			<div class="tcenter"><input type="submit" value="Ajouter" /></div>
+		</form>
+	</div>
+	<div class="block">
+		<div class="top"></div>
+		<h2>Statistiques</h2>
+		<ul>
+			<li><?php echo $this->tpl_vars['total']; ?> BDE</li>
+			<li><?php echo $this->tpl_vars['inscrits']; ?> inscrit(s) à la FDH</li>
+		</ul>
+	</div>
+</div>
+<div id="content">
+	<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+	<?php echo $this->tpl_vars['pagination']; ?>
+	<table id="liste" class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col width="5%" />
+			<col width="30%" />
+			<col width="30%" />
+			<col width="30%" />
+			<col width="5%" />
+		</colgroup>
+		<tr>
+			<th>#</th>
+			<th>Pseudonyme</th>
+			<th>Nombre d'inscrits</th>
+			<th>Dernière connexion</th>
+			<th>Actions</th>
+		</tr>
+		<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['users_block']) && is_array($this->tpl_vars['users_block'])):
+	foreach ($this->tpl_vars['users_block'] as $this->tpl_vars['users']): ?>
+			<tr class="<?php if ($this->tpl_vars['count'] % 2 == 0): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['users']['uid']; ?></td>
+				<td><strong><?php echo $this->tpl_vars['users']['nickname']; ?></strong></td>
+				<td><?php echo $this->tpl_vars['users']['registered']; ?></td>
+				<td><?php echo $this->tpl_vars['users']['factivity']; ?></td>
+				<td>
+					<a onclick="edit('<?php echo $this->tpl_vars['users']['uid']; ?>','<?php echo $this->tpl_vars['users']['nickname']; ?>','<?php echo $this->tpl_vars['users']['email']; ?>')" title="Editer"><img src="/themes/system/images/icones/edit.png" alt="Editer" /></a>
+					<a href="/admin/fdh/del/<?php echo $this->tpl_vars['users']['uid']; ?>/" title="Supprimer"><img src="/themes/system/images/icones/del.png" alt="Supprimer" /></a>
+				</td>
+			</tr>
+		<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		<?php if ($this->tpl_vars['count'] == 0): ?>
+			<tr>
+				<td colspan="6" class="tcenter">Aucun BDE trouvé</td>
+			</tr>
+		<?php endif; ?>
+	</table>
+	<?php echo $this->tpl_vars['pagination']; ?>
+</div>
+<div class="clear"></div>
+<?php echo $this->tpl_vars['error_edit']; ?>

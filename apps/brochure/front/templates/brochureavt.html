@@ -1,0 +1,164 @@
+<script type="text/javascript">
+	var isLogo = {$isLogo};
+	var firmid = {$firmid};
+</script>
+<script type="text/javascript" src="/apps/brochure/front/js/brochure.js"></script>
+{if !empty({$note})}{$note}{/if}
+<!--<link type="text/css" rel="stylesheet" href="brochure2.css" />-->
+
+<div id="profil">
+	<form method="post" enctype="multipart/form-data" id="edit_form" action=""> 
+		<div id="left_ci">
+			<div id="main_infos"> 
+				<table>
+					<tr>
+						<td id="td_logo" rowspan="3">
+							<img src="/apps/brochure/front/images/nologo.jpg" alt="logo" width="125" />
+						</td>
+						<td><label for="name">Nom de l'entreprise&nbsp;:</label></td>
+						<td><input id="name" name="name" value="{$name}" size="17" required/></td>
+					</tr>
+					<tr>
+						<td><label for="cat">Domaine&nbsp;:</label></td>
+						<td>
+							<select id="cat" name="cat">
+								<option value="0">Indéfini</option>
+								{foreach item={$cat_list} as={$c}}
+								<option value="{$c.value.id}"{if {$c.value.id} == {$cat}} selected="selected"{/if}>{$c.value.cat_name}</option>
+								{/foreach}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<span id="ch_logo">
+								<span id="message_drop">Posez votre logo ici ou </span>
+								<span id="message_alt" class="hidden">Envoyez votre logo<br/></span>
+								<input type="button" id="parcourir" value="Parcourir"/>
+								<input type="file" class="hidden" name="choose_logo" id="choose_logo" accept="image/*"/>
+								<input type="checkbox" name="maudit_ie6" id="maudit_ie6" class="hidden"/>
+							</span>
+							<progress class="hidden" id="progressBar">Upload en cours...</progress>
+						</td>
+					</tr>
+				</table>
+				<fieldset class="ghost">
+					<legend>Informations générales</legend>
+					<table>
+						<tr>
+							<td><label for="f1">Fondateurs&nbsp;:</label></td>
+						<td><input id="f1" name="f1"  value="{$f1}"/></td>
+						</tr>
+						<tr>
+							<td><label for="f2"></label></td>
+						<td><input id="f2" name="f2"  value="{$f2}"/></td>
+						</tr>
+						<tr>
+							<td><label for="f3"></label></td>
+						<td><input id="f3" name="f3"  value="{$f3}"/></td>
+						
+						</tr>
+						<tr>
+							<td><label for="f4"></label></td>
+						<td><input id="f4" name="f4"  value="{$f4}"/></td>
+						</tr>
+						<tr>
+							<td><label for="f5"></label></td>
+						<td><input id="f5" name="f5"  value="{$f5}"/></td>
+						</tr>
+						<tr>
+						<td><label for="pdg">PDG actuel&nbsp;:</label></td>
+						<td><input id="pdg" name="pdg"  value="{$pdg}"/></td>
+					</tr>
+						<tr>
+						<td><label for="creation_date">Date de création&nbsp;:</label></td>
+						<td><input id="creation_date" name="creation_date"  type="text" value="{$creation_date}"/></td>
+					</tr>
+						<tr>
+							<td><label for="implantation">Lieux d'implantation&nbsp;:</label></td>
+							<td><input id="implantation" name="implantation"  value="{$implantation}" required/></td>
+						</tr>
+						<tr>
+						<td><label for="effectifs">Effectifs&nbsp;:</label></td>
+						<td><input id="effectifs" name="effectifs"  type="text" value="{$effectifs}"/>personnes</td>
+					</tr>
+					<tr>
+						<td><label for="ca">C.A. annuel&nbsp;:</label></td>
+						<td><input id="ca" name="ca" value="{$ca}"/>millions d'euros</td>
+					</tr>
+					<tr>
+						<td><label for="co">Adresse siège social&nbsp;:</label></td>
+						<td><input id="co" name="co" value="{$co}" size="8"/></td>
+					</tr>
+					<tr>
+							<td><label for="website">Site&nbsp;:</label></td>
+							<td><input id="website" name="website" type="url"  value="{$website}"/></td>
+						</tr>
+					</table></fieldset>
+					<fieldset >
+					<legend>Contact</legend>
+					<table>
+					<tr>
+						<td><label for="contact">Adresse mail recrutement&nbsp;:</label></td>
+						<td><input id="contact" name="contact" value="{$contact}"/></td>
+					</tr>
+					<tr>
+						<td><label for="tel">Téléphone&nbsp;:</label></td>
+						<td><input id="tel" name="tel" value="{$tel}"/></td>
+					</tr>
+
+					</table>
+				</fieldset>
+			</div>
+		</div>	
+		<div id="central_ci">
+			
+			<fieldset>
+				<legend>Présntation générale</legend>
+				<figure class="descriptif">
+				<p>Secteur d’activité de l’entreprise, les différentes problématiques associées, </br>
+				les corps de métier, les spécialités ,ses partenaires (d’autres entreprises notamment) avec lesquels les collaborateurs sont susceptibles de travailler,...
+				</p></figure>
+				<table>
+					<tr>
+						<td><label for="presentation"></label></td>
+						<td><textarea id="presentation" name="presentation" rows="8" cols="45">{$presentation}</textarea></td>
+					</tr>
+					<tr>
+					
+						<td><label for="marques"></label></td></br>
+						
+						<td><p>Principales marques :</p><textarea id="marques" name="marques" rows="2" cols="25">{$marques}</textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Stages et recrutement</legend>
+				<table>
+					<tr>
+						<td><label for="savoir"></label></td>
+						<td><textarea id="savoir" name="savoir" rows="8" cols="45">{$savoir}</textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Message aux étudiants</legend>
+				<table>
+					<tr>
+						<td><label for="etu"></label></td>
+						<td><textarea id="etu" name="etu" rows="8" cols="45" value ="">{$etu}</textarea></td>
+					</tr>
+				</table>
+			</fieldset>
+			
+			<table>
+				<tr>
+					<td class="tcenter" colspan="2">
+						<input id="reg-button" name="submit" type="submit" value="Enregistrer" />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="spacer"></div>
+	</form>
+</div>

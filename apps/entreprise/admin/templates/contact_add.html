@@ -1,0 +1,122 @@
+<div id="content" class="large">
+	<div class="item">
+		<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var toggle = true;
+				$(".button div").click(function() {
+					$(this).toggleClass("checked", "unchecked");
+					if (toggle) {
+						$(this).text("Oui");
+						$('.toggle').show();
+						document.getElementById('create').checked = "checked";
+					} else {
+						$(this).text("Non");
+						$('.toggle').hide();
+						document.getElementById('create').checked = "";
+					}
+					toggle = !toggle;
+				});
+			});
+		</script>
+		<form action="" method="post">
+			<h2>Ajout d'un contact à l'entreprise "<?php echo $this->tpl_vars['firmName']; ?>"</h2>
+			<fieldset>
+				<legend>Informations générales</legend>
+				<table cellpadding="5" cellspacing="0">
+					<tr>
+						<td><label for="civilite">Civilité</label></td>
+						<td>
+							<input id="Mme" type="radio" name="civilite" value="Mme"<?php if ($this->tpl_vars['civilite'] == 'Mme'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mme">Madame</label>
+							<input id="Mlle" type="radio" name="civilite" value="Mlle"<?php if ($this->tpl_vars['civilite'] == 'Mlle'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mlle">Mademoiselle</label>
+							<input id="Mr" type="radio" name="civilite" value="Mr"<?php if ($this->tpl_vars['civilite'] == 'Mr'): ?> checked="checked"<?php endif; ?> />
+							<label for="Mr">Monsieur</label>
+							<input id="none" type="radio" name="civilite" value=""<?php if (empty($this->tpl_vars['civilite'])): ?> checked="checked"<?php endif; ?> />
+							<label for="none">Aucune</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="nom">Nom :</label></td>
+						<td><input id="nom" type="text" name="nom" value="<?php echo $this->tpl_vars['nom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="prenom">Prénom :</label></td>
+						<td><input id="prenom" type="text" name="prenom" value="<?php echo $this->tpl_vars['prenom']; ?>" /></td>
+					</tr>
+					<tr>
+						<td><label for="poste">Poste au sein de l'entreprise :</label></td>
+						<td><input id="poste" type="text" name="poste" value="<?php echo $this->tpl_vars['poste']; ?>" /></td>
+					</tr>
+					<tr>
+						<td>Langue parlée :</td>
+						<td>
+							<input id="langue_fr" type="radio" name="langue" value="fr" checked="checked" />
+							<label for="langue_fr">Français</label>
+							<input id="langue_all" type="radio" name="langue" value="all" />
+							<label for="langue_all">Allemand</label>
+							<input id="langue_en" type="radio" name="langue" value="en" />
+							<label for="langue_en">Anglais</label>
+							<input id="langue_autre" type="radio" name="langue" value="" />
+							<label for="langue_autre">Autre</label>
+						</td>
+					</tr>
+					<tr>
+						<td><label for="adresse">Adresse :</label></td>
+						<td><textarea id="adresse" name="adresse" rows="10" cols="50"><?php echo $this->tpl_vars['adresse']; ?></textarea></td>
+					</tr>
+					<tr>
+						<td><label for="tel_fixe">Téléphone fixe :</label></td>
+						<td><input id="tel_fixe" type="text" name="tel_fixe" value="<?php echo $this->tpl_vars['tel_fixe']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="tel_portable">Téléphone portable :</label></td>
+						<td><input id="tel_portable" type="text" name="tel_portable" value="<?php echo $this->tpl_vars['tel_portable']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="fax">Fax :</label></td>
+						<td><input id="fax" type="text" name="fax" value="<?php echo $this->tpl_vars['fax']; ?>" size="10" /></td>
+					</tr>
+					<tr>
+						<td><label for="email">Email :</label></td>
+						<td><input id="email" type="text" name="email" value="<?php echo $this->tpl_vars['email']; ?>" size="25" onblur="document.getElementById('nickname').value = this.value;" /></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset>
+				<legend>Compte utilisateur</legend>
+				<table>
+					<tr>
+						<td>Compte utilisateur pour ce contact :</td>
+						<td>
+							<a href="javascript:void()" class="button"><div class="unchecked">Non</div></a>
+							<input id="create" type="checkbox" name="create" /><br />
+						</td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="nickname">Identifiant :</label></td>
+						<td><input type="text" id="nickname" name="nickname" value="<?php echo $this->tpl_vars['email']; ?>" />
+							<em>le mieux est de reprendre l'adresse email du contact</em></td>
+					</tr>
+					<tr class="toggle">
+						<td><label for="password">Mot de passe :</label></td>
+						<td>
+							<input type="text" id="password" name="pass1" value="" /><br />
+							<input type="text" id="password" name="pass2" value="" /> <em>(confirmation)</em>
+						</td>
+					</tr>
+					<tr class="toggle">
+						<td>Envoi des informations</td>
+						<td>
+							<input id="sendEmail" type="checkbox" name="sendEmail" />
+							<label for="sendEmail">Envoyer un mail au contact pour lui communiquer ses identifiant et mot de passe</label>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div class="tcenter"><input type="submit" class="button-submit" value="Ajouter le contact" /></div>
+		</form>
+	</div>
+</div>
+<div class="clear"></div>

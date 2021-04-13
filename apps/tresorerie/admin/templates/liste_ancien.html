@@ -1,0 +1,106 @@
+<div id="blocks">
+	<div id="filtres" class="block">
+		<script type="text/javascript">
+			$(function() {
+				$('#firm').focus();
+				var trans;
+				$('#firm').autocomplete({
+					source: function(objRequest, response) {
+						$.ajax({
+							method: 'get',
+							url: '/admin/entreprise/ajax_firms/',
+							data: "term="+objRequest.term,
+							beforeSend: function() {
+								$('#firm').addClass('loading');
+							},
+							complete: function() {
+								$('#firm').removeClass('loading');
+							}, //stop showing loading when the process is complete
+							success: function(result) {
+								var res = $.parseJSON(result);
+								trans = res.trans;
+								response(res.data);
+							},
+							error: function() {
+								alert('Erreur lors du chargement de la liste des entreprises.');
+							}
+						});
+					},
+					// Lorsqu'un item est sélectionné dans la liste
+					select: function(event, ui) {
+						var firmid = trans[ui.item.value];
+						window.location = '/admin/entreprise/fiche/'+firmid+'/';
+					}
+				});
+			});
+		</script>
+		<div class="top"></div>
+		<h2>Rechercher par...</h2>
+		<form action="" method="get">
+			<label for="firm">Nom :</label>
+			<input id="firm" type="text" name="name" value="{if isset({$filter_name})}{$filter_name}{/if}" />
+		</form>
+		<form id="firms_participant" action="" method="get">
+			<label for="participants">Année :</label>
+			<select id="participants" name="year" onchange="document.getElementById('firms_participant').submit()">
+				<option></option>
+				{foreach item={$register_years} as={$year}}
+				<option value="{$year.value}"{if isset({$filter_year_selected}) && {$filter_year_selected} == {$year.value}} selected="selected"{/if}>{$year.value}</option>
+				{/foreach}
+			</select>
+		</form>
+	</div>
+</div>
+<div id="content">
+	{if !empty({$note})}{$note}{/if}
+	{$pagination}
+	<table class="liste sorted" cellpadding="0" cellspacing="0">
+		<colgroup>
+			<col style="width: 25%;" />
+			<col style="width: 15%;" />
+			<col style="width: 10%;" />
+			<col style="width: 20%;" />
+			<col style="width: 20%;" />
+			<col style="width: 10%;" />
+		</colgroup>
+		<tr>
+			<th class="sort {$name_class}"><a href="/admin/tresorerie/liste/name-{$name_sort}/{$querystring}">Nom de l'entreprise</a></th>
+			<th class="sort {$cat_name_class}"><a href="/admin/tresorerie/liste/cat_name-{$cat_name_sort}/{$querystring}">Secteur d'activité</a></th>
+			<th class="sort {$country_class}"><a href="/admin/tresorerie/liste/country-{$country_sort}/{$querystring}">Pays</a></th>
+			<th class="sort {$choix_pack_class}"><a href="/admin/tresorerie/liste/choix_pack-{$choix_pack_sort}/{$querystring}">Pack choisi</a></th>
+			<th>Bon de commande</a></th>
+			<th>Factures</a></th>
+			<th>Bon de commande (complement)</a></th>
+			<th>Factures (complement)</a></th>
+		</tr>
+		{block name="entreprise"}
+			<tr class="{if {$count} % 2 == 0}pair{else}impair{/if}">
+				<td><strong>{$entreprise.name}</strong></td>
+				<td>{if !empty({$entreprise.cat_name})}{$entreprise.cat_name}
+					{else}Aucun{/if}</td>
+				<td>{$entreprise.country}</td>
+				{if $entreprise.choix_pack==0}
+					<td> </td>{/if}
+				{if $entreprise.choix_pack==2}
+					<td>Pack Partenaire</td>{/if}
+				{if $entreprise.choix_pack==3}
+					<td>Pack 12m²</td>{/if}
+				{if $entreprise.choix_pack==4}
+					<td>Pack 9m²</td>{/if}
+				{if $entreprise.choix_pack==5}
+					<td>Pack 6m²</td>{/if}
+				<td><a href="/apps/tresorerie/admin/factures/{$entreprise.name} .pdf" title="Bon de commande de l'entreprise"><img src="/themes/system/images/icones/magnifier.png" alt="Voir" /></a>
+				<td><a href="/apps/tresorerie/admin/factures/{$entreprise.name} facture.pdf" title="Facture de l'entreprise"><img src="/themes/system/images/icones/magnifier.png" alt="Voir" /></a>
+				<td><a href="/apps/tresorerie/admin/factures/{$entreprise.name}  complement.pdf" title="Bon de commande (complement) de l'entreprise"><img src="/themes/system/images/icones/magnifier.png" alt="Voir" /></a>
+				<td><a href="/apps/tresorerie/admin/factures/{$entreprise.name}  complement facture.pdf" title="Facture (complement) de l'entreprise"><img src="/themes/system/images/icones/magnifier.png" alt="Voir" /></a>
+			</tr>
+		{/block}
+		{if {$count} == 0}
+			<tr>
+				<td colspan="5" class="tcenter">Aucune entreprise dans la base de données</td>
+			</tr>
+		{/if}
+	</table>
+	{$pagination}
+</div>
+<div class="clear"></div>

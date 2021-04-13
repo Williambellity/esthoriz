@@ -1,0 +1,18 @@
+h1, .h1 {
+    font-size: 60px !important;
+}
+
+p {
+	/* width:200px; */
+	height:800px;
+	/* line-height:200px; */
+	/* text-align:center; */
+}
+
+img {
+	vertical-align:middle; 
+}
+
+/* .blanc { */
+	/* height: 100px; */
+/* } */

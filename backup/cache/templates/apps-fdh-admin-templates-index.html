@@ -1,0 +1,114 @@
+<div id="content" class="large"> 
+<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+<?php if (!empty($this->tpl_vars['error'])): ?><?php echo $this->tpl_vars['error']; ?><?php endif; ?>
+<?php if (!empty($this->tpl_vars['succes'])): ?><?php echo $this->tpl_vars['succes']; ?><?php endif; ?>     
+  <div class="item">              
+    <form method="post" id="customForm" action="">                                 
+    <table class="liste" cellpadding="0" cellspacing="0" id="tableau" style="width: 50%;">
+	<colgroup>
+		<col style="width: 5%;" />
+		<col style="width: 15%;" />
+		<col style="width: 15%;" />
+		<col style="width: 20%;" />
+		<col style="width: 20%;" />
+	</colgroup>
+	<tr id="ligne">
+		<th>N&deg;</th>
+		<th>Nom</th>
+		<th>Prenom</th>
+		<th>Bus</th>
+		<th>Mode de paiement</th>
+	</tr>
+	<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['a_reinscrire_block']) && is_array($this->tpl_vars['a_reinscrire_block'])):
+	foreach ($this->tpl_vars['a_reinscrire_block'] as $this->tpl_vars['a_reinscrire']): ?>
+	<?php if ($this->tpl_vars['t'] = $this->tpl_vars['count'] +1): ?><?php endif; ?>
+	<tr name="<?php echo $this->tpl_vars['t']; ?>" id="<?php echo $this->tpl_vars['t']; ?>" class="<?php if ($this->tpl_vars['t'] % 2 == 1): ?>pair<?php else: ?>impair<?php endif; ?>">
+				<td><?php echo $this->tpl_vars['t']; ?></td>
+				<td><input name=nom[] type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['nom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['nom']; ?>"<?php endif; ?> /> </td>
+				<td><input name="prenom[]" type="text" <?php if (!empty($this->tpl_vars['a_reinscrire']['prenom'])): ?>value="<?php echo $this->tpl_vars['a_reinscrire']['prenom']; ?>"<?php endif; ?> /></td>
+				<td><select name="bus[]">
+				      <?php if ((!empty($this->tpl_vars['a_reinscrire']['bus']))): ?><option value='<?php echo $this->tpl_vars['a_reinscrire']['bus']; ?>'><?php echo $this->tpl_vars['a_reinscrire']['bus_lieu']; ?><?php if (($this->tpl_vars['a_reinscrire']['bus_numero'] !=0)): ?> N°<?php echo $this->tpl_vars['a_reinscrire']['bus_numero']; ?><?php endif; ?>-<?php echo $this->tpl_vars['a_reinscrire']['bus_heure']; ?></option><?php else: ?><option value="0">Veuillez choisir un bus</option><?php endif; ?>
+              <?php echo $this->tpl_vars['bus_select']; ?>                                        
+            </select> 
+        </td>
+		<td>
+          <select name="paymod[]">
+              <option value="0">Veuillez choisir un moyen de paiement</option>
+              <option value="1" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==1))): ?>selected="selected"<?php endif; ?>>Chèque</option>
+              <option value="2" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==2))): ?>selected="selected"<?php endif; ?>>Liquide</option>
+			  <?php if (isset($this->tpl_vars['enable'])): ?><option value="3" <?php if ((!empty($this->tpl_vars['a_reinscrire']['paymod']) && ($this->tpl_vars['a_reinscrire']['paymod']==3))): ?>selected="selected"<?php endif; ?>>Exonéré</option><?php endif; ?>                                  
+           </select> 
+        </td>
+		</tr>
+	<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+
+    </table>
+   <img src="/apps/fdh/admin/templates/ico_plus.png"  onclick="ajouterligne();" alt="+"'/>
+   <img src="/apps/fdh/admin/templates/ico_moins.png"  onclick="suppligne();" alt="-"'/>
+   <input type="hidden" name="size" id="size"/>
+<script>
+	
+	function nouvelleligne(nbligne){
+		var str = '<tr name="'+ nbligne +'" id="'+ nbligne +'"';
+		if(nbligne % 2 == 1) {
+      str += 'class="pair"'; 
+    } else {
+      str += 'class="impair"';
+    }
+		str +=	'><td>'+ nbligne +'</td>' +
+				'<td><input name=nom[] type="text"/> </td>' +
+				'<td><input name="prenom[]" type="text" /></td>' +
+				'<td><select name="bus[]">' +
+              '<option value="0">Veuillez choisir un bus</option>' +                                                             
+              '<?php echo $this->tpl_vars['bus_select_java']; ?>'+                                         
+            '</select> </td>' +
+        '<td>' +
+           '<select name="paymod[]">' +
+              '<option value="0">Veuillez choisir un moyen de paiement</option>' +
+              '<option value="1">Chèque</option>' +
+              '<option value="2">Liquide</option>' + 
+			  <?php if (isset($this->tpl_vars['enable'])): ?>'<option value="3">Exonéré</option>'+<?php endif; ?>			  
+            '</select>' +
+		'</td>'+
+		'</tr>';
+			return str;
+	}
+	
+	// on creé la première ligne 		
+		<?php if (empty($this->tpl_vars['a_reinscrire'])): ?>
+		  var nbligne = 1;
+		  var nouvelle_ligne = nouvelleligne(nbligne);
+		  $(nouvelle_ligne).insertAfter('#ligne');      
+			$("#size").attr("value",nbligne);			  
+		<?php else: ?>
+		  var nbligne = <?php echo $this->tpl_vars['t']; ?>;      
+			$("#size").attr("value",nbligne);	 		  
+		<?php endif; ?>
+	// On affiche le nombre de ligne
+    function ajouterligne(){  
+		// Si c'est la derière ligne	
+			// On insert la nouvelle ligne
+      var nligne = '#'+nbligne;
+			nbligne ++;
+
+			var nouvelle_ligne = nouvelleligne(nbligne);
+      
+			$(nouvelle_ligne).insertAfter(nligne);
+      // on change la variable nbligne et on l'affiche 
+			$("#size").attr("value",nbligne);		
+	  }
+	  function suppligne(){  
+		// Si c'est la derière ligne	
+			// On insert la nouvelle ligne
+			if(nbligne > 1) {
+        var nligne = '#'+nbligne;
+			  $(nligne).remove();
+			  nbligne--;
+			  $("#size").attr("value",nbligne);
+      }		
+	  }
+</script>
+ <input id="submit" name="submit" type="submit" value="Send" />  	      
+  </form>
+  </div>
+</div>

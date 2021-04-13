@@ -1,0 +1,70 @@
+<form action="" method="post" enctype="multipart/form-data">
+	<div id="blocks">
+		<div class="block">
+			<div class="top"></div>
+			<table>
+				<tr>
+					<td><label for="nAuthor">Auteur :</label></td>
+					<td><input id="nAuthor" type="text" name="nAuthor" value="<?php echo $this->tpl_vars['nAuthor']; ?>" /></td>
+				</tr>
+				<tr>
+					<td><label for="nKeywords">Mots clés :</label></td>
+					<td><input id="nKeywords" type="text" name="nKeywords" value="<?php echo $this->tpl_vars['nKeywords']; ?>" /></td>
+				</tr>
+			</table>
+			<h3>Catégorie de l'article</h3>
+			<?php $this->tpl_vars['count'] = 0;if (isset($this->tpl_vars['cat_block']) && is_array($this->tpl_vars['cat_block'])):
+	foreach ($this->tpl_vars['cat_block'] as $this->tpl_vars['cat']): ?>
+				<input id="cat<?php echo $this->tpl_vars['cat']['cid']; ?>" type="checkbox" name="nCat[<?php echo $this->tpl_vars['cat']['cid']; ?>]"<?php if (in_array($this->tpl_vars['cat']['cid'], $this->tpl_vars['ncat'])): ?> checked="checked"<?php endif; ?> />
+				<label for="cat<?php echo $this->tpl_vars['cat']['cid']; ?>"><?php echo $this->tpl_vars['cat']['name']; ?></label><br />
+			<?php $this->tpl_vars['count']++; endforeach; endif; ?>
+		</div>
+		<div class="block">
+			<div class="top"></div>
+			<h2>Infos</h2>
+			<ul>
+				<li><strong>News créée</strong> le <?php echo $this->tpl_vars['date']; ?></li>
+				<li><strong>Dernière édition</strong> le  <?php echo $this->tpl_vars['modified']; ?></li>
+			</ul>
+		</div>
+		<div class="block">
+			<div class="top"></div>
+			<h2>Image à la une</h2>
+			<?php if (!empty($this->tpl_vars['image'])): ?><img src="/upload/news/<?php echo $this->tpl_vars['image']; ?>" alt="<?php echo $this->tpl_vars['nTitle']; ?>" /><?php endif; ?>
+			<input type="file" name="image" />
+		</div>
+	</div>
+	<div id="content">
+		<div class="item">
+			<?php if (!empty($this->tpl_vars['note'])): ?><?php echo $this->tpl_vars['note']; ?><?php endif; ?>
+			<label for="nTitle" class="hide">Titre :</label>
+			<input id="nTitle" type="text" name="nTitle" size="40" value="<?php echo $this->tpl_vars['nTitle']; ?>" onclick="check(this, 'Le titre de votre article')" onblur="check(this, 'Le titre de votre article')" onkeyup="updatePermalien(this.value);" /><br />
+			<div id="permalien">
+				<strong>URL :</strong>
+				<span id="permalienShow" onclick="">
+					<span onclick="permalienClick();">
+						<?php echo $this->tpl_vars['siteURL']; ?><?php echo $this->tpl_vars['lastId']; ?>-<span id="permalienInnerShow"><?php echo $this->tpl_vars['nUrl']; ?></span><input id="permalienInnerInput" type="text" name="nUrl" value="<?php echo $this->tpl_vars['nUrl']; ?>" />
+					</span>
+					<input id="modifButton" type="button" value="Modifier" onclick="permalienClick();" />
+					<span id="modifCommands">
+						<input id="okButton" type="button" value="OK" onclick="updatePermalien(document.getElementById('permalienInnerInput').value); return false;" /> - 
+						<a href="#" onclick="permalienCancel(); return false;">Annuler</a>
+					</span>
+				</span>
+			</div><br />
+			
+			<label for="nContent" class="hide">Contenu de la page :</label><br />
+			<textarea id="nContent" name="nContent" rows="15" cols="80"><?php echo $this->tpl_vars['nContent']; ?></textarea><br />
+			<script type="text/javascript">
+				var editor = CKEDITOR.replace('nContent');
+				CKFinder.setupCKEditor(editor, '<?php echo $this->tpl_vars['baseDir']; ?>helpers/ckfinder/') ;
+			</script>
+			
+			<div class="tcenter">
+				<input type="submit" value="Envoyer" />
+				<input type="button" value="Annuler" onclick="history.back();" />
+			</div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</form>
