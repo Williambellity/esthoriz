@@ -21,7 +21,6 @@ class ProfilModel {
 			WHERE userid = :userid
 		');
 		$prep->bindParam(':userid', $_SESSION['userid'], PDO::PARAM_INT);
-		//$prep->bindParam(':admin', $_SESSION['nickname']);
 		$prep->execute();
 		return $prep->fetch(PDO::FETCH_ASSOC);
 	}
