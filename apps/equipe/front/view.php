@@ -25,7 +25,7 @@ class ContacterView extends WView {
 	}
 	
 	public function contacter($data = array()) {
-		$this->assign('css', '/apps/contacter/front/css/style.css');
+		
 		$this->assign('pageTitle', 'Notre équipe');
 		
 		$this->fillForm(

@@ -26,7 +26,6 @@ class ProfilView extends WView {
 	
 	public function profil($postData = array()) {
 		$this->assign('pageTitle', 'Forum Est-Horizon | Documents');
-		/* $this->assign('css', '/apps/profil/front/css/profil.css'); */
 		
 		$data = $this->model->getContact();
 		$this->fillForm($data, $postData);

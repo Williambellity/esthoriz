@@ -10,9 +10,7 @@
 class ConseilsModel {
 	private $db;
 	
-	/*public function __construct() {
-		$this->db = WSystem::getDB();
-	}*/
+	
 }
 
 ?>
