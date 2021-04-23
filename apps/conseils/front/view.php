@@ -21,7 +21,6 @@ class ConseilsView extends WView {
 	
 	public function conseils() {
 		$this->assign('pageTitle', 'Forum Est-Horizon | Conseils');
-		/* $this->assign('css', '/apps/profil/front/css/profil.css'); */
 		
 	}
 }
