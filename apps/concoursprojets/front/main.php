@@ -1,7 +1,7 @@
 <?php
 /**
  * Wity CMS
- * Système de gestion de contenu pour tous.
+ * Systï¿½me de gestion de contenu pour tous.
  *
  * @author Julien1619
  * @version	$Id: apps/brochure/front/main.php 0001 11-06-2011 Julien1619 $
