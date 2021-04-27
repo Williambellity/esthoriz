@@ -159,13 +159,13 @@
     
     function approve(e){
         quest_id = e.parentElement.id.split("q")[1];
-        ajaxCore("mod-question",["question_id",quest_id],function(){});
+        ajaxCore("mod-question",["question_id",quest_id],function());
         refresh_verified();
     }
     
     function delete_quest(e){
         quest_id = parseInt(e.parentElement.id.split("q")[1]);
-        ajaxCore("delete-question",["question_id",quest_id],function(){});
+        ajaxCore("delete-question",["question_id",quest_id],function());
         qu_list_id = id_cache.indexOf(quest_id);
         vr_ind = vr_cache.indexOf(quest_id);
         questions.splice(qu_list_id,1);
@@ -303,7 +303,7 @@
     function configure_check_box(){
         o("#verifonly").onchange = c_verif;
         o("#autorefresh").onchange = c_autor;
-        c_autor({target:{checked:true}});
+        c_autor();
     }
     
     window.onload = function(){
