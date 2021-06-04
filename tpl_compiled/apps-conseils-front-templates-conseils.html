@@ -118,7 +118,10 @@
 
 		<?php if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])): /*onglet pour les entreprises si connectées*/?>
 
-		<?php $_SESSION["site entreprise"] = 1 ?>
+		<?php 
+		session_start();
+		$_SESSION["site entreprise"] = 1;
+		 ?>
 		<?php echo $_SESSION["site entreprise"]?>
 		<?php endif; ?>
 

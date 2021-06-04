@@ -167,11 +167,21 @@ if ($use_sts && isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
 							</li>
 							<?php endif; ?>
 
-							<li><a href="/articles/">Actualités</a></li>
+
+
+
+							<?php if ($_SESSION['site entreprise'] == 1): /*onglets pour site enterprise*/?>
+							<li><a href="/articles/">Site entreprise youhou</a></li>
+							<?php else: ?>
+							<li><a href="/articles/">Actualités
+									<?php echo $_SESSION['site entreprise']?>
+								</a></li>
+							<?php endif; ?>
 							<li><a href="/exposant/">Exposants</a></li>
 							<li><a href="/conseils/">Se préparer</a></li>
 							<li><a href="/programme/">Jour J</a></li>
 							<li><a href="/galerie/">Galerie</a></li>
+
 
 							<li class="dropdown">
 								<a class="dropdown-toggle" data-toggle="dropdown" href="/entreprise/">Informations
