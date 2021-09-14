@@ -112,15 +112,7 @@
 
 		</div>
 
-		<form action="conseils.html" method="post">
-			<input type="submit" name="someAction" value="GO" />
-		</form>
 
-		<?php if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['someAction'])): /*onglet pour les entreprises si connectées*/?>
-
-		<?php $_SESSION["site entreprise"] = 1 ?>
-		<?php echo $_SESSION["site entreprise"]?>
-		<?php endif; ?>
 
 
 
