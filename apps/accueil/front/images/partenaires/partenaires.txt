@@ -17,6 +17,6 @@ minesservices*mines-services.png*http://www.mines-services.fr/*Autres Partenaire
 mgel*newmgel.png*http://www.mgel.fr/*Autres Partenaires*
 rotary*logo_rotary.png*https://www.rotary.org/fr*Autres Partenaires*
 malakoff*malakoff.png*http://relais-amical.malakoffmederic.com/index.html*Autres Partenaires*
-Nancy Tourisme & Evenements*NTE.jpg*http://www.nancy-tourisme.fr/*Autres Partenaires*
+Nancy Tourisme & Evenements*NTE.png*http://www.nancy-tourisme.fr/*Autres Partenaires*
 Happy Trainees*happytrainees.png*http://happytrainees.org/*Autres Partenaires*
 Isam IAE*isamiae.png*http://isam-iae.univ-lorraine.fr/*Autres Partenaires*

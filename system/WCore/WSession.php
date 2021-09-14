@@ -29,6 +29,7 @@ class WSession {
 		
 		// Démarrage des sessions
 		session_start();
+		$_SESSION["site entreprise"] = 0;
 		
 		// Tentative de chargement de l'utilisateur en vérifiant les cookies
 		if (!$this->isLoaded() && !empty($_COOKIE['userid']) && !empty($_COOKIE['hash'])) {
