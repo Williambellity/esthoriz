@@ -9,4 +9,4 @@ minesentrepreneurs*mine.png*http://mines-nancy.univ-lorraine.fr/content/mines-na
 minesservices*mines-services.png*http://www.mines-services.fr/*Autres Partenaires*
 rotary*logo_rotary.png*https://www.rotary.org/fr*Autres Partenaires*
 Nancy Tourisme & Evenements*NTE.png*http://www.nancy-tourisme.fr/*Autres Partenaires*
-Happy Trainees*happytrainees.png*http://happytrainees.org/*Autres Partenaires*
+Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Partenaires Publics*
