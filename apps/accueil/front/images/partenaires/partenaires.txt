@@ -1,11 +1,8 @@
 
 univlorraine*UNIV-Lorraine.png*http://www.univ-lorraine.fr/*Partenaires Publics*
 peel*peel.jpg*http://peel.univ-lorraine.fr/*Partenaires Publics*
-letudiant*letudiant.png*http://www.letudiant.fr/*Partenaires Medias*
-batiactu*batiactuemploi2011_HD.jpg*http://www.batiactuemploi.com/*Partenaires Medias*
-moniteur*moniteur.jpg*http://www.lemoniteur.fr/*Partenaires Medias*
-moniteur2*moniteur2.png*http://emploi-btp.lemoniteur.fr/*Partenaires Medias*
-studyrama*studyrama.gif*http://www.studyrama.com//*Partenaires Medias*
+
+
 
 Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Autres Partenaires*
 IMT*INSTITUT-MINES-TELECOM_Logo_web.gif*https://www.mines-telecom.fr/*Autres Partenaires*
