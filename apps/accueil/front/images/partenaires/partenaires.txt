@@ -1,9 +1,5 @@
-
 univlorraine*UNIV-Lorraine.png*http://www.univ-lorraine.fr/*Partenaires Publics*
 peel*peel.jpg*http://peel.univ-lorraine.fr/*Partenaires Publics*
-
-
-
 Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Autres Partenaires*
 IMT*INSTITUT-MINES-TELECOM_Logo_web.gif*https://www.mines-telecom.fr/*Autres Partenaires*
 Intermines*intermines.jpg*http://www.inter-mines.org/*Autres Partenaires*
@@ -11,8 +7,6 @@ Artem*Logo_Artem.jpg*http://www.alliance-artem.fr/*Autres Partenaires*
 Apec*apec.png*https://www.apec.fr/*Autres Partenaires*
 minesentrepreneurs*mine.png*http://mines-nancy.univ-lorraine.fr/content/mines-nancy-entrepreneurs*Autres Partenaires*
 minesservices*mines-services.png*http://www.mines-services.fr/*Autres Partenaires*
-
 rotary*logo_rotary.png*https://www.rotary.org/fr*Autres Partenaires*
-
 Nancy Tourisme & Evenements*NTE.png*http://www.nancy-tourisme.fr/*Autres Partenaires*
 Happy Trainees*happytrainees.png*http://happytrainees.org/*Autres Partenaires*
