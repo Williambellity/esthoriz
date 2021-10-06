@@ -21,6 +21,4 @@
 054*concours*
 060*correction cv*stand.txt*correction de cv*
 061*correction cv*
-070*temoignages*stand.txt*temoignages "elles bougent"*
-071*temoignages*
-090*a bientot*stand.txt*a bientot pour l'edition 2020 !*
+090*a bientot*stand.txt*a bientot pour l'edition 2021 !*
