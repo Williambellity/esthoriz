@@ -1,32 +1,33 @@
 <meta charset="utf-8" />
 
 <style>
-    .col-md-3 img{
-        max-height: 150px;
-		<!-- height: 150px; -->
-    }
+	.col-md-3 img {
+		max-height: 150px;
+		< !-- height: 150px;
+		-->
+	}
 
-    #down{
-        max-width: 200px !important;
-    }
-	
-	#description{
+	#down {
+		max-width: 200px !important;
+	}
+
+	#description {
 		text-align: justify;
 	}
 </style>
 
-            
+
 <div class="article art-typ4">
-	<div class="container ">	
+	<div class="container ">
 		<div class="col-xs-12 col-sm-12 col-lg-12">
 			<h2 class="featurette-heading">Galerie photo<span class="text-muted"> </span></h2>
 		</div>
-		
+
 		<div class="row">
 
 
 
-<?php
+			<?php
 	error_reporting(E_ERROR | E_WARNING | E_PARSE);
 /* Essai lecture fichier txt */
 	//$document_root = $SERVER['document_root']; /* pour l'instant on est en local */
@@ -89,16 +90,14 @@
 					echo '<p>Lors de l’édition 2017, Arnaud Montebourg a animé une conférence suivie de questions sur le thème de l’innovation, l’industrie et l’entrepreneuriat. Puis, l’entreprise <strong>Saint-Gobain</strong> a réalisé une conférence pour présenter leur entreprise ainsi que quelques projets en cours.</ br> Pour l’édition 2018, nous avons organisé une conférence sur le thème <strong>géopolitique et entreprises</strong> avec Sylvie Mattely directrice adjointe de <strong>l’IRIS</strong> et Samuel Nowakowski enseignant-chercheur au <strong>LORIA</strong> en humanités numériques. S’en est suivi un débat avec le public de cette conférence.</p>';
 				}
 				elseif ($type_exposant_precedent == "concours"){
-					echo '<p>Le Forum organise un concours d’une quinzaine projets avec le <strong>PEEL</strong>, <a href="#InfoProj">Enactus</a> et <a href="#InfoProj">Genius</a>. Ce concours mettra en avant le travail de jeunes porteurs de projets innovants. 1500 euros sont à gagner.</p>';
+					echo '<p>Le Forum organise un concours d’une quinzaine projets avec le <strong>PEEL</strong>. Ce concours mettra en avant le travail de jeunes porteurs de projets innovants. Les vainqueurs du concours de projet se verront remettre un chèque de 500€ pour les projets émergents ou 1000€ pour les projets avancés.</p>';
 				}
 				elseif ($type_exposant_precedent == "correction cv"){
-					echo '<p>Afin de permettre aux étudiants de mettre efficacement en avant l’ensemble de leurs atouts, des membres d’<a href="#InfoProj">Intermines</a>, des représentants du <strong>Rotary</strong> et du <a href="#InfoProj">Relais Amical</a> relisent leur CV avec attention et professionnalisme.</p>';
+					echo '<p>Afin de permettre aux étudiants de mettre efficacement en avant l’ensemble de leurs atouts, des membres d’Intermines et des représentants du <strong>Rotary</strong> relisent leur CV avec attention et professionnalisme.</p>';
 				}
-				elseif ($type_exposant_precedent == "temoignages"){
-					echo '<p>Pour encourager et soutenir les <strong>vocations</strong> de techniciennes et d’ingénieures, une table ronde est organisée par l’association “<strong>Elles Bougent</strong>” et le Forum Est-Horizon. Des marraines issues du monde scientifique témoignent de leur parcours professionnel et rencontrent lycéen(ne)s et étudiant(e)s pour partager leur passion et casser les stéréotypes.</p>';
-				}
+				
 				else{
-					echo '<p>L’édition 2020, la 37e, se tiendra du <strong>8 au 10 décembre</strong> dans un format 100% virtuel sur la plateforme en ligne Seekube.</p>';
+					echo '<p>L’édition 2021, la 38e, se tiendra le <strong>2 décembre</strong> dans un format mêlant présentiel au Centre Prouvé et virtuel via la plateforme Seekube.</p>';
 				}
 				
 				//echo '<p>'.file_get_contents($vecteur[2]).'</p>';
@@ -114,21 +113,11 @@
 	fclose($fp);
 	}
 ?>
-	
+
 		</div>
 	</div>
 </div>
 
-<hr class="featurette-divider">
-<div class="notes" id="InfoProj" style="margin-top:200px">
-		<div class="container marketing">
-		<div id="BotUnderLine"></div>
-                    <p style="text-align:justify; margin-top:10px"><strong>Enactus</strong> Mines Nancy est une association d’entreprenariat social. Faisant partie du vaste réseau Enactus présent dans toute la France et dans de nombreux pays, cette association vise à créer, développer et faire grandir des projets à vocation sociale, humanitaire ou environnementale, afin de transformer et améliorer notre société.</p>
-                    <p style="text-align:justify"><strong>Genius</strong>  Mines Nancy est une association des Mines Nancy membre du groupe Genius Global. Elle encourage à participer à des projets proposés par des entreprises et groupes internationaux ainsi qu’à développer des projets portés par des étudiants. Genius Mines Nancy a aussi vocation à aider les jeunes entrepreneurs et étudiants à l'aide de fiches expliquant certains aspects de la vie d'entrepreneur ou de la vie professionnelle.</p>
-                    <p style="text-align:justify"><strong>Intermines</strong> est née en juin 1983 de la fusion des trois associations d’anciens élèves des écoles des Mines de Paris, Nancy et Saint-Etienne.</p>
-                    <p style="text-align:justify"><strong>Relais Amical</strong> est le regroupement d'associations de retraités bénévoles dispensant leurs compétences.</p>
-		</div>
-		</div>
-		
+
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
