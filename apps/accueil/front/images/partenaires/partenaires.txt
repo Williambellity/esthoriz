@@ -1,5 +1,8 @@
 univlorraine*UNIV-Lorraine.png*http://www.univ-lorraine.fr/*Partenaires Publics*
 peel*peel.jpg*http://peel.univ-lorraine.fr/*Partenaires Publics*
+Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Partenaires Publics*
+Grand Est*crlorraine.png*https://www.grandest.fr/*Partenaires Publics*
+Grand Nancy*grandnancy.png*https://www.grandnancy.eu*Partenaires Publics*
 Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Autres Partenaires*
 IMT*INSTITUT-MINES-TELECOM_Logo_web.gif*https://www.mines-telecom.fr/*Autres Partenaires*
 Intermines*intermines.jpg*http://www.inter-mines.org/*Autres Partenaires*
@@ -9,9 +12,6 @@ minesentrepreneurs*mine.png*http://mines-nancy.univ-lorraine.fr/content/mines-na
 minesservices*mines-services.png*http://www.mines-services.fr/*Autres Partenaires*
 rotary*logo_rotary.png*https://www.rotary.org/fr*Autres Partenaires*
 Nancy Tourisme & Evenements*NTE.png*http://www.nancy-tourisme.fr/*Autres Partenaires*
-Mines Nancy*minesnancy.gif*http://www.mines-nancy.univ-lorraine.fr/*Partenaires Publics*
-Grand Est*crlorraine.png*https://www.grandest.fr/*Partenaires Publics*
-Grand Nancy*grandnancy.png*https://www.grandnancy.eu*Partenaires Publics*
 Seekube*seekube.png*https://www.seekube.com/*Autres Partenaires*
 Eden Park*edenpark.png*https://www.eden-park.com/fr_fr*Autres Partenaires*
 Cifre Convention*cifre.png*https://www.enseignementsup-recherche.gouv.fr/cid22130/les-cifre.html*Autres Partenaires*
