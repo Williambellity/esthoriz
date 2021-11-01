@@ -124,7 +124,7 @@ class InscriptionModel {
     // how to save PNG codes to server
     
     $tempDir = EXAMPLE_TMP_SERVERPATH;
-    $codeContents = 'http://www.est-horizon.com/admin/qrcode?mail='.$data['mail'];
+    $codeContents = 'http://www.est-horizon.com/CV2021/'.$data['mail'].'.pdf';
     
     // we need to generate filename somehow, 
     // with md5 or with database ID used to obtains $codeContents...
@@ -140,7 +140,7 @@ class InscriptionModel {
     } else {
     }
     copy($pngAbsoluteFilePath,"/home/esthoriz/www/Appli/INSCRIPTION/".$fileName);
-    @copy($tmp_name,"/home/esthoriz/www/Appli/CV/".$data['mail'].".pdf");
+    @copy($tmp_name,"/home/esthoriz/www/CV2021/".$data['mail'].".pdf");
 
 		include LIBS_DIR.'phpmailer'.DS.'class.phpmailer.php';
 						$mail = new PHPMailer();
@@ -156,8 +156,8 @@ class InscriptionModel {
 						
 						
 						
-						Vous trouverez aussi en piï¿½ce jointe un QRcode ï¿½ prï¿½senter le jour du forum. Celui-ci sera aussi disponible sur notre application.
-						L\'ï¿½quipe du Forum Est-Horizon
+						Vous trouverez aussi en pièce jointe un QRcode à présenter le jour du forum. 
+						L\'équipe du Forum Est-Horizon
 						');
 						$mail->AddAttachment($pngAbsoluteFilePath,''.$data['mail'].'-qrcode.png');
 						$mail->IsHTML(true);
