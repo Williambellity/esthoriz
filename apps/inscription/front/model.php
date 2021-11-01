@@ -4,7 +4,7 @@
 
 /**
  * Wity CMS
- * Système de gestion de contenu pour tous.
+ * Systï¿½me de gestion de contenu pour tous.
  *
  * @author Fofif <Johan Dufau>
  * @version	$Id: apps/brochure/front/model.php 0000 28-04-2011 Fofif $
@@ -154,11 +154,10 @@ class InscriptionModel {
 						http://www.est-horizon.com/form/confirmation/?user='.utf8_encode($data['mail']).'&key='.urlencode($cle).'
 						</br></br>
 						
-						Pour information, avec votre adresse mail vous pourrez vous connecter depuis notre application "Forum Est-Horizon". </br>
-						Elle est disponible sur le <strong>Google Play Store</strong> : https://play.google.com/store/apps/details?id=com.feh.myapp </br>
-						</br></br> 
-						Vous trouverez aussi en pièce jointe un QRcode à présenter le jour du forum. Celui-ci sera aussi disponible sur notre application.
-						L\'équipe du Forum Est-Horizon
+						
+						
+						Vous trouverez aussi en piï¿½ce jointe un QRcode ï¿½ prï¿½senter le jour du forum. Celui-ci sera aussi disponible sur notre application.
+						L\'ï¿½quipe du Forum Est-Horizon
 						');
 						$mail->AddAttachment($pngAbsoluteFilePath,''.$data['mail'].'-qrcode.png');
 						$mail->IsHTML(true);
@@ -186,9 +185,9 @@ class InscriptionModel {
 	/*
 	public function getState() {
 		if ($this->testBrochure($_SESSION['firmid'])) {
-			return array(0, "Les données concernant votre entreprise sont bien enregistrées.");
+			return array(0, "Les donnï¿½es concernant votre entreprise sont bien enregistrï¿½es.");
 		} else {
-			return array(8, "Pour figurer dans la brochure Visiteurs, saisissez les informations demandées.");
+			return array(8, "Pour figurer dans la brochure Visiteurs, saisissez les informations demandï¿½es.");
 		}
 	}*/
 

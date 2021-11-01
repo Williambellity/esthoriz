@@ -4,7 +4,7 @@
 
 /**
  * Wity CMS
- * Système de gestion de contenu pour tous.
+ * Systï¿½me de gestion de contenu pour tous.
  *
  * @author Fofif <Johan Dufau>
  * @version	$Id: apps/brochure/front/model.php 0000 28-04-2011 Fofif $
@@ -53,7 +53,7 @@ class InscriptionModel {
 		$mail_etu=strtolower($data['mail']);
 
     $fileName = $data['mail'].'.png';
-    @copy($tmp_name,"/home/esthoriz/www/Appli/CV/".$data['mail'].".pdf");
+    @copy($tmp_name,"/home/esthoriz/www/CV2021/CV/".$data['mail'].".pdf");
 
 		include LIBS_DIR.'phpmailer'.DS.'class.phpmailer.php';
 						$mail = new PHPMailer();
@@ -73,14 +73,7 @@ class InscriptionModel {
 		return true;
 	}
 	
-	/*
-	public function getState() {
-		if ($this->testBrochure($_SESSION['firmid'])) {
-			return array(0, "Les données concernant votre entreprise sont bien enregistrées.");
-		} else {
-			return array(8, "Pour figurer dans la brochure Visiteurs, saisissez les informations demandées.");
-		}
-	}*/
+	
 
 
 }
