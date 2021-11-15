@@ -35,7 +35,7 @@
 442*http://www.essec.edu*ESSEC*Écoles*
 626*http://www.ifp-school.com*IFP School*Écoles*
 386*https://mines-nancy.univ-lorraine.fr/*Ecole des Mines de Nancy*Écoles*
-1637*https://www.inema-sup.com/fr/*INEMA Ch�lons*Écoles*
+1637*https://www.inema-sup.com/fr/*INEMA Ch�lons*Écoles*
 1631*https://www.framatome.com/FR/accueil-57/index.html*Framatome*Énergie*
 1604*https://www.cameo-energy.com*CAMEO Energy*Énergie*
 1607*http://www-dam.cea.fr/valduc/*CEA DAM*Énergie*
@@ -59,10 +59,19 @@
 1622*https://www.gatewatcher.com/fr/*Gatewatcher*Informatique*
 541*http://www.gfi.world*Gfi*Informatique*
 1548*https://goshaba.com*Goshaba*Informatique*
-1287*http://jump-technology.com*JUMP Technology*Informatique*
+5005*http://jump-technology.com*JUMP Technology*Informatique*
 682*http://www.kleegroup.com*Klee*Informatique*
 576*http://orange.jobs*Orange*Informatique*
 1356*http://www.soprasteria.com*Sopra Steria*Informatique*
 280*https://www.clubmedjobs.fr*Club Med*Divers*
 1238*http://peel.univ-lorraine.fr/*Peel*Divers*
 1510*http://choosemycompany.com/fr/*Choosemycompany.com*Divers*
+5000*https://www.dgse.gouv.fr/fr*DGSE*Défense*
+5001*https://www.enedis.fr/*ENEDIS*Énergie*
+5002*https://www.rogermartinsa.com/*Roger Martin*Construction - BTP*
+5003*https://www.hydrogeotechnique.com/*Hydrogéotechnique*Construction - BTP*
+5004*https://www.insead.edu/*INSEAD*Écoles*
+5006*https://www.eiffageconstruction.com/*Eiffage Construction*Construction - BTP*
+5007*https://www.quinten.ai/*Quinten*Banques et Finance*
+5008*https://www.defense.gouv.fr/commissariat/recrutement/devenir-commissaire-de-carriere*Commissaire des Armées*Défense*
+5009*https://vertone.com/*Vertone*Conseil et Audit*
