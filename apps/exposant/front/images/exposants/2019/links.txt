@@ -1,14 +1,7 @@
-1285*http://www.aeriades.org*AERIADES*Aéronautique*
-1332*https://www.transdigm.com/*Leach International Europe*Aéronautique*
-1638*https://www.safran-group.com/fr*Safran*Aéronautique*
-1628*https://kep-technologies.com/fr/*KEPtechnologies*Aéronautique*
-185*http://group.bnpparibas/emploi-carriere*BNP Paribas*Banques et Finance*
 1636*https://xrays.fr*XRays Trading*Banques et Finance*
-1617*https://www.bpifrance.fr*BPI France*Banques et Finance*
 812*http://murex.com*Murex*Banques et Finance*
 5007*https://www.quinten.ai/*Quinten*Banques et Finance*
 16*http://www.recrute.accenture.fr*Accenture*Conseil et Audit*
-14*http://www.abylsen.com/fr*Abylsen Est*Conseil et Audit*
 132*http://fr.atos.net/*Atos*Conseil et Audit*
 bdo*https://www.bdo.fr/fr-fr/accueil*BDO*Conseil et Audit*
 83*https://www.alten.fr*Alten*Conseil et Audit*
@@ -16,39 +9,27 @@ bdo*https://www.bdo.fr/fr-fr/accueil*BDO*Conseil et Audit*
 1511*http://www.efor-group.fr/efor/*EFOR GROUP*Conseil et Audit*
 426*http://www.ey.com/fr/carrieres*EY Services France*Conseil et Audit*
 1223*http://www.deloitte.com/lu*Deloitte Luxembourg*Conseil et Audit*
-5009*https://vertone.com/*Vertone*Conseil et Audit*
-1368*https://home.kpmg/lu/en/home.html*KPMG Luxembourg*Conseil et Audit*
+vertone2*https://vertone.com/*Vertone*Conseil et Audit*
 771*https://www.mazarsrecrute.fr*Mazars*Conseil et Audit*
 manpower*https://www.manpower.fr/*Manpower*Conseil et Audit*
-858*http://www.oresys-recrute.eu*ORESYS*Conseil et Audit*
 1633*https://www.mantu.com/*Mantu*Conseil et Audit*
-1635*https://tomco.fr/*ToMCo*Conseil et Audit*
-1242*https://versusmind.eu*Versusmind*Conseil et Audit*
 1051*http://www.wavestone.com*Wavestone Luxembourg*Conseil et Audit*
 1640*https://springfive.com/*SpringFive*Conseil et Audit*
 1639*https://www.unicef.org/fr*Unicef*Humanitaire*
 1602*http://www.baudinchateauneuf.com*Baudin Chateauneuf*Construction - BTP*
 292*http://www.colas.com*Colas Nord Est*Construction - BTP*
 eurovia*https://www.eurovia.fr/*Eurovia*Construction - BTP*
-1619*https://www.eqiom.com*EQIOM*Construction - BTP*
-liebherr*https://www.liebherr.com/fr/fra/d%C3%A9marrage/page-de-d%C3%A9marrage.html*Liebherr*Construction - BTP*
-1454*http://www.saga-ingenierie.eu/*SAGA Ingenierie*Construction - BTP*
 5012*https://www.rogermartinsa.com/*Roger Martin*Construction - BTP*
 5011*https://www.hydrogeotechnique.com/*Hydrogéotechnique*Construction - BTP*
 5006*https://www.eiffageconstruction.com/*Eiffage Construction*Construction - BTP*
 117*http://www.sengager.fr*Armée de Terre*Défense*
-5010*https://www.dgse.gouv.fr/fr*DGSE*Défense*
+dgse2*https://www.dgse.gouv.fr/fr*DGSE*Défense*
 765*http://www.etremarin.fr*Marine Nationale*Défense*
-1634*https://www.nexter-group.fr/*Nexter*Défense*
 5008*https://www.defense.gouv.fr/commissariat/recrutement/devenir-commissaire-de-carriere*Commissaire des Armées*Défense*
-1621*https://www.epitech.eu/fr/*EPITECH*Écoles*
-442*http://www.essec.edu*ESSEC*Écoles*
 5004*https://www.insead.edu/*INSEAD*Écoles*
 626*http://www.ifp-school.com*IFP School*Écoles*
 386*https://mines-nancy.univ-lorraine.fr/*Ecole des Mines de Nancy*Écoles*
-1637*https://www.inema-sup.com/fr/*INEMA Ch�lons*Écoles*
 1631*https://www.framatome.com/FR/accueil-57/index.html*Framatome*Énergie*
-1604*https://www.cameo-energy.com*CAMEO Energy*Énergie*
 1607*http://www-dam.cea.fr/valduc/*CEA DAM*Énergie*
 390*http://www.edf.fr*EDF*Énergie*
 495*https://www.eiffageenergiesystemes.com*Eiffage Energie*Énergie*
@@ -58,22 +39,15 @@ vulcain*https://www.vulcain-eng.com/fr/*Vulcain Engineering*Énergie*
 95*http://www.anrt.asso.fr*ANRT CIFRE*Recherche*
 1571*https://www.joinexpleogroup.com*Expleo Group*Industrie*
 1255*https://www.fivesgroup.com/fr/?no_cache=1*Fives Nordon*Industrie*
-919*https://fr.prysmiangroup.com/*Prysmian*Industrie*
 1630*https://france.arcelormittal.com*ArcelorMittal*Industrie*
+liebherr*https://www.liebherr.com/fr/fra/d%C3%A9marrage/page-de-d%C3%A9marrage.html*Liebherr*Industrie*
 michelin*https://www.michelin.fr/*Michelin*Industrie*
-1513*http://www.tarkett.com*TARKETT GDL SA*Industrie*
-1386*http://viantmedical.com/*Viant SAS Chaumont*Industrie*
 vw*https://volkswagengroup.fr/*VolkWagen Retail France*Industrie*
 amadeus*https://amadeus.com/fr*Amadeus*Informatique*
-1632*https://isoft.fr/*ISoft*Informatique*
-1260*https://www.arketeam.com*ARKETEAM*Informatique*
 1305*http://www.fr.capgemini.com/carrieres*Capgemini*Informatique*
-343*https://www.3ds.com/fr/*Dassault Système*Informatique*
 1606*https://www.dedalus-france.fr*Dedalus France*Informatique*
 1623*http://www.equancy.fr/fr/accueil*Equancy*Informatique*
 1245*https://www.e-i.com/*EURO-INFORMATION*Informatique*
-1622*https://www.gatewatcher.com/fr/*Gatewatcher*Informatique*
-541*http://www.gfi.world*Gfi*Informatique*
 1548*https://goshaba.com*Goshaba*Informatique*
 inetum*https://www.inetum.com/fr*Inetum*Informatique*
 intech*https://www.intech.lu/fr/*Intech*Informatique*
