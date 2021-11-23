@@ -56,6 +56,5 @@ intech*https://www.intech.lu/fr/*Intech*Informatique*
 lusis*https://www.lusis.fr/*Lusis*Informatique*
 576*http://orange.jobs*Orange*Informatique*
 1356*http://www.soprasteria.com*Sopra Steria*Informatique*
-280*https://www.clubmedjobs.fr*Club Med*Divers*
-1238*http://peel.univ-lorraine.fr/*Peel*Divers*
 1510*http://choosemycompany.com/fr/*Choosemycompany.com*Divers*
+anrt*https://www.anrt.asso.fr/fr*Association Nationale Recherche Technologique*Divers*
