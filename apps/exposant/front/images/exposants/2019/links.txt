@@ -1,7 +1,7 @@
 1636*https://xrays.fr*XRays Trading*Banques et Finance*
 812*http://murex.com*Murex*Banques et Finance*
-5007*https://www.quinten.ai/*Quinten*Banques et Finance*
 16*http://www.recrute.accenture.fr*Accenture*Conseil et Audit*
+adentis*https://www.adentis.fr/*Adentis*Conseil et Audit*
 132*http://fr.atos.net/*Atos*Conseil et Audit*
 bdo*https://www.bdo.fr/fr-fr/accueil*BDO*Conseil et Audit*
 83*https://www.alten.fr*Alten*Conseil et Audit*
@@ -11,6 +11,7 @@ bdo*https://www.bdo.fr/fr-fr/accueil*BDO*Conseil et Audit*
 1223*http://www.deloitte.com/lu*Deloitte Luxembourg*Conseil et Audit*
 vertone2*https://vertone.com/*Vertone*Conseil et Audit*
 771*https://www.mazarsrecrute.fr*Mazars*Conseil et Audit*
+5007*https://www.quinten.ai/*Quinten*Conseil et Audit*
 manpower*https://www.manpower.fr/*Manpower*Conseil et Audit*
 1633*https://www.mantu.com/*Mantu*Conseil et Audit*
 1051*http://www.wavestone.com*Wavestone Luxembourg*Conseil et Audit*
@@ -49,6 +50,7 @@ amadeus*https://amadeus.com/fr*Amadeus*Informatique*
 1623*http://www.equancy.fr/fr/accueil*Equancy*Informatique*
 1245*https://www.e-i.com/*EURO-INFORMATION*Informatique*
 1548*https://goshaba.com*Goshaba*Informatique*
+ibm*https://www.ibm.com/fr-fr*IBM*Informatique*
 inetum*https://www.inetum.com/fr*Inetum*Informatique*
 intech*https://www.intech.lu/fr/*Intech*Informatique*
 5005*http://jump-technology.com*JUMP Technology*Informatique*
