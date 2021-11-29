@@ -42,7 +42,7 @@ class FormController extends WController {
 				}*/
 				if ($this->model->writeForm($data)) {
 					mb_internal_encoding('UTF-8');
-					WNote::info(utf8_encode("Demande d'inscription réalisé"), utf8_encode(" Vous allez recevoir un mail 
+					WNote::info(utf8_encode("Demande d'inscription rï¿½alisï¿½"), utf8_encode(" Vous allez recevoir un mail 
 					depuis lequel vous pourrez valider votre demande d'inscription.</br>
 					"), 'display');
 					/*WNote::success("Informations enregistrï¿½es", "Nous vous remercions pour votre inscriptions. Vos informations ont bien ï¿½tï¿½</br>
@@ -67,7 +67,7 @@ class FormController extends WController {
 		if (!empty($email)) {
 			if($this->model->updateConfirmation($email,$cle))
 			{
-			WNote::success(utf8_encode("Inscription validé"), utf8_encode("Nous vous donnons rendez-vous le 2 décembre au Centre Prouvé.<br /><br />
+			WNote::success(utf8_encode("Inscription validï¿½e"), utf8_encode("Nous vous donnons rendez-vous le 2 dï¿½cembre au Centre Prouvï¿½.<br /><br />
 
 <strong>Le Forum Est-Horizon</strong>"), 'display');
 
@@ -75,11 +75,11 @@ class FormController extends WController {
 			}
 			else
 				{
-				WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas ou existe déjà.</br> Il doit en effet y avoir une adresse unique pour chaque cas.</br>
-				Merci de nous contacter afin de résoudre le problème."), 'display');
+				WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas ou existe dï¿½jï¿½.</br> Il doit en effet y avoir une adresse unique pour chaque cas.</br>
+				Merci de nous contacter afin de rï¿½soudre le problï¿½me."), 'display');
 		}
 		} else {
-			WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas.</br> Merci de nous contacter afin de résoudre le problème."), 'display');
+			WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas.</br> Merci de nous contacter afin de rï¿½soudre le problï¿½me."), 'display');
 		}
 	}
 }
