@@ -1,7 +1,7 @@
 <?php
 /**
  * Wity CMS
- * Système de gestion de contenu pour tous.
+ * Systï¿½me de gestion de contenu pour tous.
  *
  * @author Julien1619
  * @version	$Id: apps/brochure/front/main.php 0001 11-06-2011 Julien1619 $
@@ -42,11 +42,11 @@ class InscriptionController extends WController {
 				}*/
 				if ($this->model->writeInscription($data)) {
 					mb_internal_encoding('UTF-8');
-					WNote::info(utf8_encode("Demande d'inscription réalisée"), utf8_encode(" Vous allez recevoir un mail 
+					WNote::info(utf8_encode("Demande d'inscription rï¿½alisï¿½e"), utf8_encode(" Vous allez recevoir un mail 
 					depuis lequel vous pourrez valider votre demande d'inscription.</br>
 					"), 'display');
-					/*WNote::success("Informations enregistrées", "Nous vous remercions pour votre inscriptions. Vos informations ont bien été</br>
-					prises en compte. Vous serez contactés ultérieurement par email", 'session');*/
+					/*WNote::success("Informations enregistrï¿½es", "Nous vous remercions pour votre inscriptions. Vos informations ont bien ï¿½tï¿½</br>
+					prises en compte. Vous serez contactï¿½s ultï¿½rieurement par email", 'session');*/
 					//header('location: '.WRoute::getDir().'form/');//.(empty($_SESSION['firmid']) ? $firmid : ''));
 		
 				} 
@@ -67,7 +67,7 @@ class InscriptionController extends WController {
 		if (!empty($email)) {
 			if($this->model->updateConfirmation($email,$cle))
 			{
-			WNote::success(utf8_encode("Inscription validée"), utf8_encode("Nous vous donnons rendez-vous le 19 Novembre 2020 au Centre Prouvé.<br /><br />
+			WNote::success(utf8_encode("Inscription validï¿½e"), utf8_encode("Nous vous donnons rendez-vous le Jeudi 2 Decembre 2021 au Centre Prouvï¿½.<br /><br />
 
 <strong>Le Forum Est-Horizon</strong>"), 'display');
 
@@ -75,11 +75,11 @@ class InscriptionController extends WController {
 			}
 			else
 				{
-				WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas ou existe déjà.</br> Il doit en effet y avoir une adresse unique pour chaque cas.</br>
-				Merci de nous contacter afin de résoudre le problème."), 'display');
+				WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas ou existe dï¿½jï¿½.</br> Il doit en effet y avoir une adresse unique pour chaque cas.</br>
+				Merci de nous contacter afin de rï¿½soudre le problï¿½me."), 'display');
 		}
 		} else {
-			WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas.</br> Merci de nous contacter afin de résoudre le problème."), 'display');
+			WNote::error("Erreur invalide", utf8_encode("L'email ne correspond pas.</br> Merci de nous contacter afin de rï¿½soudre le problï¿½me."), 'display');
 		}
 	}
 }
