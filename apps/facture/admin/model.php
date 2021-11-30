@@ -51,8 +51,8 @@ class ProfilModel {
 						$mail->CharSet = 'utf-8';
 						$mail->From = 'forum@est-horizon.com';
 						$mail->FromName = 'Forum Est-Horizon';
-						$mail->Subject = 'confirmation de votre inscription au Forum Est-Horizon';
-						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du jeudi 19 Novembre 2020.</br>
+						$mail->Subject = 'Confirmation de votre inscription au Forum Est-Horizon';
+						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du jeudi 2 decembre 2021.</br>
 								Pour confirmer votre inscription, cliquer sur le lien ci-dessous :</br></br>
 						
 						http://www.est-horizon.com/form/confirmation/?user='.utf8_encode($data['mail']).'&key='.urlencode($cle).'

@@ -1,7 +1,7 @@
 <?php
 /**
  * Wity CMS
- * Système de gestion de contenu pour tous.
+ * Systï¿½me de gestion de contenu pour tous.
  *
  * @author Fofif <Johan Dufau>
  * @version	$Id: apps/brochure/front/model.php 0000 28-04-2011 Fofif $
@@ -95,13 +95,13 @@ class FormModel {
 						$mail->CharSet = 'utf-8';
 						$mail->From = 'forum@est-horizon.com';
 						$mail->FromName = 'Forum Est-Horizon';
-						$mail->Subject = 'confirmation de votre inscription au Forum Est-Horizon';
-						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du jeudi 22 octobre 2015.</br>
+						$mail->Subject = 'Confirmation de votre inscription au Forum Est-Horizon';
+						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du jeudi 2 decembre 2021.</br>
 								Pour confirmer votre inscription, cliquer sur le lien ci-dessous :</br></br>
 						
 						http://www.est-horizon.com/form/confirmation/?user='.utf8_encode($data['mail']).'&key='.urlencode($cle).'
 						</br></br>
-						L\'équipe du Forum Est-Horizon
+						L\'ï¿½quipe du Forum Est-Horizon
 						');
 						$mail->IsHTML(true);
 						$mail->AddAddress($data['mail']);
@@ -113,9 +113,9 @@ class FormModel {
 	/*
 	public function getState() {
 		if ($this->testBrochure($_SESSION['firmid'])) {
-			return array(0, "Les données concernant votre entreprise sont bien enregistrées.");
+			return array(0, "Les donnï¿½es concernant votre entreprise sont bien enregistrï¿½es.");
 		} else {
-			return array(8, "Pour figurer dans la brochure Visiteurs, saisissez les informations demandées.");
+			return array(8, "Pour figurer dans la brochure Visiteurs, saisissez les informations demandï¿½es.");
 		}
 	}*/
 
