@@ -149,7 +149,7 @@ class InscriptionModel {
 						$mail->FromName = 'Forum Est-Horizon';
 
 						$mail->Subject = 'Confirmation de votre inscription au Forum Est-Horizon';
-						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du jeudi 2 decembre 2021.</br>
+						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du Jeudi 2 Décembre 2021.</br>
 								Pour confirmer votre inscription, cliquer sur le lien ci-dessous :</br></br>
 						
 						http://www.est-horizon.com/form/confirmation/?user='.utf8_encode($data['mail']).'&key='.urlencode($cle).'
@@ -158,8 +158,8 @@ class InscriptionModel {
 						
 
 						
-						<p>Vous trouverez aussi en pi�ce jointe un QRcode � pr�senter le jour du forum. </p>
-						L\'�quipe du Forum Est-Horizon
+						<p>Vous trouverez aussi en pièce jointe un QRcode renvoyant vers votre CV à présenter le jour du forum. Celui-ci ne fonctionne que si vous avez enregistré votre CV lors de votre inscription sur le site. </p>
+						L\'équipe du Forum Est-Horizon
 						');
 						$mail->AddAttachment($pngAbsoluteFilePath,''.$data['mail'].'-qrcode.png');
 						$mail->IsHTML(true);
