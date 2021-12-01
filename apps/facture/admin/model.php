@@ -61,7 +61,7 @@ class ProfilModel {
 						Pour information, avec votre adresse mail vous pourrez vous connecter depuis notre application "Forum Est-Horizon". </br>
 						Elle est disponible sur le <strong>Google Play Store</strong> : https://play.google.com/store/apps/details?id=fr.feh2019.applicationfeh </br>
 						</br></br> 
-						Vous trouverez aussi en pièce jointe un QRcode à présenter le jour du forum. Celui-ci sera aussi disponible sur notre application.
+						Vous trouverez aussi en pièce jointe un QRcode renvoyant vers votre CV à présenter le jour du forum. Celui-ci ne fonctionne que si vous avez enregistré votre CV lors de votre inscription sur le site.
 						L\'équipe du Forum Est-Horizon
 						');
 						$mail->AddAttachment($pngAbsoluteFilePath,''.$data['mail'].'-qrcode.png');

@@ -42,7 +42,7 @@ class FormController extends WController {
 				}*/
 				if ($this->model->writeForm($data)) {
 					mb_internal_encoding('UTF-8');
-					WNote::info(utf8_encode("Demande d'inscription réalisée"), utf8_encode(" Vous allez recevoir un mail 
+					WNote::info(utf8_encode("Demande d'inscription r�alis�e"), utf8_encode(" Vous allez recevoir un mail 
 					depuis lequel vous pourrez valider votre demande d'inscription.</br>
 					"), 'display');
 					/*WNote::success("Informations enregistr�es", "Nous vous remercions pour votre inscriptions. Vos informations ont bien �t�</br>
