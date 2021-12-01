@@ -150,7 +150,7 @@ class InscriptionModel {
 
 						$mail->Subject = 'Confirmation de votre inscription au Forum Est-Horizon';
 						$mail->Body = utf8_encode('Bonjour, </br></br>Nous vous remercions pour votre inscription au Forum Est-Horizon du Jeudi 2 Decembre 2021.</br>
-								Pour confirmer votre inscription, cliquer sur le lien ci-dessous :</br></br>
+								Pour confirmer votre inscription, cliquez sur le lien ci-dessous :</br></br>
 						
 						http://www.est-horizon.com/form/confirmation/?user='.utf8_encode($data['mail']).'&key='.urlencode($cle).'
 						
